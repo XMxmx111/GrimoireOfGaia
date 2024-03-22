@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_shiny_pearl",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_shiny_pearl"
     ]
   ],
   "rewards": {
     "recipes": [
       "grimoireofgaia:pearl_block"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

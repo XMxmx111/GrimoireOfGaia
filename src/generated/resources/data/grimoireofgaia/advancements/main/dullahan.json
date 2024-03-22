@@ -21,12 +21,9 @@
     "description": {
       "translate": "advancement.grimoireofgaia.dullahan.desc"
     },
-    "frame": "task",
-    "hidden": false,
     "icon": {
       "item": "grimoireofgaia:doll_dullahan"
     },
-    "show_toast": true,
     "title": {
       "translate": "advancement.grimoireofgaia.dullahan.title"
     }

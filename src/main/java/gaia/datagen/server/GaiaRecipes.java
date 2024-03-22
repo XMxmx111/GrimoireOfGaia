@@ -2,17 +2,15 @@ package gaia.datagen.server;
 
 import gaia.registry.GaiaRegistry;
 import net.minecraft.data.PackOutput;
-import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeCategory;
+import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraftforge.common.Tags;
-
-import java.util.function.Consumer;
+import net.neoforged.neoforge.common.Tags;
 
 public class GaiaRecipes extends RecipeProvider {
 	public GaiaRecipes(PackOutput packOutput) {
@@ -20,7 +18,7 @@ public class GaiaRecipes extends RecipeProvider {
 	}
 
 	@Override
-	protected void buildRecipes(Consumer<FinishedRecipe> consumer) {
+	protected void buildRecipes(RecipeOutput consumer) {
 		ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, GaiaRegistry.HEADGEAR_DOLL.get())
 				.requires(GaiaRegistry.DOLL_MAID.get()).unlockedBy("has_maid_doll", has(GaiaRegistry.DOLL_MAID.get()))
 				.save(consumer);

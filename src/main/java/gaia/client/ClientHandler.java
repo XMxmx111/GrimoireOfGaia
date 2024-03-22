@@ -140,13 +140,14 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.server.packs.PathPackResources;
+import net.minecraft.server.packs.repository.BuiltInPackSource;
 import net.minecraft.server.packs.repository.Pack;
 import net.minecraft.server.packs.repository.PackSource;
-import net.minecraftforge.client.event.EntityRenderersEvent;
-import net.minecraftforge.client.event.RegisterEntitySpectatorShadersEvent;
-import net.minecraftforge.event.AddPackFindersEvent;
-import net.minecraftforge.fml.ModList;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
+import net.neoforged.fml.ModList;
+import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
+import net.neoforged.neoforge.client.event.EntityRenderersEvent;
+import net.neoforged.neoforge.client.event.RegisterEntitySpectatorShadersEvent;
+import net.neoforged.neoforge.event.AddPackFindersEvent;
 
 public class ClientHandler {
 	public static final float tinyShadow = 0.25F;
@@ -271,7 +272,7 @@ public class ClientHandler {
 			var pack = Pack.readMetaAndCreate("builtin/gaia_sound_pack",
 					Component.literal("\u00A76Optional GoG4 sound pack"),
 					false,
-					(path) -> new PathPackResources(path, resourcePath, false),
+					BuiltInPackSource.fromName((path) -> new PathPackResources(path, resourcePath, false)),
 					PackType.CLIENT_RESOURCES,
 					Pack.Position.TOP,
 					PackSource.BUILT_IN);

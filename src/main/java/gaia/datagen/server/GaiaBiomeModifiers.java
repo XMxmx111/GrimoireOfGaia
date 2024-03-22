@@ -13,9 +13,9 @@ import net.minecraft.tags.BiomeTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.MobSpawnSettings;
-import net.minecraftforge.common.Tags;
-import net.minecraftforge.common.world.BiomeModifier;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.neoforged.neoforge.common.Tags;
+import net.neoforged.neoforge.common.world.BiomeModifier;
+import net.neoforged.neoforge.registries.NeoForgeRegistries;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -403,6 +403,6 @@ public class GaiaBiomeModifiers {
 	}
 
 	private static ResourceKey<BiomeModifier> generateKey(String name) {
-		return ResourceKey.create(ForgeRegistries.Keys.BIOME_MODIFIERS, new ResourceLocation(GrimoireOfGaia.MOD_ID, name));
+		return ResourceKey.create(NeoForgeRegistries.Keys.BIOME_MODIFIERS, new ResourceLocation(GrimoireOfGaia.MOD_ID, name));
 	}
 }

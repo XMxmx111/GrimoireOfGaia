@@ -1,15 +1,18 @@
 package gaia.config;
 
-import net.minecraftforge.common.ForgeConfigSpec;
-import net.minecraftforge.common.ForgeConfigSpec.BooleanValue;
-import net.minecraftforge.common.ForgeConfigSpec.IntValue;
+import gaia.GrimoireOfGaia;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.event.config.ModConfigEvent;
+import net.neoforged.neoforge.common.ModConfigSpec;
+import net.neoforged.neoforge.common.ModConfigSpec.BooleanValue;
+import net.neoforged.neoforge.common.ModConfigSpec.IntValue;
 import org.apache.commons.lang3.tuple.Pair;
 
 public class GaiaConfig {
 	public static class Client {
 		public final BooleanValue genderNeutral;
 
-		Client(ForgeConfigSpec.Builder builder) {
+		Client(ModConfigSpec.Builder builder) {
 			builder.comment("Client settings")
 					.push("client");
 
@@ -50,7 +53,7 @@ public class GaiaConfig {
 		public final BooleanValue disableYRestriction;
 		public final BooleanValue spawnWeather;
 
-		Common(ForgeConfigSpec.Builder builder) {
+		Common(ModConfigSpec.Builder builder) {
 			builder.comment("General Settings")
 					.push("General");
 
@@ -155,21 +158,31 @@ public class GaiaConfig {
 		}
 	}
 
-	public static final ForgeConfigSpec clientSpec;
+	public static final ModConfigSpec clientSpec;
 	public static final Client CLIENT;
 
 	static {
-		final Pair<Client, ForgeConfigSpec> specPair = new ForgeConfigSpec.Builder().configure(Client::new);
+		final Pair<Client, ModConfigSpec> specPair = new ModConfigSpec.Builder().configure(Client::new);
 		clientSpec = specPair.getRight();
 		CLIENT = specPair.getLeft();
 	}
 
-	public static final ForgeConfigSpec commonSpec;
+	public static final ModConfigSpec commonSpec;
 	public static final Common COMMON;
 
 	static {
-		final Pair<Common, ForgeConfigSpec> specPair = new ForgeConfigSpec.Builder().configure(Common::new);
+		final Pair<Common, ModConfigSpec> specPair = new ModConfigSpec.Builder().configure(Common::new);
 		commonSpec = specPair.getRight();
 		COMMON = specPair.getLeft();
+	}
+
+	@SubscribeEvent
+	public static void onLoad(final ModConfigEvent.Loading configEvent) {
+		GrimoireOfGaia.LOGGER.debug("Loaded Grimoire of Gaia's config file {}", configEvent.getConfig().getFileName());
+	}
+
+	@SubscribeEvent
+	public static void onFileChange(final ModConfigEvent.Reloading configEvent) {
+		GrimoireOfGaia.LOGGER.warn("Grimoire of Gaia's config just got changed on the file system!");
 	}
 }

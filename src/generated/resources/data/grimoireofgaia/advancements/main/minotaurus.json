@@ -21,13 +21,10 @@
     "description": {
       "translate": "advancement.grimoireofgaia.minotaurus.desc"
     },
-    "frame": "task",
-    "hidden": false,
     "icon": {
       "item": "grimoireofgaia:weapon_book_battle",
       "nbt": "{Damage:0}"
     },
-    "show_toast": true,
     "title": {
       "translate": "advancement.grimoireofgaia.minotaurus.title"
     }

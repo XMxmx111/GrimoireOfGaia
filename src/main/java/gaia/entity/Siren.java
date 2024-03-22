@@ -42,7 +42,8 @@ import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.pathfinder.BlockPathTypes;
-import net.minecraftforge.common.ForgeMod;
+import net.neoforged.neoforge.common.NeoForgeMod;
+import net.neoforged.neoforge.fluids.FluidType;
 import org.jetbrains.annotations.Nullable;
 
 public class Siren extends AbstractGaiaEntity implements RangedAttackMob, IDayMob {
@@ -86,7 +87,7 @@ public class Siren extends AbstractGaiaEntity implements RangedAttackMob, IDayMo
 				.add(Attributes.ATTACK_DAMAGE, 4.0D)
 				.add(Attributes.ARMOR, SharedEntityData.RATE_ARMOR_1)
 				.add(Attributes.ATTACK_KNOCKBACK, SharedEntityData.KNOCKBACK_1)
-				.add(ForgeMod.STEP_HEIGHT_ADDITION.get(), 1.0F);
+				.add(NeoForgeMod.STEP_HEIGHT.value(), 1.0F);
 	}
 
 	@Override
@@ -261,7 +262,7 @@ public class Siren extends AbstractGaiaEntity implements RangedAttackMob, IDayMo
 	}
 
 	@Override
-	public boolean isPushedByFluid() {
+	public boolean isPushedByFluid(FluidType type) {
 		return false;
 	}
 

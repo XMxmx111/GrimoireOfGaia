@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_emerald_shard",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_emerald_shard"
     ]
   ],
   "rewards": {
     "recipes": [
       "grimoireofgaia:emerald_shard_to_emerald"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

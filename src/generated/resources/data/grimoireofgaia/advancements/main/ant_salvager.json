@@ -21,12 +21,9 @@
     "description": {
       "translate": "advancement.grimoireofgaia.ant_salvager.desc"
     },
-    "frame": "task",
-    "hidden": false,
     "icon": {
       "item": "grimoireofgaia:projectile_poison"
     },
-    "show_toast": true,
     "title": {
       "translate": "advancement.grimoireofgaia.ant_salvager.title"
     }

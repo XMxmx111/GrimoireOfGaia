@@ -21,13 +21,10 @@
     "description": {
       "translate": "advancement.grimoireofgaia.minotaur.desc"
     },
-    "frame": "task",
-    "hidden": false,
     "icon": {
       "item": "grimoireofgaia:minotaur_hammer",
       "nbt": "{Damage:0}"
     },
-    "show_toast": true,
     "title": {
       "translate": "advancement.grimoireofgaia.minotaur.title"
     }

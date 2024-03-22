@@ -1,8 +1,8 @@
 {
-  "conditions": [
+  "neoforge:conditions": [
     {
-      "modid": "create",
-      "type": "forge:mod_loaded"
+      "type": "neoforge:mod_loaded",
+      "modid": "create"
     }
   ],
   "type": "create:emptying",

@@ -38,7 +38,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
-import net.minecraftforge.common.ForgeMod;
+import net.neoforged.neoforge.common.NeoForgeMod;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.UUID;
@@ -87,7 +87,7 @@ public class NineTails extends AbstractGaiaEntity implements RangedAttackMob {
 				.add(Attributes.ATTACK_DAMAGE, 8.0D)
 				.add(Attributes.ARMOR, SharedEntityData.RATE_ARMOR_2)
 				.add(Attributes.ATTACK_KNOCKBACK, SharedEntityData.KNOCKBACK_2)
-				.add(ForgeMod.STEP_HEIGHT_ADDITION.get(), 1.0F);
+				.add(NeoForgeMod.STEP_HEIGHT.value(), 1.0F);
 	}
 
 	@Override
@@ -219,7 +219,7 @@ public class NineTails extends AbstractGaiaEntity implements RangedAttackMob {
 
 	protected void setHandOrKnockback(ItemStack stack) {
 		AttributeInstance attributeinstance = this.getAttribute(Attributes.ATTACK_KNOCKBACK);
-		attributeinstance.removeModifier(KNOCKBACK_MODIFIER);
+		attributeinstance.removeModifier(KNOCKBACK_MODIFIER_UUID);
 		if (stack.isEmpty()) {
 			attributeinstance.addTransientModifier(KNOCKBACK_MODIFIER);
 		} else {

@@ -21,13 +21,10 @@
     "description": {
       "translate": "advancement.grimoireofgaia.bone_knight.desc"
     },
-    "frame": "task",
-    "hidden": false,
     "icon": {
       "item": "grimoireofgaia:bone_shield",
       "nbt": "{Damage:0}"
     },
-    "show_toast": true,
     "title": {
       "translate": "advancement.grimoireofgaia.bone_knight.title"
     }

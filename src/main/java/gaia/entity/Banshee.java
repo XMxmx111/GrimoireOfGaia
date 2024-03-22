@@ -34,7 +34,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.common.ForgeMod;
+import net.neoforged.neoforge.common.NeoForgeMod;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.EnumSet;
@@ -76,7 +76,7 @@ public class Banshee extends AbstractGaiaEntity {
 				.add(Attributes.ATTACK_DAMAGE, 8.0D)
 				.add(Attributes.ARMOR, SharedEntityData.RATE_ARMOR_2)
 				.add(Attributes.ATTACK_KNOCKBACK, SharedEntityData.KNOCKBACK_2)
-				.add(ForgeMod.STEP_HEIGHT_ADDITION.get(), 1.0F);
+				.add(NeoForgeMod.STEP_HEIGHT.value(), 1.0F);
 	}
 
 	@Override

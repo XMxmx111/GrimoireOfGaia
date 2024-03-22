@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_elytra_fragment",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_elytra_fragment"
     ]
   ],
   "rewards": {
     "recipes": [
       "grimoireofgaia:fragment_to_elytra"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

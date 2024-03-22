@@ -21,13 +21,10 @@
     "description": {
       "translate": "advancement.grimoireofgaia.behender.desc"
     },
-    "frame": "task",
-    "hidden": false,
     "icon": {
       "item": "grimoireofgaia:weapon_book_ender",
       "nbt": "{Damage:0}"
     },
-    "show_toast": true,
     "title": {
       "translate": "advancement.grimoireofgaia.behender.title"
     }

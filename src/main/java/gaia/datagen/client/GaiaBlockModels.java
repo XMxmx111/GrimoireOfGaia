@@ -3,8 +3,8 @@ package gaia.datagen.client;
 import gaia.GrimoireOfGaia;
 import gaia.registry.GaiaRegistry;
 import net.minecraft.data.PackOutput;
-import net.minecraftforge.client.model.generators.BlockModelProvider;
-import net.minecraftforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.client.model.generators.BlockModelProvider;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
 public class GaiaBlockModels extends BlockModelProvider {
 	public GaiaBlockModels(PackOutput packOutput, ExistingFileHelper helper) {

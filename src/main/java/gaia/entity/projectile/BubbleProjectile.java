@@ -4,8 +4,6 @@ import gaia.registry.GaiaRegistry;
 import gaia.util.SharedEntityData;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -19,8 +17,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
-import net.minecraftforge.network.NetworkHooks;
-import net.minecraftforge.network.PlayMessages.SpawnEntity;
+import net.neoforged.neoforge.fluids.FluidType;
 
 public class BubbleProjectile extends SmallFireball {
 	public BubbleProjectile(EntityType<? extends SmallFireball> entityType, Level level) {
@@ -39,15 +36,6 @@ public class BubbleProjectile extends SmallFireball {
 	public ItemStack getItem() {
 		ItemStack itemstack = this.getItemRaw();
 		return itemstack.isEmpty() ? new ItemStack(GaiaRegistry.PROJECTILE_BUBBLE.get()) : itemstack;
-	}
-
-	public BubbleProjectile(SpawnEntity spawnEntity, Level level) {
-		this(GaiaRegistry.BUBBLE.get(), level);
-	}
-
-	@Override
-	public Packet<ClientGamePacketListener> getAddEntityPacket() {
-		return NetworkHooks.getEntitySpawningPacket(this);
 	}
 
 	@Override
@@ -124,7 +112,7 @@ public class BubbleProjectile extends SmallFireball {
 	}
 
 	@Override
-	public boolean isPushedByFluid() {
+	public boolean isPushedByFluid(FluidType type) {
 		return false;
 	}
 }

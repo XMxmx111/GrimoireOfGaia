@@ -38,8 +38,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.common.ForgeMod;
-import net.minecraftforge.common.ToolActions;
+import net.neoforged.neoforge.common.NeoForgeMod;
+import net.neoforged.neoforge.common.ToolActions;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -80,7 +80,7 @@ public class Matango extends AbstractGaiaEntity implements IDayMob {
 				.add(Attributes.ATTACK_DAMAGE, 4.0D)
 				.add(Attributes.ARMOR, SharedEntityData.RATE_ARMOR_1)
 				.add(Attributes.ATTACK_KNOCKBACK, SharedEntityData.KNOCKBACK_1)
-				.add(ForgeMod.STEP_HEIGHT_ADDITION.get(), 1.0F);
+				.add(NeoForgeMod.STEP_HEIGHT.value(), 1.0F);
 	}
 
 	@Override
@@ -184,7 +184,7 @@ public class Matango extends AbstractGaiaEntity implements IDayMob {
 		SpawnGroupData data = super.finalizeSpawn(levelAccessor, difficultyInstance, spawnType, groupData, tag);
 
 		AttributeInstance attributeinstance = this.getAttribute(Attributes.ATTACK_KNOCKBACK);
-		attributeinstance.removeModifier(KNOCKBACK_MODIFIER);
+		attributeinstance.removeModifier(KNOCKBACK_MODIFIER_UUID);
 		attributeinstance.addTransientModifier(KNOCKBACK_MODIFIER);
 
 		return data;

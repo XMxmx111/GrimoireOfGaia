@@ -1,6 +1,7 @@
 package gaia.entity;
 
-import gaia.capability.CapabilityHandler;
+import gaia.attachment.AttachmentHandler;
+import gaia.attachment.friended.Friended;
 import gaia.config.GaiaConfig;
 import gaia.entity.goal.MobAttackGoal;
 import gaia.entity.type.IDayMob;
@@ -47,7 +48,7 @@ import net.minecraft.world.item.alchemy.PotionUtils;
 import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
-import net.minecraftforge.common.ForgeMod;
+import net.neoforged.neoforge.common.NeoForgeMod;
 import org.jetbrains.annotations.Nullable;
 
 public class Centaur extends AbstractAssistGaiaEntity implements RangedAttackMob, IDayMob {
@@ -90,7 +91,7 @@ public class Centaur extends AbstractAssistGaiaEntity implements RangedAttackMob
 				.add(Attributes.ATTACK_DAMAGE, 4.0D)
 				.add(Attributes.ARMOR, SharedEntityData.RATE_ARMOR_1)
 				.add(Attributes.ATTACK_KNOCKBACK, SharedEntityData.KNOCKBACK_1)
-				.add(ForgeMod.STEP_HEIGHT_ADDITION.get(), 1.0F);
+				.add(NeoForgeMod.STEP_HEIGHT.value(), 1.0F);
 	}
 
 	@Override
@@ -153,15 +154,14 @@ public class Centaur extends AbstractAssistGaiaEntity implements RangedAttackMob
 				regenerateHealth = 0;
 			}
 		} else if ((getHealth() >= getMaxHealth()) && (fullHealth == 1)) {
-			getCapability(CapabilityHandler.CAPABILITY_FRIENDED).ifPresent(cap -> {
-				if (!cap.isFriendly()) {
-					setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(Items.BOW));
-					setGoals(0);
-				} else {
-					setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(Items.WOODEN_SWORD));
-					setGoals(2);
-				}
-			});
+			Friended friended = AttachmentHandler.getFriended(this);
+			if (!friended.isFriendly()) {
+				setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(Items.BOW));
+				setGoals(0);
+			} else {
+				setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(Items.WOODEN_SWORD));
+				setGoals(2);
+			}
 
 			removeEffect(MobEffects.REGENERATION);
 			setFleeing(false);

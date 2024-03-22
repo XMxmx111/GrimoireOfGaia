@@ -35,8 +35,8 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
-import net.minecraftforge.common.ForgeMod;
-import net.minecraftforge.common.ToolActions;
+import net.neoforged.neoforge.common.NeoForgeMod;
+import net.neoforged.neoforge.common.ToolActions;
 import org.jetbrains.annotations.Nullable;
 
 public class Dryad extends AbstractAssistGaiaEntity implements IDayMob {
@@ -79,7 +79,7 @@ public class Dryad extends AbstractAssistGaiaEntity implements IDayMob {
 				.add(Attributes.ATTACK_DAMAGE, 4.0D)
 				.add(Attributes.ARMOR, SharedEntityData.RATE_ARMOR_1)
 				.add(Attributes.ATTACK_KNOCKBACK, SharedEntityData.KNOCKBACK_1)
-				.add(ForgeMod.STEP_HEIGHT_ADDITION.get(), 1.0F);
+				.add(NeoForgeMod.STEP_HEIGHT.value(), 1.0F);
 	}
 
 	@Override

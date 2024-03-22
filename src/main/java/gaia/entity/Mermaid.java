@@ -41,7 +41,8 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.pathfinder.BlockPathTypes;
-import net.minecraftforge.common.ForgeMod;
+import net.neoforged.neoforge.common.NeoForgeMod;
+import net.neoforged.neoforge.fluids.FluidType;
 import org.jetbrains.annotations.Nullable;
 
 public class Mermaid extends AbstractAssistGaiaEntity {
@@ -85,7 +86,7 @@ public class Mermaid extends AbstractAssistGaiaEntity {
 				.add(Attributes.ATTACK_KNOCKBACK, SharedEntityData.KNOCKBACK_2)
 
 				.add(Attributes.KNOCKBACK_RESISTANCE, 0.25D)
-				.add(ForgeMod.STEP_HEIGHT_ADDITION.get(), 1.0F);
+				.add(NeoForgeMod.STEP_HEIGHT.value(), 1.0F);
 	}
 
 	@Override
@@ -236,12 +237,7 @@ public class Mermaid extends AbstractAssistGaiaEntity {
 	}
 
 	@Override
-	public boolean canBreatheUnderwater() {
-		return true;
-	}
-
-	@Override
-	public boolean isPushedByFluid() {
+	public boolean isPushedByFluid(FluidType type) {
 		return false;
 	}
 

@@ -1,6 +1,7 @@
 package gaia.entity;
 
-import gaia.capability.CapabilityHandler;
+import gaia.attachment.AttachmentHandler;
+import gaia.attachment.friended.Friended;
 import gaia.config.GaiaConfig;
 import gaia.entity.goal.MobAttackGoal;
 import gaia.entity.type.IDayMob;
@@ -42,7 +43,7 @@ import net.minecraft.world.item.alchemy.PotionUtils;
 import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
-import net.minecraftforge.common.ForgeMod;
+import net.neoforged.neoforge.common.NeoForgeMod;
 import org.jetbrains.annotations.Nullable;
 
 public class Hunter extends AbstractAssistGaiaEntity implements RangedAttackMob, IDayMob {
@@ -83,7 +84,7 @@ public class Hunter extends AbstractAssistGaiaEntity implements RangedAttackMob,
 				.add(Attributes.ATTACK_DAMAGE, 4.0D)
 				.add(Attributes.ARMOR, SharedEntityData.RATE_ARMOR_1)
 				.add(Attributes.ATTACK_KNOCKBACK, SharedEntityData.KNOCKBACK_1)
-				.add(ForgeMod.STEP_HEIGHT_ADDITION.get(), 1.0F);
+				.add(NeoForgeMod.STEP_HEIGHT.value(), 1.0F);
 	}
 
 	@Override
@@ -167,15 +168,14 @@ public class Hunter extends AbstractAssistGaiaEntity implements RangedAttackMob,
 					removeEffect(MobEffects.MOVEMENT_SPEED);
 				}
 
-				getCapability(CapabilityHandler.CAPABILITY_FRIENDED).ifPresent(cap -> {
-					if (!cap.isFriendly()) {
-						setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(Items.BOW));
-						setGoals(0);
-					} else {
-						setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(Items.WOODEN_SWORD));
-						setGoals(1);
-					}
-				});
+				Friended friended = AttachmentHandler.getFriended(this);
+				if (!friended.isFriendly()) {
+					setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(Items.BOW));
+					setGoals(0);
+				} else {
+					setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(Items.WOODEN_SWORD));
+					setGoals(1);
+				}
 
 				timer = 0;
 				switchEquip = 0;
@@ -225,7 +225,7 @@ public class Hunter extends AbstractAssistGaiaEntity implements RangedAttackMob,
 	@Nullable
 	@Override
 	public SpawnGroupData finalizeSpawn(ServerLevelAccessor levelAccessor, DifficultyInstance difficultyInstance,
-										MobSpawnType spawnType, @Nullable SpawnGroupData groupData, @Nullable CompoundTag tag) {
+	                                    MobSpawnType spawnType, @Nullable SpawnGroupData groupData, @Nullable CompoundTag tag) {
 		SpawnGroupData data = super.finalizeSpawn(levelAccessor, difficultyInstance, spawnType, groupData, tag);
 
 		if (random.nextInt(4) == 0) {

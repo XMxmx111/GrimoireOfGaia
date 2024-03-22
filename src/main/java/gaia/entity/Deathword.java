@@ -46,7 +46,8 @@ import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.common.ForgeMod;
+import net.neoforged.neoforge.common.NeoForgeMod;
+import net.neoforged.neoforge.event.EventHooks;
 import org.jetbrains.annotations.Nullable;
 
 public class Deathword extends AbstractGaiaEntity {
@@ -111,7 +112,7 @@ public class Deathword extends AbstractGaiaEntity {
 				.add(Attributes.ATTACK_DAMAGE, 4.0D)
 				.add(Attributes.ARMOR, SharedEntityData.RATE_ARMOR_1)
 				.add(Attributes.ATTACK_KNOCKBACK, SharedEntityData.KNOCKBACK_1)
-				.add(ForgeMod.STEP_HEIGHT_ADDITION.get(), 1.0F);
+				.add(NeoForgeMod.STEP_HEIGHT.value(), 1.0F);
 	}
 
 	@Override
@@ -177,7 +178,7 @@ public class Deathword extends AbstractGaiaEntity {
 					if (!this.level().isClientSide) {
 						switch (random.nextInt(4)) {
 							case 0 -> {
-								boolean flag = net.minecraftforge.event.ForgeEventFactory.getMobGriefingEvent(this.level(), this);
+								boolean flag = EventHooks.getMobGriefingEvent(this.level(), this);
 								if (!flag) {
 									setSpawn(0);
 								} else {
@@ -235,7 +236,7 @@ public class Deathword extends AbstractGaiaEntity {
 				Creeper summon = EntityType.CREEPER.create(this.level());
 				if (summon != null) {
 					summon.moveTo(blockpos, 0.0F, 0.0F);
-					summon.finalizeSpawn((ServerLevel) this.level(), this.level().getCurrentDifficultyAt(blockpos), MobSpawnType.MOB_SUMMONED, (SpawnGroupData) null, (CompoundTag) null);
+					EventHooks.onFinalizeSpawn(summon, (ServerLevel) this.level(), this.level().getCurrentDifficultyAt(blockpos), MobSpawnType.MOB_SUMMONED, (SpawnGroupData) null, (CompoundTag) null);
 					this.level().addFreshEntity(summon);
 				}
 			}

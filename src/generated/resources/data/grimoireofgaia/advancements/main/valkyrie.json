@@ -21,12 +21,9 @@
     "description": {
       "translate": "advancement.grimoireofgaia.valkyrie.desc"
     },
-    "frame": "task",
-    "hidden": false,
     "icon": {
       "item": "grimoireofgaia:bust_valkyrie"
     },
-    "show_toast": true,
     "title": {
       "translate": "advancement.grimoireofgaia.valkyrie.title"
     }

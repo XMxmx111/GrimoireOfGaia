@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_maid_doll",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_maid_doll"
     ]
   ],
   "rewards": {
     "recipes": [
       "grimoireofgaia:headgear_doll"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

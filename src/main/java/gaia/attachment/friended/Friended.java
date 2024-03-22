@@ -1,18 +1,11 @@
-package gaia.capability.friended;
+package gaia.attachment.friended;
 
-import gaia.capability.CapabilityHandler;
-import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.common.capabilities.ICapabilityProvider;
-import net.minecraftforge.common.capabilities.ICapabilitySerializable;
-import net.minecraftforge.common.util.LazyOptional;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import net.neoforged.neoforge.common.util.INBTSerializable;
 
 import java.util.UUID;
 
-public class FriendedCapability implements IFriended, ICapabilitySerializable<CompoundTag>, ICapabilityProvider {
+public class Friended implements IFriended, INBTSerializable<CompoundTag> {
 	private boolean friended = false;
 	private UUID friendedBy = null;
 	private boolean changed = false;
@@ -62,15 +55,5 @@ public class FriendedCapability implements IFriended, ICapabilitySerializable<Co
 		this.setFriendly(tag.getBoolean("friended"));
 		if (tag.contains("friendedBy"))
 			this.setFriendedBy(tag.getUUID("friendedBy"));
-	}
-
-	@NotNull
-	@Override
-	public <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {
-		return CapabilityHandler.CAPABILITY_FRIENDED.orEmpty(cap, LazyOptional.of(() -> this));
-	}
-
-	public final Capability<IFriended> getCapability() {
-		return CapabilityHandler.CAPABILITY_FRIENDED;
 	}
 }

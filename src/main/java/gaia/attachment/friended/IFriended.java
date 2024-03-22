@@ -1,4 +1,4 @@
-package gaia.capability.friended;
+package gaia.attachment.friended;
 
 import java.util.UUID;
 

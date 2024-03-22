@@ -1,9 +1,8 @@
 package gaia.config;
 
-import net.minecraftforge.common.ForgeConfigSpec;
-import net.minecraftforge.common.ForgeConfigSpec.BooleanValue;
-import net.minecraftforge.common.ForgeConfigSpec.ConfigValue;
-import net.minecraftforge.common.ForgeConfigSpec.IntValue;
+import net.neoforged.neoforge.common.ModConfigSpec;
+import net.neoforged.neoforge.common.ModConfigSpec.BooleanValue;
+import net.neoforged.neoforge.common.ModConfigSpec.IntValue;
 
 import java.util.List;
 import java.util.Locale;
@@ -12,12 +11,12 @@ public class SpawningInfo {
 	public final IntValue weight;
 	public final IntValue minGroup;
 	public final IntValue maxGroup;
-	public final ConfigValue<List<? extends String>> spawnBiomes;
-	public final ConfigValue<List<? extends String>> spawnBiomeDictionary;
+	public final ModConfigSpec.ConfigValue<List<? extends String>> spawnBiomes;
+	public final ModConfigSpec.ConfigValue<List<? extends String>> spawnBiomeDictionary;
 	public final BooleanValue invertList;
 	public final BooleanValue logAdditions;
 
-	public SpawningInfo(ForgeConfigSpec.Builder builder, String mobName, int weight, int minGroup, int maxGroup, List<? extends String> biomeList, List<? extends String> spawnBiomeTags, boolean invertList) {
+	public SpawningInfo(ModConfigSpec.Builder builder, String mobName, int weight, int minGroup, int maxGroup, List<? extends String> biomeList, List<? extends String> spawnBiomeTags, boolean invertList) {
 		String lowerCaseName = mobName.toLowerCase(Locale.ROOT);
 
 		builder.comment(mobName + " settings")
@@ -46,7 +45,7 @@ public class SpawningInfo {
 		builder.pop();
 	}
 
-	public SpawningInfo(ForgeConfigSpec.Builder builder, String mobName, int weight, int minGroup, int maxGroup, List<? extends String> biomeList, List<? extends String> spawnBiomeTags) {
+	public SpawningInfo(ModConfigSpec.Builder builder, String mobName, int weight, int minGroup, int maxGroup, List<? extends String> biomeList, List<? extends String> spawnBiomeTags) {
 		this(builder, mobName, weight, minGroup, maxGroup, biomeList, spawnBiomeTags, false);
 	}
 

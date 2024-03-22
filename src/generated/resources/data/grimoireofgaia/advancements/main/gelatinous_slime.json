@@ -21,12 +21,9 @@
     "description": {
       "translate": "advancement.grimoireofgaia.gelatinous_slime.desc"
     },
-    "frame": "task",
-    "hidden": false,
     "icon": {
       "item": "grimoireofgaia:doll_slime_girl"
     },
-    "show_toast": true,
     "title": {
       "translate": "advancement.grimoireofgaia.gelatinous_slime.title"
     }

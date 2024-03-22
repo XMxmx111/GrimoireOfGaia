@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_golden_apple_pie_slice",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_golden_apple_pie_slice"
     ]
   ],
   "rewards": {
     "recipes": [
       "grimoireofgaia:golden_apple_pie"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

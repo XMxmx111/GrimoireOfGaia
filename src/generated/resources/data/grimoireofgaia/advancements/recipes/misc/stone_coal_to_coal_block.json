@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_stone_coal",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_stone_coal"
     ]
   ],
   "rewards": {
     "recipes": [
       "grimoireofgaia:stone_coal_to_coal_block"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

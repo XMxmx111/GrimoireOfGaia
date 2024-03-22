@@ -21,13 +21,10 @@
     "description": {
       "translate": "advancement.grimoireofgaia.goblin_feral.desc"
     },
-    "frame": "task",
-    "hidden": false,
     "icon": {
       "item": "minecraft:wooden_axe",
       "nbt": "{Damage:0}"
     },
-    "show_toast": true,
     "title": {
       "translate": "advancement.grimoireofgaia.goblin_feral.title"
     }

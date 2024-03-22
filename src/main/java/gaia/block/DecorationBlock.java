@@ -1,5 +1,6 @@
 package gaia.block;
 
+import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -18,6 +19,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 
 public class DecorationBlock extends HorizontalDirectionalBlock implements SimpleWaterloggedBlock {
+	public static final MapCodec<DecorationBlock> CODEC = simpleCodec(DecorationBlock::new);
 	public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
 
 	private static final VoxelShape SHAPE = Block.box(1, 0, 1, 15, 15, 15);
@@ -25,6 +27,11 @@ public class DecorationBlock extends HorizontalDirectionalBlock implements Simpl
 	public DecorationBlock(Properties properties) {
 		super(properties);
 		this.registerDefaultState(this.defaultBlockState().setValue(FACING, Direction.NORTH).setValue(WATERLOGGED, Boolean.FALSE));
+	}
+
+	@Override
+	protected MapCodec<? extends HorizontalDirectionalBlock> codec() {
+		return CODEC;
 	}
 
 	@Override

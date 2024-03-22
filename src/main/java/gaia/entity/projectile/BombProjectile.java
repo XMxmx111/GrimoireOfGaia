@@ -2,8 +2,6 @@ package gaia.entity.projectile;
 
 import gaia.registry.GaiaRegistry;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -14,8 +12,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
-import net.minecraftforge.network.NetworkHooks;
-import net.minecraftforge.network.PlayMessages.SpawnEntity;
 
 public class BombProjectile extends ThrowableItemProjectile {
 	public BombProjectile(EntityType<? extends BombProjectile> entityType, Level level) {
@@ -30,18 +26,9 @@ public class BombProjectile extends ThrowableItemProjectile {
 		super(GaiaRegistry.BOMB.get(), accelX, accelY, accelZ, level);
 	}
 
-	public BombProjectile(SpawnEntity spawnEntity, Level level) {
-		this(GaiaRegistry.BOMB.get(), level);
-	}
-
 	@Override
 	public Item getDefaultItem() {
 		return GaiaRegistry.PROJECTILE_WEB.get();
-	}
-
-	@Override
-	public Packet<ClientGamePacketListener> getAddEntityPacket() {
-		return NetworkHooks.getEntitySpawningPacket(this);
 	}
 
 	public void handleEntityEvent(byte id) {

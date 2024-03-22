@@ -13,8 +13,6 @@
     "description": {
       "translate": "advancement.grimoireofgaia.root.desc"
     },
-    "frame": "task",
-    "hidden": false,
     "icon": {
       "item": "grimoireofgaia:doll_dryad"
     },

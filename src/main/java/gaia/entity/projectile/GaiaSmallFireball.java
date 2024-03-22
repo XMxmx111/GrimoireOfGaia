@@ -1,8 +1,6 @@
 package gaia.entity.projectile;
 
 import gaia.registry.GaiaRegistry;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -12,8 +10,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
-import net.minecraftforge.network.NetworkHooks;
-import net.minecraftforge.network.PlayMessages.SpawnEntity;
 
 public class GaiaSmallFireball extends SmallFireball {
 	public GaiaSmallFireball(EntityType<? extends SmallFireball> entityType, Level level) {
@@ -22,15 +18,6 @@ public class GaiaSmallFireball extends SmallFireball {
 
 	public GaiaSmallFireball(Level level, LivingEntity livingEntity, double accelX, double accelY, double accelZ) {
 		super(level, livingEntity, accelX, accelY, accelZ);
-	}
-
-	public GaiaSmallFireball(SpawnEntity spawnEntity, Level level) {
-		this(GaiaRegistry.SMALL_FIREBALL.get(), level);
-	}
-
-	@Override
-	public Packet<ClientGamePacketListener> getAddEntityPacket() {
-		return NetworkHooks.getEntitySpawningPacket(this);
 	}
 
 	@Override

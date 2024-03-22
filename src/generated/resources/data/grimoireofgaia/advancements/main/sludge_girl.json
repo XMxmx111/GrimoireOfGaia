@@ -21,12 +21,9 @@
     "description": {
       "translate": "advancement.grimoireofgaia.sludge_girl.desc"
     },
-    "frame": "task",
-    "hidden": false,
     "icon": {
       "item": "minecraft:slime_ball"
     },
-    "show_toast": true,
     "title": {
       "translate": "advancement.grimoireofgaia.sludge_girl.title"
     }

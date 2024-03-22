@@ -7,7 +7,7 @@ import gaia.entity.prop.Chest;
 import net.minecraft.client.renderer.entity.EntityRendererProvider.Context;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraftforge.fml.ModList;
+import net.neoforged.fml.ModList;
 
 public class ChestRenderer extends MobRenderer<Chest, ChestModel> {
 	public static final ResourceLocation CHEST_LOCATION = new ResourceLocation(GrimoireOfGaia.MOD_ID, "textures/entity/mimic/mimic_chest.png");

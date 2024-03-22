@@ -7,9 +7,9 @@ import gaia.registry.GaiaSounds;
 import gaia.registry.helper.MobReg;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.common.data.SoundDefinition.Sound;
-import net.minecraftforge.common.data.SoundDefinitionsProvider;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.common.data.SoundDefinition.Sound;
+import net.neoforged.neoforge.common.data.SoundDefinitionsProvider;
 
 import java.util.List;
 

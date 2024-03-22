@@ -4,8 +4,6 @@ import gaia.registry.GaiaRegistry;
 import gaia.util.SharedEntityData;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -19,8 +17,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
-import net.minecraftforge.network.NetworkHooks;
-import net.minecraftforge.network.PlayMessages.SpawnEntity;
 
 public class PoisonProjectile extends SmallFireball {
 	public PoisonProjectile(EntityType<? extends SmallFireball> entityType, Level level) {
@@ -39,15 +35,6 @@ public class PoisonProjectile extends SmallFireball {
 	public ItemStack getItem() {
 		ItemStack itemstack = this.getItemRaw();
 		return itemstack.isEmpty() ? new ItemStack(GaiaRegistry.PROJECTILE_POISON.get()) : itemstack;
-	}
-
-	public PoisonProjectile(SpawnEntity spawnEntity, Level level) {
-		this(GaiaRegistry.POISON.get(), level);
-	}
-
-	@Override
-	public Packet<ClientGamePacketListener> getAddEntityPacket() {
-		return NetworkHooks.getEntitySpawningPacket(this);
 	}
 
 	@Override

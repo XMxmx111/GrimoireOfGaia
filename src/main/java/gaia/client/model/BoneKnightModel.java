@@ -15,7 +15,7 @@ import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.client.model.geom.builders.PartDefinition;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.HumanoidArm;
-import net.minecraftforge.common.ToolActions;
+import net.neoforged.neoforge.common.ToolActions;
 
 public class BoneKnightModel extends EntityModel<BoneKnight> implements HeadedModel, ArmedModel {
 	private final ModelPart root;

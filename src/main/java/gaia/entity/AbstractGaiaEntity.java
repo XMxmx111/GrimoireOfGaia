@@ -1,7 +1,8 @@
 package gaia.entity;
 
-import gaia.capability.CapabilityHandler;
-import gaia.capability.friended.IFriended;
+import gaia.attachment.AttachmentHandler;
+import gaia.attachment.friended.Friended;
+import gaia.attachment.friended.IFriended;
 import gaia.config.GaiaConfig;
 import gaia.entity.type.IDayMob;
 import gaia.registry.GaiaRegistry;
@@ -48,7 +49,7 @@ import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.phys.AABB;
-import net.minecraftforge.common.ToolActions;
+import net.neoforged.neoforge.common.ToolActions;
 import org.jetbrains.annotations.Nullable;
 
 import java.time.LocalDate;
@@ -181,7 +182,7 @@ public abstract class AbstractGaiaEntity extends Monster {
 	@Nullable
 	@Override
 	public SpawnGroupData finalizeSpawn(ServerLevelAccessor levelAccessor, DifficultyInstance difficultyInstance,
-										MobSpawnType spawnType, @Nullable SpawnGroupData groupData, @Nullable CompoundTag tag) {
+	                                    MobSpawnType spawnType, @Nullable SpawnGroupData groupData, @Nullable CompoundTag tag) {
 		SpawnGroupData data = super.finalizeSpawn(levelAccessor, difficultyInstance, spawnType, groupData, tag);
 		this.finalizeAttributes();
 
@@ -240,7 +241,7 @@ public abstract class AbstractGaiaEntity extends Monster {
 	 * @return true if this entity is a friend of the player
 	 */
 	public boolean isFriendly() {
-		return this.getCapability(CapabilityHandler.CAPABILITY_FRIENDED).map(cap -> cap.isFriendly()).orElse(false);
+		return AttachmentHandler.getFriended(this).isFriendly();
 	}
 
 	/**
@@ -250,15 +251,14 @@ public abstract class AbstractGaiaEntity extends Monster {
 	 * @param friendedBy the player who set the entity to friendly
 	 */
 	public void setFriendly(boolean value, UUID friendedBy) {
-		this.getCapability(CapabilityHandler.CAPABILITY_FRIENDED).ifPresent(cap -> {
-			this.setTarget((LivingEntity) null);
-			cap.setFriendly(value);
-			cap.setFriendedBy(friendedBy);
-			setupFriendGoals(value);
-			if (GaiaConfig.COMMON.friendlyPersistence.get()) {
-				setPersistenceRequired();
-			}
-		});
+		Friended friended = AttachmentHandler.getFriended(this);
+		this.setTarget((LivingEntity) null);
+		friended.setFriendly(value);
+		friended.setFriendedBy(friendedBy);
+		setupFriendGoals(value);
+		if (GaiaConfig.COMMON.friendlyPersistence.get()) {
+			setPersistenceRequired();
+		}
 	}
 
 	/**
@@ -310,14 +310,10 @@ public abstract class AbstractGaiaEntity extends Monster {
 
 	@Override
 	public void aiStep() {
-		if (getCapability(CapabilityHandler.CAPABILITY_FRIENDED).isPresent()) {
-			IFriended cap = getCapability(CapabilityHandler.CAPABILITY_FRIENDED).orElse(null);
-			if (cap != null) {
-				if (cap.isChanged()) {
-					onFriendlyChange(cap);
-					cap.setChanged(false);
-				}
-			}
+		Friended friended = AttachmentHandler.getFriended(this);
+		if (friended.isChanged()) {
+			onFriendlyChange(friended);
+			friended.setChanged(false);
 		}
 
 		super.aiStep();

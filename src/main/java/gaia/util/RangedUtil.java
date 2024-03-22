@@ -54,7 +54,7 @@ public class RangedUtil {
 	public static void rangedAttack(LivingEntity target, LivingEntity shooter, float distanceFactor, ItemStack arrowStack) {
 		AbstractArrow abstractarrow = getArrow(shooter, arrowStack, distanceFactor);
 		if (shooter.getMainHandItem().getItem() instanceof net.minecraft.world.item.BowItem)
-			abstractarrow = ((net.minecraft.world.item.BowItem) shooter.getMainHandItem().getItem()).customArrow(abstractarrow);
+			abstractarrow = ((net.minecraft.world.item.BowItem) shooter.getMainHandItem().getItem()).customArrow(abstractarrow, arrowStack);
 		double d0 = target.getX() - shooter.getX();
 		double d1 = target.getY(0.3333333333333333D) - abstractarrow.getY();
 		double d2 = target.getZ() - shooter.getZ();

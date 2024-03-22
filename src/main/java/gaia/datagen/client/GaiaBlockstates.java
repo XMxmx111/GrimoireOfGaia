@@ -6,10 +6,10 @@ import net.minecraft.core.Direction;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraftforge.client.model.generators.BlockStateProvider;
-import net.minecraftforge.client.model.generators.ModelFile;
-import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
+import net.neoforged.neoforge.client.model.generators.ModelFile;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.registries.DeferredHolder;
 
 public class GaiaBlockstates extends BlockStateProvider {
 	public GaiaBlockstates(PackOutput packOutput, ExistingFileHelper helper) {
@@ -38,7 +38,7 @@ public class GaiaBlockstates extends BlockStateProvider {
 				models().getExistingFile(modLoc("block/" + GaiaRegistry.PEARL_BLOCK.getId().getPath())));
 	}
 
-	protected void generateHorizontal(RegistryObject<Block> registryObject) {
+	protected void generateHorizontal(DeferredHolder<Block, ? extends Block> registryObject) {
 		ModelFile clusterBlock = models().getExistingFile(modLoc("block/" + registryObject.getId().getPath()));
 		getVariantBuilder(registryObject.get())
 				.partialState().with(BlockStateProperties.HORIZONTAL_FACING, Direction.NORTH)

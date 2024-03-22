@@ -38,7 +38,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.common.ForgeMod;
+import net.neoforged.neoforge.common.NeoForgeMod;
 import org.jetbrains.annotations.Nullable;
 
 public class WizardHarpy extends AbstractAssistGaiaEntity implements RangedAttackMob {
@@ -85,7 +85,7 @@ public class WizardHarpy extends AbstractAssistGaiaEntity implements RangedAttac
 				.add(Attributes.ATTACK_KNOCKBACK, SharedEntityData.KNOCKBACK_1)
 
 				.add(Attributes.KNOCKBACK_RESISTANCE, 1.0D)
-				.add(ForgeMod.STEP_HEIGHT_ADDITION.get(), 1.0F);
+				.add(NeoForgeMod.STEP_HEIGHT.value(), 1.0F);
 	}
 
 	@Override

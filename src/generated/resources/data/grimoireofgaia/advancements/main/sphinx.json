@@ -21,12 +21,9 @@
     "description": {
       "translate": "advancement.grimoireofgaia.sphinx.desc"
     },
-    "frame": "task",
-    "hidden": false,
     "icon": {
       "item": "grimoireofgaia:bust_sphinx"
     },
-    "show_toast": true,
     "title": {
       "translate": "advancement.grimoireofgaia.sphinx.title"
     }

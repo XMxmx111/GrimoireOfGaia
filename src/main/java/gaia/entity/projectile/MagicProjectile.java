@@ -5,8 +5,6 @@ import gaia.util.SharedEntityData;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -23,8 +21,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
-import net.minecraftforge.network.NetworkHooks;
-import net.minecraftforge.network.PlayMessages.SpawnEntity;
 
 public class MagicProjectile extends SmallFireball {
 	private static final EntityDataAccessor<Float> PROJECTILE_DAMAGE = SynchedEntityData.defineId(MagicProjectile.class, EntityDataSerializers.FLOAT);
@@ -51,15 +47,6 @@ public class MagicProjectile extends SmallFireball {
 	public ItemStack getItem() {
 		ItemStack itemstack = this.getItemRaw();
 		return itemstack.isEmpty() ? new ItemStack(GaiaRegistry.PROJECTILE_MAGIC.get()) : itemstack;
-	}
-
-	public MagicProjectile(SpawnEntity spawnEntity, Level level) {
-		this(GaiaRegistry.MAGIC.get(), level);
-	}
-
-	@Override
-	public Packet<ClientGamePacketListener> getAddEntityPacket() {
-		return NetworkHooks.getEntitySpawningPacket(this);
 	}
 
 	@Override

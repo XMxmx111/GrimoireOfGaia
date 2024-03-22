@@ -15,7 +15,6 @@ import net.minecraft.sounds.SoundEvent;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.damagesource.DamageSource;
-
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -49,7 +48,9 @@ import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.pathfinder.BlockPathTypes;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.common.ForgeMod;
+import net.neoforged.neoforge.common.NeoForgeMod;
+import net.neoforged.neoforge.event.EventHooks;
+import net.neoforged.neoforge.event.entity.EntityTeleportEvent;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -125,7 +126,7 @@ public class EnderEye extends AbstractAssistGaiaEntity {
 				.add(Attributes.ATTACK_KNOCKBACK, SharedEntityData.KNOCKBACK_1)
 
 				.add(Attributes.KNOCKBACK_RESISTANCE, 1.0D)
-				.add(ForgeMod.STEP_HEIGHT_ADDITION.get(), 1.0F);
+				.add(NeoForgeMod.STEP_HEIGHT.value(), 1.0F);
 	}
 
 	@Override
@@ -134,7 +135,7 @@ public class EnderEye extends AbstractAssistGaiaEntity {
 		if (livingEntity == null) {
 			this.targetChangeTime = 0;
 			this.entityData.set(SCREAMING, false);
-			attributeinstance.removeModifier(SPEED_MODIFIER_ATTACKING);
+			attributeinstance.removeModifier(SPEED_MODIFIER_ATTACKING_UUID);
 		} else {
 			this.targetChangeTime = this.tickCount;
 			this.entityData.set(SCREAMING, true);
@@ -271,7 +272,7 @@ public class EnderEye extends AbstractAssistGaiaEntity {
 		boolean flag = blockstate.blocksMotion();
 		boolean flag1 = blockstate.getFluidState().is(FluidTags.WATER);
 		if (flag && !flag1) {
-			net.minecraftforge.event.entity.EntityTeleportEvent.EnderEntity event = net.minecraftforge.event.ForgeEventFactory.onEnderTeleport(this, x, y, z);
+			EntityTeleportEvent.EnderEntity event = EventHooks.onEnderTeleport(this, x, y, z);
 			if (event.isCanceled()) return false;
 			boolean flag2 = this.randomTeleport(event.getTargetX(), event.getTargetY(), event.getTargetZ(), true);
 			if (flag2 && !this.isSilent()) {

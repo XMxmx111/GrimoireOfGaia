@@ -21,12 +21,9 @@
     "description": {
       "translate": "advancement.grimoireofgaia.witch.desc"
     },
-    "frame": "task",
-    "hidden": false,
     "icon": {
       "item": "minecraft:potion"
     },
-    "show_toast": true,
     "title": {
       "translate": "advancement.grimoireofgaia.witch.title"
     }

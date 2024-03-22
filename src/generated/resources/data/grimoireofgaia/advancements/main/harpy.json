@@ -21,12 +21,9 @@
     "description": {
       "translate": "advancement.grimoireofgaia.harpy.desc"
     },
-    "frame": "task",
-    "hidden": false,
     "icon": {
       "item": "grimoireofgaia:deco_nest_harpy"
     },
-    "show_toast": true,
     "title": {
       "translate": "advancement.grimoireofgaia.harpy.title"
     }

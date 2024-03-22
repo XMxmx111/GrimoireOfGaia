@@ -21,12 +21,9 @@
     "description": {
       "translate": "advancement.grimoireofgaia.matango.desc"
     },
-    "frame": "task",
-    "hidden": false,
     "icon": {
       "item": "minecraft:red_mushroom"
     },
-    "show_toast": true,
     "title": {
       "translate": "advancement.grimoireofgaia.matango.title"
     }

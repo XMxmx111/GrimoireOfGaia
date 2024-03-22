@@ -5,9 +5,8 @@ import gaia.registry.GaiaRegistry;
 import gaia.util.SharedEntityData;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.resources.ResourceLocation;
@@ -25,9 +24,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
-import net.minecraftforge.network.NetworkHooks;
-import net.minecraftforge.network.PlayMessages.SpawnEntity;
-import net.minecraftforge.registries.ForgeRegistries;
 
 public class RandomMagicProjectile extends SmallFireball {
 	private static final EntityDataAccessor<ResourceLocation> EFFECT_LOCATION = SynchedEntityData.defineId(RandomMagicProjectile.class,
@@ -51,15 +47,6 @@ public class RandomMagicProjectile extends SmallFireball {
 		return itemstack.isEmpty() ? new ItemStack(GaiaRegistry.PROJECTILE_RANDOM_MAGIC.get()) : itemstack;
 	}
 
-	public RandomMagicProjectile(SpawnEntity spawnEntity, Level level) {
-		this(GaiaRegistry.RANDOM_MAGIC.get(), level);
-	}
-
-	@Override
-	public Packet<ClientGamePacketListener> getAddEntityPacket() {
-		return NetworkHooks.getEntitySpawningPacket(this);
-	}
-
 	@Override
 	public EntityType<?> getType() {
 		return GaiaRegistry.RANDOM_MAGIC.get();
@@ -68,7 +55,7 @@ public class RandomMagicProjectile extends SmallFireball {
 	@Override
 	protected void defineSynchedData() {
 		super.defineSynchedData();
-		this.entityData.define(EFFECT_LOCATION, ForgeRegistries.MOB_EFFECTS.getKey(MobEffects.MOVEMENT_SLOWDOWN));
+		this.entityData.define(EFFECT_LOCATION, BuiltInRegistries.MOB_EFFECT.getKey(MobEffects.MOVEMENT_SLOWDOWN));
 	}
 
 	public ResourceLocation getEffectLocation() {
@@ -76,7 +63,7 @@ public class RandomMagicProjectile extends SmallFireball {
 	}
 
 	public MobEffect getEffect() {
-		return getEffectLocation() == null ? null : ForgeRegistries.MOB_EFFECTS.getValue(getEffectLocation());
+		return getEffectLocation() == null ? null : BuiltInRegistries.MOB_EFFECT.get(getEffectLocation());
 	}
 
 	public void setEffectLocation(ResourceLocation effectLocation) {
@@ -84,7 +71,7 @@ public class RandomMagicProjectile extends SmallFireball {
 	}
 
 	public void setEffect(MobEffect effect) {
-		setEffectLocation(ForgeRegistries.MOB_EFFECTS.getKey(effect));
+		setEffectLocation(BuiltInRegistries.MOB_EFFECT.getKey(effect));
 	}
 
 	@Override

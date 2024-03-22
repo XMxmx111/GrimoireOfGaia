@@ -9,10 +9,13 @@ import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.item.Item;
-import net.minecraftforge.common.ForgeSpawnEggItem;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.common.DeferredSpawnEggItem;
+import net.neoforged.neoforge.registries.DeferredHolder;
+import net.neoforged.neoforge.registries.DeferredItem;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.function.Supplier;
 
 /**
  * Helper class for registering mob's with spawn eggs.
@@ -20,20 +23,20 @@ import org.jetbrains.annotations.Nullable;
  */
 public class MobReg<T extends Mob> {
 	protected final String name;
-	protected final RegistryObject<EntityType<? extends T>> entityType;
+	protected final Supplier<EntityType<? extends T>> entityType;
 	protected final GaiaMobType gaiaMobType;
-	protected RegistryObject<Item> spawnEgg;
+	protected DeferredItem<Item> spawnEgg;
 
-	protected RegistryObject<SoundEvent> SAY;
-	protected RegistryObject<SoundEvent> HURT;
-	protected RegistryObject<SoundEvent> DEATH;
-	protected RegistryObject<SoundEvent> STEP;
-	protected RegistryObject<SoundEvent> ATTACK;
-	protected RegistryObject<SoundEvent> SAY_MALE;
-	protected RegistryObject<SoundEvent> HURT_MALE;
-	protected RegistryObject<SoundEvent> DEATH_MALE;
-	protected RegistryObject<SoundEvent> STEP_MALE;
-	protected RegistryObject<SoundEvent> ATTACK_MALE;
+	protected DeferredHolder<SoundEvent, SoundEvent> SAY;
+	protected DeferredHolder<SoundEvent, SoundEvent> HURT;
+	protected DeferredHolder<SoundEvent, SoundEvent> DEATH;
+	protected DeferredHolder<SoundEvent, SoundEvent> STEP;
+	protected DeferredHolder<SoundEvent, SoundEvent> ATTACK;
+	protected DeferredHolder<SoundEvent, SoundEvent> SAY_MALE;
+	protected DeferredHolder<SoundEvent, SoundEvent> HURT_MALE;
+	protected DeferredHolder<SoundEvent, SoundEvent> DEATH_MALE;
+	protected DeferredHolder<SoundEvent, SoundEvent> STEP_MALE;
+	protected DeferredHolder<SoundEvent, SoundEvent> ATTACK_MALE;
 	protected boolean hasGenders;
 
 	/**
@@ -61,7 +64,7 @@ public class MobReg<T extends Mob> {
 	/**
 	 * @return The spawn egg item registry object of the mob.
 	 */
-	public RegistryObject<Item> getSpawnEgg() {
+	public DeferredItem<Item> getSpawnEgg() {
 		return spawnEgg;
 	}
 
@@ -152,7 +155,7 @@ public class MobReg<T extends Mob> {
 			if (traderEgg) {
 				this.spawnEgg = GaiaRegistry.ITEMS.register("spawn_" + name, () -> new MerchantSpawnItem(this.entityType, new Item.Properties()));
 			} else {
-				this.spawnEgg = GaiaRegistry.ITEMS.register(name + "_spawn_egg", () -> new ForgeSpawnEggItem(this.entityType, backgroundColor, highlightColor,
+				this.spawnEgg = GaiaRegistry.ITEMS.register(name + "_spawn_egg", () -> new DeferredSpawnEggItem(this.entityType, backgroundColor, highlightColor,
 						new Item.Properties()));
 			}
 		}

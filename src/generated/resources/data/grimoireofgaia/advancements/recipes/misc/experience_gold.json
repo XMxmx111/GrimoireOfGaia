@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_gold_box",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_gold_box"
     ]
   ],
   "rewards": {
     "recipes": [
       "grimoireofgaia:experience_gold"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

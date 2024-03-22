@@ -21,13 +21,10 @@
     "description": {
       "translate": "advancement.grimoireofgaia.kobold.desc"
     },
-    "frame": "task",
-    "hidden": false,
     "icon": {
       "item": "minecraft:bow",
       "nbt": "{Damage:0}"
     },
-    "show_toast": true,
     "title": {
       "translate": "advancement.grimoireofgaia.kobold.title"
     }

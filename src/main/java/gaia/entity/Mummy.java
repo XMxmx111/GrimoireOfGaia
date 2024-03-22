@@ -35,7 +35,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.common.ForgeMod;
+import net.neoforged.neoforge.common.NeoForgeMod;
+import net.neoforged.neoforge.event.EventHooks;
 import org.jetbrains.annotations.Nullable;
 
 public class Mummy extends AbstractGaiaEntity {
@@ -64,7 +65,7 @@ public class Mummy extends AbstractGaiaEntity {
 				.add(Attributes.ARMOR, SharedEntityData.RATE_ARMOR_1)
 
 				.add(Attributes.KNOCKBACK_RESISTANCE, 0.5D)
-				.add(ForgeMod.STEP_HEIGHT_ADDITION.get(), 1.0F);
+				.add(NeoForgeMod.STEP_HEIGHT.value(), 1.0F);
 	}
 
 	@Override
@@ -154,7 +155,7 @@ public class Mummy extends AbstractGaiaEntity {
 				GraveMite mite = GaiaRegistry.GRAVEMITE.getEntityType().create(this.level());
 				if (mite != null) {
 					mite.moveTo(blockpos, 0.0F, 0.0F);
-					mite.finalizeSpawn((ServerLevel) this.level(), this.level().getCurrentDifficultyAt(blockPosition()), MobSpawnType.MOB_SUMMONED, (SpawnGroupData) null, (CompoundTag) null);
+					EventHooks.onFinalizeSpawn(mite, (ServerLevel) this.level(), this.level().getCurrentDifficultyAt(blockpos), MobSpawnType.MOB_SUMMONED, (SpawnGroupData) null, (CompoundTag) null);
 					this.level().addFreshEntity(mite);
 				}
 			}

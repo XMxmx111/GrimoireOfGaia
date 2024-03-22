@@ -32,8 +32,8 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.pathfinder.BlockPathTypes;
-import net.minecraftforge.common.ForgeMod;
-import net.minecraftforge.common.ToolActions;
+import net.neoforged.neoforge.common.NeoForgeMod;
+import net.neoforged.neoforge.common.ToolActions;
 import org.jetbrains.annotations.Nullable;
 
 public class CobblestoneGolem extends AbstractGaiaEntity {
@@ -67,7 +67,7 @@ public class CobblestoneGolem extends AbstractGaiaEntity {
 				.add(Attributes.ATTACK_KNOCKBACK, SharedEntityData.KNOCKBACK_2)
 
 				.add(Attributes.KNOCKBACK_RESISTANCE, 1.0D)
-				.add(ForgeMod.STEP_HEIGHT_ADDITION.get(), 1.0F);
+				.add(NeoForgeMod.STEP_HEIGHT.value(), 1.0F);
 	}
 
 	@Override

@@ -21,12 +21,9 @@
     "description": {
       "translate": "advancement.grimoireofgaia.werecat.desc"
     },
-    "frame": "task",
-    "hidden": false,
     "icon": {
       "item": "grimoireofgaia:meat"
     },
-    "show_toast": true,
     "title": {
       "translate": "advancement.grimoireofgaia.werecat.title"
     }

@@ -1,7 +1,8 @@
 package gaia.entity;
 
-import gaia.capability.CapabilityHandler;
-import gaia.capability.friended.IFriended;
+import gaia.attachment.AttachmentHandler;
+import gaia.attachment.friended.Friended;
+import gaia.attachment.friended.IFriended;
 import gaia.config.GaiaConfig;
 import gaia.entity.goal.MobAttackGoal;
 import gaia.entity.type.IDayMob;
@@ -50,7 +51,7 @@ import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.pathfinder.BlockPathTypes;
-import net.minecraftforge.common.ForgeMod;
+import net.neoforged.neoforge.common.NeoForgeMod;
 
 public class Bee extends AbstractAssistGaiaEntity implements IDayMob, FlyingAnimal, RangedAttackMob {
 	private static final EntityDataAccessor<Boolean> MOVING = SynchedEntityData.defineId(Bee.class, EntityDataSerializers.BOOLEAN);
@@ -128,7 +129,7 @@ public class Bee extends AbstractAssistGaiaEntity implements IDayMob, FlyingAnim
 				.add(Attributes.ATTACK_DAMAGE, 4.0D)
 				.add(Attributes.ARMOR, SharedEntityData.RATE_ARMOR_1)
 				.add(Attributes.ATTACK_KNOCKBACK, SharedEntityData.KNOCKBACK_1)
-				.add(ForgeMod.STEP_HEIGHT_ADDITION.get(), 1.0F);
+				.add(NeoForgeMod.STEP_HEIGHT.value(), 1.0F);
 	}
 
 	@Override
@@ -282,16 +283,15 @@ public class Bee extends AbstractAssistGaiaEntity implements IDayMob, FlyingAnim
 			this.goalSelector.removeGoal(rangedAttackGoal);
 			this.goalSelector.addGoal(0, mobAttackGoal);
 		} else {
-			getCapability(CapabilityHandler.CAPABILITY_FRIENDED).ifPresent(cap -> {
-				if (!cap.isFriendly()) {
-					this.goalSelector.removeGoal(mobAttackGoal);
-					this.goalSelector.addGoal(0, rangedAttackGoal);
+			Friended friended = AttachmentHandler.getFriended(this);
+			if (!friended.isFriendly()) {
+				this.goalSelector.removeGoal(mobAttackGoal);
+				this.goalSelector.addGoal(0, rangedAttackGoal);
 
-					setAnimationState(0);
-					animationPlay = false;
-					animationTimer = 0;
-				}
-			});
+				setAnimationState(0);
+				animationPlay = false;
+				animationTimer = 0;
+			}
 		}
 	}
 

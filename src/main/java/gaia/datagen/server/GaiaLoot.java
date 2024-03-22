@@ -38,8 +38,8 @@ import net.minecraft.world.level.storage.loot.predicates.LootItemEntityPropertyC
 import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceWithLootingCondition;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
-import net.minecraftforge.common.Tags;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.common.Tags;
+import net.neoforged.neoforge.registries.DeferredHolder;
 
 import java.util.List;
 import java.util.Map;
@@ -85,7 +85,7 @@ public class GaiaLoot extends LootTableProvider {
 
 		@Override
 		protected Iterable<Block> getKnownBlocks() {
-			return (Iterable<Block>) GaiaRegistry.BLOCKS.getEntries().stream().map(RegistryObject::get)::iterator;
+			return (Iterable<Block>) GaiaRegistry.BLOCKS.getEntries().stream().map(holder -> (Block) holder.get())::iterator;
 		}
 	}
 
@@ -326,7 +326,7 @@ public class GaiaLoot extends LootTableProvider {
 									.when(LootItemEntityPropertyCondition.hasProperties(LootContext.EntityTarget.KILLER,
 											EntityPredicate.Builder.entity()
 													.equipment(EntityEquipmentPredicate.Builder.equipment()
-															.mainhand(ItemPredicate.Builder.item().of(GaiaTags.TOOLS_SHOVELS).build()).build()))
+															.mainhand(ItemPredicate.Builder.item().of(GaiaTags.TOOLS_SHOVELS)).build()))
 									)
 							)
 					)
@@ -382,7 +382,7 @@ public class GaiaLoot extends LootTableProvider {
 									.apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F))))
 							.when(LootItemEntityPropertyCondition.hasProperties(LootContext.EntityTarget.KILLER,
 									EntityPredicate.Builder.entity().equipment(EntityEquipmentPredicate.Builder.equipment()
-											.mainhand(ItemPredicate.Builder.item().of(GaiaTags.TOOLS_AXES).build()).build()))))
+											.mainhand(ItemPredicate.Builder.item().of(GaiaTags.TOOLS_AXES)).build()))))
 					.withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F))
 							.add(TagEntry.expandTag(Tags.Items.NUGGETS_IRON)
 									.apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 3.0F)))))
@@ -613,7 +613,7 @@ public class GaiaLoot extends LootTableProvider {
 									.apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F))))
 							.when(LootItemEntityPropertyCondition.hasProperties(LootContext.EntityTarget.KILLER,
 									EntityPredicate.Builder.entity().equipment(EntityEquipmentPredicate.Builder.equipment()
-											.mainhand(ItemPredicate.Builder.item().of(GaiaTags.TOOLS_SHOVELS).build()).build()))))
+											.mainhand(ItemPredicate.Builder.item().of(GaiaTags.TOOLS_SHOVELS)).build()))))
 					.withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F))
 							.add(TagEntry.expandTag(Tags.Items.NUGGETS_IRON)
 									.apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 3.0F)))))
@@ -935,7 +935,8 @@ public class GaiaLoot extends LootTableProvider {
 							.add(LootItem.lootTableItem(Items.OAK_LOG)
 									.apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F))))
 							.when(LootItemEntityPropertyCondition.hasProperties(LootContext.EntityTarget.KILLER,
-									EntityPredicate.Builder.entity().equipment(EntityEquipmentPredicate.Builder.equipment().mainhand(ItemPredicate.Builder.item().of(GaiaTags.TOOLS_AXES).build()).build()))))
+									EntityPredicate.Builder.entity().equipment(EntityEquipmentPredicate.Builder.equipment()
+											.mainhand(ItemPredicate.Builder.item().of(GaiaTags.TOOLS_AXES)).build()))))
 					.withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F))
 							.add(TagEntry.expandTag(Tags.Items.NUGGETS_GOLD)
 									.apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 3.0F)))))
@@ -1119,7 +1120,7 @@ public class GaiaLoot extends LootTableProvider {
 
 		@Override
 		protected Stream<EntityType<?>> getKnownEntityTypes() {
-			return GaiaRegistry.ENTITIES.getEntries().stream().map(RegistryObject::get);
+			return GaiaRegistry.ENTITIES.getEntries().stream().map(DeferredHolder::value);
 		}
 	}
 

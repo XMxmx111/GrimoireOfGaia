@@ -39,7 +39,9 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.common.ForgeMod;
+import net.neoforged.neoforge.common.NeoForgeMod;
+import net.neoforged.neoforge.event.EventHooks;
+import net.neoforged.neoforge.event.entity.EntityTeleportEvent;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -77,7 +79,7 @@ public class Behender extends AbstractGaiaEntity implements RangedAttackMob, Pow
 				.add(Attributes.ARMOR, SharedEntityData.RATE_ARMOR_2)
 				.add(Attributes.KNOCKBACK_RESISTANCE, 0.5D)
 
-				.add(ForgeMod.STEP_HEIGHT_ADDITION.get(), 1.0F);
+				.add(NeoForgeMod.STEP_HEIGHT.value(), 1.0F);
 	}
 
 	@Override
@@ -190,7 +192,7 @@ public class Behender extends AbstractGaiaEntity implements RangedAttackMob, Pow
 		boolean flag = blockstate.blocksMotion();
 		boolean flag1 = blockstate.getFluidState().is(FluidTags.WATER);
 		if (flag && !flag1) {
-			net.minecraftforge.event.entity.EntityTeleportEvent.EnderEntity event = net.minecraftforge.event.ForgeEventFactory.onEnderTeleport(this, x, y, z);
+			EntityTeleportEvent.EnderEntity event = EventHooks.onEnderTeleport(this, x, y, z);
 			if (event.isCanceled()) return false;
 			boolean flag2 = this.randomTeleport(event.getTargetX(), event.getTargetY(), event.getTargetZ(), true);
 			if (flag2 && !this.isSilent()) {

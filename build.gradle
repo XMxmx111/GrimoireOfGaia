@@ -1,8 +1,11 @@
 plugins {
+    id 'java-library'
     id 'eclipse'
     id 'idea'
     id 'maven-publish'
-    id 'net.minecraftforge.gradle' version '[6.0,6.2)'
+    id 'net.neoforged.gradle.userdev' version '7.0.94'
+    id 'net.darkhax.curseforgegradle' version '1.1.18'
+    id 'com.modrinth.minotaur' version "2.+"
 }
 
 version = "${version}"
@@ -14,82 +17,44 @@ base {
 // Mojang ships Java 17 to end users in 1.18+, so your mod should target Java 17.
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
-println('Java: ' + System.getProperty('java.version') + ' JVM: ' + System.getProperty('java.vm.version') + '(' + System.getProperty('java.vendor') + ') Arch: ' + System.getProperty('os.arch'))
-minecraft {
-    mappings channel: "${mcp_channel}", version: "${mcp_mappings}"
-    // makeObfSourceJar = false // an Srg named sources jar is made by default. uncomment this to disable.
-    copyIdeResources = true
+minecraft.accessTransformers.file rootProject.file('src/main/resources/META-INF/accesstransformer.cfg')
+//minecraft.accessTransformers.entry public net.minecraft.client.Minecraft textureManager # textureManager
 
-    accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
+runs {
+    // applies to all the run configs below
+    configureEach { net.neoforged.gradle.dsl.common.runs.run.Run run ->
+        // Recommended logging data for a userdev environment
+        systemProperty 'forge.logging.markers', 'REGISTRIES'
 
-    // Default run configurations.
-    // These can be tweaked, removed, or duplicated as needed.
-    runs {
-        client {
-            workingDirectory project.file('run')
-            property 'mixin.env.remapRefMap', 'true'
-            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
+        // Recommended logging level for the console
+        systemProperty 'forge.logging.console.level', 'debug'
 
-            // Recommended logging data for a userdev environment
-            // property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
+        //Limit ram usage for the dev environment to 4GB
+        jvmArgument '-Xmx4G'
 
-            // Recommended logging level for the console
-            property 'forge.logging.console.level', 'debug'
-
-            // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
-            property 'forge.enabledGameTestNamespaces', 'grimoireofgaia'
-
-            mods {
-                grimoireofgaia {
-                    source sourceSets.main
-                }
-            }
+        if (run.project.javaToolchains.launcherFor(java.toolchain).map { it.metadata.vendor }.getOrElse("").contains("JetBrains")) {
+            run.jvmArgument("-XX:+AllowEnhancedClassRedefinition")
         }
 
-        server {
-            workingDirectory project.file('run')
-            property 'mixin.env.remapRefMap', 'true'
-            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
+        modSource project.sourceSets.main
+    }
 
-            // Recommended logging data for a userdev environment
-            // property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
+    client {
+        // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
+        systemProperty 'forge.enabledGameTestNamespaces', "${mod_id}"
+    }
 
-            // Recommended logging level for the console
-            property 'forge.logging.console.level', 'debug'
+    server {
+        systemProperty 'forge.enabledGameTestNamespaces', "${mod_id}"
+        programArgument '--nogui'
+    }
 
-            // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
-            property 'forge.enabledGameTestNamespaces', 'grimoireofgaia'
+    data {
+        // example of overriding the workingDirectory set in configureEach above, uncomment if you want to use it
+        // workingDirectory project.file('run-data')
 
-            mods {
-                grimoireofgaia {
-                    source sourceSets.main
-                }
-            }
-        }
-
-        data {
-            workingDirectory project.file('run')
-            property 'mixin.env.remapRefMap', 'true'
-            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
-
-            // Recommended logging data for a userdev environment
-            // property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
-
-            // Recommended logging level for the console
-            property 'forge.logging.console.level', 'debug'
-
-            // Specify the modid for data generation, where to output the resulting resource, and where to look for existing resources.
-            args '--mod', 'grimoireofgaia', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
-
-            // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
-            property 'forge.enabledGameTestNamespaces', 'grimoireofgaia'
-
-            mods {
-                grimoireofgaia {
-                    source sourceSets.main
-                }
-            }
-        }
+        // Specify the modid for data generation, where to output the resulting resource, and where to look for existing resources.
+        programArguments.addAll '--mod', "${mod_id}", '--all', '--output', file('src/generated/resources/').getAbsolutePath(), '--existing', file('src/main/resources/').getAbsolutePath()
     }
 }
 
@@ -97,9 +62,6 @@ minecraft {
 sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 repositories {
-    maven {
-        url = "https://dvs1.progwml6.com/files/maven"
-    }
     maven {
         url = "https://maven.blamejared.com"
     }
@@ -109,23 +71,24 @@ repositories {
 }
 
 dependencies {
-    minecraft "net.minecraftforge:forge:${mc_version}-${forge_version}"
+    implementation "net.neoforged:neoforge:${neo_version}"
 
-    compileOnly fg.deobf("mezz.jei:jei-${mc_version}-common-api:${jei_version}")
-    compileOnly fg.deobf("mezz.jei:jei-${mc_version}-forge-api:${jei_version}")
+    compileOnly "mezz.jei:jei-${mc_version}-common-api:${jei_version}"
+    compileOnly "mezz.jei:jei-${mc_version}-neoforge-api:${jei_version}"
 
-    runtimeOnly fg.deobf("mezz.jei:jei-${mc_version}-forge:${jei_version}")
-    implementation fg.deobf("top.theillusivec4.curios:curios-forge:${curios_version}")
+    runtimeOnly "mezz.jei:jei-${mc_version}-neoforge:${jei_version}"
 
-    implementation fg.deobf("vazkii.patchouli:Patchouli:${patchouli_version}")
-    implementation fg.deobf("xyz.brassgoggledcoders:PatchouliProvider:${patchouli_provider_version}")
+    implementation "top.theillusivec4.curios:curios-neoforge:${curios_version}+${mc_version}"
+
+    implementation "vazkii.patchouli:Patchouli:${patchouli_version}"
+    implementation "xyz.brassgoggledcoders:PatchouliProvider:${patchouli_provider_version}"
 }
 
 // Example for how to get properties into the manifest for reading at runtime.
 jar {
     manifest {
         attributes([
-                "Specification-Title"     : "grimoireofgaia",
+                "Specification-Title"     : "${mod_id}",
                 "Specification-Vendor"    : "Silentine",
                 "Specification-Version"   : "1", // We are version 1 of ourselves
                 "Implementation-Title"    : project.name,

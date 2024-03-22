@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_fur",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_fur"
     ]
   ],
   "rewards": {
     "recipes": [
       "grimoireofgaia:fur_to_leather"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

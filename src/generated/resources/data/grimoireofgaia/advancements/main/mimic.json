@@ -21,12 +21,9 @@
     "description": {
       "translate": "advancement.grimoireofgaia.mimic.desc"
     },
-    "frame": "task",
-    "hidden": false,
     "icon": {
       "item": "minecraft:chest"
     },
-    "show_toast": true,
     "title": {
       "translate": "advancement.grimoireofgaia.mimic.title"
     }

@@ -21,12 +21,9 @@
     "description": {
       "translate": "advancement.grimoireofgaia.cecaelia.desc"
     },
-    "frame": "task",
-    "hidden": false,
     "icon": {
       "item": "grimoireofgaia:shiny_pearl"
     },
-    "show_toast": true,
     "title": {
       "translate": "advancement.grimoireofgaia.cecaelia.title"
     }

@@ -7,7 +7,7 @@ import gaia.entity.Mimic;
 import net.minecraft.client.renderer.entity.EntityRendererProvider.Context;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraftforge.fml.ModList;
+import net.neoforged.fml.ModList;
 
 public class MimicRenderer extends MobRenderer<Mimic, MimicModel> {
 	public static final ResourceLocation[] MIMIC_LOCATION = new ResourceLocation[]{

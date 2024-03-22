@@ -44,7 +44,8 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraftforge.common.ForgeMod;
+import net.neoforged.neoforge.common.NeoForgeMod;
+import net.neoforged.neoforge.event.EventHooks;
 import org.jetbrains.annotations.Nullable;
 
 public class Creep extends AbstractGaiaEntity implements PowerableMob {
@@ -84,7 +85,7 @@ public class Creep extends AbstractGaiaEntity implements PowerableMob {
 				.add(Attributes.ATTACK_DAMAGE, 4.0D)
 				.add(Attributes.ARMOR, SharedEntityData.RATE_ARMOR_1)
 				.add(Attributes.ATTACK_KNOCKBACK, SharedEntityData.KNOCKBACK_1)
-				.add(ForgeMod.STEP_HEIGHT_ADDITION.get(), 1.0F);
+				.add(NeoForgeMod.STEP_HEIGHT.value(), 1.0F);
 	}
 
 	@Override
@@ -184,7 +185,7 @@ public class Creep extends AbstractGaiaEntity implements PowerableMob {
 
 	private void explodeCreep() {
 		if (!this.level().isClientSide) {
-			Level.ExplosionInteraction explosion$blockinteraction = net.minecraftforge.event.ForgeEventFactory.getMobGriefingEvent(this.level(), this) ? Level.ExplosionInteraction.MOB : Level.ExplosionInteraction.NONE;
+			Level.ExplosionInteraction explosion$blockinteraction = EventHooks.getMobGriefingEvent(this.level(), this) ? Level.ExplosionInteraction.MOB : Level.ExplosionInteraction.NONE;
 			float f = this.isPowered() ? 2.0F : 1.0F;
 			this.dead = true;
 			this.level().explode(this, this.getX(), this.getY(), this.getZ(), (float) this.explosionRadius * f, explosion$blockinteraction);

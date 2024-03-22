@@ -18,7 +18,8 @@ import java.util.UUID;
 
 public class KnucklesItem extends AbstractAccessoryItem {
 	private static final int damage = 2;
-	private static final AttributeModifier BOOST = new AttributeModifier(UUID.fromString("d2cc095e-1f15-49a9-a32b-993e7f5c4910"), "GoG Knuckles Damage boost", (double) damage, Operation.ADDITION);
+	private static final UUID BOOST_UUID = UUID.fromString("d2cc095e-1f15-49a9-a32b-993e7f5c4910");
+	private static final AttributeModifier BOOST = new AttributeModifier(BOOST_UUID, "GoG Knuckles Damage boost", (double) damage, Operation.ADDITION);
 
 	public KnucklesItem(Properties properties) {
 		super(properties);
@@ -57,7 +58,7 @@ public class KnucklesItem extends AbstractAccessoryItem {
 	public void removeModifier(LivingEntity player, ItemStack stack) {
 		AttributeInstance attribute = player.getAttribute(Attributes.ATTACK_DAMAGE);
 		if (attribute.hasModifier(BOOST)) {
-			attribute.removeModifier(BOOST);
+			attribute.removeModifier(BOOST_UUID);
 		}
 	}
 }

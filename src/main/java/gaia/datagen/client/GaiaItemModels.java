@@ -7,10 +7,10 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
-import net.minecraftforge.client.model.generators.ItemModelProvider;
-import net.minecraftforge.common.ForgeSpawnEggItem;
-import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
+import net.neoforged.neoforge.common.DeferredSpawnEggItem;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.registries.DeferredHolder;
 
 public class GaiaItemModels extends ItemModelProvider {
 	public GaiaItemModels(PackOutput packOutput, ExistingFileHelper existingFileHelper) {
@@ -19,10 +19,10 @@ public class GaiaItemModels extends ItemModelProvider {
 
 	@Override
 	protected void registerModels() {
-		for (RegistryObject<Item> item : GaiaRegistry.ITEMS.getEntries()) {
+		for (DeferredHolder<Item, ? extends Item> item : GaiaRegistry.ITEMS.getEntries()) {
 			if (item.get() instanceof MerchantSpawnItem) {
 				this.spawnItem(item);
-			} else if (item.get() instanceof ForgeSpawnEggItem) {
+			} else if (item.get() instanceof DeferredSpawnEggItem) {
 				this.withExistingParent(item.getId().getPath(), new ResourceLocation("item/template_spawn_egg"));
 			}
 		}
@@ -117,54 +117,54 @@ public class GaiaItemModels extends ItemModelProvider {
 		this.generatedItem(GaiaRegistry.WERESHEEP_TOKEN);
 	}
 
-	private void withBlockParent(RegistryObject<Block> registryObject) {
+	private void withBlockParent(DeferredHolder<Block, ? extends Block> registryObject) {
 		ResourceLocation location = registryObject.getId();
 		withExistingParent(location.getPath(), modLoc("block/" + location.getPath()));
 	}
 
-	private void generatedItem(RegistryObject<Item> registryObject) {
+	private void generatedItem(DeferredHolder<Item, ? extends Item> registryObject) {
 		ResourceLocation location = registryObject.getId();
 		singleTexture(location.getPath(), new ResourceLocation("item/generated"),
 				"layer0", new ResourceLocation(GrimoireOfGaia.MOD_ID, "item/" + location.getPath()));
 	}
 
-	private void spawnItem(RegistryObject<Item> registryObject) {
+	private void spawnItem(DeferredHolder<Item, ? extends Item> registryObject) {
 		ResourceLocation location = registryObject.getId();
 		singleTexture(location.getPath(), new ResourceLocation("item/generated"),
 				"layer0", new ResourceLocation(GrimoireOfGaia.MOD_ID, "item/spawn/" + location.getPath()));
 	}
 
-	private void handheldItem(RegistryObject<Item> registryObject, String subFolder) {
+	private void handheldItem(DeferredHolder<Item, ? extends Item> registryObject, String subFolder) {
 		ResourceLocation location = registryObject.getId();
 		singleTexture(location.getPath(), new ResourceLocation("item/handheld"),
 				"layer0", new ResourceLocation(GrimoireOfGaia.MOD_ID, "item/" + subFolder + "/" + location.getPath()));
 	}
 
-	private void handheldItem(RegistryObject<Item> registryObject, String subFolder, String textureName) {
+	private void handheldItem(DeferredHolder<Item, ? extends Item> registryObject, String subFolder, String textureName) {
 		ResourceLocation location = registryObject.getId();
 		singleTexture(location.getPath(), new ResourceLocation("item/handheld"),
 				"layer0", new ResourceLocation(GrimoireOfGaia.MOD_ID, "item/" + subFolder + "/" + textureName));
 	}
 
-	private void generatedItem(RegistryObject<Item> registryObject, String subFolder) {
+	private void generatedItem(DeferredHolder<Item, ? extends Item> registryObject, String subFolder) {
 		ResourceLocation location = registryObject.getId();
 		singleTexture(location.getPath(), new ResourceLocation("item/generated"),
 				"layer0", new ResourceLocation(GrimoireOfGaia.MOD_ID, "item/" + subFolder + "/" + location.getPath()));
 	}
 
-	private void parentItem(RegistryObject<Item> registryObject, ResourceLocation parent, String subFolder) {
+	private void parentItem(DeferredHolder<Item, ? extends Item> registryObject, ResourceLocation parent, String subFolder) {
 		ResourceLocation location = registryObject.getId();
 		singleTexture(location.getPath(), parent,
 				"0", new ResourceLocation(GrimoireOfGaia.MOD_ID, "item/" + subFolder + "/" + location.getPath()));
 	}
 
-	private void generatedBox(RegistryObject<Item> registryObject) {
+	private void generatedBox(DeferredHolder<Item, ? extends Item> registryObject) {
 		ResourceLocation location = registryObject.getId();
 		singleTexture(location.getPath(), new ResourceLocation(GrimoireOfGaia.MOD_ID, "item/chest"),
 				"0", new ResourceLocation(GrimoireOfGaia.MOD_ID, "item/box/" + location.getPath()));
 	}
 
-	private void generatedBook(RegistryObject<Item> registryObject) {
+	private void generatedBook(DeferredHolder<Item, ? extends Item> registryObject) {
 		ResourceLocation location = registryObject.getId();
 		singleTexture(location.getPath(), new ResourceLocation(GrimoireOfGaia.MOD_ID, "item/weapon_book"),
 				"0", new ResourceLocation(GrimoireOfGaia.MOD_ID, "item/weapon/book/" + location.getPath()));

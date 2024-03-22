@@ -10,7 +10,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.EntityTypeTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EntityType;
-import net.minecraftforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -32,6 +32,14 @@ public class GaiaEntityTags extends EntityTypeTagsProvider {
 				GaiaRegistry.HUNTER.getEntityType(), GaiaRegistry.MERMAID.getEntityType(),
 				GaiaRegistry.SATYRESS.getEntityType(), GaiaRegistry.WIZARD_HARPY.getEntityType(),
 				GaiaRegistry.YUKI_ONNA.getEntityType()
+		);
+
+		this.tag(EntityTypeTags.CAN_BREATHE_UNDER_WATER).add(
+				GaiaRegistry.CECAELIA.getEntityType(),
+				GaiaRegistry.MERMAID.getEntityType(),
+				GaiaRegistry.MINOTAUR.getEntityType(),
+				GaiaRegistry.SHARKO.getEntityType(),
+				GaiaRegistry.VALKYRIE.getEntityType()
 		);
 	}
 }

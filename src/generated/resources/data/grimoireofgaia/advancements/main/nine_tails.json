@@ -21,12 +21,9 @@
     "description": {
       "translate": "advancement.grimoireofgaia.nine_tails.desc"
     },
-    "frame": "task",
-    "hidden": false,
     "icon": {
       "item": "grimoireofgaia:doll_nine_tails"
     },
-    "show_toast": true,
     "title": {
       "translate": "advancement.grimoireofgaia.nine_tails.title"
     }

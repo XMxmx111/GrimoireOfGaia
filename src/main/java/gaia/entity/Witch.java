@@ -53,7 +53,8 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.common.ForgeMod;
+import net.neoforged.neoforge.common.NeoForgeMod;
+import net.neoforged.neoforge.event.EventHooks;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -100,7 +101,7 @@ public class Witch extends AbstractGaiaEntity implements RangedAttackMob {
 				.add(Attributes.ARMOR, SharedEntityData.RATE_ARMOR_2)
 				.add(Attributes.ATTACK_KNOCKBACK, SharedEntityData.KNOCKBACK_2)
 				.add(Attributes.FLYING_SPEED, (double) 0.6F)
-				.add(ForgeMod.STEP_HEIGHT_ADDITION.get(), 1.0F);
+				.add(NeoForgeMod.STEP_HEIGHT.value(), 1.0F);
 	}
 
 	@Override
@@ -244,7 +245,7 @@ public class Witch extends AbstractGaiaEntity implements RangedAttackMob {
 					}
 				}
 
-				this.getAttribute(Attributes.MOVEMENT_SPEED).removeModifier(SPEED_MODIFIER_DRINKING);
+				this.getAttribute(Attributes.MOVEMENT_SPEED).removeModifier(SPEED_MODIFIER_DRINKING_UUID);
 			}
 		} else {
 			Potion potion = null;
@@ -267,7 +268,7 @@ public class Witch extends AbstractGaiaEntity implements RangedAttackMob {
 				}
 
 				AttributeInstance attributeinstance = this.getAttribute(Attributes.MOVEMENT_SPEED);
-				attributeinstance.removeModifier(SPEED_MODIFIER_DRINKING);
+				attributeinstance.removeModifier(SPEED_MODIFIER_DRINKING_UUID);
 				attributeinstance.addTransientModifier(SPEED_MODIFIER_DRINKING);
 			}
 		}
@@ -297,7 +298,7 @@ public class Witch extends AbstractGaiaEntity implements RangedAttackMob {
 			Monster monster = id == 0 ? EntityType.ZOMBIE.create(this.level()) : EntityType.SKELETON.create(this.level());
 			if (monster != null) {
 				monster.moveTo(blockpos, 0.0F, 0.0F);
-				monster.finalizeSpawn((ServerLevel) this.level(), this.level().getCurrentDifficultyAt(blockpos), MobSpawnType.MOB_SUMMONED, (SpawnGroupData) null, (CompoundTag) null);
+				EventHooks.onFinalizeSpawn(monster, (ServerLevel) this.level(), this.level().getCurrentDifficultyAt(blockpos), MobSpawnType.MOB_SUMMONED, (SpawnGroupData) null, (CompoundTag) null);
 				monster.setItemSlot(EquipmentSlot.HEAD, new ItemStack(GaiaRegistry.HEADGEAR_MOB.get()));
 				monster.setDropChance(EquipmentSlot.MAINHAND, 0);
 				monster.setDropChance(EquipmentSlot.OFFHAND, 0);

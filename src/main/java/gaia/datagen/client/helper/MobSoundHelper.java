@@ -4,9 +4,9 @@ import gaia.GrimoireOfGaia;
 import gaia.registry.helper.GaiaMobType;
 import gaia.registry.helper.MobReg;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraftforge.common.data.SoundDefinition;
-import net.minecraftforge.common.data.SoundDefinition.Sound;
-import net.minecraftforge.common.data.SoundDefinition.SoundType;
+import net.neoforged.neoforge.common.data.SoundDefinition;
+import net.neoforged.neoforge.common.data.SoundDefinition.Sound;
+import net.neoforged.neoforge.common.data.SoundDefinition.SoundType;
 
 public class MobSoundHelper {
 	private final MobReg<?> mobReg;

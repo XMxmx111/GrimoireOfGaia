@@ -21,12 +21,9 @@
     "description": {
       "translate": "advancement.grimoireofgaia.spriggan.desc"
     },
-    "frame": "task",
-    "hidden": false,
     "icon": {
       "item": "minecraft:oak_log"
     },
-    "show_toast": true,
     "title": {
       "translate": "advancement.grimoireofgaia.spriggan.title"
     }

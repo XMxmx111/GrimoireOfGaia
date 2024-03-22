@@ -21,13 +21,10 @@
     "description": {
       "translate": "advancement.grimoireofgaia.naga.desc"
     },
-    "frame": "task",
-    "hidden": false,
     "icon": {
       "item": "grimoireofgaia:gold_shield",
       "nbt": "{Damage:0}"
     },
-    "show_toast": true,
     "title": {
       "translate": "advancement.grimoireofgaia.naga.title"
     }

@@ -41,7 +41,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.common.ForgeMod;
+import net.neoforged.neoforge.common.NeoForgeMod;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.UUID;
@@ -56,10 +56,10 @@ public class Harpy extends AbstractGaiaEntity {
 
 	private final LeapAtTargetGoal leapAtTargetGoal = new LeapAtTargetGoal(this, 0.4F);
 	private final MobAttackGoal mobAttackGoal = new MobAttackGoal(this, SharedEntityData.ATTACK_SPEED_1, true) {
-		@Override
-		protected double getAttackReachSqr(LivingEntity harpy) {
-			return 4.0D + harpy.getBbWidth();
-		}
+//		@Override
+//		protected double getAttackReachSqr(LivingEntity harpy) { //TODO: Check if this is needed
+//			return 4.0D + harpy.getBbWidth();
+//		}
 	};
 	private final AvoidEntityGoal<Player> avoidPlayerGoal = new AvoidEntityGoal<>(this, Player.class, 20.0F, SharedEntityData.ATTACK_SPEED_1, SharedEntityData.ATTACK_SPEED_3);
 
@@ -89,7 +89,7 @@ public class Harpy extends AbstractGaiaEntity {
 				.add(Attributes.ATTACK_DAMAGE, 4.0D)
 				.add(Attributes.ARMOR, SharedEntityData.RATE_ARMOR_1)
 				.add(Attributes.ATTACK_KNOCKBACK, SharedEntityData.KNOCKBACK_1)
-				.add(ForgeMod.STEP_HEIGHT_ADDITION.get(), 1.0F);
+				.add(NeoForgeMod.STEP_HEIGHT.value(), 1.0F);
 	}
 
 	@Override
@@ -219,7 +219,7 @@ public class Harpy extends AbstractGaiaEntity {
 		}
 		if (!isBaby()) {
 			AttributeInstance attributeinstance = this.getAttribute(Attributes.ATTACK_KNOCKBACK);
-			attributeinstance.removeModifier(KNOCKBACK_MODIFIER);
+			attributeinstance.removeModifier(KNOCKBACK_MODIFIER_UUID);
 			attributeinstance.addTransientModifier(KNOCKBACK_MODIFIER);
 		}
 

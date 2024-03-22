@@ -28,7 +28,7 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.common.ForgeI18n;
+import net.neoforged.neoforge.event.EventHooks;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -67,7 +67,7 @@ public class SummonStaffItem extends Item {
 				BlockPos spawnPos = BlockPos.containing(player.getEyePosition()).relative(player.getDirection());
 				Mob summon = typeSupplier.get().create(level);
 				summon.moveTo(spawnPos, 0.0F, 0.0F);
-				summon.finalizeSpawn((ServerLevel) level, level.getCurrentDifficultyAt(spawnPos), MobSpawnType.MOB_SUMMONED, (SpawnGroupData) null, (CompoundTag) null);
+				EventHooks.onFinalizeSpawn(summon, (ServerLevel) level, level.getCurrentDifficultyAt(spawnPos), MobSpawnType.MOB_SUMMONED, (SpawnGroupData) null, (CompoundTag) null);
 				summon.setItemSlot(EquipmentSlot.HEAD, new ItemStack(GaiaRegistry.HEADGEAR_BOLT.get()));
 				summon.setDropChance(EquipmentSlot.MAINHAND, 0);
 				summon.setDropChance(EquipmentSlot.OFFHAND, 0);
@@ -105,7 +105,7 @@ public class SummonStaffItem extends Item {
 	@Override
 	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
 		super.appendHoverText(stack, level, list, flag);
-		list.add(Component.translatable("text.grimoireofgaia.summoning_staff.desc", ForgeI18n.getPattern(typeSupplier.get().getDescriptionId())).withStyle(ChatFormatting.GRAY));
+		list.add(Component.translatable("text.grimoireofgaia.summoning_staff.desc", Component.translatable(typeSupplier.get().getDescriptionId()).getString()).withStyle(ChatFormatting.GRAY));
 	}
 
 	@Override

@@ -12,6 +12,7 @@ import net.minecraft.stats.Stats;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
@@ -25,7 +26,7 @@ import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.common.ForgeMod;
+import net.neoforged.neoforge.common.NeoForgeMod;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -50,7 +51,7 @@ public class FireshardItem extends FuelItem {
 			BlockPos relativePos = blockpos.relative(direction);
 			if (level.mayInteract(player, blockpos) && player.mayUseItemAt(relativePos, direction, itemstack)) {
 				BlockState state = level.getBlockState(blockpos);
-				BlockPos relativePos2 = canBlockContainFluid(level, blockpos, state) ? blockpos : relativePos;
+				BlockPos relativePos2 = canBlockContainFluid(player, level, blockpos, state) ? blockpos : relativePos;
 				if (level.setBlock(relativePos2, Fluids.LAVA.defaultFluidState().createLegacyBlock(), 11) && !state.getFluidState().isSource()) {
 					level.playSound(player, relativePos2, SoundEvents.GHAST_SCREAM, SoundSource.BLOCKS, 0.4F, 0.8F);
 					level.gameEvent(player, GameEvent.FLUID_PLACE, relativePos2);
@@ -84,14 +85,17 @@ public class FireshardItem extends FuelItem {
 		float f5 = Mth.sin(-f * ((float) Math.PI / 180F));
 		float f6 = f3 * f4;
 		float f7 = f2 * f4;
-		double d0 = player.getAttribute(ForgeMod.BLOCK_REACH.get()).getValue();
+		AttributeInstance reachInstance = player.getAttribute(NeoForgeMod.BLOCK_REACH.value());
+		double d0 = 4.5D;
+		if (reachInstance != null)
+			d0 = reachInstance.getValue();
 
 		Vec3 vec31 = vec3.add((double) f6 * d0, (double) f5 * d0, (double) f7 * d0);
 		return level.clip(new ClipContext(vec3, vec31, Block.OUTLINE, fluid, player));
 	}
 
-	private boolean canBlockContainFluid(Level level, BlockPos posIn, BlockState blockstate) {
-		return blockstate.getBlock() instanceof LiquidBlockContainer && ((LiquidBlockContainer) blockstate.getBlock()).canPlaceLiquid(level, posIn, blockstate, Fluids.LAVA);
+	private boolean canBlockContainFluid(Player player, Level level, BlockPos posIn, BlockState blockstate) {
+		return blockstate.getBlock() instanceof LiquidBlockContainer && ((LiquidBlockContainer) blockstate.getBlock()).canPlaceLiquid(player, level, posIn, blockstate, Fluids.LAVA);
 	}
 
 	@Override

@@ -5,8 +5,10 @@ import gaia.registry.GaiaRegistry;
 import gaia.registry.helper.MobReg;
 import gaia.registry.helper.PropReg;
 import net.minecraft.advancements.Advancement;
+import net.minecraft.advancements.AdvancementHolder;
+import net.minecraft.advancements.AdvancementType;
+import net.minecraft.advancements.Criterion;
 import net.minecraft.advancements.DisplayInfo;
-import net.minecraft.advancements.FrameType;
 import net.minecraft.advancements.critereon.EnterBlockTrigger;
 import net.minecraft.advancements.critereon.EntityPredicate;
 import net.minecraft.advancements.critereon.KilledTrigger;
@@ -21,18 +23,19 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.common.data.ForgeAdvancementProvider;
+import net.neoforged.neoforge.common.data.AdvancementProvider;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 import java.util.function.Consumer;
 
-public class GaiaAdvancementProvider extends ForgeAdvancementProvider {
-	public static final Map<EntityType<?>, Advancement> entityTypeAdvancementMap = new HashMap<>();
+public class GaiaAdvancementProvider extends AdvancementProvider {
+	public static final Map<EntityType<?>, AdvancementHolder> entityTypeAdvancementMap = new HashMap<>();
 
 	public GaiaAdvancementProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registries, ExistingFileHelper existingFileHelper) {
 		super(output, registries, existingFileHelper, List.of(new GaiaAdvancementGenerator()));
@@ -41,9 +44,9 @@ public class GaiaAdvancementProvider extends ForgeAdvancementProvider {
 	public static class GaiaAdvancementGenerator implements AdvancementGenerator {
 
 		@Override
-		public void generate(HolderLookup.Provider provider, Consumer<Advancement> consumer, ExistingFileHelper existingFileHelper) {
+		public void generate(HolderLookup.Provider registries, Consumer<AdvancementHolder> consumer, ExistingFileHelper existingFileHelper) {
 			//Root advancement
-			Advancement root = Advancement.Builder.advancement()
+			AdvancementHolder root = Advancement.Builder.advancement()
 					.display(rootDisplay(GaiaRegistry.DOLL_DRYAD.get(), advancementPrefix("root" + ".title"),
 							advancementPrefix("root" + ".desc"), modLoc("textures/block/pearl_block_bottom.png")))
 					.addCriterion("join", EnterBlockTrigger.TriggerInstance.entersBlock(Blocks.AIR))
@@ -103,10 +106,10 @@ public class GaiaAdvancementProvider extends ForgeAdvancementProvider {
 		 * @param item     The item to display in the advancement.
 		 * @param root     The root advancement.
 		 */
-		protected static void addKillAdvancement(Consumer<Advancement> consumer, MobReg<? extends LivingEntity> mobReg, @Nullable Item item, Advancement root) {
+		protected static void addKillAdvancement(Consumer<AdvancementHolder> consumer, MobReg<? extends LivingEntity> mobReg, @Nullable Item item, AdvancementHolder root) {
 			ResourceLocation registryLocation = modLoc(mobReg.getName());
-			Item icon = item != null ? item : mobReg.getSpawnEgg().orElse(Items.EGG);
-			Advancement advancement = Advancement.Builder.advancement()
+			Item icon = item != null ? item : mobReg.getSpawnEgg().asOptional().orElse(Items.EGG);
+			AdvancementHolder advancement = Advancement.Builder.advancement()
 					.display(simpleDisplay(icon, registryLocation.getPath()))
 					.parent(root)
 					.addCriterion("kill", onKill(mobReg.getEntityType()))
@@ -122,10 +125,10 @@ public class GaiaAdvancementProvider extends ForgeAdvancementProvider {
 		 * @param item     The item to display in the advancement.
 		 * @param root     The root advancement.
 		 */
-		protected static void addKillAdvancement(Consumer<Advancement> consumer, PropReg<? extends LivingEntity> propReg, @Nullable Item item, Advancement root) {
+		protected static void addKillAdvancement(Consumer<AdvancementHolder> consumer, PropReg<? extends LivingEntity> propReg, @Nullable Item item, AdvancementHolder root) {
 			ResourceLocation registryLocation = modLoc(propReg.getName());
-			Item icon = item != null ? item : propReg.getSpawnEgg().orElse(Items.EGG);
-			Advancement advancement = Advancement.Builder.advancement()
+			Item icon = item != null ? item : propReg.getSpawnEgg().asOptional().orElse(Items.EGG);
+			AdvancementHolder advancement = Advancement.Builder.advancement()
 					.display(simpleDisplay(icon, registryLocation.getPath()))
 					.parent(root)
 					.addCriterion("kill", onKill(propReg.getEntityType()))
@@ -146,7 +149,7 @@ public class GaiaAdvancementProvider extends ForgeAdvancementProvider {
 			return new DisplayInfo(new ItemStack(icon.asItem()),
 					Component.translatable(titleKey),
 					Component.translatable(descKey),
-					background, FrameType.TASK, false, false, false);
+					Optional.of(background), AdvancementType.TASK, false, false, false);
 		}
 
 		/**
@@ -160,7 +163,7 @@ public class GaiaAdvancementProvider extends ForgeAdvancementProvider {
 			return new DisplayInfo(new ItemStack(icon.asItem()),
 					Component.translatable(advancementPrefix(name + ".title")),
 					Component.translatable(advancementPrefix(name + ".desc")),
-					null, FrameType.TASK, true, false, false);
+					Optional.empty(), AdvancementType.TASK, true, false, false);
 		}
 
 		/**
@@ -169,7 +172,7 @@ public class GaiaAdvancementProvider extends ForgeAdvancementProvider {
 		 * @param entityType The entity type.
 		 * @return The trigger instance.
 		 */
-		protected static KilledTrigger.TriggerInstance onKill(EntityType<?> entityType) {
+		protected static Criterion<KilledTrigger.TriggerInstance> onKill(EntityType<?> entityType) {
 			return KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(entityType));
 		}
 

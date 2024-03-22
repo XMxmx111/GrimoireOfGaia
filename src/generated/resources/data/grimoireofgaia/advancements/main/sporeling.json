@@ -21,12 +21,9 @@
     "description": {
       "translate": "advancement.grimoireofgaia.sporeling.desc"
     },
-    "frame": "task",
-    "hidden": false,
     "icon": {
       "item": "minecraft:brown_mushroom"
     },
-    "show_toast": true,
     "title": {
       "translate": "advancement.grimoireofgaia.sporeling.title"
     }

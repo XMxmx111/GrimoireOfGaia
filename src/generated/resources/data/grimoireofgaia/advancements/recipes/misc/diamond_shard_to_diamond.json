@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_diamond_shard",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_diamond_shard"
     ]
   ],
   "rewards": {
     "recipes": [
       "grimoireofgaia:diamond_shard_to_diamond"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

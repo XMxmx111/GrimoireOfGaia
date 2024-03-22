@@ -17,7 +17,6 @@ import net.minecraft.world.Difficulty;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.damagesource.DamageSource;
-
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
@@ -44,7 +43,8 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.common.ForgeMod;
+import net.neoforged.neoforge.common.NeoForgeMod;
+import net.neoforged.neoforge.fluids.FluidType;
 import org.jetbrains.annotations.Nullable;
 
 public class Minotaur extends AbstractGaiaEntity implements PowerableMob {
@@ -85,7 +85,7 @@ public class Minotaur extends AbstractGaiaEntity implements PowerableMob {
 				.add(Attributes.ARMOR, SharedEntityData.RATE_ARMOR_3)
 				.add(Attributes.ATTACK_KNOCKBACK, SharedEntityData.KNOCKBACK_3)
 
-				.add(ForgeMod.STEP_HEIGHT_ADDITION.get(), 5.0F);
+				.add(NeoForgeMod.STEP_HEIGHT.value(), 5.0F);
 	}
 
 	@Override
@@ -258,12 +258,7 @@ public class Minotaur extends AbstractGaiaEntity implements PowerableMob {
 	}
 
 	@Override
-	public boolean canBreatheUnderwater() {
-		return true;
-	}
-
-	@Override
-	public boolean isPushedByFluid() {
+	public boolean isPushedByFluid(FluidType type) {
 		return false;
 	}
 

@@ -21,13 +21,10 @@
     "description": {
       "translate": "advancement.grimoireofgaia.oni.desc"
     },
-    "frame": "task",
-    "hidden": false,
     "icon": {
       "item": "grimoireofgaia:metal_club",
       "nbt": "{Damage:0}"
     },
-    "show_toast": true,
     "title": {
       "translate": "advancement.grimoireofgaia.oni.title"
     }

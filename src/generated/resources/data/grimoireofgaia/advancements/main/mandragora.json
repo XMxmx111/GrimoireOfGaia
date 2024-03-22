@@ -21,12 +21,9 @@
     "description": {
       "translate": "advancement.grimoireofgaia.mandragora.desc"
     },
-    "frame": "task",
-    "hidden": false,
     "icon": {
       "item": "grimoireofgaia:deco_garden_gnome"
     },
-    "show_toast": true,
     "title": {
       "translate": "advancement.grimoireofgaia.mandragora.title"
     }
