@@ -7,9 +7,9 @@
   ],
   "spawners": {
     "type": "grimoireofgaia:bone_knight",
-    "maxCount": 4,
-    "minCount": 2,
-    "weight": 80
+    "maxCount": 2,
+    "minCount": 1,
+    "weight": 40
   },
   "whitelist": [
     "#minecraft:is_overworld"
