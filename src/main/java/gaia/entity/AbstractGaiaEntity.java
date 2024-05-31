@@ -213,6 +213,7 @@ public abstract class AbstractGaiaEntity extends Monster {
 					damageAttribute.setBaseValue(SharedEntityData.getAttackDamage3());
 			}
 		}
+		this.setHealth(getMaxHealth()); //Set max health since it's not done automatically when changing the attribute
 
 		if (GaiaConfig.COMMON.passiveHostileMobs.get()) {
 			this.goalSelector.removeGoal(targetPlayerGoal);
