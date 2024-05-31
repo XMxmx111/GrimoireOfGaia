@@ -88,7 +88,7 @@ public class GaiaSpawningConfig {
 			List<? extends String> bansheeBiomes = generateList(Biomes.MEADOW, Biomes.WINDSWEPT_HILLS, Biomes.WINDSWEPT_GRAVELLY_HILLS);
 			List<? extends String> bansheeBiomeDictionary = List.of("OVERWORLD,PLATEAU,!COLD,!HOT,!DENSE",
 					"OVERWORLD,MOUNTAIN,!HOT,!DENSE");
-			bansheeSpawning = new SpawningInfo(builder, "Banshee", 40, 2, 4, bansheeBiomes, bansheeBiomeDictionary);
+			bansheeSpawning = new SpawningInfo(builder, "Banshee", 80, 2, 4, bansheeBiomes, bansheeBiomeDictionary);
 
 			List<? extends String> beeBiomes = generateList(Biomes.FOREST, Biomes.BIRCH_FOREST, Biomes.OLD_GROWTH_BIRCH_FOREST);
 			List<? extends String> beeBiomeDictionary = List.of("OVERWORLD,FOREST,!CONIFEROUS,!COLD,!HOT,!SPARSE,!SPOOKY,!DENSE",
@@ -99,7 +99,7 @@ public class GaiaSpawningConfig {
 			behenderSpawning = new SpawningInfo(builder, "Behender", 1, 1, 1, List.of(), behenderBiomeDictionary, true);
 
 			List<? extends String> boneKnightBiomeDictionary = List.of("OVERWORLD");
-			boneKnightSpawning = new SpawningInfo(builder, "BoneKnight", 80, 2, 4, List.of(), boneKnightBiomeDictionary, true);
+			boneKnightSpawning = new SpawningInfo(builder, "BoneKnight", 40, 1, 2, List.of(), boneKnightBiomeDictionary, true);
 
 			List<? extends String> cecaeliaBiomes = generateList(Biomes.BEACH, Biomes.OCEAN, Biomes.WARM_OCEAN, Biomes.RIVER);
 			List<? extends String> cecaeliaBiomeDictionary = List.of("OVERWORLD,BEACH", "OVERWORLD,WATER");
@@ -109,7 +109,7 @@ public class GaiaSpawningConfig {
 			List<? extends String> centaurBiomeDictionary = List.of(
 					"OVERWORLD,PLAINS,!SAVANNA",
 					"OVERWORLD,MESA");
-			centaurSpawning = new SpawningInfo(builder, "Centaur", 80, 2, 4, centaurBiomes, centaurBiomeDictionary);
+			centaurSpawning = new SpawningInfo(builder, "Centaur", 20, 4, 6, centaurBiomes, centaurBiomeDictionary);
 
 			List<? extends String> cobbleGolemBiomes = generateList(Biomes.JUNGLE, Biomes.SPARSE_JUNGLE, Biomes.BAMBOO_JUNGLE);
 			List<? extends String> cobbleGolemBiomeDictionary = List.of("OVERWORLD,JUNGLE");
@@ -120,7 +120,7 @@ public class GaiaSpawningConfig {
 			cobblestoneGolemSpawning = new SpawningInfo(builder, "CobblestoneGolem", 60, 2, 4, cobblestoneGolemBiomes, cobblestoneGolemBiomeDictionary);
 
 			List<? extends String> creepBiomeDictionary = List.of("OVERWORLD");
-			creepSpawning = new SpawningInfo(builder, "Creep", 20, 4, 6, List.of(), creepBiomeDictionary, true);
+			creepSpawning = new SpawningInfo(builder, "Creep", 80, 2, 4, List.of(), creepBiomeDictionary, true);
 
 			List<? extends String> cyclopsBiomes = generateList(Biomes.TAIGA, Biomes.SNOWY_TAIGA, Biomes.OLD_GROWTH_PINE_TAIGA, Biomes.OLD_GROWTH_SPRUCE_TAIGA);
 			List<? extends String> cyclopsBiomeDictionary = List.of("OVERWORLD,FOREST,CONIFEROUS,!SNOWY");
@@ -159,7 +159,7 @@ public class GaiaSpawningConfig {
 			enderDragonGirlSpawning = new SpawningInfo(builder, "EnderDragonGirl", 1, 1, 1, List.of(), enderDragonGirlBiomeDictionary, true);
 
 			List<? extends String> fleshLichBiomeDictionary = List.of("OVERWORLD");
-			fleshLichSpawning = new SpawningInfo(builder, "FleshLich", 100, 4, 6, List.of(), fleshLichBiomeDictionary);
+			fleshLichSpawning = new SpawningInfo(builder, "FleshLich", 40, 1, 2, List.of(), fleshLichBiomeDictionary);
 
 			List<? extends String> gelatinousSlimeBiomes = generateList(Biomes.SWAMP);
 			List<? extends String> gelatinousSlimeBiomeDictionary = List.of("OVERWORLD,SWAMP");
@@ -172,7 +172,7 @@ public class GaiaSpawningConfig {
 			List<? extends String> gryphonBiomes = generateList(Biomes.MEADOW, Biomes.WINDSWEPT_HILLS, Biomes.WINDSWEPT_GRAVELLY_HILLS);
 			List<? extends String> gryphonBiomeDictionary = List.of("OVERWORLD,PLATEAU,!COLD,!HOT,!DENSE",
 					"OVERWORLD,MOUNTAIN,!HOT,!DENSE");
-			gryphonSpawning = new SpawningInfo(builder, "Gryphon", 100, 1, 2, gryphonBiomes, gryphonBiomeDictionary);
+			gryphonSpawning = new SpawningInfo(builder, "Gryphon", 80, 1, 2, gryphonBiomes, gryphonBiomeDictionary);
 
 			List<? extends String> harpyBiomes = generateList(Biomes.PLAINS, Biomes.SUNFLOWER_PLAINS);
 			List<? extends String> harpyBiomeDictionary = List.of(
@@ -221,7 +221,7 @@ public class GaiaSpawningConfig {
 
 			List<? extends String> nagaBiomes = generateList(Biomes.SWAMP);
 			List<? extends String> nagaBiomeDictionary = List.of("OVERWORLD,SWAMP");
-			nagaSpawning = new SpawningInfo(builder, "Naga", 60, 4, 6, nagaBiomes, nagaBiomeDictionary);
+			nagaSpawning = new SpawningInfo(builder, "Naga", 30, 1, 2, nagaBiomes, nagaBiomeDictionary);
 
 			List<? extends String> nineTailsBiomes = generateList(Biomes.SNOWY_TAIGA, Biomes.OLD_GROWTH_PINE_TAIGA, Biomes.OLD_GROWTH_SPRUCE_TAIGA);
 			List<? extends String> nineTailsBiomeDictionary = List.of("OVERWORLD,FOREST,CONIFEROUS,!SNOWY");
