@@ -5,9 +5,9 @@
   ],
   "spawners": {
     "type": "grimoireofgaia:centaur",
-    "maxCount": 4,
-    "minCount": 2,
-    "weight": 80
+    "maxCount": 6,
+    "minCount": 4,
+    "weight": 20
   },
   "whitelist": [
     "#minecraft:is_overworld",
