@@ -9,7 +9,7 @@
     "#forge:is_dense"
   ],
   "spawners": {
-    "type": "grimoireofgaia:mandragora",
+    "type": "grimoireofgaia:cyan_flower",
     "maxCount": 2,
     "minCount": 1,
     "weight": 60
