@@ -30,116 +30,116 @@ public class GaiaBiomeModifiers {
 		Map<ResourceLocation, BiomeModifier> map = Maps.newHashMap();
 
 		List<TagKey<Biome>> overworld = List.of(BiomeTags.IS_OVERWORLD);
-		List<TagKey<Biome>> peaceful = List.of(BiomeTags.HAS_ANCIENT_CITY, Tags.Biomes.IS_MUSHROOM, NO_DEFAULT_MONSTERS);
+		List<TagKey<Biome>> notPeaceful = List.of(BiomeTags.HAS_ANCIENT_CITY, Tags.Biomes.IS_MUSHROOM, NO_DEFAULT_MONSTERS);
 
 		List<TagKey<Biome>> overworldSandy = List.of(BiomeTags.IS_OVERWORLD, Tags.Biomes.IS_SANDY);
-		List<TagKey<Biome>> badlands = List.of(BiomeTags.IS_BADLANDS);
+		List<TagKey<Biome>> notBadlands = List.of(BiomeTags.IS_BADLANDS);
 		map.putAll(generateBiomeModifier(ops, "add_ant_hill",
-				overworldSandy, badlands,
+				overworldSandy, notBadlands,
 				new MobSpawnSettings.SpawnerData(GaiaRegistry.ANT_HILL.getEntityType(), 20, 1, 1))
 		);
 
 		map.putAll(generateBiomeModifier(ops, "add_ant_salvager",
-				overworldSandy, badlands,
+				overworldSandy, notBadlands,
 				new MobSpawnSettings.SpawnerData(GaiaRegistry.ANT_SALVAGER.getEntityType(), 20, 2, 5))
 		);
 
 		map.putAll(generateBiomeModifier(ops, "add_anubis",
-				overworldSandy, badlands,
+				overworldSandy, notBadlands,
 				new MobSpawnSettings.SpawnerData(GaiaRegistry.ANUBIS.getEntityType(), 20, 2, 4))
 		);
 
 		map.putAll(generateBiomeModifier(ops, "add_mummy",
-				overworldSandy, badlands,
+				overworldSandy, notBadlands,
 				new MobSpawnSettings.SpawnerData(GaiaRegistry.MUMMY.getEntityType(), 100, 2, 4))
 		);
 
 		map.putAll(generateBiomeModifier(ops, "add_sphinx",
-				overworldSandy, badlands,
+				overworldSandy, notBadlands,
 				new MobSpawnSettings.SpawnerData(GaiaRegistry.SPHINX.getEntityType(), 10, 1, 1))
 		);
 
 		map.putAll(generateBiomeModifier(ops, "add_arachne",
-				overworld, peaceful,
+				overworld, notPeaceful,
 				new MobSpawnSettings.SpawnerData(GaiaRegistry.ARACHNE.getEntityType(), 80, 1, 2))
 		);
 
 		map.putAll(generateBiomeModifier(ops, "add_bone_knight",
-				overworld, peaceful,
+				overworld, notPeaceful,
 				new MobSpawnSettings.SpawnerData(GaiaRegistry.BONE_KNIGHT.getEntityType(), 40, 1, 2))
 		);
 
 		map.putAll(generateBiomeModifier(ops, "add_creep",
-				overworld, peaceful,
+				overworld, notPeaceful,
 				new MobSpawnSettings.SpawnerData(GaiaRegistry.CREEP.getEntityType(), 80, 2, 4))
 		);
 
 		map.putAll(generateBiomeModifier(ops, "add_deathword",
-				overworld, peaceful,
+				overworld, notPeaceful,
 				new MobSpawnSettings.SpawnerData(GaiaRegistry.DEATHWORD.getEntityType(), 40, 1, 2))
 		);
 
 		map.putAll(generateBiomeModifier(ops, "add_ender_eye",
-				overworld, peaceful,
+				overworld, notPeaceful,
 				new MobSpawnSettings.SpawnerData(GaiaRegistry.ENDER_EYE.getEntityType(), 40, 2, 4))
 		);
 
 		map.putAll(generateBiomeModifier(ops, "add_flesh_lich",
-				overworld, peaceful,
+				overworld, notPeaceful,
 				new MobSpawnSettings.SpawnerData(GaiaRegistry.FLESH_LICH.getEntityType(), 40, 1, 2))
 		);
 
 		map.putAll(generateBiomeModifier(ops, "add_mimic",
-				overworld, peaceful,
+				overworld, notPeaceful,
 				new MobSpawnSettings.SpawnerData(GaiaRegistry.MIMIC.getEntityType(), 40, 1, 1))
 		);
 
 		List<TagKey<Biome>> overworldPlateau = List.of(BiomeTags.IS_OVERWORLD, Tags.Biomes.IS_PLATEAU);
 		List<TagKey<Biome>> overworldMountain = List.of(BiomeTags.IS_OVERWORLD, Tags.Biomes.IS_MOUNTAIN);
-		List<TagKey<Biome>> coldHotDense = List.of(Tags.Biomes.IS_COLD, Tags.Biomes.IS_HOT, Tags.Biomes.IS_DENSE);
-		List<TagKey<Biome>> hotDense = List.of(Tags.Biomes.IS_HOT, Tags.Biomes.IS_DENSE);
+		List<TagKey<Biome>> notColdHotDense = List.of(Tags.Biomes.IS_COLD, Tags.Biomes.IS_HOT, Tags.Biomes.IS_DENSE);
+		List<TagKey<Biome>> notHotDense = List.of(Tags.Biomes.IS_HOT, Tags.Biomes.IS_DENSE);
 		map.putAll(generateBiomeModifier(ops, "add_banshee",
-				overworldPlateau, coldHotDense,
+				overworldPlateau, notColdHotDense,
 				new MobSpawnSettings.SpawnerData(GaiaRegistry.BANSHEE.getEntityType(), 40, 2, 4))
 		);
 		map.putAll(generateBiomeModifier(ops, "add_mountain_banshee",
-				overworldMountain, hotDense,
+				overworldMountain, notHotDense,
 				new MobSpawnSettings.SpawnerData(GaiaRegistry.BANSHEE.getEntityType(), 40, 2, 4))
 		);
 
 		map.putAll(generateBiomeModifier(ops, "add_dullahan",
-				overworldPlateau, coldHotDense,
+				overworldPlateau, notColdHotDense,
 				new MobSpawnSettings.SpawnerData(GaiaRegistry.DULLAHAN.getEntityType(), 100, 4, 6))
 		);
 		map.putAll(generateBiomeModifier(ops, "add_mountain_dullahan",
-				overworldMountain, hotDense,
+				overworldMountain, notHotDense,
 				new MobSpawnSettings.SpawnerData(GaiaRegistry.DULLAHAN.getEntityType(), 100, 4, 6))
 		);
 
 		map.putAll(generateBiomeModifier(ops, "add_dwarf",
-				overworldPlateau, coldHotDense,
+				overworldPlateau, notColdHotDense,
 				new MobSpawnSettings.SpawnerData(GaiaRegistry.DWARF.getEntityType(), 30, 4, 6))
 		);
 		map.putAll(generateBiomeModifier(ops, "add_mountain_dwarf",
-				overworldMountain, hotDense,
+				overworldMountain, notHotDense,
 				new MobSpawnSettings.SpawnerData(GaiaRegistry.DWARF.getEntityType(), 30, 4, 6))
 		);
 
 		map.putAll(generateBiomeModifier(ops, "add_gryphon",
-				overworldPlateau, coldHotDense,
+				overworldPlateau, notColdHotDense,
 				new MobSpawnSettings.SpawnerData(GaiaRegistry.GRYPHON.getEntityType(), 80, 1, 2))
 		);
 		map.putAll(generateBiomeModifier(ops, "add_mountain_gryphon",
-				overworldMountain, hotDense,
+				overworldMountain, notHotDense,
 				new MobSpawnSettings.SpawnerData(GaiaRegistry.GRYPHON.getEntityType(), 100, 1, 2))
 		);
 
 		map.putAll(generateBiomeModifier(ops, "add_valkyrie",
-				overworldPlateau, coldHotDense,
+				overworldPlateau, notColdHotDense,
 				new MobSpawnSettings.SpawnerData(GaiaRegistry.VALKYRIE.getEntityType(), 10, 1, 2))
 		);
 		map.putAll(generateBiomeModifier(ops, "add_mountain_valkyrie",
-				overworldMountain, hotDense,
+				overworldMountain, notHotDense,
 				new MobSpawnSettings.SpawnerData(GaiaRegistry.VALKYRIE.getEntityType(), 10, 1, 2))
 		);
 
@@ -235,9 +235,9 @@ public class GaiaBiomeModifiers {
 		);
 		List<TagKey<Biome>> overworldPlains = List.of(BiomeTags.IS_OVERWORLD, Tags.Biomes.IS_PLAINS);
 		List<TagKey<Biome>> overworldBadlands = List.of(BiomeTags.IS_OVERWORLD, BiomeTags.IS_BADLANDS);
-		List<TagKey<Biome>> savanna = List.of(BiomeTags.IS_SAVANNA);
+		List<TagKey<Biome>> notSavanna = List.of(BiomeTags.IS_SAVANNA);
 		map.putAll(generateBiomeModifier(ops, "add_plains_centaur",
-				overworldPlains, savanna,
+				overworldPlains, notSavanna,
 				new MobSpawnSettings.SpawnerData(GaiaRegistry.CENTAUR.getEntityType(), 20, 4, 6))
 		);
 		map.putAll(generateBiomeModifier(ops, "add_badlands_centaur",
@@ -246,7 +246,7 @@ public class GaiaBiomeModifiers {
 		);
 
 		map.putAll(generateBiomeModifier(ops, "add_plains_satyress",
-				overworldPlains, savanna,
+				overworldPlains, notSavanna,
 				new MobSpawnSettings.SpawnerData(GaiaRegistry.SATYRESS.getEntityType(), 20, 2, 4))
 		);
 		map.putAll(generateBiomeModifier(ops, "add_badlands_satyress",
@@ -255,7 +255,7 @@ public class GaiaBiomeModifiers {
 		);
 
 		map.putAll(generateBiomeModifier(ops, "add_plains_harpy",
-				overworldPlains, savanna,
+				overworldPlains, notSavanna,
 				new MobSpawnSettings.SpawnerData(GaiaRegistry.HARPY.getEntityType(), 100, 2, 4))
 		);
 		map.putAll(generateBiomeModifier(ops, "add_badlands_harpy",
@@ -268,7 +268,7 @@ public class GaiaBiomeModifiers {
 		);
 
 		map.putAll(generateBiomeModifier(ops, "add_plains_minotaur",
-				overworldPlains, savanna,
+				overworldPlains, notSavanna,
 				new MobSpawnSettings.SpawnerData(GaiaRegistry.MINOTAUR.getEntityType(), 10, 1, 1))
 		);
 		map.putAll(generateBiomeModifier(ops, "add_badlands_minotaur",
@@ -281,7 +281,7 @@ public class GaiaBiomeModifiers {
 		);
 
 		map.putAll(generateBiomeModifier(ops, "add_plains_minotaurus",
-				overworldPlains, savanna,
+				overworldPlains, notSavanna,
 				new MobSpawnSettings.SpawnerData(GaiaRegistry.MINOTAURUS.getEntityType(), 80, 2, 4))
 		);
 		map.putAll(generateBiomeModifier(ops, "add_badlands_minotaurus",
@@ -313,81 +313,81 @@ public class GaiaBiomeModifiers {
 				new MobSpawnSettings.SpawnerData(GaiaRegistry.WITHER_COW.getEntityType(), 12, 2, 4))
 		);
 
-		List<TagKey<Biome>> overworldConiferousForest = List.of(BiomeTags.IS_OVERWORLD, BiomeTags.IS_FOREST, Tags.Biomes.IS_CONIFEROUS);
-		List<TagKey<Biome>> snowy = List.of(Tags.Biomes.IS_SNOWY);
+		List<TagKey<Biome>> overworldConiferous = List.of(BiomeTags.IS_OVERWORLD, Tags.Biomes.IS_CONIFEROUS);
+		List<TagKey<Biome>> notSnowy = List.of(Tags.Biomes.IS_SNOWY);
 		map.putAll(generateBiomeModifier(ops, "add_cyclops",
-				overworldConiferousForest, snowy,
+				overworldConiferous, notSnowy,
 				new MobSpawnSettings.SpawnerData(GaiaRegistry.CYCLOPS.getEntityType(), 40, 4, 6))
 		);
 		map.putAll(generateBiomeModifier(ops, "add_nine_tails",
-				overworldConiferousForest, snowy,
+				overworldConiferous, notSnowy,
 				new MobSpawnSettings.SpawnerData(GaiaRegistry.NINE_TAILS.getEntityType(), 40, 2, 4))
 		);
 		map.putAll(generateBiomeModifier(ops, "add_oni",
-				overworldConiferousForest, snowy,
+				overworldConiferous, notSnowy,
 				new MobSpawnSettings.SpawnerData(GaiaRegistry.ONI.getEntityType(), 80, 4, 6))
 		);
 		map.putAll(generateBiomeModifier(ops, "add_yuki_onna",
-				overworldConiferousForest, snowy,
+				overworldConiferous, notSnowy,
 				new MobSpawnSettings.SpawnerData(GaiaRegistry.YUKI_ONNA.getEntityType(), 60, 2, 4))
 		);
 		map.putAll(generateBiomeModifier(ops, "add_coniferous_forest_mandragora",
-				overworldConiferousForest, snowy,
+				overworldConiferous, notSnowy,
 				new MobSpawnSettings.SpawnerData(GaiaRegistry.CYAN_FLOWER.getEntityType(), 60, 1, 2))
 		);
 
 		List<TagKey<Biome>> overworldForest = List.of(BiomeTags.IS_OVERWORLD, BiomeTags.IS_FOREST);
-		List<TagKey<Biome>> coniferousColdHotSparseSpookyDense = List.of(Tags.Biomes.IS_CONIFEROUS, Tags.Biomes.IS_COLD, Tags.Biomes.IS_HOT,
+		List<TagKey<Biome>> notConiferousColdHotSparseSpookyDense = List.of(Tags.Biomes.IS_CONIFEROUS, Tags.Biomes.IS_COLD_OVERWORLD, Tags.Biomes.IS_HOT_OVERWORLD,
 				Tags.Biomes.IS_SPARSE, Tags.Biomes.IS_SPOOKY, Tags.Biomes.IS_DENSE);
 		map.putAll(generateBiomeModifier(ops, "add_bee",
-				overworldForest, coniferousColdHotSparseSpookyDense,
+				overworldForest, notConiferousColdHotSparseSpookyDense,
 				new MobSpawnSettings.SpawnerData(GaiaRegistry.BEE.getEntityType(), 80, 2, 4))
 		);
 		map.putAll(generateBiomeModifier(ops, "add_dryad",
-				overworldForest, coniferousColdHotSparseSpookyDense,
+				overworldForest, notConiferousColdHotSparseSpookyDense,
 				new MobSpawnSettings.SpawnerData(GaiaRegistry.DRYAD.getEntityType(), 60, 4, 6))
 		);
 		map.putAll(generateBiomeModifier(ops, "add_forest_mandragora",
-				overworldForest, coniferousColdHotSparseSpookyDense,
+				overworldForest, notConiferousColdHotSparseSpookyDense,
 				new MobSpawnSettings.SpawnerData(GaiaRegistry.CYAN_FLOWER.getEntityType(), 60, 1, 2))
 		);
 		map.putAll(generateBiomeModifier(ops, "add_spriggan",
-				overworldForest, coniferousColdHotSparseSpookyDense,
+				overworldForest, notConiferousColdHotSparseSpookyDense,
 				new MobSpawnSettings.SpawnerData(GaiaRegistry.SPRIGGAN.getEntityType(), 40, 2, 4))
 		);
 		map.putAll(generateBiomeModifier(ops, "add_werecat",
-				overworldForest, coniferousColdHotSparseSpookyDense,
+				overworldForest, notConiferousColdHotSparseSpookyDense,
 				new MobSpawnSettings.SpawnerData(GaiaRegistry.WERECAT.getEntityType(), 80, 4, 6))
 		);
 
 		List<TagKey<Biome>> overworldRareDenseForest = List.of(BiomeTags.IS_OVERWORLD, BiomeTags.IS_FOREST, Tags.Biomes.IS_DENSE, Tags.Biomes.IS_RARE);
-		List<TagKey<Biome>> coniferousColdHotSparseSpooky = List.of(Tags.Biomes.IS_CONIFEROUS, Tags.Biomes.IS_COLD, Tags.Biomes.IS_HOT,
+		List<TagKey<Biome>> notConiferousColdHotSparseSpooky = List.of(Tags.Biomes.IS_CONIFEROUS, Tags.Biomes.IS_COLD, Tags.Biomes.IS_HOT,
 				Tags.Biomes.IS_SPARSE, Tags.Biomes.IS_SPOOKY);
 		map.putAll(generateBiomeModifier(ops, "add_dense_forest_bee",
-				overworldRareDenseForest, coniferousColdHotSparseSpooky,
+				overworldRareDenseForest, notConiferousColdHotSparseSpooky,
 				new MobSpawnSettings.SpawnerData(GaiaRegistry.BEE.getEntityType(), 80, 2, 4))
 		);
 		map.putAll(generateBiomeModifier(ops, "add_dense_forest_mandragora",
-				overworldRareDenseForest, coniferousColdHotSparseSpooky,
+				overworldRareDenseForest, notConiferousColdHotSparseSpooky,
 				new MobSpawnSettings.SpawnerData(GaiaRegistry.CYAN_FLOWER.getEntityType(), 60, 1, 2))
 		);
 		map.putAll(generateBiomeModifier(ops, "add_dense_forest_dryad",
-				overworldRareDenseForest, coniferousColdHotSparseSpooky,
+				overworldRareDenseForest, notConiferousColdHotSparseSpooky,
 				new MobSpawnSettings.SpawnerData(GaiaRegistry.DRYAD.getEntityType(), 60, 4, 6))
 		);
 		map.putAll(generateBiomeModifier(ops, "add_dense_forest_spriggan",
-				overworldRareDenseForest, coniferousColdHotSparseSpooky,
+				overworldRareDenseForest, notConiferousColdHotSparseSpooky,
 				new MobSpawnSettings.SpawnerData(GaiaRegistry.SPRIGGAN.getEntityType(), 40, 2, 4))
 		);
 		map.putAll(generateBiomeModifier(ops, "add_dense_forest_werecat",
-				overworldRareDenseForest, coniferousColdHotSparseSpooky,
+				overworldRareDenseForest, notConiferousColdHotSparseSpooky,
 				new MobSpawnSettings.SpawnerData(GaiaRegistry.WERECAT.getEntityType(), 80, 4, 6))
 		);
 
 		List<TagKey<Biome>> overworldSnowy = List.of(BiomeTags.IS_OVERWORLD, Tags.Biomes.IS_SNOWY);
-		List<TagKey<Biome>> oceanRiverBeachForest = List.of(BiomeTags.IS_OCEAN, BiomeTags.IS_RIVER, BiomeTags.IS_BEACH, BiomeTags.IS_FOREST);
+		List<TagKey<Biome>> notOceanRiverBeachForest = List.of(BiomeTags.IS_OCEAN, BiomeTags.IS_RIVER, BiomeTags.IS_BEACH, BiomeTags.IS_FOREST);
 		map.putAll(generateBiomeModifier(ops, "add_kobold",
-				overworldSnowy, oceanRiverBeachForest,
+				overworldSnowy, notOceanRiverBeachForest,
 				new MobSpawnSettings.SpawnerData(GaiaRegistry.KOBOLD.getEntityType(), 60, 4, 6))
 		);
 
