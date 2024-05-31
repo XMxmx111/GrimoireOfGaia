@@ -333,7 +333,7 @@ public class GaiaBiomeModifiers {
 		);
 		map.putAll(generateBiomeModifier(ops, "add_coniferous_forest_mandragora",
 				overworldConiferousForest, snowy,
-				new MobSpawnSettings.SpawnerData(GaiaRegistry.MANDRAGORA.getEntityType(), 60, 1, 2))
+				new MobSpawnSettings.SpawnerData(GaiaRegistry.CYAN_FLOWER.getEntityType(), 60, 1, 2))
 		);
 
 		List<TagKey<Biome>> overworldForest = List.of(BiomeTags.IS_OVERWORLD, BiomeTags.IS_FOREST);
@@ -349,7 +349,7 @@ public class GaiaBiomeModifiers {
 		);
 		map.putAll(generateBiomeModifier(ops, "add_forest_mandragora",
 				overworldForest, coniferousColdHotSparseSpookyDense,
-				new MobSpawnSettings.SpawnerData(GaiaRegistry.MANDRAGORA.getEntityType(), 60, 1, 2))
+				new MobSpawnSettings.SpawnerData(GaiaRegistry.CYAN_FLOWER.getEntityType(), 60, 1, 2))
 		);
 		map.putAll(generateBiomeModifier(ops, "add_spriggan",
 				overworldForest, coniferousColdHotSparseSpookyDense,
@@ -369,7 +369,7 @@ public class GaiaBiomeModifiers {
 		);
 		map.putAll(generateBiomeModifier(ops, "add_dense_forest_mandragora",
 				overworldRareDenseForest, coniferousColdHotSparseSpooky,
-				new MobSpawnSettings.SpawnerData(GaiaRegistry.MANDRAGORA.getEntityType(), 60, 1, 2))
+				new MobSpawnSettings.SpawnerData(GaiaRegistry.CYAN_FLOWER.getEntityType(), 60, 1, 2))
 		);
 		map.putAll(generateBiomeModifier(ops, "add_dense_forest_dryad",
 				overworldRareDenseForest, coniferousColdHotSparseSpooky,
