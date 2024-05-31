@@ -65,12 +65,12 @@ public class GaiaBiomeModifiers {
 
 		map.putAll(generateBiomeModifier(ops, "add_bone_knight",
 				overworld, peaceful,
-				new MobSpawnSettings.SpawnerData(GaiaRegistry.BONE_KNIGHT.getEntityType(), 80, 2, 4))
+				new MobSpawnSettings.SpawnerData(GaiaRegistry.BONE_KNIGHT.getEntityType(), 40, 1, 2))
 		);
 
 		map.putAll(generateBiomeModifier(ops, "add_creep",
 				overworld, peaceful,
-				new MobSpawnSettings.SpawnerData(GaiaRegistry.CREEP.getEntityType(), 20, 4, 6))
+				new MobSpawnSettings.SpawnerData(GaiaRegistry.CREEP.getEntityType(), 80, 2, 4))
 		);
 
 		map.putAll(generateBiomeModifier(ops, "add_deathword",
@@ -85,7 +85,7 @@ public class GaiaBiomeModifiers {
 
 		map.putAll(generateBiomeModifier(ops, "add_flesh_lich",
 				overworld, peaceful,
-				new MobSpawnSettings.SpawnerData(GaiaRegistry.FLESH_LICH.getEntityType(), 100, 4, 6))
+				new MobSpawnSettings.SpawnerData(GaiaRegistry.FLESH_LICH.getEntityType(), 40, 1, 2))
 		);
 
 		map.putAll(generateBiomeModifier(ops, "add_mimic",
@@ -126,7 +126,7 @@ public class GaiaBiomeModifiers {
 
 		map.putAll(generateBiomeModifier(ops, "add_gryphon",
 				overworldPlateau, coldHotDense,
-				new MobSpawnSettings.SpawnerData(GaiaRegistry.GRYPHON.getEntityType(), 100, 1, 2))
+				new MobSpawnSettings.SpawnerData(GaiaRegistry.GRYPHON.getEntityType(), 80, 1, 2))
 		);
 		map.putAll(generateBiomeModifier(ops, "add_mountain_gryphon",
 				overworldMountain, hotDense,
@@ -186,7 +186,7 @@ public class GaiaBiomeModifiers {
 		);
 		map.putAll(generateBiomeModifier(ops, "add_naga",
 				overworldSwamp, null,
-				new MobSpawnSettings.SpawnerData(GaiaRegistry.NAGA.getEntityType(), 60, 4, 6))
+				new MobSpawnSettings.SpawnerData(GaiaRegistry.NAGA.getEntityType(), 30, 1, 2))
 		);
 		map.putAll(generateBiomeModifier(ops, "add_siren",
 				overworldSwamp, null,
@@ -237,11 +237,11 @@ public class GaiaBiomeModifiers {
 		List<TagKey<Biome>> savanna = List.of(BiomeTags.IS_SAVANNA);
 		map.putAll(generateBiomeModifier(ops, "add_plains_centaur",
 				overworldPlains, savanna,
-				new MobSpawnSettings.SpawnerData(GaiaRegistry.CENTAUR.getEntityType(), 80, 2, 4))
+				new MobSpawnSettings.SpawnerData(GaiaRegistry.CENTAUR.getEntityType(), 20, 4, 6))
 		);
 		map.putAll(generateBiomeModifier(ops, "add_badlands_centaur",
 				overworldBadlands, null,
-				new MobSpawnSettings.SpawnerData(GaiaRegistry.CENTAUR.getEntityType(), 80, 2, 4))
+				new MobSpawnSettings.SpawnerData(GaiaRegistry.CENTAUR.getEntityType(), 20, 4, 6))
 		);
 
 		map.putAll(generateBiomeModifier(ops, "add_plains_satyress",
