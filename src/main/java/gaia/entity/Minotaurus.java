@@ -48,7 +48,7 @@ import org.jetbrains.annotations.Nullable;
 
 public class Minotaurus extends AbstractGaiaEntity implements RangedAttackMob, PowerableMob {
 
-	private final RangedBowAttackGoal rangedAttackGoal = new RangedBowAttackGoal<Minotaurus>(this, SharedEntityData.ATTACK_SPEED_2, 20, 15.0F);
+	private final RangedBowAttackGoal<Minotaurus> rangedAttackGoal = new RangedBowAttackGoal<>(this, SharedEntityData.ATTACK_SPEED_2, 20, 15.0F);
 	private final MobAttackGoal collideAttackGoal = new MobAttackGoal(this, SharedEntityData.ATTACK_SPEED_2, true);
 
 	public Minotaurus(EntityType<? extends Monster> entityType, Level level) {

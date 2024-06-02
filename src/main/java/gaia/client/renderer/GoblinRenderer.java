@@ -16,7 +16,7 @@ public class GoblinRenderer extends MobRenderer<Goblin, GoblinModel<Goblin>> {
 			new ResourceLocation(GrimoireOfGaia.MOD_ID, "textures/entity/goblin/goblin02.png")};
 
 	public GoblinRenderer(Context context) {
-		super(context, new GoblinModel(context.bakeLayer(ClientHandler.GOBLIN)), ClientHandler.smallShadow);
+		super(context, new GoblinModel<>(context.bakeLayer(ClientHandler.GOBLIN)), ClientHandler.smallShadow);
 		this.addLayer(new CustomHeadLayer<>(this, context.getModelSet(), context.getItemInHandRenderer()));
 		this.addLayer(new ItemInHandLayer<>(this, context.getItemInHandRenderer()));
 	}

@@ -145,11 +145,7 @@ public class Mimic extends AbstractGaiaEntity {
 	}
 
 	private boolean hasItem() {
-		if (!this.getItemBySlot(EquipmentSlot.MAINHAND).isEmpty()) {
-			return true;
-		} else {
-			return false;
-		}
+		return !this.getItemBySlot(EquipmentSlot.MAINHAND).isEmpty();
 	}
 
 	@Override

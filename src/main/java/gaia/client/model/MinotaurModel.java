@@ -181,8 +181,8 @@ public class MinotaurModel extends EntityModel<Minotaur> implements HeadedModel,
 			leftarm.zRot -= (Mth.cos(ageInTicks * 0.09F) * 0.05F + 0.05F) + 0.1745329F;
 			leftarm.xRot -= Mth.sin(ageInTicks * 0.067F) * 0.05F;
 
-			rightarm.xRot = +armDefaultAngleX;
-			leftarm.xRot = +armDefaultAngleX;
+			rightarm.xRot = armDefaultAngleX;
+			leftarm.xRot = armDefaultAngleX;
 
 			rightarmlower.xRot = -armDefaultAngleX;
 			leftarmlower.xRot = -armDefaultAngleX;
@@ -218,11 +218,11 @@ public class MinotaurModel extends EntityModel<Minotaur> implements HeadedModel,
 
 		rightarm.xRot = 0.0F;
 		leftarm.xRot = 0.0F;
-		rightarm.zRot = +armDefaultAngleX;
+		rightarm.zRot = armDefaultAngleX;
 		leftarm.zRot = -armDefaultAngleX;
 
-		rightarm.xRot = +armDefaultAngleX;
-		leftarm.xRot = +armDefaultAngleX;
+		rightarm.xRot = armDefaultAngleX;
+		leftarm.xRot = armDefaultAngleX;
 		rightarmlower.xRot = -armDefaultAngleX;
 		leftarmlower.xRot = -armDefaultAngleX;
 	}

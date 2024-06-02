@@ -157,7 +157,7 @@ public class TraderModel extends EntityModel<Trader> implements HeadedModel, Arm
 		rightear.yRot = Mth.cos(Mth.DEG_TO_RAD * ((float) ageInTicks * 7)) * (Mth.DEG_TO_RAD * 4);
 		rightear.yRot += earDefaultAngleZ;
 		leftear.yRot = Mth.cos((Mth.DEG_TO_RAD * (float) ageInTicks * 7)) * -(Mth.DEG_TO_RAD * 4);
-		leftear.yRot += -earDefaultAngleZ;
+		leftear.yRot -= earDefaultAngleZ;
 
 		// arms
 		rightarm.xRot = Mth.cos(limbSwing * 0.6662F + (float) Math.PI) * 0.8F * limbSwingAmount * 0.5F;
@@ -170,7 +170,7 @@ public class TraderModel extends EntityModel<Trader> implements HeadedModel, Arm
 		float armDefaultAngleZ = 0.174533F;
 
 		rightarm.xRot += Mth.sin(ageInTicks * 0.067F) * 0.05F;
-		rightarm.yRot = +armDefaultAngleY;
+		rightarm.yRot = armDefaultAngleY;
 		rightarm.zRot += (Mth.cos(ageInTicks * 0.09F) * 0.05F + 0.05F) + armDefaultAngleZ;
 
 		leftarm.xRot -= Mth.sin(ageInTicks * 0.067F) * 0.05F;
@@ -194,8 +194,8 @@ public class TraderModel extends EntityModel<Trader> implements HeadedModel, Arm
 		leftleg.zRot = 0.0349066F;
 
 		if (riding) {
-			rightarm.xRot += -((float) Math.PI / 5F);
-			leftarm.xRot += -((float) Math.PI / 5F);
+			rightarm.xRot -= ((float) Math.PI / 5F);
+			leftarm.xRot -= ((float) Math.PI / 5F);
 			rightleg.xRot = -1.4137167F;
 			rightleg.yRot = ((float) Math.PI / 10F);
 			rightleg.zRot = 0.07853982F;

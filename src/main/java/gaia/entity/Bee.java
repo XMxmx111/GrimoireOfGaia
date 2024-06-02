@@ -270,9 +270,7 @@ public class Bee extends AbstractAssistGaiaEntity implements IDayMob, FlyingAnim
 	private boolean detectMovement() {
 		if (this.getDeltaMovement().horizontalDistanceSqr() > (double) 2.5000003E-7F) {
 			BlockState blockstate = this.level().getBlockState(blockPosition().below());
-			if (!blockstate.isAir()) {
-				return true;
-			}
+			return !blockstate.isAir();
 		}
 
 		return false;

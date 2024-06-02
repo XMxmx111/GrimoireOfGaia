@@ -19,7 +19,7 @@ public class GoblinFeralRenderer extends MobRenderer<GoblinFeral, GoblinModel<Go
 			new ResourceLocation(GrimoireOfGaia.MOD_ID, "textures/entity/goblin/goblin_feral03.png")};
 
 	public GoblinFeralRenderer(Context context) {
-		super(context, new GoblinModel(context.bakeLayer(ClientHandler.GOBLIN_FERAL)), ClientHandler.smallShadow);
+		super(context, new GoblinModel<>(context.bakeLayer(ClientHandler.GOBLIN_FERAL)), ClientHandler.smallShadow);
 		this.addLayer(new CustomHeadLayer<>(this, context.getModelSet(), context.getItemInHandRenderer()));
 		this.addLayer(new ItemInHandLayer<>(this, context.getItemInHandRenderer()));
 	}

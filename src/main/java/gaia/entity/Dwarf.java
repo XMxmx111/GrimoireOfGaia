@@ -60,7 +60,7 @@ import java.util.function.Predicate;
 public class Dwarf extends AbstractAssistGaiaEntity implements RangedAttackMob, IDayMob {
 	private static final EntityDataAccessor<Boolean> RANDOM_CLASS = SynchedEntityData.defineId(Dwarf.class, EntityDataSerializers.BOOLEAN);
 
-	private final RangedBowAttackGoal rangedBowAttackGoal = new RangedBowAttackGoal<>(this, SharedEntityData.ATTACK_SPEED_2, 20, 15.0F);
+	private final RangedBowAttackGoal<Dwarf> rangedBowAttackGoal = new RangedBowAttackGoal<>(this, SharedEntityData.ATTACK_SPEED_2, 20, 15.0F);
 	private final MobAttackGoal collideAttackGoal = new MobAttackGoal(this, SharedEntityData.ATTACK_SPEED_2, true);
 	private static final Predicate<Difficulty> DOOR_BREAKING_PREDICATE = (difficulty) -> {
 		return difficulty == Difficulty.HARD;

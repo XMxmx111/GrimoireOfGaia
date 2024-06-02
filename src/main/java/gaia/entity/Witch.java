@@ -129,7 +129,7 @@ public class Witch extends AbstractGaiaEntity implements RangedAttackMob {
 	}
 
 	public boolean isRidingBroom() {
-		return this.getEntityData().get(IS_RIDING).booleanValue();
+		return this.getEntityData().get(IS_RIDING);
 	}
 
 	@Override

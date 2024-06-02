@@ -25,6 +25,7 @@ import xyz.brassgoggledcoders.patchouliprovider.page.EntityPageBuilder;
 import java.util.Arrays;
 import java.util.function.Consumer;
 
+@SuppressWarnings("ClassEscapesDefinedScope")
 public class GaiaPatchouliProvider extends PatchouliBookProvider {
 	public GaiaPatchouliProvider(PackOutput packOutput) {
 		super(packOutput, GrimoireOfGaia.MOD_ID, "en_us");
