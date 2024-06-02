@@ -9,7 +9,7 @@
     "type": "grimoireofgaia:gryphon",
     "maxCount": 2,
     "minCount": 1,
-    "weight": 100
+    "weight": 80
   },
   "whitelist": [
     "#minecraft:is_overworld",

@@ -3,9 +3,9 @@
   "blacklist": [],
   "spawners": {
     "type": "grimoireofgaia:naga",
-    "maxCount": 6,
-    "minCount": 4,
-    "weight": 60
+    "maxCount": 2,
+    "minCount": 1,
+    "weight": 30
   },
   "whitelist": [
     "#minecraft:is_overworld",
