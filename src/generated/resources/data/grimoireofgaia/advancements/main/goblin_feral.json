@@ -22,8 +22,8 @@
       "translate": "advancement.grimoireofgaia.goblin_feral.desc"
     },
     "icon": {
-      "item": "minecraft:wooden_axe",
-      "nbt": "{Damage:0}"
+      "count": 1,
+      "id": "minecraft:wooden_axe"
     },
     "title": {
       "translate": "advancement.grimoireofgaia.goblin_feral.title"

@@ -19,11 +19,11 @@ public class CobblestoneGolemRenderer extends MobRenderer<CobblestoneGolem, Cobb
 	}
 
 	@Override
-	protected void setupRotations(CobblestoneGolem cobblestoneGolem, PoseStack poseStack, float p_115016_, float p_115017_, float p_115018_) {
-		super.setupRotations(cobblestoneGolem, poseStack, p_115016_, p_115017_, p_115018_);
+	protected void setupRotations(CobblestoneGolem cobblestoneGolem, PoseStack poseStack, float bob, float yBodyRot, float partialTick, float scale) {
+		super.setupRotations(cobblestoneGolem, poseStack, bob, yBodyRot, partialTick, scale);
 		if (!((double) cobblestoneGolem.walkAnimation.speed() < 0.01D)) {
 			float f = 13.0F;
-			float f1 = cobblestoneGolem.walkAnimation.position() - cobblestoneGolem.walkAnimation.speed() * (1.0F - p_115018_) + 6.0F;
+			float f1 = cobblestoneGolem.walkAnimation.position() - cobblestoneGolem.walkAnimation.speed() * (1.0F - partialTick) + 6.0F;
 			float f2 = (Math.abs(f1 % 13.0F - 6.5F) - 3.25F) / 3.25F;
 			poseStack.mulPose(Axis.ZP.rotationDegrees(6.5F * f2));
 		}

@@ -10,7 +10,9 @@ import gaia.registry.GaiaTags;
 import gaia.util.RangedUtil;
 import gaia.util.SharedEntityData;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.Difficulty;
@@ -39,11 +41,10 @@ import net.minecraft.world.entity.monster.RangedAttackMob;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.alchemy.PotionUtils;
+import net.minecraft.world.item.alchemy.PotionContents;
 import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
-import net.neoforged.neoforge.common.NeoForgeMod;
 import org.jetbrains.annotations.Nullable;
 
 public class Hunter extends AbstractAssistGaiaEntity implements RangedAttackMob, IDayMob {
@@ -84,12 +85,12 @@ public class Hunter extends AbstractAssistGaiaEntity implements RangedAttackMob,
 				.add(Attributes.ATTACK_DAMAGE, 4.0D)
 				.add(Attributes.ARMOR, SharedEntityData.RATE_ARMOR_1)
 				.add(Attributes.ATTACK_KNOCKBACK, SharedEntityData.KNOCKBACK_1)
-				.add(NeoForgeMod.STEP_HEIGHT.value(), 1.0F);
+				.add(Attributes.STEP_HEIGHT, 1.0F);
 	}
 
 	@Override
-	protected void defineSynchedData() {
-		super.defineSynchedData();
+	protected void defineSynchedData(SynchedEntityData.Builder builder) {
+		super.defineSynchedData(builder);
 	}
 
 	@Override
@@ -218,15 +219,17 @@ public class Hunter extends AbstractAssistGaiaEntity implements RangedAttackMob,
 		setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(Items.BOW));
 
 		if (random.nextInt(2) == 0) {
-			setItemSlot(EquipmentSlot.OFFHAND, PotionUtils.setPotion(new ItemStack(Items.TIPPED_ARROW), Potions.POISON));
+			ItemStack tippedArrow = new ItemStack(Items.TIPPED_ARROW);
+			tippedArrow.set(DataComponents.POTION_CONTENTS, new PotionContents(Potions.POISON));
+			setItemSlot(EquipmentSlot.OFFHAND, tippedArrow);
 		}
 	}
 
 	@Nullable
 	@Override
 	public SpawnGroupData finalizeSpawn(ServerLevelAccessor levelAccessor, DifficultyInstance difficultyInstance,
-	                                    MobSpawnType spawnType, @Nullable SpawnGroupData groupData, @Nullable CompoundTag tag) {
-		SpawnGroupData data = super.finalizeSpawn(levelAccessor, difficultyInstance, spawnType, groupData, tag);
+	                                    MobSpawnType spawnType, @Nullable SpawnGroupData groupData) {
+		SpawnGroupData data = super.finalizeSpawn(levelAccessor, difficultyInstance, spawnType, groupData);
 
 		if (random.nextInt(4) == 0) {
 			setVariant(1);

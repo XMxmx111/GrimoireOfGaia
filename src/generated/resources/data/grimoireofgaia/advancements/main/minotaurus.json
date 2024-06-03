@@ -22,8 +22,8 @@
       "translate": "advancement.grimoireofgaia.minotaurus.desc"
     },
     "icon": {
-      "item": "grimoireofgaia:weapon_book_battle",
-      "nbt": "{Damage:0}"
+      "count": 1,
+      "id": "grimoireofgaia:weapon_book_battle"
     },
     "title": {
       "translate": "advancement.grimoireofgaia.minotaurus.title"

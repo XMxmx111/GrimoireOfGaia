@@ -22,7 +22,7 @@
               "function": "minecraft:furnace_smelt"
             }
           ],
-          "name": "minecraft:gameplay/fishing/fish"
+          "value": "minecraft:gameplay/fishing/fish"
         }
       ],
       "rolls": 1.0
@@ -44,7 +44,7 @@
               "function": "minecraft:set_count"
             }
           ],
-          "name": "forge:nuggets/iron"
+          "name": "c:nuggets/iron"
         }
       ],
       "rolls": 1.0

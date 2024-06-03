@@ -22,7 +22,8 @@
       "translate": "advancement.grimoireofgaia.deathword.desc"
     },
     "icon": {
-      "item": "minecraft:paper"
+      "count": 1,
+      "id": "minecraft:paper"
     },
     "title": {
       "translate": "advancement.grimoireofgaia.deathword.title"

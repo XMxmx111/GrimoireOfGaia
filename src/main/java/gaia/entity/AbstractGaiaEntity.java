@@ -89,9 +89,9 @@ public abstract class AbstractGaiaEntity extends Monster {
 	}
 
 	@Override
-	protected void defineSynchedData() {
-		super.defineSynchedData();
-		this.entityData.define(VARIANT, 0);
+	protected void defineSynchedData(SynchedEntityData.Builder builder) {
+		super.defineSynchedData(builder);
+		builder.define(VARIANT, 0);
 	}
 
 	public int getGaiaLevel() {
@@ -136,7 +136,7 @@ public abstract class AbstractGaiaEntity extends Monster {
 	protected GaiaHorse createHorse(DifficultyInstance difficulty) {
 		Entity entity = GaiaRegistry.HORSE.getEntityType().create(this.level());
 		if (entity instanceof GaiaHorse horse) {
-			horse.finalizeSpawn((ServerLevel) this.level(), difficulty, MobSpawnType.JOCKEY, (SpawnGroupData) null, (CompoundTag) null);
+			horse.finalizeSpawn((ServerLevel) this.level(), difficulty, MobSpawnType.JOCKEY, (SpawnGroupData) null);
 			horse.setPos(this.getX(), this.getY(), this.getZ());
 			horse.setTamed(true);
 			horse.setAge(0);
@@ -182,8 +182,8 @@ public abstract class AbstractGaiaEntity extends Monster {
 	@Nullable
 	@Override
 	public SpawnGroupData finalizeSpawn(ServerLevelAccessor levelAccessor, DifficultyInstance difficultyInstance,
-	                                    MobSpawnType spawnType, @Nullable SpawnGroupData groupData, @Nullable CompoundTag tag) {
-		SpawnGroupData data = super.finalizeSpawn(levelAccessor, difficultyInstance, spawnType, groupData, tag);
+	                                    MobSpawnType spawnType, @Nullable SpawnGroupData groupData) {
+		SpawnGroupData data = super.finalizeSpawn(levelAccessor, difficultyInstance, spawnType, groupData);
 		this.finalizeAttributes();
 
 		//Setup health changes

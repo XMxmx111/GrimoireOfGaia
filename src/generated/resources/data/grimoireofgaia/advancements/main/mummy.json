@@ -22,7 +22,8 @@
       "translate": "advancement.grimoireofgaia.mummy.desc"
     },
     "icon": {
-      "item": "minecraft:rotten_flesh"
+      "count": 1,
+      "id": "minecraft:rotten_flesh"
     },
     "title": {
       "translate": "advancement.grimoireofgaia.mummy.title"

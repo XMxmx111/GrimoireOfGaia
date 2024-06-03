@@ -22,8 +22,8 @@
       "translate": "advancement.grimoireofgaia.kobold.desc"
     },
     "icon": {
-      "item": "minecraft:bow",
-      "nbt": "{Damage:0}"
+      "count": 1,
+      "id": "minecraft:bow"
     },
     "title": {
       "translate": "advancement.grimoireofgaia.kobold.title"

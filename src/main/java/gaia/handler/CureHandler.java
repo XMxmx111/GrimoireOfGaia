@@ -9,7 +9,7 @@ public class CureHandler {
 	@SubscribeEvent
 	public void onEffectAdded(MobEffectEvent.Added event) {
 		MobEffectInstance instance = event.getEffectInstance();
-		if (!instance.getEffect().isBeneficial()) {
+		if (!instance.getEffect().value().isBeneficial()) {
 			instance.getCures().add(TaprootItem.TAPROOT);
 		}
 	}

@@ -87,7 +87,7 @@ public class GoblinFeral extends AbstractGaiaEntity implements RangedAttackMob {
 				.add(Attributes.ATTACK_DAMAGE, 2)
 				.add(Attributes.ARMOR, SharedEntityData.RATE_ARMOR_1)
 				.add(Attributes.ATTACK_KNOCKBACK, SharedEntityData.KNOCKBACK_1)
-				.add(NeoForgeMod.STEP_HEIGHT.value(), 1.0F);
+				.add(Attributes.STEP_HEIGHT, 1.0F);
 	}
 
 	@Override
@@ -97,10 +97,10 @@ public class GoblinFeral extends AbstractGaiaEntity implements RangedAttackMob {
 	}
 
 	@Override
-	protected void defineSynchedData() {
-		super.defineSynchedData();
-		this.entityData.define(DATA_SWELL_DIR, -1);
-		this.entityData.define(DATA_IS_IGNITED, false);
+	protected void defineSynchedData(SynchedEntityData.Builder builder) {
+		super.defineSynchedData(builder);
+		builder.define(DATA_SWELL_DIR, -1);
+		builder.define(DATA_IS_IGNITED, false);
 	}
 
 	public float getSwelling(float swell) {
@@ -190,7 +190,7 @@ public class GoblinFeral extends AbstractGaiaEntity implements RangedAttackMob {
 
 	private void explode() {
 		if (!this.level().isClientSide) {
-			Level.ExplosionInteraction explosion$blockinteraction = EventHooks.getMobGriefingEvent(this.level(), this) ? Level.ExplosionInteraction.MOB : Level.ExplosionInteraction.NONE;
+			Level.ExplosionInteraction explosion$blockinteraction = EventHooks.canEntityGrief(this.level(), this) ? Level.ExplosionInteraction.MOB : Level.ExplosionInteraction.NONE;
 			this.dead = true;
 			this.level().explode(this, this.getX(), this.getY(), this.getZ(), (float) this.explosionRadius, explosion$blockinteraction);
 			this.discard();
@@ -245,8 +245,8 @@ public class GoblinFeral extends AbstractGaiaEntity implements RangedAttackMob {
 	@Nullable
 	@Override
 	public SpawnGroupData finalizeSpawn(ServerLevelAccessor levelAccessor, DifficultyInstance difficultyInstance,
-										MobSpawnType spawnType, @Nullable SpawnGroupData groupData, @Nullable CompoundTag tag) {
-		SpawnGroupData data = super.finalizeSpawn(levelAccessor, difficultyInstance, spawnType, groupData, tag);
+										MobSpawnType spawnType, @Nullable SpawnGroupData groupData) {
+		SpawnGroupData data = super.finalizeSpawn(levelAccessor, difficultyInstance, spawnType, groupData);
 
 		this.populateDefaultEquipmentSlots(random, difficultyInstance);
 

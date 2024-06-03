@@ -6,8 +6,10 @@ import gaia.registry.GaiaRegistry;
 import gaia.util.RangedUtil;
 import gaia.util.SharedEntityData;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.RandomSource;
@@ -38,12 +40,12 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.BowItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.alchemy.PotionUtils;
+import net.minecraft.world.item.alchemy.PotionContents;
 import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
-import net.neoforged.neoforge.common.NeoForgeMod;
+import net.minecraft.world.level.storage.loot.LootTable;
 import org.jetbrains.annotations.Nullable;
 
 public class Minotaurus extends AbstractGaiaEntity implements RangedAttackMob, PowerableMob {
@@ -75,7 +77,7 @@ public class Minotaurus extends AbstractGaiaEntity implements RangedAttackMob, P
 				.add(Attributes.ATTACK_DAMAGE, 8.0D)
 				.add(Attributes.ARMOR, SharedEntityData.RATE_ARMOR_2)
 				.add(Attributes.ATTACK_KNOCKBACK, SharedEntityData.KNOCKBACK_2)
-				.add(NeoForgeMod.STEP_HEIGHT.value(), 1.0F);
+				.add(Attributes.STEP_HEIGHT, 1.0F);
 	}
 
 	@Override
@@ -84,8 +86,8 @@ public class Minotaurus extends AbstractGaiaEntity implements RangedAttackMob, P
 	}
 
 	@Override
-	protected void defineSynchedData() {
-		super.defineSynchedData();
+	protected void defineSynchedData(SynchedEntityData.Builder builder) {
+		super.defineSynchedData(builder);
 	}
 
 	@Override
@@ -161,8 +163,8 @@ public class Minotaurus extends AbstractGaiaEntity implements RangedAttackMob, P
 	@Nullable
 	@Override
 	public SpawnGroupData finalizeSpawn(ServerLevelAccessor levelAccessor, DifficultyInstance difficultyInstance,
-										MobSpawnType spawnType, @Nullable SpawnGroupData groupData, @Nullable CompoundTag tag) {
-		SpawnGroupData data = super.finalizeSpawn(levelAccessor, difficultyInstance, spawnType, groupData, tag);
+										MobSpawnType spawnType, @Nullable SpawnGroupData groupData) {
+		SpawnGroupData data = super.finalizeSpawn(levelAccessor, difficultyInstance, spawnType, groupData);
 
 		if (random.nextInt(4) == 0) {
 			mobClass(difficultyInstance, 1);
@@ -196,10 +198,13 @@ public class Minotaurus extends AbstractGaiaEntity implements RangedAttackMob, P
 				this.populateDefaultEquipmentSlots(random, difficultyInstance);
 
 				if (random.nextBoolean()) {
+					ItemStack tippedArrow = new ItemStack(Items.TIPPED_ARROW);
 					if (random.nextInt(2) == 0) {
-						setItemSlot(EquipmentSlot.OFFHAND, PotionUtils.setPotion(new ItemStack(Items.TIPPED_ARROW), Potions.SLOWNESS));
+						tippedArrow.set(DataComponents.POTION_CONTENTS, new PotionContents(Potions.SLOWNESS));
+						setItemSlot(EquipmentSlot.OFFHAND, tippedArrow);
 					} else {
-						setItemSlot(EquipmentSlot.OFFHAND, PotionUtils.setPotion(new ItemStack(Items.TIPPED_ARROW), Potions.WEAKNESS));
+						tippedArrow.set(DataComponents.POTION_CONTENTS, new PotionContents(Potions.WEAKNESS));
+						setItemSlot(EquipmentSlot.OFFHAND, tippedArrow);
 					}
 				}
 			}
@@ -221,7 +226,7 @@ public class Minotaurus extends AbstractGaiaEntity implements RangedAttackMob, P
 	}
 
 	@Override
-	protected ResourceLocation getDefaultLootTable() {
+	protected ResourceKey<LootTable> getDefaultLootTable() {
 		return getVariant() == 0 ? super.getDefaultLootTable() : GaiaLootTables.MINOTAURUS_RANGED;
 	}
 

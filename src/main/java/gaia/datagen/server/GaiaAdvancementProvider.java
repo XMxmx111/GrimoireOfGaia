@@ -70,7 +70,7 @@ public class GaiaAdvancementProvider extends AdvancementProvider {
 			addKillAdvancement(consumer, GaiaRegistry.FLESH_LICH, GaiaRegistry.ZOMBIE_STAFF.get(), root);
 			addKillAdvancement(consumer, GaiaRegistry.GELATINOUS_SLIME, GaiaRegistry.DOLL_SLIME_GIRL_ITEM.get(), root);
 			addKillAdvancement(consumer, GaiaRegistry.GOBLIN_FERAL, Items.WOODEN_AXE, root);
-			addKillAdvancement(consumer, GaiaRegistry.GRAVEMITE, Items.AIR, root);
+			addKillAdvancement(consumer, GaiaRegistry.GRAVEMITE, Items.COBBLESTONE, root);
 			addKillAdvancement(consumer, GaiaRegistry.HARPY, GaiaRegistry.DECO_NEST_HARPY_ITEM.get(), root);
 			addKillAdvancement(consumer, GaiaRegistry.KOBOLD, Items.BOW, root);
 			addKillAdvancement(consumer, GaiaRegistry.MANDRAGORA, GaiaRegistry.DECO_GARDEN_GNOME_ITEM.get(), root);

@@ -48,7 +48,7 @@ import java.util.UUID;
 
 public class Harpy extends AbstractGaiaEntity {
 	private static final UUID KNOCKBACK_MODIFIER_UUID = UUID.fromString("94A1EB78-7029-4390-9756-AD564F43CA4C");
-	private static final AttributeModifier KNOCKBACK_MODIFIER = new AttributeModifier(KNOCKBACK_MODIFIER_UUID, "Knockback boost", 2.0D, Operation.ADDITION);
+	private static final AttributeModifier KNOCKBACK_MODIFIER = new AttributeModifier(KNOCKBACK_MODIFIER_UUID, "Knockback boost", 2.0D, Operation.ADD_VALUE);
 
 	private static final EntityDataAccessor<Boolean> FLEEING = SynchedEntityData.defineId(Harpy.class, EntityDataSerializers.BOOLEAN);
 	private static final EntityDataAccessor<Boolean> DATA_BABY_ID = SynchedEntityData.defineId(Harpy.class, EntityDataSerializers.BOOLEAN);
@@ -89,14 +89,14 @@ public class Harpy extends AbstractGaiaEntity {
 				.add(Attributes.ATTACK_DAMAGE, 4.0D)
 				.add(Attributes.ARMOR, SharedEntityData.RATE_ARMOR_1)
 				.add(Attributes.ATTACK_KNOCKBACK, SharedEntityData.KNOCKBACK_1)
-				.add(NeoForgeMod.STEP_HEIGHT.value(), 1.0F);
+				.add(Attributes.STEP_HEIGHT, 1.0F);
 	}
 
 	@Override
-	protected void defineSynchedData() {
-		super.defineSynchedData();
-		this.getEntityData().define(DATA_BABY_ID, false);
-		this.entityData.define(FLEEING, false);
+	protected void defineSynchedData(SynchedEntityData.Builder builder) {
+		super.defineSynchedData(builder);
+		builder.define(DATA_BABY_ID, false);
+		builder.define(FLEEING, false);
 	}
 
 	public boolean isFleeing() {
@@ -205,8 +205,8 @@ public class Harpy extends AbstractGaiaEntity {
 	@Nullable
 	@Override
 	public SpawnGroupData finalizeSpawn(ServerLevelAccessor levelAccessor, DifficultyInstance difficultyInstance,
-										MobSpawnType spawnType, @Nullable SpawnGroupData groupData, @Nullable CompoundTag tag) {
-		SpawnGroupData data = super.finalizeSpawn(levelAccessor, difficultyInstance, spawnType, groupData, tag);
+										MobSpawnType spawnType, @Nullable SpawnGroupData groupData) {
+		SpawnGroupData data = super.finalizeSpawn(levelAccessor, difficultyInstance, spawnType, groupData);
 
 		if (levelAccessor.getBiome(blockPosition()).value().getTemperature(blockPosition()) > 1.0F) {
 			setVariant(2);

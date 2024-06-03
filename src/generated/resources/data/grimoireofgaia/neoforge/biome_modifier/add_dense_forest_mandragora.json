@@ -1,11 +1,11 @@
 {
   "type": "grimoireofgaia:add_configured_spawns",
   "blacklist": [
-    "#forge:is_coniferous",
-    "#forge:is_cold",
-    "#forge:is_hot",
-    "#forge:is_sparse",
-    "#forge:is_spooky"
+    "#c:is_tree/coniferous",
+    "#c:is_cold",
+    "#c:is_hot",
+    "#c:is_sparse_vegetation",
+    "#c:is_spooky"
   ],
   "spawners": {
     "type": "grimoireofgaia:cyan_flower",
@@ -16,7 +16,7 @@
   "whitelist": [
     "#minecraft:is_overworld",
     "#minecraft:is_forest",
-    "#forge:is_dense",
-    "#forge:is_rare"
+    "#c:is_dense_vegetation",
+    "#c:is_rare"
   ]
 }

@@ -9,11 +9,12 @@ import gaia.registry.GaiaTags;
 import gaia.util.RangedUtil;
 import gaia.util.SharedEntityData;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.Difficulty;
@@ -46,12 +47,12 @@ import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.item.BowItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.alchemy.PotionUtils;
+import net.minecraft.world.item.alchemy.PotionContents;
 import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
-import net.neoforged.neoforge.common.NeoForgeMod;
+import net.minecraft.world.level.storage.loot.LootTable;
 import net.neoforged.neoforge.common.ToolActions;
 import org.jetbrains.annotations.Nullable;
 
@@ -96,7 +97,7 @@ public class Dwarf extends AbstractAssistGaiaEntity implements RangedAttackMob, 
 				.add(Attributes.ATTACK_DAMAGE, 8.0D)
 				.add(Attributes.ARMOR, SharedEntityData.RATE_ARMOR_2)
 				.add(Attributes.ATTACK_KNOCKBACK, SharedEntityData.KNOCKBACK_2)
-				.add(NeoForgeMod.STEP_HEIGHT.value(), 1.0F);
+				.add(Attributes.STEP_HEIGHT, 1.0F);
 	}
 
 	@Override
@@ -105,9 +106,9 @@ public class Dwarf extends AbstractAssistGaiaEntity implements RangedAttackMob, 
 	}
 
 	@Override
-	protected void defineSynchedData() {
-		super.defineSynchedData();
-		this.entityData.define(RANDOM_CLASS, true);
+	protected void defineSynchedData(SynchedEntityData.Builder builder) {
+		super.defineSynchedData(builder);
+		builder.define(RANDOM_CLASS, true);
 	}
 
 	public boolean applyRandomClass() {
@@ -192,7 +193,7 @@ public class Dwarf extends AbstractAssistGaiaEntity implements RangedAttackMob, 
 	}
 
 	@Override
-	protected ResourceLocation getDefaultLootTable() {
+	protected ResourceKey<LootTable> getDefaultLootTable() {
 		return switch (getVariant()) {
 			default -> super.getDefaultLootTable();
 			case 1 -> GaiaLootTables.DWARF_RANGED;
@@ -205,15 +206,18 @@ public class Dwarf extends AbstractAssistGaiaEntity implements RangedAttackMob, 
 		if (applyRandomClass()) {
 			if (random.nextInt(4) == 0) {
 				ItemStack bowStack = new ItemStack(Items.BOW);
-				bowStack.enchant(Enchantments.PUNCH_ARROWS, 1);
+				bowStack.enchant(Enchantments.PUNCH, 1);
 				this.setItemSlot(EquipmentSlot.MAINHAND, bowStack);
 
 				if (random.nextBoolean()) {
 					if (random.nextBoolean()) {
+						ItemStack tippedArrow = new ItemStack(Items.TIPPED_ARROW);
 						if (random.nextInt(2) == 0) {
-							setItemSlot(EquipmentSlot.OFFHAND, PotionUtils.setPotion(new ItemStack(Items.TIPPED_ARROW), Potions.SLOWNESS));
+							tippedArrow.set(DataComponents.POTION_CONTENTS, new PotionContents(Potions.SLOWNESS));
+							setItemSlot(EquipmentSlot.OFFHAND, tippedArrow);
 						} else {
-							setItemSlot(EquipmentSlot.OFFHAND, PotionUtils.setPotion(new ItemStack(Items.TIPPED_ARROW), Potions.WEAKNESS));
+							tippedArrow.set(DataComponents.POTION_CONTENTS, new PotionContents(Potions.WEAKNESS));
+							setItemSlot(EquipmentSlot.OFFHAND, tippedArrow);
 						}
 					}
 				}
@@ -264,8 +268,8 @@ public class Dwarf extends AbstractAssistGaiaEntity implements RangedAttackMob, 
 	@Nullable
 	@Override
 	public SpawnGroupData finalizeSpawn(ServerLevelAccessor levelAccessor, DifficultyInstance difficultyInstance,
-										MobSpawnType spawnType, @Nullable SpawnGroupData groupData, @Nullable CompoundTag tag) {
-		SpawnGroupData data = super.finalizeSpawn(levelAccessor, difficultyInstance, spawnType, groupData, tag);
+										MobSpawnType spawnType, @Nullable SpawnGroupData groupData) {
+		SpawnGroupData data = super.finalizeSpawn(levelAccessor, difficultyInstance, spawnType, groupData);
 
 		this.populateDefaultEquipmentSlots(random, difficultyInstance);
 		this.populateDefaultEquipmentSlots(random, difficultyInstance);

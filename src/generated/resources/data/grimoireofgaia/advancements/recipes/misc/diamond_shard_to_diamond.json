@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "grimoireofgaia:diamond_shard"
-            ]
+            "items": "grimoireofgaia:diamond_shard"
           }
         ]
       },

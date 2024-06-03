@@ -10,6 +10,6 @@
   "whitelist": [
     "#minecraft:is_overworld",
     "#minecraft:is_forest",
-    "#forge:is_spooky"
+    "#c:is_spooky"
   ]
 }

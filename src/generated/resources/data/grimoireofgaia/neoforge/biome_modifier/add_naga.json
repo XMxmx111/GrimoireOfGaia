@@ -9,6 +9,6 @@
   },
   "whitelist": [
     "#minecraft:is_overworld",
-    "#forge:is_swamp"
+    "#c:is_swamp"
   ]
 }

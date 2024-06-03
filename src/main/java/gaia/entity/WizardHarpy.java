@@ -85,19 +85,19 @@ public class WizardHarpy extends AbstractAssistGaiaEntity implements RangedAttac
 				.add(Attributes.ATTACK_KNOCKBACK, SharedEntityData.KNOCKBACK_1)
 
 				.add(Attributes.KNOCKBACK_RESISTANCE, 1.0D)
-				.add(NeoForgeMod.STEP_HEIGHT.value(), 1.0F);
+				.add(Attributes.STEP_HEIGHT, 1.0F);
 	}
 
 	@Override
-	public float getEyeHeight(Pose pose) {
-		return this.getDimensions(pose).height * 0.5F;
+	public float getEyeHeightAccess(Pose pose) { //TODO: Check eye height!
+		return this.getDimensions(pose).height() * 0.5F;
 	}
 
 	@Override
-	protected void defineSynchedData() {
-		super.defineSynchedData();
-		this.entityData.define(ANIMATION_STATE, 0);
-		this.entityData.define(STORED_STACK, ItemStack.EMPTY);
+	protected void defineSynchedData(SynchedEntityData.Builder builder) {
+		super.defineSynchedData(builder);
+		builder.define(ANIMATION_STATE, 0);
+		builder.define(STORED_STACK, ItemStack.EMPTY);
 	}
 
 	public int getAnimationState() {
@@ -256,8 +256,8 @@ public class WizardHarpy extends AbstractAssistGaiaEntity implements RangedAttac
 	@Nullable
 	@Override
 	public SpawnGroupData finalizeSpawn(ServerLevelAccessor levelAccessor, DifficultyInstance difficultyInstance,
-										MobSpawnType spawnType, @Nullable SpawnGroupData groupData, @Nullable CompoundTag tag) {
-		SpawnGroupData data = super.finalizeSpawn(levelAccessor, difficultyInstance, spawnType, groupData, tag);
+										MobSpawnType spawnType, @Nullable SpawnGroupData groupData) {
+		SpawnGroupData data = super.finalizeSpawn(levelAccessor, difficultyInstance, spawnType, groupData);
 
 		this.populateDefaultEquipmentSlots(random, difficultyInstance);
 		this.populateDefaultEquipmentSlots(random, difficultyInstance);

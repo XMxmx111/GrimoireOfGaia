@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "grimoireofgaia:stone_coal"
-            ]
+            "items": "grimoireofgaia:stone_coal"
           }
         ]
       },

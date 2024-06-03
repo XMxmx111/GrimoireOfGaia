@@ -6,13 +6,16 @@ import gaia.registry.GaiaTags;
 import net.minecraft.advancements.critereon.EntityEquipmentPredicate;
 import net.minecraft.advancements.critereon.EntityPredicate;
 import net.minecraft.advancements.critereon.ItemPredicate;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.core.WritableRegistry;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.data.loot.EntityLootSubProvider;
 import net.minecraft.data.loot.LootTableProvider;
 import net.minecraft.data.loot.LootTableSubProvider;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.util.ProblemReporter;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Items;
@@ -25,7 +28,7 @@ import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.ValidationContext;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
-import net.minecraft.world.level.storage.loot.entries.LootTableReference;
+import net.minecraft.world.level.storage.loot.entries.NestedLootTable;
 import net.minecraft.world.level.storage.loot.entries.TagEntry;
 import net.minecraft.world.level.storage.loot.functions.EnchantWithLevelsFunction;
 import net.minecraft.world.level.storage.loot.functions.LootingEnchantFunction;
@@ -42,18 +45,18 @@ import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.CompletableFuture;
 import java.util.function.BiConsumer;
 import java.util.stream.Stream;
 
 public class GaiaLoot extends LootTableProvider {
-	public GaiaLoot(PackOutput packOutput) {
+	public GaiaLoot(PackOutput packOutput, CompletableFuture<HolderLookup.Provider> lookupProvider) {
 		super(packOutput, Set.of(), List.of(
 				new SubProviderEntry(GaiaBlockTables::new, LootContextParamSets.BLOCK),
 				new SubProviderEntry(GaiaEntityLoot::new, LootContextParamSets.ENTITY),
 				new SubProviderEntry(GaiaBoxLoot::new, LootContextParamSets.GIFT)
-		));
+		), lookupProvider);
 	}
 
 	public static class GaiaBlockTables extends BlockLootSubProvider {
@@ -126,7 +129,7 @@ public class GaiaLoot extends LootTableProvider {
 									.when(LootItemRandomChanceWithLootingCondition.randomChanceAndLootingBoost(0.025F, 0.01F))))
 					.withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F))
 							.add(LootItem.lootTableItem(Items.BOOK)
-									.apply(new SetEnchantmentsFunction.Builder().withEnchantment(Enchantments.MOB_LOOTING, ConstantValue.exactly(1.0F)))
+									.apply(new SetEnchantmentsFunction.Builder().withEnchantment(Enchantments.LOOTING, ConstantValue.exactly(1.0F)))
 									.when(LootItemRandomChanceWithLootingCondition.randomChanceAndLootingBoost(0.01F, 0.01F))))
 			);
 			this.add(GaiaRegistry.ANUBIS.getEntityType(), LootTable.lootTable()
@@ -244,7 +247,7 @@ public class GaiaLoot extends LootTableProvider {
 					)
 					.withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F))
 							.add(LootItem.lootTableItem(Items.BOOK)
-									.apply(new SetEnchantmentsFunction.Builder().withEnchantment(Enchantments.FISHING_LUCK, ConstantValue.exactly(1.0F)))
+									.apply(new SetEnchantmentsFunction.Builder().withEnchantment(Enchantments.LUCK_OF_THE_SEA, ConstantValue.exactly(1.0F)))
 									.when(LootItemRandomChanceWithLootingCondition.randomChanceAndLootingBoost(0.01F, 0.01F))))
 			);
 			this.add(GaiaRegistry.CENTAUR.getEntityType(), LootTable.lootTable()
@@ -265,7 +268,7 @@ public class GaiaLoot extends LootTableProvider {
 			this.add(GaiaRegistry.CHEST.getEntityType(), LootTable.lootTable());
 			this.add(GaiaRegistry.CHEST.getEntityType(), GaiaLootTables.CHEST_TABLES, LootTable.lootTable()
 					.withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F))
-							.add(LootTableReference.lootTableReference(BuiltInLootTables.SIMPLE_DUNGEON))
+							.add(NestedLootTable.lootTableReference(BuiltInLootTables.SIMPLE_DUNGEON))
 					)
 			);
 			this.add(GaiaRegistry.COBBLE_GOLEM.getEntityType(), LootTable.lootTable()
@@ -723,12 +726,12 @@ public class GaiaLoot extends LootTableProvider {
 			);
 			this.add(GaiaRegistry.MIMIC.getEntityType(), LootTable.lootTable()
 					.withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F))
-							.add(LootTableReference.lootTableReference(EntityType.CREEPER.getDefaultLootTable()))
-							.add(LootTableReference.lootTableReference(EntityType.SPIDER.getDefaultLootTable()))
-							.add(LootTableReference.lootTableReference(EntityType.ENDERMAN.getDefaultLootTable()))
-							.add(LootTableReference.lootTableReference(EntityType.SLIME.getDefaultLootTable()))
-							.add(LootTableReference.lootTableReference(EntityType.ZOMBIE.getDefaultLootTable()))
-							.add(LootTableReference.lootTableReference(EntityType.SKELETON.getDefaultLootTable())))
+							.add(NestedLootTable.lootTableReference(EntityType.CREEPER.getDefaultLootTable()))
+							.add(NestedLootTable.lootTableReference(EntityType.SPIDER.getDefaultLootTable()))
+							.add(NestedLootTable.lootTableReference(EntityType.ENDERMAN.getDefaultLootTable()))
+							.add(NestedLootTable.lootTableReference(EntityType.SLIME.getDefaultLootTable()))
+							.add(NestedLootTable.lootTableReference(EntityType.ZOMBIE.getDefaultLootTable()))
+							.add(NestedLootTable.lootTableReference(EntityType.SKELETON.getDefaultLootTable())))
 					.withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F))
 							.add(TagEntry.expandTag(Tags.Items.NUGGETS_IRON)
 									.apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 3.0F)))))
@@ -763,7 +766,7 @@ public class GaiaLoot extends LootTableProvider {
 			);
 			this.add(GaiaRegistry.NAGA.getEntityType(), LootTable.lootTable()
 					.withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F))
-							.add(LootTableReference.lootTableReference(BuiltInLootTables.FISHING_FISH)
+							.add(NestedLootTable.lootTableReference(BuiltInLootTables.FISHING_FISH)
 									.apply(SmeltItemFunction.smelted().when(LootItemEntityPropertyCondition.hasProperties(LootContext.EntityTarget.THIS, ENTITY_ON_FIRE)))))
 					.withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F))
 							.add(TagEntry.expandTag(Tags.Items.NUGGETS_GOLD)
@@ -877,7 +880,7 @@ public class GaiaLoot extends LootTableProvider {
 			);
 			this.add(GaiaRegistry.SIREN.getEntityType(), LootTable.lootTable()
 					.withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F))
-							.add(LootTableReference.lootTableReference(BuiltInLootTables.FISHING_FISH)
+							.add(NestedLootTable.lootTableReference(BuiltInLootTables.FISHING_FISH)
 									.apply(SmeltItemFunction.smelted().when(LootItemEntityPropertyCondition.hasProperties(LootContext.EntityTarget.THIS, ENTITY_ON_FIRE)))))
 					.withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F))
 							.add(TagEntry.expandTag(Tags.Items.NUGGETS_IRON)
@@ -1082,7 +1085,7 @@ public class GaiaLoot extends LootTableProvider {
 
 			this.add(GaiaRegistry.HORSE.getEntityType(), LootTable.lootTable()
 					.withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F))
-							.add(LootTableReference.lootTableReference(EntityType.ZOMBIE_HORSE.getDefaultLootTable())))
+							.add(NestedLootTable.lootTableReference(EntityType.ZOMBIE_HORSE.getDefaultLootTable())))
 			);
 
 			//Merchant
@@ -1126,7 +1129,7 @@ public class GaiaLoot extends LootTableProvider {
 
 	private static class GaiaBoxLoot implements LootTableSubProvider {
 		@Override
-		public void generate(BiConsumer<ResourceLocation, LootTable.Builder> consumer) {
+		public void generate(HolderLookup.Provider provider, BiConsumer<ResourceKey<LootTable>, LootTable.Builder> consumer) {
 			consumer.accept(GaiaLootTables.BAG_ARROW, LootTable.lootTable()
 					.withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F))
 							.name("main")
@@ -1313,9 +1316,9 @@ public class GaiaLoot extends LootTableProvider {
 	}
 
 	@Override
-	protected void validate(Map<ResourceLocation, LootTable> map, ValidationContext validationContext) {
+	protected void validate(WritableRegistry<LootTable> writableregistry, ValidationContext validationcontext, ProblemReporter.Collector problemreporter$collector) {
 		//A list of loot tables that don't get validated because they most likely reference other loot tables which would cause it to fail
-		List<ResourceLocation> ignored = List.of(
+		List<ResourceKey<LootTable>> ignored = List.of(
 				GaiaLootTables.CHEST_TABLES,
 				GaiaRegistry.CHEST.getEntityType().getDefaultLootTable(),
 				GaiaRegistry.HORSE.getEntityType().getDefaultLootTable(),
@@ -1323,9 +1326,9 @@ public class GaiaLoot extends LootTableProvider {
 				GaiaRegistry.NAGA.getEntityType().getDefaultLootTable(),
 				GaiaRegistry.SIREN.getEntityType().getDefaultLootTable()
 		);
-		map.forEach((name, table) -> {
-			if (!ignored.contains(name)) {
-				table.validate(validationContext);
+		writableregistry.holders().forEach(reference -> {
+			if (!ignored.contains(reference.key())) {
+				reference.value().validate(validationcontext.setParams(reference.value().getParamSet()).enterElement("{" + reference.key().location() + "}", reference.key()));
 			}
 		});
 	}

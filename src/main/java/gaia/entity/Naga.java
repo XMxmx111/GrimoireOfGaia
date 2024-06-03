@@ -39,7 +39,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
-import net.minecraft.world.level.pathfinder.BlockPathTypes;
+import net.minecraft.world.level.pathfinder.PathType;
 import net.neoforged.neoforge.common.NeoForgeMod;
 import net.neoforged.neoforge.fluids.FluidType;
 import org.jetbrains.annotations.Nullable;
@@ -58,7 +58,7 @@ public class Naga extends AbstractGaiaEntity implements IDayMob {
 		super(entityType, level);
 
 		this.xpReward = SharedEntityData.EXPERIENCE_VALUE_2;
-		this.setPathfindingMalus(BlockPathTypes.WATER, 8.0F);
+		this.setPathfindingMalus(PathType.WATER, 8.0F);
 
 		buffEffect = 0;
 		animationPlay = false;
@@ -86,7 +86,7 @@ public class Naga extends AbstractGaiaEntity implements IDayMob {
 				.add(Attributes.ATTACK_DAMAGE, 8.0D)
 				.add(Attributes.ARMOR, SharedEntityData.RATE_ARMOR_2)
 				.add(Attributes.KNOCKBACK_RESISTANCE, SharedEntityData.KNOCKBACK_2)
-				.add(NeoForgeMod.STEP_HEIGHT.value(), 1.0F);
+				.add(Attributes.STEP_HEIGHT, 1.0F);
 	}
 
 	@Override
@@ -95,9 +95,9 @@ public class Naga extends AbstractGaiaEntity implements IDayMob {
 	}
 
 	@Override
-	protected void defineSynchedData() {
-		super.defineSynchedData();
-		this.entityData.define(ANIMATION_STATE, 0);
+	protected void defineSynchedData(SynchedEntityData.Builder builder) {
+		super.defineSynchedData(builder);
+		builder.define(ANIMATION_STATE, 0);
 	}
 
 	public int getAnimationState() {
@@ -219,8 +219,8 @@ public class Naga extends AbstractGaiaEntity implements IDayMob {
 	@Nullable
 	@Override
 	public SpawnGroupData finalizeSpawn(ServerLevelAccessor levelAccessor, DifficultyInstance difficultyInstance,
-										MobSpawnType spawnType, @Nullable SpawnGroupData groupData, @Nullable CompoundTag tag) {
-		SpawnGroupData data = super.finalizeSpawn(levelAccessor, difficultyInstance, spawnType, groupData, tag);
+										MobSpawnType spawnType, @Nullable SpawnGroupData groupData) {
+		SpawnGroupData data = super.finalizeSpawn(levelAccessor, difficultyInstance, spawnType, groupData);
 		setGoals(0);
 
 		this.populateDefaultEquipmentSlots(random, difficultyInstance);

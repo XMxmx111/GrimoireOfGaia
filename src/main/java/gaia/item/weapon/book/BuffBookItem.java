@@ -17,7 +17,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
@@ -27,8 +26,8 @@ public class BuffBookItem extends Item {
 	}
 
 	@Override
-	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
-		super.appendHoverText(stack, level, list, flag);
+	public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> list, TooltipFlag flag) {
+		super.appendHoverText(stack, context, list, flag);
 
 		final Player player = RandomUtil.getPlayer();
 		if (player == null) {
@@ -40,16 +39,14 @@ public class BuffBookItem extends Item {
 			list.add(Component.translatable("text.grimoireofgaia.bless.main_hand").withStyle(ChatFormatting.YELLOW));
 		}
 
-		list.add(Component.translatable(MobEffects.DAMAGE_BOOST.getDescriptionId()).append(" I(1:00)"));
-		list.add(Component.translatable(MobEffects.DAMAGE_RESISTANCE.getDescriptionId()).append(" (1:00)"));
-		list.add(Component.translatable(MobEffects.REGENERATION.getDescriptionId()).append(" IV (0:04)"));
+		list.add(Component.translatable(MobEffects.DAMAGE_BOOST.value().getDescriptionId()).append(" I(1:00)"));
+		list.add(Component.translatable(MobEffects.DAMAGE_RESISTANCE.value().getDescriptionId()).append(" (1:00)"));
+		list.add(Component.translatable(MobEffects.REGENERATION.value().getDescriptionId()).append(" IV (0:04)"));
 	}
 
 	@Override
 	public boolean hurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker) {
-		stack.hurtAndBreak(1, attacker, (livingEntity) -> {
-			livingEntity.broadcastBreakEvent(EquipmentSlot.MAINHAND);
-		});
+		stack.hurtAndBreak(1, attacker, EquipmentSlot.MAINHAND);
 
 		attacker.level().playSound((Player) null, attacker.getX(), attacker.getY(), attacker.getZ(), GaiaSounds.BOOK_HIT.get(), SoundSource.NEUTRAL,
 				1.0F, 1.0F);
@@ -62,9 +59,7 @@ public class BuffBookItem extends Item {
 
 	public boolean mineBlock(ItemStack stack, Level level, BlockState state, BlockPos pos, LivingEntity livingEntity) {
 		if (state.getDestroySpeed(level, pos) != 0.0F) {
-			stack.hurtAndBreak(2, livingEntity, (living) -> {
-				living.broadcastBreakEvent(EquipmentSlot.MAINHAND);
-			});
+			stack.hurtAndBreak(2, livingEntity, EquipmentSlot.MAINHAND);
 		}
 
 		return true;

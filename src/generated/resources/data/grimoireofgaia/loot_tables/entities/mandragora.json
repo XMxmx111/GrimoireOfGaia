@@ -39,7 +39,7 @@
           "predicate": {
             "equipment": {
               "mainhand": {
-                "tag": "forge:tools/shovels"
+                "items": "#forge:tools/shovels"
               }
             }
           }
@@ -81,7 +81,7 @@
               "function": "minecraft:set_count"
             }
           ],
-          "name": "forge:nuggets/iron"
+          "name": "c:nuggets/iron"
         }
       ],
       "rolls": 1.0

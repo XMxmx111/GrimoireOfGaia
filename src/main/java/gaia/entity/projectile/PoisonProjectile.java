@@ -33,7 +33,7 @@ public class PoisonProjectile extends SmallFireball {
 
 	@Override
 	public ItemStack getItem() {
-		ItemStack itemstack = this.getItemRaw();
+		ItemStack itemstack = super.getItem();
 		return itemstack.isEmpty() ? new ItemStack(GaiaRegistry.PROJECTILE_POISON.get()) : itemstack;
 	}
 

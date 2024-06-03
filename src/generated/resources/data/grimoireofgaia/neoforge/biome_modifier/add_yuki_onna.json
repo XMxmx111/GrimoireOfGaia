@@ -1,7 +1,7 @@
 {
   "type": "grimoireofgaia:add_configured_spawns",
   "blacklist": [
-    "#forge:is_snowy"
+    "#c:is_snowy"
   ],
   "spawners": {
     "type": "grimoireofgaia:yuki_onna",
@@ -11,6 +11,6 @@
   },
   "whitelist": [
     "#minecraft:is_overworld",
-    "#forge:is_coniferous"
+    "#c:is_tree/coniferous"
   ]
 }

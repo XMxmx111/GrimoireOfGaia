@@ -44,7 +44,7 @@ import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.ServerLevelAccessor;
-import net.minecraft.world.level.pathfinder.BlockPathTypes;
+import net.minecraft.world.level.pathfinder.PathType;
 import net.neoforged.neoforge.common.NeoForgeMod;
 import net.neoforged.neoforge.fluids.FluidType;
 import org.jetbrains.annotations.Nullable;
@@ -70,7 +70,7 @@ public class Cecaelia extends AbstractGaiaEntity implements RangedAttackMob {
 		super(entityType, level);
 		this.moveControl = new CecaeliaMermaidMoveControl(this);
 
-		this.setPathfindingMalus(BlockPathTypes.WATER, 8.0F);
+		this.setPathfindingMalus(PathType.WATER, 8.0F);
 
 		timer = 0;
 		switchDetect = 0;
@@ -103,7 +103,7 @@ public class Cecaelia extends AbstractGaiaEntity implements RangedAttackMob {
 				.add(Attributes.ARMOR, SharedEntityData.RATE_ARMOR_1)
 				.add(Attributes.ATTACK_KNOCKBACK, SharedEntityData.KNOCKBACK_1)
 
-				.add(NeoForgeMod.STEP_HEIGHT.value(), 1.0F);
+				.add(Attributes.STEP_HEIGHT, 1.0F);
 	}
 
 	@Override
@@ -112,9 +112,9 @@ public class Cecaelia extends AbstractGaiaEntity implements RangedAttackMob {
 	}
 
 	@Override
-	protected void defineSynchedData() {
-		super.defineSynchedData();
-		this.entityData.define(THROWING, false);
+	protected void defineSynchedData(SynchedEntityData.Builder builder) {
+		super.defineSynchedData(builder);
+		builder.define(THROWING, false);
 	}
 
 	public boolean isThrowing() {
@@ -263,8 +263,8 @@ public class Cecaelia extends AbstractGaiaEntity implements RangedAttackMob {
 	@Nullable
 	@Override
 	public SpawnGroupData finalizeSpawn(ServerLevelAccessor levelAccessor, DifficultyInstance difficultyInstance,
-										MobSpawnType spawnType, @Nullable SpawnGroupData groupData, @Nullable CompoundTag tag) {
-		SpawnGroupData data = super.finalizeSpawn(levelAccessor, difficultyInstance, spawnType, groupData, tag);
+										MobSpawnType spawnType, @Nullable SpawnGroupData groupData) {
+		SpawnGroupData data = super.finalizeSpawn(levelAccessor, difficultyInstance, spawnType, groupData);
 
 		ItemStack itemstack = getMainHandItem();
 		if (itemstack.isEmpty()) {

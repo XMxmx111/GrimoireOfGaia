@@ -16,7 +16,6 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.MobSpawnType;
-import net.minecraft.world.entity.MobType;
 import net.minecraft.world.entity.SpawnGroupData;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -34,7 +33,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
-import net.neoforged.neoforge.common.NeoForgeMod;
 import org.jetbrains.annotations.Nullable;
 
 public class FleshLich extends AbstractGaiaEntity implements RangedAttackMob {
@@ -69,7 +67,7 @@ public class FleshLich extends AbstractGaiaEntity implements RangedAttackMob {
 				.add(Attributes.ATTACK_DAMAGE, 8.0D)
 				.add(Attributes.ARMOR, SharedEntityData.RATE_ARMOR_2)
 				.add(Attributes.ATTACK_KNOCKBACK, SharedEntityData.KNOCKBACK_2)
-				.add(NeoForgeMod.STEP_HEIGHT.value(), 1.0F);
+				.add(Attributes.STEP_HEIGHT, 1.0F);
 	}
 
 	@Override
@@ -78,9 +76,9 @@ public class FleshLich extends AbstractGaiaEntity implements RangedAttackMob {
 	}
 
 	@Override
-	protected void defineSynchedData() {
-		super.defineSynchedData();
-		this.entityData.define(ANIMATION_STATE, 0);
+	protected void defineSynchedData(SynchedEntityData.Builder builder) {
+		super.defineSynchedData(builder);
+		builder.define(ANIMATION_STATE, 0);
 	}
 
 	public int getAnimationState() {
@@ -132,7 +130,7 @@ public class FleshLich extends AbstractGaiaEntity implements RangedAttackMob {
 				}
 
 				if (flag) {
-					this.setSecondsOnFire(8);
+					this.setRemainingFireTicks(20 * 8);
 					hurt(damageSources().fellOutOfWorld(), getMaxHealth() * 0.25F);
 				}
 			}
@@ -167,8 +165,8 @@ public class FleshLich extends AbstractGaiaEntity implements RangedAttackMob {
 	@Nullable
 	@Override
 	public SpawnGroupData finalizeSpawn(ServerLevelAccessor levelAccessor, DifficultyInstance difficultyInstance,
-										MobSpawnType spawnType, @Nullable SpawnGroupData groupData, @Nullable CompoundTag tag) {
-		SpawnGroupData data = super.finalizeSpawn(levelAccessor, difficultyInstance, spawnType, groupData, tag);
+										MobSpawnType spawnType, @Nullable SpawnGroupData groupData) {
+		SpawnGroupData data = super.finalizeSpawn(levelAccessor, difficultyInstance, spawnType, groupData);
 
 		this.populateDefaultEquipmentSlots(random, difficultyInstance);
 		this.populateDefaultEquipmentSlots(random, difficultyInstance);
@@ -213,11 +211,6 @@ public class FleshLich extends AbstractGaiaEntity implements RangedAttackMob {
 	@Override
 	public boolean fireImmune() {
 		return true;
-	}
-
-	@Override
-	public MobType getMobType() {
-		return MobType.UNDEAD;
 	}
 
 	@Override

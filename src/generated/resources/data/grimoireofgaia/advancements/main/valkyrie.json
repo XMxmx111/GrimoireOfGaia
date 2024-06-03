@@ -22,7 +22,8 @@
       "translate": "advancement.grimoireofgaia.valkyrie.desc"
     },
     "icon": {
-      "item": "grimoireofgaia:bust_valkyrie"
+      "count": 1,
+      "id": "grimoireofgaia:bust_valkyrie"
     },
     "title": {
       "translate": "advancement.grimoireofgaia.valkyrie.title"

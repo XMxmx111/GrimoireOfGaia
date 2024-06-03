@@ -11,6 +11,6 @@
   },
   "whitelist": [
     "#minecraft:is_overworld",
-    "#forge:is_plains"
+    "#c:is_plains"
   ]
 }

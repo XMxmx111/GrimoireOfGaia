@@ -1,6 +1,7 @@
 package gaia.item;
 
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
@@ -22,10 +23,10 @@ import java.util.List;
 import java.util.function.Supplier;
 
 public class LootableItem extends Item {
-	private final ResourceLocation lootTable;
+	private final ResourceKey<LootTable> lootTable;
 	private final Supplier<SoundEvent> openSoundSupplier;
 
-	public LootableItem(Properties properties, ResourceLocation lootTable, Supplier<SoundEvent> openSoundSupplier) {
+	public LootableItem(Properties properties, ResourceKey<LootTable> lootTable, Supplier<SoundEvent> openSoundSupplier) {
 		super(properties);
 		this.lootTable = lootTable;
 		this.openSoundSupplier = openSoundSupplier;
@@ -38,7 +39,7 @@ public class LootableItem extends Item {
 		player.playSound(openSoundSupplier.get(), 0.5F, level.random.nextFloat() * 0.1F + 0.9F);
 
 		if (!level.isClientSide) {
-			LootTable lootTable = level.getServer().getLootData().getLootTable(this.lootTable);
+			LootTable lootTable = level.getServer().reloadableRegistries().getLootTable(this.lootTable);
 			LootParams.Builder builder = (new LootParams.Builder((ServerLevel) level))
 					.withParameter(LootContextParams.ORIGIN, player.position());
 			if (player != null) {
@@ -59,8 +60,8 @@ public class LootableItem extends Item {
 	}
 
 	@Override
-	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
-		super.appendHoverText(stack, level, list, flag);
+	public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> list, TooltipFlag flag) {
+		super.appendHoverText(stack, context, list, flag);
 		list.add(Component.translatable("text.grimoireofgaia.right_click_use"));
 	}
 }

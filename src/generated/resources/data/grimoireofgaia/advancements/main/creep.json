@@ -22,7 +22,8 @@
       "translate": "advancement.grimoireofgaia.creep.desc"
     },
     "icon": {
-      "item": "grimoireofgaia:doll_creeper_girl"
+      "count": 1,
+      "id": "grimoireofgaia:doll_creeper_girl"
     },
     "title": {
       "translate": "advancement.grimoireofgaia.creep.title"

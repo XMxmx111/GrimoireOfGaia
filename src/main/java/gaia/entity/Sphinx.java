@@ -7,6 +7,7 @@ import gaia.util.SharedEntityData;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.Difficulty;
@@ -64,7 +65,7 @@ public class Sphinx extends AbstractGaiaEntity implements PowerableMob {
 	}
 
 	@Override
-	public float getEyeHeight(Pose pose) {
+	public float getEyeHeightAccess(Pose pose) {
 		return 0.45F;
 	}
 
@@ -76,7 +77,7 @@ public class Sphinx extends AbstractGaiaEntity implements PowerableMob {
 				.add(Attributes.ATTACK_DAMAGE, 12.0D)
 				.add(Attributes.ARMOR, SharedEntityData.RATE_ARMOR_3)
 				.add(Attributes.ATTACK_KNOCKBACK, SharedEntityData.KNOCKBACK_3)
-				.add(NeoForgeMod.STEP_HEIGHT.value(), 6.0F);
+				.add(Attributes.STEP_HEIGHT, 6.0F);
 	}
 
 	@Override
@@ -85,8 +86,8 @@ public class Sphinx extends AbstractGaiaEntity implements PowerableMob {
 	}
 
 	@Override
-	protected void defineSynchedData() {
-		super.defineSynchedData();
+	protected void defineSynchedData(SynchedEntityData.Builder builder) {
+		super.defineSynchedData(builder);
 	}
 
 	@Override
@@ -181,8 +182,8 @@ public class Sphinx extends AbstractGaiaEntity implements PowerableMob {
 	@Nullable
 	@Override
 	public SpawnGroupData finalizeSpawn(ServerLevelAccessor levelAccessor, DifficultyInstance difficultyInstance,
-										MobSpawnType spawnType, @Nullable SpawnGroupData groupData, @Nullable CompoundTag tag) {
-		SpawnGroupData data = super.finalizeSpawn(levelAccessor, difficultyInstance, spawnType, groupData, tag);
+										MobSpawnType spawnType, @Nullable SpawnGroupData groupData) {
+		SpawnGroupData data = super.finalizeSpawn(levelAccessor, difficultyInstance, spawnType, groupData);
 
 		this.populateDefaultEquipmentSlots(random, difficultyInstance);
 

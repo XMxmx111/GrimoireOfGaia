@@ -6,6 +6,7 @@ import gaia.registry.GaiaSounds;
 import gaia.util.SharedEntityData;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -15,7 +16,6 @@ import net.minecraft.sounds.SoundEvent;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -39,27 +39,24 @@ import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.ThrownPotion;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.alchemy.Potion;
-import net.minecraft.world.item.alchemy.PotionUtils;
+import net.minecraft.world.item.alchemy.PotionContents;
 import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.pathfinder.BlockPathTypes;
+import net.minecraft.world.level.pathfinder.PathType;
 import net.minecraft.world.phys.Vec3;
-import net.neoforged.neoforge.common.NeoForgeMod;
 import net.neoforged.neoforge.event.EventHooks;
 import net.neoforged.neoforge.event.entity.EntityTeleportEvent;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.List;
 import java.util.UUID;
 import java.util.function.Predicate;
 
 public class EnderEye extends AbstractAssistGaiaEntity {
 	private static final UUID SPEED_MODIFIER_ATTACKING_UUID = UUID.fromString("411AF4FD-812A-4D90-802A-6FD57A7777C2");
-	private static final AttributeModifier SPEED_MODIFIER_ATTACKING = new AttributeModifier(SPEED_MODIFIER_ATTACKING_UUID, "Attacking speed boost", SharedEntityData.ATTACK_SPEED_BOOST, AttributeModifier.Operation.ADDITION);
+	private static final AttributeModifier SPEED_MODIFIER_ATTACKING = new AttributeModifier(SPEED_MODIFIER_ATTACKING_UUID, "Attacking speed boost", SharedEntityData.ATTACK_SPEED_BOOST, AttributeModifier.Operation.ADD_VALUE);
 	private static final EntityDataAccessor<Boolean> SCREAMING = SynchedEntityData.defineId(EnderEye.class, EntityDataSerializers.BOOLEAN);
 
 	private int targetChangeTime;
@@ -68,7 +65,7 @@ public class EnderEye extends AbstractAssistGaiaEntity {
 		super(entityType, level);
 
 		this.moveControl = new FlyingMoveControl(this, 20, true);
-		this.setPathfindingMalus(BlockPathTypes.WATER, -1.0F);
+		this.setPathfindingMalus(PathType.WATER, -1.0F);
 	}
 
 	@Override
@@ -126,7 +123,7 @@ public class EnderEye extends AbstractAssistGaiaEntity {
 				.add(Attributes.ATTACK_KNOCKBACK, SharedEntityData.KNOCKBACK_1)
 
 				.add(Attributes.KNOCKBACK_RESISTANCE, 1.0D)
-				.add(NeoForgeMod.STEP_HEIGHT.value(), 1.0F);
+				.add(Attributes.STEP_HEIGHT, 1.0F);
 	}
 
 	@Override
@@ -148,9 +145,9 @@ public class EnderEye extends AbstractAssistGaiaEntity {
 	}
 
 	@Override
-	protected void defineSynchedData() {
-		super.defineSynchedData();
-		this.entityData.define(SCREAMING, false);
+	protected void defineSynchedData(SynchedEntityData.Builder builder) {
+		super.defineSynchedData(builder);
+		builder.define(SCREAMING, false);
 	}
 
 	public boolean isScreaming() {
@@ -187,12 +184,10 @@ public class EnderEye extends AbstractAssistGaiaEntity {
 		}
 	}
 
-	private boolean hurtWithCleanWater(DamageSource damageSource, ThrownPotion thrownPotion, float damage) {
-		ItemStack itemstack = thrownPotion.getItem();
-		Potion potion = PotionUtils.getPotion(itemstack);
-		List<MobEffectInstance> list = PotionUtils.getMobEffects(itemstack);
-		boolean flag = potion == Potions.WATER && list.isEmpty();
-		return flag && super.hurt(damageSource, damage);
+	private boolean hurtWithCleanWater(DamageSource pSource, ThrownPotion pPotion, float pAmount) {
+		ItemStack itemstack = pPotion.getItem();
+		PotionContents potioncontents = itemstack.getOrDefault(DataComponents.POTION_CONTENTS, PotionContents.EMPTY);
+		return potioncontents.is(Potions.WATER) && super.hurt(pSource, pAmount);
 	}
 
 	@Override

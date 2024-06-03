@@ -45,7 +45,7 @@ import java.util.UUID;
 
 public class NineTails extends AbstractGaiaEntity implements RangedAttackMob {
 	private static final UUID KNOCKBACK_MODIFIER_UUID = UUID.fromString("E1F5906C-E05C-11EC-9D64-0242AC120002");
-	private static final AttributeModifier KNOCKBACK_MODIFIER = new AttributeModifier(KNOCKBACK_MODIFIER_UUID, "Knockback boost", 2.0D, Operation.ADDITION);
+	private static final AttributeModifier KNOCKBACK_MODIFIER = new AttributeModifier(KNOCKBACK_MODIFIER_UUID, "Knockback boost", 2.0D, Operation.ADD_VALUE);
 	private static final EntityDataAccessor<Boolean> THROWING = SynchedEntityData.defineId(NineTails.class, EntityDataSerializers.BOOLEAN);
 	private static final EntityDataAccessor<Integer> WEAPON_TYPE = SynchedEntityData.defineId(NineTails.class, EntityDataSerializers.INT);
 
@@ -87,7 +87,7 @@ public class NineTails extends AbstractGaiaEntity implements RangedAttackMob {
 				.add(Attributes.ATTACK_DAMAGE, 8.0D)
 				.add(Attributes.ARMOR, SharedEntityData.RATE_ARMOR_2)
 				.add(Attributes.ATTACK_KNOCKBACK, SharedEntityData.KNOCKBACK_2)
-				.add(NeoForgeMod.STEP_HEIGHT.value(), 1.0F);
+				.add(Attributes.STEP_HEIGHT, 1.0F);
 	}
 
 	@Override
@@ -96,10 +96,10 @@ public class NineTails extends AbstractGaiaEntity implements RangedAttackMob {
 	}
 
 	@Override
-	protected void defineSynchedData() {
-		super.defineSynchedData();
-		this.entityData.define(THROWING, false);
-		this.entityData.define(WEAPON_TYPE, 0);
+	protected void defineSynchedData(SynchedEntityData.Builder builder) {
+		super.defineSynchedData(builder);
+		builder.define(THROWING, false);
+		builder.define(WEAPON_TYPE, 0);
 	}
 
 	public boolean isThrowing() {
@@ -143,7 +143,7 @@ public class NineTails extends AbstractGaiaEntity implements RangedAttackMob {
 	@Override
 	public boolean doHurtTarget(Entity entityIn) {
 		if (super.doHurtTarget(entityIn)) {
-			entityIn.setSecondsOnFire(6);
+			entityIn.setRemainingFireTicks(20 * 6);
 			return true;
 		} else {
 			return false;
@@ -230,8 +230,8 @@ public class NineTails extends AbstractGaiaEntity implements RangedAttackMob {
 	@Nullable
 	@Override
 	public SpawnGroupData finalizeSpawn(ServerLevelAccessor levelAccessor, DifficultyInstance difficultyInstance,
-										MobSpawnType spawnType, @Nullable SpawnGroupData groupData, @Nullable CompoundTag tag) {
-		SpawnGroupData data = super.finalizeSpawn(levelAccessor, difficultyInstance, spawnType, groupData, tag);
+										MobSpawnType spawnType, @Nullable SpawnGroupData groupData) {
+		SpawnGroupData data = super.finalizeSpawn(levelAccessor, difficultyInstance, spawnType, groupData);
 
 		setCombatTask();
 

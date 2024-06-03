@@ -31,8 +31,8 @@ public class EnderBookItem extends WeaponBookItem {
 	}
 
 	@Override
-	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
-		super.appendHoverText(stack, level, list, flag);
+	public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> list, TooltipFlag flag) {
+		super.appendHoverText(stack, context, list, flag);
 
 		final Player player = RandomUtil.getPlayer();
 		if (player == null) {
@@ -43,7 +43,7 @@ public class EnderBookItem extends WeaponBookItem {
 		} else {
 			list.add(Component.translatable("text.grimoireofgaia.bless.main_hand").withStyle(ChatFormatting.YELLOW));
 		}
-		list.add(Component.translatable(MobEffects.BLINDNESS.getDescriptionId()).append(" II (0:04)"));
+		list.add(Component.translatable(MobEffects.BLINDNESS.value().getDescriptionId()).append(" II (0:04)"));
 	}
 
 	@Override
@@ -51,9 +51,7 @@ public class EnderBookItem extends WeaponBookItem {
 		ItemStack stack = player.getItemInHand(hand);
 
 		if (!level.isClientSide) {
-			stack.hurtAndBreak(5, player, (entity) -> {
-				entity.broadcastBreakEvent(EquipmentSlot.MAINHAND);
-			});
+			stack.hurtAndBreak(5, player, EquipmentSlot.MAINHAND);
 		}
 		player.causeFoodExhaustion(5.0F);
 		level.playSound((Player) null, player.getX(), player.getY(), player.getZ(), SoundEvents.ENDER_PEARL_THROW, SoundSource.NEUTRAL,

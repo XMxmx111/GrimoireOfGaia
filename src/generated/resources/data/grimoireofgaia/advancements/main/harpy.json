@@ -22,7 +22,8 @@
       "translate": "advancement.grimoireofgaia.harpy.desc"
     },
     "icon": {
-      "item": "grimoireofgaia:deco_nest_harpy"
+      "count": 1,
+      "id": "grimoireofgaia:deco_nest_harpy"
     },
     "title": {
       "translate": "advancement.grimoireofgaia.harpy.title"

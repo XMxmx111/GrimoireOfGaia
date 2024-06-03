@@ -9,6 +9,6 @@
   },
   "whitelist": [
     "#minecraft:is_overworld",
-    "#forge:is_water"
+    "#c:is_aquatic"
   ]
 }

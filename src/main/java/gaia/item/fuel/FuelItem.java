@@ -20,8 +20,8 @@ public class FuelItem extends Item {
 	}
 
 	@Override
-	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
-		super.appendHoverText(stack, level, list, flag);
+	public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> list, TooltipFlag flag) {
+		super.appendHoverText(stack, context, list, flag);
 		list.add(Component.translatable("text.grimoireofgaia.fuel_for_seconds", (getBurnTime(stack, null) / 2)).withStyle(ChatFormatting.GRAY));
 	}
 

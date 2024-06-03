@@ -22,7 +22,8 @@
       "translate": "advancement.grimoireofgaia.mimic.desc"
     },
     "icon": {
-      "item": "minecraft:chest"
+      "count": 1,
+      "id": "minecraft:chest"
     },
     "title": {
       "translate": "advancement.grimoireofgaia.mimic.title"

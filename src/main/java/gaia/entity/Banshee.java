@@ -76,7 +76,7 @@ public class Banshee extends AbstractGaiaEntity {
 				.add(Attributes.ATTACK_DAMAGE, 8.0D)
 				.add(Attributes.ARMOR, SharedEntityData.RATE_ARMOR_2)
 				.add(Attributes.ATTACK_KNOCKBACK, SharedEntityData.KNOCKBACK_2)
-				.add(NeoForgeMod.STEP_HEIGHT.value(), 1.0F);
+				.add(Attributes.STEP_HEIGHT, 1.0F);
 	}
 
 	@Override
@@ -85,9 +85,9 @@ public class Banshee extends AbstractGaiaEntity {
 	}
 
 	@Override
-	protected void defineSynchedData() {
-		super.defineSynchedData();
-		this.entityData.define(DATA_FLAGS_ID, (byte) 0);
+	protected void defineSynchedData(SynchedEntityData.Builder builder) {
+		super.defineSynchedData(builder);
+		builder.define(DATA_FLAGS_ID, (byte) 0);
 	}
 
 	@Nullable
@@ -147,7 +147,7 @@ public class Banshee extends AbstractGaiaEntity {
 	@Override
 	public boolean doHurtTarget(Entity entityIn) {
 		if (super.doHurtTarget(entityIn)) {
-			entityIn.setSecondsOnFire(6);
+			entityIn.setRemainingFireTicks(20 * 6);
 
 			return true;
 		} else {

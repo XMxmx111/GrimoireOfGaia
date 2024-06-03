@@ -22,7 +22,8 @@
       "translate": "advancement.grimoireofgaia.nine_tails.desc"
     },
     "icon": {
-      "item": "grimoireofgaia:doll_nine_tails"
+      "count": 1,
+      "id": "grimoireofgaia:doll_nine_tails"
     },
     "title": {
       "translate": "advancement.grimoireofgaia.nine_tails.title"

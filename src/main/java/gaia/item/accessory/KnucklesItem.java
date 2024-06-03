@@ -19,15 +19,15 @@ import java.util.UUID;
 public class KnucklesItem extends AbstractAccessoryItem {
 	private static final int damage = 2;
 	private static final UUID BOOST_UUID = UUID.fromString("d2cc095e-1f15-49a9-a32b-993e7f5c4910");
-	private static final AttributeModifier BOOST = new AttributeModifier(BOOST_UUID, "GoG Knuckles Damage boost", (double) damage, Operation.ADDITION);
+	private static final AttributeModifier BOOST = new AttributeModifier(BOOST_UUID, "GoG Knuckles Damage boost", (double) damage, Operation.ADD_VALUE);
 
 	public KnucklesItem(Properties properties) {
 		super(properties);
 	}
 
 	@Override
-	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
-		super.appendHoverText(stack, level, list, flag);
+	public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> list, TooltipFlag flag) {
+		super.appendHoverText(stack, context, list, flag);
 		list.add(Component.translatable("text.grimoireofgaia.charm.tag").withStyle(ChatFormatting.YELLOW));
 
 		if (Screen.hasShiftDown()) {

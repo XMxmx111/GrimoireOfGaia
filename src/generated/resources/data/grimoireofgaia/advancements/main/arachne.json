@@ -22,8 +22,8 @@
       "translate": "advancement.grimoireofgaia.arachne.desc"
     },
     "icon": {
-      "item": "grimoireofgaia:cave_spider_staff",
-      "nbt": "{Damage:0}"
+      "count": 1,
+      "id": "grimoireofgaia:cave_spider_staff"
     },
     "title": {
       "translate": "advancement.grimoireofgaia.arachne.title"

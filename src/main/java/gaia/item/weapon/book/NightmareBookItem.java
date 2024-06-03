@@ -23,8 +23,8 @@ public class NightmareBookItem extends WeaponBookItem {
 	}
 
 	@Override
-	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
-		super.appendHoverText(stack, level, list, flag);
+	public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> list, TooltipFlag flag) {
+		super.appendHoverText(stack, context, list, flag);
 
 		final Player player = RandomUtil.getPlayer();
 		if (player == null) {
@@ -35,7 +35,7 @@ public class NightmareBookItem extends WeaponBookItem {
 		} else {
 			list.add(Component.translatable("text.grimoireofgaia.bless.main_hand").withStyle(ChatFormatting.YELLOW));
 		}
-		list.add(Component.translatable(MobEffects.DIG_SLOWDOWN.getDescriptionId()).append(" II (0:04)"));
+		list.add(Component.translatable(MobEffects.DIG_SLOWDOWN.value().getDescriptionId()).append(" II (0:04)"));
 	}
 
 	@Override

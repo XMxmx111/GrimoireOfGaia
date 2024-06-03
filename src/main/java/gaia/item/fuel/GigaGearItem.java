@@ -15,8 +15,8 @@ public class GigaGearItem extends FuelItem {
 	}
 
 	@Override
-	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
-		super.appendHoverText(stack, level, list, flag);
+	public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> list, TooltipFlag flag) {
+		super.appendHoverText(stack, context, list, flag);
 		list.add(Component.translatable("text.grimoireofgaia.giga_gear.desc").withStyle(ChatFormatting.GRAY));
 	}
 }

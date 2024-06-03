@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "grimoireofgaia:experience_gold"
-            ]
+            "items": "grimoireofgaia:experience_gold"
           }
         ]
       },

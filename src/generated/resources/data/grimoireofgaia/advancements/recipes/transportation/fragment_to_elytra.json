@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "grimoireofgaia:elytra_fragment"
-            ]
+            "items": "grimoireofgaia:elytra_fragment"
           }
         ]
       },

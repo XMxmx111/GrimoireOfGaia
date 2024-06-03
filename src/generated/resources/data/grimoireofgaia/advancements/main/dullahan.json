@@ -22,7 +22,8 @@
       "translate": "advancement.grimoireofgaia.dullahan.desc"
     },
     "icon": {
-      "item": "grimoireofgaia:doll_dullahan"
+      "count": 1,
+      "id": "grimoireofgaia:doll_dullahan"
     },
     "title": {
       "translate": "advancement.grimoireofgaia.dullahan.title"

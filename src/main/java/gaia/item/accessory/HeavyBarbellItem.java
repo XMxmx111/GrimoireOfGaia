@@ -26,8 +26,8 @@ public class HeavyBarbellItem extends AbstractAccessoryItem {
 	}
 
 	@Override
-	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
-		super.appendHoverText(stack, level, list, flag);
+	public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> list, TooltipFlag flag) {
+		super.appendHoverText(stack, context, list, flag);
 		if (Screen.hasShiftDown()) {
 			for (Supplier<MobEffectInstance> effect : mobEffects) {
 				list.add(Component.translatable(effect.get().getDescriptionId()).withStyle(ChatFormatting.GRAY));

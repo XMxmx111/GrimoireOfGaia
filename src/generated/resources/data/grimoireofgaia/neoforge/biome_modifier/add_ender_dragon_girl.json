@@ -9,7 +9,7 @@
   },
   "whitelist": [
     "#minecraft:is_end",
-    "#forge:is_cold/end",
-    "#forge:is_dry/end"
+    "#c:is_cold/end",
+    "#c:is_dry/end"
   ]
 }

@@ -39,7 +39,7 @@
           "predicate": {
             "equipment": {
               "mainhand": {
-                "tag": "forge:tools/axes"
+                "items": "#forge:tools/axes"
               }
             }
           }
@@ -81,7 +81,7 @@
               "function": "minecraft:set_count"
             }
           ],
-          "name": "forge:nuggets/gold"
+          "name": "c:nuggets/gold"
         }
       ],
       "rolls": 1.0

@@ -22,7 +22,8 @@
       "translate": "advancement.grimoireofgaia.gravemite.desc"
     },
     "icon": {
-      "item": "minecraft:air"
+      "count": 1,
+      "id": "minecraft:cobblestone"
     },
     "title": {
       "translate": "advancement.grimoireofgaia.gravemite.title"

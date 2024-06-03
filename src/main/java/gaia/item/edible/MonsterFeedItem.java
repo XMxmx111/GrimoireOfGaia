@@ -21,8 +21,8 @@ public class MonsterFeedItem extends Item {
 	}
 
 	@Override
-	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
-		super.appendHoverText(stack, level, list, flag);
+	public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> list, TooltipFlag flag) {
+		super.appendHoverText(stack, context, list, flag);
 		list.add(Component.translatable("text.grimoireofgaia.monster_feed.desc"));
 		if (stack.is(GaiaRegistry.MONSTER_FEED.get())) {
 			list.add(Component.translatable("text.grimoireofgaia.food_monster_feed.desc"));

@@ -12,6 +12,7 @@
     "SSS"
   ],
   "result": {
-    "item": "minecraft:diamond"
+    "count": 1,
+    "id": "minecraft:diamond"
   }
 }

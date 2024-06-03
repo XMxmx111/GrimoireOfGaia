@@ -22,7 +22,8 @@
       "translate": "advancement.grimoireofgaia.sludge_girl.desc"
     },
     "icon": {
-      "item": "minecraft:slime_ball"
+      "count": 1,
+      "id": "minecraft:slime_ball"
     },
     "title": {
       "translate": "advancement.grimoireofgaia.sludge_girl.title"

@@ -1,10 +1,10 @@
-// 1.20.4	2024-03-22T22:06:28.5385478	Tags for minecraft:item mod id grimoireofgaia
+// 1.20.6	2024-06-03T23:56:12.8354961	Tags for minecraft:item mod id grimoireofgaia
 5991696f1996600a1dea1afb9feeaacebd304b13 data/curios/tags/items/body.json
 a636f60d8af31ad1435573797b047d222010e8dd data/curios/tags/items/hands.json
 8d89fe470a31f85f30f5b4762c84b3caed9d9778 data/curios/tags/items/head.json
 1b0f47469e1e1803e463215af4a779423e31edb4 data/curios/tags/items/necklace.json
 aeffd60889b81257f03d300e1adcfda27396cf42 data/curios/tags/items/ring.json
-6683095c1bf7aaaebfa4ebde58689633752bfe57 data/forge/tags/items/nuggets.json
+6683095c1bf7aaaebfa4ebde58689633752bfe57 data/c/tags/items/nuggets.json
 2840d89ab4931ddc5368b42af5e42dba0ea500ba data/forge/tags/items/nuggets/diamond.json
 ca1c040448916edc4aa816de9041a574bece54fe data/forge/tags/items/nuggets/emerald.json
 2ab4c9222d485f87ec74272e4ee14313fe077364 data/forge/tags/items/records.json

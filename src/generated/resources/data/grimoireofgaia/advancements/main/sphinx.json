@@ -22,7 +22,8 @@
       "translate": "advancement.grimoireofgaia.sphinx.desc"
     },
     "icon": {
-      "item": "grimoireofgaia:bust_sphinx"
+      "count": 1,
+      "id": "grimoireofgaia:bust_sphinx"
     },
     "title": {
       "translate": "advancement.grimoireofgaia.sphinx.title"

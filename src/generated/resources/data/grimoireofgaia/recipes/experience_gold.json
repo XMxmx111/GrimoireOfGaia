@@ -6,5 +6,8 @@
   "ingredient": {
     "item": "grimoireofgaia:box_gold"
   },
-  "result": "grimoireofgaia:experience_gold"
+  "result": {
+    "count": 1,
+    "id": "grimoireofgaia:experience_gold"
+  }
 }

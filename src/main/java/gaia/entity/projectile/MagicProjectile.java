@@ -38,14 +38,14 @@ public class MagicProjectile extends SmallFireball {
 	}
 
 	@Override
-	protected void defineSynchedData() {
-		super.defineSynchedData();
-		this.getEntityData().define(PROJECTILE_DAMAGE, SharedEntityData.getAttackDamage2() / 2.0F);
+	protected void defineSynchedData(SynchedEntityData.Builder builder) {
+		super.defineSynchedData(builder);
+		builder.define(PROJECTILE_DAMAGE, SharedEntityData.getAttackDamage2() / 2.0F);
 	}
 
 	@Override
 	public ItemStack getItem() {
-		ItemStack itemstack = this.getItemRaw();
+		ItemStack itemstack = super.getItem();
 		return itemstack.isEmpty() ? new ItemStack(GaiaRegistry.PROJECTILE_MAGIC.get()) : itemstack;
 	}
 

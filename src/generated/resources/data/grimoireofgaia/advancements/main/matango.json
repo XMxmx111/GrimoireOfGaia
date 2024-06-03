@@ -22,7 +22,8 @@
       "translate": "advancement.grimoireofgaia.matango.desc"
     },
     "icon": {
-      "item": "minecraft:red_mushroom"
+      "count": 1,
+      "id": "minecraft:red_mushroom"
     },
     "title": {
       "translate": "advancement.grimoireofgaia.matango.title"

@@ -22,8 +22,8 @@
       "translate": "advancement.grimoireofgaia.naga.desc"
     },
     "icon": {
-      "item": "grimoireofgaia:gold_shield",
-      "nbt": "{Damage:0}"
+      "count": 1,
+      "id": "grimoireofgaia:gold_shield"
     },
     "title": {
       "translate": "advancement.grimoireofgaia.naga.title"

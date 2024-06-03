@@ -21,12 +21,12 @@ public class EdibleEffectItem extends Item {
 	}
 
 	@Override
-	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
-		super.appendHoverText(stack, level, list, flag);
+	public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> list, TooltipFlag flag) {
+		super.appendHoverText(stack, context, list, flag);
 		FoodProperties foodProperties = stack.getFoodProperties(null);
 		if (foodProperties != null) {
-			for (Pair<MobEffectInstance, Float> effectPair : foodProperties.getEffects()) {
-				MobEffectInstance effect = effectPair.getFirst();
+			for (FoodProperties.PossibleEffect possibleEffect : foodProperties.effects()) {
+				MobEffectInstance effect = possibleEffect.effect();
 				int totalSeconds = effect.getDuration() / 20;
 				int minutes = (totalSeconds % 3600) / 60;
 				int seconds = totalSeconds % 60;

@@ -22,7 +22,8 @@
       "translate": "advancement.grimoireofgaia.ender_eye.desc"
     },
     "icon": {
-      "item": "minecraft:ender_pearl"
+      "count": 1,
+      "id": "minecraft:ender_pearl"
     },
     "title": {
       "translate": "advancement.grimoireofgaia.ender_eye.title"

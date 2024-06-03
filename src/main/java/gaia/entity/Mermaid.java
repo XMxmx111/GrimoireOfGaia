@@ -5,6 +5,7 @@ import gaia.registry.GaiaRegistry;
 import gaia.util.SharedEntityData;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
@@ -40,7 +41,7 @@ import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.ServerLevelAccessor;
-import net.minecraft.world.level.pathfinder.BlockPathTypes;
+import net.minecraft.world.level.pathfinder.PathType;
 import net.neoforged.neoforge.common.NeoForgeMod;
 import net.neoforged.neoforge.fluids.FluidType;
 import org.jetbrains.annotations.Nullable;
@@ -54,7 +55,7 @@ public class Mermaid extends AbstractAssistGaiaEntity {
 		super(entityType, level);
 		this.moveControl = new MermaidMoveControl(this);
 
-		this.setPathfindingMalus(BlockPathTypes.WATER, 8.0F);
+		this.setPathfindingMalus(PathType.WATER, 8.0F);
 
 		this.xpReward = SharedEntityData.EXPERIENCE_VALUE_2;
 		this.inWaterTimer = 0;
@@ -86,7 +87,7 @@ public class Mermaid extends AbstractAssistGaiaEntity {
 				.add(Attributes.ATTACK_KNOCKBACK, SharedEntityData.KNOCKBACK_2)
 
 				.add(Attributes.KNOCKBACK_RESISTANCE, 0.25D)
-				.add(NeoForgeMod.STEP_HEIGHT.value(), 1.0F);
+				.add(Attributes.STEP_HEIGHT, 1.0F);
 	}
 
 	@Override
@@ -95,13 +96,13 @@ public class Mermaid extends AbstractAssistGaiaEntity {
 	}
 
 	@Override
-	public float getEyeHeight(Pose pose) {
-		return this.getDimensions(pose).height * 0.5F;
+	public float getEyeHeightAccess(Pose pose) { //TODO: Check if eye height is correct with this removed
+		return this.getDimensions(pose).height() * 0.5F;
 	}
 
 	@Override
-	protected void defineSynchedData() {
-		super.defineSynchedData();
+	protected void defineSynchedData(SynchedEntityData.Builder builder) {
+		super.defineSynchedData(builder);
 	}
 
 	@Override
@@ -199,8 +200,8 @@ public class Mermaid extends AbstractAssistGaiaEntity {
 	@Nullable
 	@Override
 	public SpawnGroupData finalizeSpawn(ServerLevelAccessor levelAccessor, DifficultyInstance difficultyInstance,
-										MobSpawnType spawnType, @Nullable SpawnGroupData groupData, @Nullable CompoundTag tag) {
-		SpawnGroupData data = super.finalizeSpawn(levelAccessor, difficultyInstance, spawnType, groupData, tag);
+										MobSpawnType spawnType, @Nullable SpawnGroupData groupData) {
+		SpawnGroupData data = super.finalizeSpawn(levelAccessor, difficultyInstance, spawnType, groupData);
 
 		if (random.nextInt(4) == 0) {
 			setVariant(1);

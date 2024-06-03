@@ -31,7 +31,7 @@ public class WebProjectile extends SmallFireball {
 
 	@Override
 	public ItemStack getItem() {
-		ItemStack itemstack = this.getItemRaw();
+		ItemStack itemstack = super.getItem();
 		return itemstack.isEmpty() ? new ItemStack(GaiaRegistry.PROJECTILE_WEB.get()) : itemstack;
 	}
 
@@ -83,7 +83,7 @@ public class WebProjectile extends SmallFireball {
 		blockstate.onProjectileHit(this.level(), blockstate, result, this);
 		if (!this.level().isClientSide) {
 			Entity entity = this.getOwner();
-			if (!(entity instanceof Mob) || EventHooks.getMobGriefingEvent(this.level(), this)) {
+			if (!(entity instanceof Mob) || EventHooks.canEntityGrief(this.level(), this)) {
 				BlockPos blockpos = result.getBlockPos().relative(result.getDirection());
 				if (this.level().isEmptyBlock(blockpos)) {
 					this.level().setBlockAndUpdate(blockpos, Blocks.COBWEB.defaultBlockState()); //TODO: WEB BLOCK

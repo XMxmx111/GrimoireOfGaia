@@ -22,7 +22,8 @@
       "translate": "advancement.grimoireofgaia.sharko.desc"
     },
     "icon": {
-      "item": "grimoireofgaia:shiny_pearl"
+      "count": 1,
+      "id": "grimoireofgaia:shiny_pearl"
     },
     "title": {
       "translate": "advancement.grimoireofgaia.sharko.title"

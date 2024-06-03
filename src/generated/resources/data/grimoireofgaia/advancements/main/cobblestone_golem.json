@@ -22,8 +22,8 @@
       "translate": "advancement.grimoireofgaia.cobblestone_golem.desc"
     },
     "icon": {
-      "item": "grimoireofgaia:weapon_book_metal",
-      "nbt": "{Damage:0}"
+      "count": 1,
+      "id": "grimoireofgaia:weapon_book_metal"
     },
     "title": {
       "translate": "advancement.grimoireofgaia.cobblestone_golem.title"

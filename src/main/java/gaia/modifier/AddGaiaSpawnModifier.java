@@ -1,6 +1,7 @@
 package gaia.modifier;
 
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import gaia.registry.GaiaModifiers;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderSet;
@@ -37,7 +38,7 @@ public record AddGaiaSpawnModifier(List<HolderSet<Biome>> biomes,
 	}
 
 	@Override
-	public Codec<? extends BiomeModifier> codec() {
+	public MapCodec<? extends BiomeModifier> codec() {
 		return GaiaModifiers.ADD_GAIA_SPAWN.get();
 	}
 }

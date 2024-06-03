@@ -138,9 +138,12 @@ import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.packs.PackLocationInfo;
+import net.minecraft.server.packs.PackSelectionConfig;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.server.packs.PathPackResources;
 import net.minecraft.server.packs.repository.BuiltInPackSource;
+import net.minecraft.server.packs.repository.KnownPack;
 import net.minecraft.server.packs.repository.Pack;
 import net.minecraft.server.packs.repository.PackSource;
 import net.neoforged.fml.ModList;
@@ -148,6 +151,8 @@ import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.client.event.RegisterEntitySpectatorShadersEvent;
 import net.neoforged.neoforge.event.AddPackFindersEvent;
+
+import java.util.Optional;
 
 public class ClientHandler {
 	public static final float tinyShadow = 0.25F;
@@ -267,16 +272,23 @@ public class ClientHandler {
 	}
 
 	public static void addPackFinders(AddPackFindersEvent event) {
+
+
 		if (event.getPackType() == PackType.CLIENT_RESOURCES) {
-			var resourcePath = ModList.get().getModFileById(GrimoireOfGaia.MOD_ID).getFile().findResource("optional_sound_pack");
-			var pack = Pack.readMetaAndCreate("builtin/gaia_sound_pack",
-					Component.literal("\u00A76Optional GoG4 sound pack"),
-					false,
-					BuiltInPackSource.fromName((path) -> new PathPackResources(path, resourcePath, false)),
-					PackType.CLIENT_RESOURCES,
-					Pack.Position.TOP,
-					PackSource.BUILT_IN);
-			event.addRepositorySource((packConsumer) -> packConsumer.accept(pack));
+			event.addPackFinders(new ResourceLocation(GrimoireOfGaia.MOD_ID, "optional_sound_pack"), PackType.CLIENT_RESOURCES,
+					Component.literal("\u00A76Optional GoG4 sound pack"), PackSource.BUILT_IN, false, Pack.Position.TOP);
+
+			// TODO: Check!
+//			var resourcePath = ModList.get().getModFileById(GrimoireOfGaia.MOD_ID).getFile().findResource("optional_sound_pack");
+//			var pack = Pack.readMetaAndCreate(
+//					new PackLocationInfo("builtin/gaia_sound_pack", Component.literal("\u00A76Optional GoG4 sound pack"), packSource, Optional.of(new KnownPack("neoforge", "mod/" + packLocation, version.toString()))),
+//					"builtin/gaia_sound_pack",
+//					Component.literal("\u00A76Optional GoG4 sound pack"),
+//					false,
+//					BuiltInPackSource.fromName((path) -> new PathPackResources(path, resourcePath)),
+//					PackType.CLIENT_RESOURCES,
+//					new PackSelectionConfig(false, Pack.Position.TOP, false));
+//			event.addRepositorySource((packConsumer) -> packConsumer.accept(pack));
 		}
 	}
 

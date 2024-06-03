@@ -3,13 +3,14 @@
   "category": "misc",
   "ingredients": [
     {
-      "tag": "forge:gems/diamond"
+      "tag": "c:gems/diamond"
     },
     {
-      "tag": "forge:feathers"
+      "tag": "c:feathers"
     }
   ],
   "result": {
-    "item": "grimoireofgaia:quill"
+    "count": 1,
+    "id": "grimoireofgaia:quill"
   }
 }

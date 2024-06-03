@@ -1,9 +1,9 @@
 {
   "type": "grimoireofgaia:add_configured_spawns",
   "blacklist": [
-    "#forge:is_cold",
-    "#forge:is_hot",
-    "#forge:is_dense"
+    "#c:is_cold",
+    "#c:is_hot",
+    "#c:is_dense_vegetation"
   ],
   "spawners": {
     "type": "grimoireofgaia:gryphon",
@@ -13,6 +13,6 @@
   },
   "whitelist": [
     "#minecraft:is_overworld",
-    "#forge:is_plateau"
+    "#c:is_plateau"
   ]
 }

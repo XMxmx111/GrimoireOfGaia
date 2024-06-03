@@ -85,7 +85,7 @@ public class Minotaur extends AbstractGaiaEntity implements PowerableMob {
 				.add(Attributes.ARMOR, SharedEntityData.RATE_ARMOR_3)
 				.add(Attributes.ATTACK_KNOCKBACK, SharedEntityData.KNOCKBACK_3)
 
-				.add(NeoForgeMod.STEP_HEIGHT.value(), 5.0F);
+				.add(Attributes.STEP_HEIGHT, 5.0F);
 	}
 
 	@Override
@@ -94,9 +94,9 @@ public class Minotaur extends AbstractGaiaEntity implements PowerableMob {
 	}
 
 	@Override
-	protected void defineSynchedData() {
-		super.defineSynchedData();
-		this.entityData.define(ANIMATION_STATE, 0);
+	protected void defineSynchedData(SynchedEntityData.Builder builder) {
+		super.defineSynchedData(builder);
+		builder.define(ANIMATION_STATE, 0);
 	}
 
 	public int getAnimationState() {
@@ -246,8 +246,8 @@ public class Minotaur extends AbstractGaiaEntity implements PowerableMob {
 	@Nullable
 	@Override
 	public SpawnGroupData finalizeSpawn(ServerLevelAccessor levelAccessor, DifficultyInstance difficultyInstance,
-										MobSpawnType spawnType, @Nullable SpawnGroupData groupData, @Nullable CompoundTag tag) {
-		SpawnGroupData data = super.finalizeSpawn(levelAccessor, difficultyInstance, spawnType, groupData, tag);
+										MobSpawnType spawnType, @Nullable SpawnGroupData groupData) {
+		SpawnGroupData data = super.finalizeSpawn(levelAccessor, difficultyInstance, spawnType, groupData);
 
 		this.populateDefaultEquipmentSlots(random, difficultyInstance);
 		this.populateDefaultEquipmentSlots(random, difficultyInstance);

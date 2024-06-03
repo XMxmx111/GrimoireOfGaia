@@ -5,6 +5,8 @@ import gaia.registry.GaiaRegistry;
 import gaia.util.SharedEntityData;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.util.RandomSource;
@@ -32,7 +34,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
-import net.minecraft.world.level.pathfinder.BlockPathTypes;
+import net.minecraft.world.level.pathfinder.PathType;
+import net.minecraft.world.level.storage.loot.LootTable;
 import net.neoforged.neoforge.common.NeoForgeMod;
 import org.jetbrains.annotations.Nullable;
 
@@ -51,7 +54,7 @@ public class GelatinousSlime extends AbstractGaiaEntity {
 		super(entityType, level);
 		this.xpReward = SharedEntityData.EXPERIENCE_VALUE_2;
 
-		this.setPathfindingMalus(BlockPathTypes.WATER, -1.0F);
+		this.setPathfindingMalus(PathType.WATER, -1.0F);
 
 		animationPlay = false;
 		animationTimer = 0;
@@ -75,7 +78,7 @@ public class GelatinousSlime extends AbstractGaiaEntity {
 				.add(Attributes.ARMOR, SharedEntityData.RATE_ARMOR_2)
 
 				.add(Attributes.KNOCKBACK_RESISTANCE, 1.0D)
-				.add(NeoForgeMod.STEP_HEIGHT.value(), 1.0F);
+				.add(Attributes.STEP_HEIGHT, 1.0F);
 	}
 
 	@Override
@@ -84,8 +87,8 @@ public class GelatinousSlime extends AbstractGaiaEntity {
 	}
 
 	@Override
-	protected void defineSynchedData() {
-		super.defineSynchedData();
+	protected void defineSynchedData(SynchedEntityData.Builder builder) {
+		super.defineSynchedData(builder);
 	}
 
 	@Override
@@ -204,8 +207,8 @@ public class GelatinousSlime extends AbstractGaiaEntity {
 	@Nullable
 	@Override
 	public SpawnGroupData finalizeSpawn(ServerLevelAccessor levelAccessor, DifficultyInstance difficultyInstance,
-										MobSpawnType spawnType, @Nullable SpawnGroupData groupData, @Nullable CompoundTag tag) {
-		SpawnGroupData data = super.finalizeSpawn(levelAccessor, difficultyInstance, spawnType, groupData, tag);
+										MobSpawnType spawnType, @Nullable SpawnGroupData groupData) {
+		SpawnGroupData data = super.finalizeSpawn(levelAccessor, difficultyInstance, spawnType, groupData);
 
 		this.populateDefaultEquipmentSlots(random, difficultyInstance);
 
@@ -215,7 +218,7 @@ public class GelatinousSlime extends AbstractGaiaEntity {
 	}
 
 	@Override
-	protected ResourceLocation getDefaultLootTable() {
+	protected ResourceKey<LootTable> getDefaultLootTable() {
 		if (random.nextBoolean()) {
 			return EntityType.SKELETON.getDefaultLootTable();
 		}

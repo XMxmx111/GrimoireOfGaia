@@ -6,5 +6,8 @@
   "ingredient": {
     "item": "grimoireofgaia:box_iron"
   },
-  "result": "grimoireofgaia:experience_iron"
+  "result": {
+    "count": 1,
+    "id": "grimoireofgaia:experience_iron"
+  }
 }

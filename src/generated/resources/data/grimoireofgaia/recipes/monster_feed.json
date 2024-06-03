@@ -3,16 +3,17 @@
   "category": "misc",
   "ingredients": [
     {
-      "tag": "forge:seeds/wheat"
+      "tag": "c:seeds/wheat"
     },
     {
-      "tag": "forge:seeds/wheat"
+      "tag": "c:seeds/wheat"
     },
     {
       "item": "grimoireofgaia:experience_iron"
     }
   ],
   "result": {
-    "item": "grimoireofgaia:monster_feed"
+    "count": 1,
+    "id": "grimoireofgaia:monster_feed"
   }
 }

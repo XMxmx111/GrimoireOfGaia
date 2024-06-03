@@ -1,5 +1,6 @@
 package gaia.attachment.friended;
 
+import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.neoforged.neoforge.common.util.INBTSerializable;
 
@@ -42,7 +43,7 @@ public class Friended implements IFriended, INBTSerializable<CompoundTag> {
 	}
 
 	@Override
-	public CompoundTag serializeNBT() {
+	public CompoundTag serializeNBT(HolderLookup.Provider provider) {
 		CompoundTag tag = new CompoundTag();
 		tag.putBoolean("friended", this.isFriendly());
 		if (this.getFriendedBy() != null)
@@ -51,7 +52,7 @@ public class Friended implements IFriended, INBTSerializable<CompoundTag> {
 	}
 
 	@Override
-	public void deserializeNBT(CompoundTag tag) {
+	public void deserializeNBT(HolderLookup.Provider provider, CompoundTag tag) {
 		this.setFriendly(tag.getBoolean("friended"));
 		if (tag.contains("friendedBy"))
 			this.setFriendedBy(tag.getUUID("friendedBy"));

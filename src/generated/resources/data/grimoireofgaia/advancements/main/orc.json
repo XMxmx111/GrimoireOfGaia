@@ -22,8 +22,8 @@
       "translate": "advancement.grimoireofgaia.orc.desc"
     },
     "icon": {
-      "item": "minecraft:stone_axe",
-      "nbt": "{Damage:0}"
+      "count": 1,
+      "id": "minecraft:stone_axe"
     },
     "title": {
       "translate": "advancement.grimoireofgaia.orc.title"

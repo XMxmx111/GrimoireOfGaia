@@ -22,7 +22,8 @@
       "translate": "advancement.grimoireofgaia.ant_salvager.desc"
     },
     "icon": {
-      "item": "grimoireofgaia:projectile_poison"
+      "count": 1,
+      "id": "grimoireofgaia:projectile_poison"
     },
     "title": {
       "translate": "advancement.grimoireofgaia.ant_salvager.title"

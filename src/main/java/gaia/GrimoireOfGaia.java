@@ -10,12 +10,11 @@ import gaia.registry.GaiaDataSerializers;
 import gaia.registry.GaiaModifiers;
 import gaia.registry.GaiaRegistry;
 import gaia.registry.GaiaSounds;
+import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
-import net.neoforged.fml.ModLoadingContext;
+import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
-import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.neoforged.fml.loading.FMLEnvironment;
 import net.neoforged.neoforge.common.NeoForge;
 import org.slf4j.Logger;
 
@@ -24,9 +23,8 @@ public class GrimoireOfGaia {
 	public static final String MOD_ID = "grimoireofgaia";
 	public static final Logger LOGGER = LogUtils.getLogger();
 
-	public GrimoireOfGaia(IEventBus eventBus) {
-		ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, GaiaConfig.clientSpec);
-		ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, GaiaConfig.commonSpec);
+	public GrimoireOfGaia(IEventBus eventBus, ModContainer container, Dist dist) {
+		container.registerConfig(ModConfig.Type.COMMON, GaiaConfig.commonSpec);
 		eventBus.register(GaiaConfig.class);
 
 		GaiaRegistry.BLOCKS.register(eventBus);
@@ -38,21 +36,16 @@ public class GrimoireOfGaia {
 		GaiaDataSerializers.DATA_SERIALIZERS.register(eventBus);
 		AttachmentHandler.ATTACHMENT_TYPES.register(eventBus);
 
-		eventBus.addListener(this::setup);
-
 		NeoForge.EVENT_BUS.register(new DropHandler());
 		NeoForge.EVENT_BUS.register(new CureHandler());
 
-		if (FMLEnvironment.dist.isClient()) {
+		if (dist.isClient()) {
+			container.registerConfig(ModConfig.Type.CLIENT, GaiaConfig.clientSpec);
 			eventBus.addListener(ClientHandler::onClientSetup);
 			eventBus.addListener(ClientHandler::setupSpectatingShaders);
 			eventBus.addListener(ClientHandler::addPackFinders);
 			eventBus.addListener(ClientHandler::registerEntityRenders);
 			eventBus.addListener(ClientHandler::registerLayerDefinitions);
 		}
-	}
-
-	private void setup(final FMLCommonSetupEvent event) {
-
 	}
 }

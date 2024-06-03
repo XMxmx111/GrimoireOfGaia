@@ -16,10 +16,10 @@ public class MandrakeItem extends EdibleEffectItem {
 	}
 
 	@Override
-	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
+	public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> list, TooltipFlag flag) {
 		list.add(Component.translatable("text.grimoireofgaia.gain_hearts", 2));
 		list.add(Component.translatable("text.grimoireofgaia.lose_hunger", 4));
-		super.appendHoverText(stack, level, list, flag);
+		super.appendHoverText(stack, context, list, flag);
 	}
 
 	@Override

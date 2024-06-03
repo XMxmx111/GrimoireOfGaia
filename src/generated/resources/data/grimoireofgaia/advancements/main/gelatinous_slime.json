@@ -22,7 +22,8 @@
       "translate": "advancement.grimoireofgaia.gelatinous_slime.desc"
     },
     "icon": {
-      "item": "grimoireofgaia:doll_slime_girl"
+      "count": 1,
+      "id": "grimoireofgaia:doll_slime_girl"
     },
     "title": {
       "translate": "advancement.grimoireofgaia.gelatinous_slime.title"

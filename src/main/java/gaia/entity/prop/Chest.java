@@ -11,7 +11,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
@@ -82,7 +82,7 @@ public class Chest extends AbstractPropEntity {
 			Mimic mimic = GaiaRegistry.MIMIC.getEntityType().create(this.level());
 			if (mimic != null) {
 				mimic.moveTo(blockPosition(), 0.0F, 0.0F);
-				mimic.finalizeSpawn((ServerLevel) this.level(), this.level().getCurrentDifficultyAt(blockPosition()), MobSpawnType.MOB_SUMMONED, (SpawnGroupData) null, (CompoundTag) null);
+				mimic.finalizeSpawn((ServerLevel) this.level(), this.level().getCurrentDifficultyAt(blockPosition()), MobSpawnType.MOB_SUMMONED, (SpawnGroupData) null);
 				this.level().addFreshEntity(mimic);
 			}
 		}
@@ -109,8 +109,8 @@ public class Chest extends AbstractPropEntity {
 	@Nullable
 	@Override
 	public SpawnGroupData finalizeSpawn(ServerLevelAccessor levelAccessor, DifficultyInstance difficultyInstance,
-										MobSpawnType spawnType, @Nullable SpawnGroupData groupData, @Nullable CompoundTag tag) {
-		SpawnGroupData data = super.finalizeSpawn(levelAccessor, difficultyInstance, spawnType, groupData, tag);
+										MobSpawnType spawnType, @Nullable SpawnGroupData groupData) {
+		SpawnGroupData data = super.finalizeSpawn(levelAccessor, difficultyInstance, spawnType, groupData);
 
 		yBodyRot = 180.0F;
 		yBodyRotO = 180.0F;
@@ -145,10 +145,10 @@ public class Chest extends AbstractPropEntity {
 	}
 
 	@Override
-	protected void defineSynchedData() {
-		super.defineSynchedData();
-		this.entityData.define(ROTATION, 0);
-		this.entityData.define(DROP, 0);
+	protected void defineSynchedData(SynchedEntityData.Builder builder) {
+		super.defineSynchedData(builder);
+		builder.define(ROTATION, 0);
+		builder.define(DROP, 0);
 	}
 
 	public int getRotation() {
@@ -218,7 +218,7 @@ public class Chest extends AbstractPropEntity {
 	}
 
 	@Override
-	protected ResourceLocation getDefaultLootTable() {
+	protected ResourceKey<LootTable> getDefaultLootTable() {
 		if (getDrop() == 2) {
 			return null;
 		} else if (getDrop() == 1) {
@@ -233,7 +233,7 @@ public class Chest extends AbstractPropEntity {
 	@Override
 	protected void dropCustomDeathLoot(DamageSource damageSource, int looting, boolean killedByPlayer) {
 		if (!this.level().isClientSide) {
-			LootTable loottable = this.level().getServer().getLootData().getLootTable(GaiaLootTables.CHEST_TABLES);
+			LootTable loottable = this.level().getServer().reloadableRegistries().getLootTable(GaiaLootTables.CHEST_TABLES);
 
 			LootParams.Builder lootcontext$builder = (new LootParams.Builder((ServerLevel) this.level()))
 					.withParameter(LootContextParams.THIS_ENTITY, this).withParameter(LootContextParams.ORIGIN, this.position())

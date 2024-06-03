@@ -115,7 +115,7 @@ public class AntHill extends AbstractPropEntity {
 				AntWorker antWorker = GaiaRegistry.ANT_WORKER.getEntityType().create(this.level());
 				if (antWorker != null) {
 					antWorker.moveTo(blockPosition(), 0.0F, 0.0F);
-					antWorker.finalizeSpawn((ServerLevel) this.level(), this.level().getCurrentDifficultyAt(blockPosition()), MobSpawnType.MOB_SUMMONED, (SpawnGroupData) null, (CompoundTag) null);
+					antWorker.finalizeSpawn((ServerLevel) this.level(), this.level().getCurrentDifficultyAt(blockPosition()), MobSpawnType.MOB_SUMMONED, (SpawnGroupData) null);
 					this.level().addFreshEntity(antWorker);
 				}
 			}
@@ -137,8 +137,8 @@ public class AntHill extends AbstractPropEntity {
 	@Nullable
 	@Override
 	public SpawnGroupData finalizeSpawn(ServerLevelAccessor levelAccessor, DifficultyInstance difficultyInstance,
-										MobSpawnType spawnType, @Nullable SpawnGroupData groupData, @Nullable CompoundTag tag) {
-		SpawnGroupData data = super.finalizeSpawn(levelAccessor, difficultyInstance, spawnType, groupData, tag);
+										MobSpawnType spawnType, @Nullable SpawnGroupData groupData) {
+		SpawnGroupData data = super.finalizeSpawn(levelAccessor, difficultyInstance, spawnType, groupData);
 
 		yBodyRot = 180.0F;
 		yBodyRotO = 180.0F;
@@ -163,10 +163,10 @@ public class AntHill extends AbstractPropEntity {
 	}
 
 	@Override
-	protected void defineSynchedData() {
-		super.defineSynchedData();
-		this.entityData.define(DETECTION, -1);
-		this.entityData.define(SPAWN_AMOUNT, -1);
+	protected void defineSynchedData(SynchedEntityData.Builder builder) {
+		super.defineSynchedData(builder);
+		builder.define(DETECTION, -1);
+		builder.define(SPAWN_AMOUNT, -1);
 	}
 
 	public int getDetection() {

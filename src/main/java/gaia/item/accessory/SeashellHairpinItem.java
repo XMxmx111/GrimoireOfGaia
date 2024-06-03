@@ -20,14 +20,14 @@ public class SeashellHairpinItem extends AbstractAccessoryItem {
 	}
 
 	@Override
-	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
-		super.appendHoverText(stack, level, list, flag);
+	public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> list, TooltipFlag flag) {
+		super.appendHoverText(stack, context, list, flag);
 
 		list.add(Component.translatable("text.grimoireofgaia.trinket.tag").withStyle(ChatFormatting.YELLOW));
 
 
 		if (Screen.hasShiftDown()) {
-			list.add(Component.translatable(MobEffects.WATER_BREATHING.getDescriptionId()).append(Component.literal(" (0:20)")).withStyle(ChatFormatting.GRAY));
+			list.add(Component.translatable(MobEffects.WATER_BREATHING.value().getDescriptionId()).append(Component.literal(" (0:20)")).withStyle(ChatFormatting.GRAY));
 		} else {
 			list.add(Component.translatable("text.grimoireofgaia.hold_shift").withStyle(ChatFormatting.ITALIC));
 		}

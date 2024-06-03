@@ -22,8 +22,8 @@
       "translate": "advancement.grimoireofgaia.flesh_lich.desc"
     },
     "icon": {
-      "item": "grimoireofgaia:zombie_staff",
-      "nbt": "{Damage:0}"
+      "count": 1,
+      "id": "grimoireofgaia:zombie_staff"
     },
     "title": {
       "translate": "advancement.grimoireofgaia.flesh_lich.title"

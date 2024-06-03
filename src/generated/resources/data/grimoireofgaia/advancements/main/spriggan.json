@@ -22,7 +22,8 @@
       "translate": "advancement.grimoireofgaia.spriggan.desc"
     },
     "icon": {
-      "item": "minecraft:oak_log"
+      "count": 1,
+      "id": "minecraft:oak_log"
     },
     "title": {
       "translate": "advancement.grimoireofgaia.spriggan.title"

@@ -22,7 +22,8 @@
       "translate": "advancement.grimoireofgaia.mandragora.desc"
     },
     "icon": {
-      "item": "grimoireofgaia:deco_garden_gnome"
+      "count": 1,
+      "id": "grimoireofgaia:deco_garden_gnome"
     },
     "title": {
       "translate": "advancement.grimoireofgaia.mandragora.title"

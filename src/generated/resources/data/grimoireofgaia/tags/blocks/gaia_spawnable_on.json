@@ -2,8 +2,8 @@
   "values": [
     "#minecraft:dirt",
     "#minecraft:sand",
-    "#forge:sandstone",
-    "#forge:gravel",
+    "#c:sandstone/blocks",
+    "#c:gravels",
     "minecraft:snow_block"
   ]
 }

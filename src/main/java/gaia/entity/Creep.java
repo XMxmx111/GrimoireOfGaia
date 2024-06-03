@@ -44,7 +44,6 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.gameevent.GameEvent;
-import net.neoforged.neoforge.common.NeoForgeMod;
 import net.neoforged.neoforge.event.EventHooks;
 import org.jetbrains.annotations.Nullable;
 
@@ -85,7 +84,7 @@ public class Creep extends AbstractGaiaEntity implements PowerableMob {
 				.add(Attributes.ATTACK_DAMAGE, 4.0D)
 				.add(Attributes.ARMOR, SharedEntityData.RATE_ARMOR_1)
 				.add(Attributes.ATTACK_KNOCKBACK, SharedEntityData.KNOCKBACK_1)
-				.add(NeoForgeMod.STEP_HEIGHT.value(), 1.0F);
+				.add(Attributes.STEP_HEIGHT, 1.0F);
 	}
 
 	@Override
@@ -134,11 +133,11 @@ public class Creep extends AbstractGaiaEntity implements PowerableMob {
 	}
 
 	@Override
-	protected void defineSynchedData() {
-		super.defineSynchedData();
-		this.entityData.define(DATA_SWELL_DIR, -1);
-		this.entityData.define(DATA_IS_POWERED, false);
-		this.entityData.define(DATA_IS_IGNITED, false);
+	protected void defineSynchedData(SynchedEntityData.Builder builder) {
+		super.defineSynchedData(builder);
+		builder.define(DATA_SWELL_DIR, -1);
+		builder.define(DATA_IS_POWERED, false);
+		builder.define(DATA_IS_IGNITED, false);
 	}
 
 	public boolean doHurtTarget(Entity entity) {
@@ -172,9 +171,7 @@ public class Creep extends AbstractGaiaEntity implements PowerableMob {
 			this.level().playSound(player, this.getX(), this.getY(), this.getZ(), SoundEvents.FLINTANDSTEEL_USE, this.getSoundSource(), 1.0F, this.random.nextFloat() * 0.4F + 0.8F);
 			if (!this.level().isClientSide) {
 				this.ignite();
-				itemstack.hurtAndBreak(1, player, (p_32290_) -> {
-					p_32290_.broadcastBreakEvent(hand);
-				});
+				itemstack.hurtAndBreak(1, player, Player.getSlotForHand(hand));
 			}
 
 			return InteractionResult.sidedSuccess(this.level().isClientSide);
@@ -185,7 +182,7 @@ public class Creep extends AbstractGaiaEntity implements PowerableMob {
 
 	private void explodeCreep() {
 		if (!this.level().isClientSide) {
-			Level.ExplosionInteraction explosion$blockinteraction = EventHooks.getMobGriefingEvent(this.level(), this) ? Level.ExplosionInteraction.MOB : Level.ExplosionInteraction.NONE;
+			Level.ExplosionInteraction explosion$blockinteraction = EventHooks.canEntityGrief(this.level(), this) ? Level.ExplosionInteraction.MOB : Level.ExplosionInteraction.NONE;
 			float f = this.isPowered() ? 2.0F : 1.0F;
 			this.dead = true;
 			this.level().explode(this, this.getX(), this.getY(), this.getZ(), (float) this.explosionRadius * f, explosion$blockinteraction);

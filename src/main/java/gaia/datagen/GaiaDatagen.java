@@ -6,7 +6,6 @@ import gaia.datagen.client.GaiaBlockstates;
 import gaia.datagen.client.GaiaItemModels;
 import gaia.datagen.client.GaiaLanguage;
 import gaia.datagen.client.GaiaSoundProvider;
-import gaia.datagen.client.compat.GaiaPatchouliProvider;
 import gaia.datagen.server.GaiaAdvancementProvider;
 import gaia.datagen.server.GaiaBiomeModifiers;
 import gaia.datagen.server.GaiaBlockTags;
@@ -24,7 +23,7 @@ import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.registries.VanillaRegistries;
 import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.ModList;
+import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import net.neoforged.neoforge.common.data.DatapackBuiltinEntriesProvider;
@@ -35,7 +34,7 @@ import net.neoforged.neoforge.registries.NeoForgeRegistries;
 import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 
-@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD)
 public class GaiaDatagen {
 	@SubscribeEvent
 	public static void gatherData(GatherDataEvent event) {
@@ -46,8 +45,8 @@ public class GaiaDatagen {
 
 		if (event.includeServer()) {
 			generator.addProvider(true, new GaiaAdvancementProvider(packOutput, lookupProvider, helper));
-			generator.addProvider(true, new GaiaRecipes(packOutput));
-			generator.addProvider(true, new GaiaLoot(packOutput));
+			generator.addProvider(true, new GaiaRecipes(packOutput, lookupProvider));
+			generator.addProvider(true, new GaiaLoot(packOutput, lookupProvider));
 			BlockTagsProvider blockTagsProvider;
 			generator.addProvider(true, blockTagsProvider = new GaiaBlockTags(packOutput, lookupProvider, helper));
 			generator.addProvider(true, new GaiaItemTags(packOutput, lookupProvider, blockTagsProvider, helper));
@@ -62,8 +61,8 @@ public class GaiaDatagen {
 			generator.addProvider(true, new GaiaBlockModels(packOutput, helper));
 			generator.addProvider(true, new GaiaItemModels(packOutput, helper));
 			generator.addProvider(true, new GaiaBlockstates(packOutput, helper));
-			if (ModList.get().isLoaded("patchouli"))
-				generator.addProvider(true, new GaiaPatchouliProvider(packOutput));
+//			if (ModList.get().isLoaded("patchouli"))
+//				generator.addProvider(true, new gaia.datagen.client.compat.GaiaPatchouliProvider(packOutput));
 		}
 	}
 

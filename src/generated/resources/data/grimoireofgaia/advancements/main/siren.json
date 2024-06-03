@@ -22,7 +22,8 @@
       "translate": "advancement.grimoireofgaia.siren.desc"
     },
     "icon": {
-      "item": "minecraft:cod"
+      "count": 1,
+      "id": "minecraft:cod"
     },
     "title": {
       "translate": "advancement.grimoireofgaia.siren.title"

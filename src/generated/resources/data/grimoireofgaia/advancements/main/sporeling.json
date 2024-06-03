@@ -22,7 +22,8 @@
       "translate": "advancement.grimoireofgaia.sporeling.desc"
     },
     "icon": {
-      "item": "minecraft:brown_mushroom"
+      "count": 1,
+      "id": "minecraft:brown_mushroom"
     },
     "title": {
       "translate": "advancement.grimoireofgaia.sporeling.title"

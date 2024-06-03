@@ -40,15 +40,13 @@ public class SoulfireItem extends FuelItem {
 			BlockPos relativePos = blockpos.relative(context.getClickedFace());
 			if (BaseFireBlock.canBePlacedAt(level, relativePos, context.getHorizontalDirection())) {
 				level.playSound(player, relativePos, SoundEvents.GHAST_SCREAM, SoundSource.PLAYERS, 1.0F, level.getRandom().nextFloat() * 0.4F + 0.8F);
-				BlockState blockstate1 = BaseFireBlock.getState(level, relativePos);
-				level.setBlock(relativePos, blockstate1, 11);
+				BlockState relativeState = BaseFireBlock.getState(level, relativePos);
+				level.setBlock(relativePos, relativeState, 11);
 				level.gameEvent(player, GameEvent.BLOCK_PLACE, blockpos);
 				ItemStack stack = context.getItemInHand();
 				if (player instanceof ServerPlayer) {
 					CriteriaTriggers.PLACED_BLOCK.trigger((ServerPlayer) player, relativePos, stack);
-					stack.hurtAndBreak(1, player, (p) -> {
-						p.broadcastBreakEvent(context.getHand());
-					});
+					stack.hurtAndBreak(1, player, Player.getSlotForHand(context.getHand()));
 				}
 
 				return InteractionResult.sidedSuccess(level.isClientSide());
@@ -60,9 +58,7 @@ public class SoulfireItem extends FuelItem {
 			level.setBlock(blockpos, blockstate.setValue(BlockStateProperties.LIT, Boolean.TRUE), 11);
 			level.gameEvent(player, GameEvent.BLOCK_PLACE, blockpos);
 			if (player != null) {
-				context.getItemInHand().hurtAndBreak(1, player, (p) -> {
-					p.broadcastBreakEvent(context.getHand());
-				});
+				context.getItemInHand().hurtAndBreak(1, player, Player.getSlotForHand(context.getHand()));
 			}
 
 			return InteractionResult.sidedSuccess(level.isClientSide());
@@ -70,8 +66,8 @@ public class SoulfireItem extends FuelItem {
 	}
 
 	@Override
-	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
-		super.appendHoverText(stack, level, list, flag);
+	public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> list, TooltipFlag flag) {
+		super.appendHoverText(stack, context, list, flag);
 		list.add(Component.translatable("text.grimoireofgaia.soulfire.desc").withStyle(ChatFormatting.ITALIC));
 	}
 }

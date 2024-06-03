@@ -8,6 +8,7 @@ import gaia.registry.GaiaTags;
 import gaia.util.SharedEntityData;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.Difficulty;
@@ -44,7 +45,7 @@ import java.util.UUID;
 
 public class Gryphon extends AbstractAssistGaiaEntity implements IDayMob {
 	private static final UUID KNOCKBACK_MODIFIER_UUID = UUID.fromString("3F9A8135-BC93-4EAB-B02A-33D75D54A09E");
-	private static final AttributeModifier KNOCKBACK_MODIFIER = new AttributeModifier(KNOCKBACK_MODIFIER_UUID, "Knockback boost", 2.0D, AttributeModifier.Operation.ADDITION);
+	private static final AttributeModifier KNOCKBACK_MODIFIER = new AttributeModifier(KNOCKBACK_MODIFIER_UUID, "Knockback boost", 2.0D, AttributeModifier.Operation.ADD_VALUE);
 
 	public Gryphon(EntityType<? extends Monster> entityType, Level level) {
 		super(entityType, level);
@@ -73,12 +74,12 @@ public class Gryphon extends AbstractAssistGaiaEntity implements IDayMob {
 				.add(Attributes.ATTACK_DAMAGE, 4.0D)
 				.add(Attributes.ARMOR, SharedEntityData.RATE_ARMOR_1)
 				.add(Attributes.ATTACK_KNOCKBACK, SharedEntityData.KNOCKBACK_1)
-				.add(NeoForgeMod.STEP_HEIGHT.value(), 1.0F);
+				.add(Attributes.STEP_HEIGHT, 1.0F);
 	}
 
 	@Override
-	protected void defineSynchedData() {
-		super.defineSynchedData();
+	protected void defineSynchedData(SynchedEntityData.Builder builder) {
+		super.defineSynchedData(builder);
 	}
 
 	@Override
@@ -127,8 +128,8 @@ public class Gryphon extends AbstractAssistGaiaEntity implements IDayMob {
 	@Nullable
 	@Override
 	public SpawnGroupData finalizeSpawn(ServerLevelAccessor levelAccessor, DifficultyInstance difficultyInstance,
-										MobSpawnType spawnType, @Nullable SpawnGroupData groupData, @Nullable CompoundTag tag) {
-		SpawnGroupData data = super.finalizeSpawn(levelAccessor, difficultyInstance, spawnType, groupData, tag);
+										MobSpawnType spawnType, @Nullable SpawnGroupData groupData) {
+		SpawnGroupData data = super.finalizeSpawn(levelAccessor, difficultyInstance, spawnType, groupData);
 
 		AttributeInstance attributeinstance = this.getAttribute(Attributes.ATTACK_KNOCKBACK);
 		attributeinstance.removeModifier(KNOCKBACK_MODIFIER_UUID);

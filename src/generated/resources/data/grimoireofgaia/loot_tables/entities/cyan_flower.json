@@ -39,7 +39,7 @@
               "predicate": {
                 "equipment": {
                   "mainhand": {
-                    "tag": "forge:tools/shovels"
+                    "items": "#forge:tools/shovels"
                   }
                 }
               }

@@ -6,7 +6,7 @@ import gaia.registry.GaiaRegistry;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.HolderSet;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.BootstapContext;
+import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BiomeTags;
@@ -25,7 +25,7 @@ import java.util.stream.Collectors;
 public class GaiaBiomeModifiers {
 	private static final TagKey<Biome> NO_DEFAULT_MONSTERS = TagKey.create(Registries.BIOME, new ResourceLocation("forge", "no_default_monsters"));
 
-	public static void bootstrap(BootstapContext<BiomeModifier> context) {
+	public static void bootstrap(BootstrapContext<BiomeModifier> context) {
 		List<TagKey<Biome>> overworld = List.of(BiomeTags.IS_OVERWORLD);
 		List<TagKey<Biome>> notPeaceful = List.of(BiomeTags.HAS_ANCIENT_CITY, Tags.Biomes.IS_MUSHROOM, NO_DEFAULT_MONSTERS);
 
@@ -93,8 +93,8 @@ public class GaiaBiomeModifiers {
 
 		List<TagKey<Biome>> overworldPlateau = List.of(BiomeTags.IS_OVERWORLD, Tags.Biomes.IS_PLATEAU);
 		List<TagKey<Biome>> overworldMountain = List.of(BiomeTags.IS_OVERWORLD, Tags.Biomes.IS_MOUNTAIN);
-		List<TagKey<Biome>> notColdHotDense = List.of(Tags.Biomes.IS_COLD, Tags.Biomes.IS_HOT, Tags.Biomes.IS_DENSE);
-		List<TagKey<Biome>> notHotDense = List.of(Tags.Biomes.IS_HOT, Tags.Biomes.IS_DENSE);
+		List<TagKey<Biome>> notColdHotDense = List.of(Tags.Biomes.IS_COLD, Tags.Biomes.IS_HOT, Tags.Biomes.IS_DENSE_VEGETATION);
+		List<TagKey<Biome>> notHotDense = List.of(Tags.Biomes.IS_HOT, Tags.Biomes.IS_DENSE_VEGETATION);
 		registerBiomeModifier(context, "add_banshee",
 				overworldPlateau, notColdHotDense,
 				new MobSpawnSettings.SpawnerData(GaiaRegistry.BANSHEE.getEntityType(), 40, 2, 4)
@@ -151,7 +151,7 @@ public class GaiaBiomeModifiers {
 		);
 
 		List<TagKey<Biome>> overworldBeach = List.of(BiomeTags.IS_OVERWORLD, BiomeTags.IS_BEACH);
-		List<TagKey<Biome>> overworldWater = List.of(BiomeTags.IS_OVERWORLD, Tags.Biomes.IS_WATER);
+		List<TagKey<Biome>> overworldWater = List.of(BiomeTags.IS_OVERWORLD, Tags.Biomes.IS_AQUATIC);
 		registerBiomeModifier(context, "add_cecaelia",
 				overworldBeach, null,
 				new MobSpawnSettings.SpawnerData(GaiaRegistry.CECAELIA.getEntityType(), 80, 4, 6)
@@ -310,7 +310,7 @@ public class GaiaBiomeModifiers {
 				new MobSpawnSettings.SpawnerData(GaiaRegistry.WITHER_COW.getEntityType(), 12, 2, 4)
 		);
 
-		List<TagKey<Biome>> overworldConiferous = List.of(BiomeTags.IS_OVERWORLD, Tags.Biomes.IS_CONIFEROUS);
+		List<TagKey<Biome>> overworldConiferous = List.of(BiomeTags.IS_OVERWORLD, Tags.Biomes.IS_CONIFEROUS_TREE);
 		List<TagKey<Biome>> notSnowy = List.of(Tags.Biomes.IS_SNOWY);
 		registerBiomeModifier(context, "add_cyclops",
 				overworldConiferous, notSnowy,
@@ -334,8 +334,8 @@ public class GaiaBiomeModifiers {
 		);
 
 		List<TagKey<Biome>> overworldForest = List.of(BiomeTags.IS_OVERWORLD, BiomeTags.IS_FOREST);
-		List<TagKey<Biome>> notConiferousColdHotSparseSpookyDense = List.of(Tags.Biomes.IS_CONIFEROUS, Tags.Biomes.IS_COLD_OVERWORLD, Tags.Biomes.IS_HOT_OVERWORLD,
-				Tags.Biomes.IS_SPARSE, Tags.Biomes.IS_SPOOKY, Tags.Biomes.IS_DENSE);
+		List<TagKey<Biome>> notConiferousColdHotSparseSpookyDense = List.of(Tags.Biomes.IS_CONIFEROUS_TREE, Tags.Biomes.IS_COLD_OVERWORLD, Tags.Biomes.IS_HOT_OVERWORLD,
+				Tags.Biomes.IS_SPARSE_VEGETATION, Tags.Biomes.IS_SPOOKY, Tags.Biomes.IS_DENSE_VEGETATION);
 		registerBiomeModifier(context, "add_bee",
 				overworldForest, notConiferousColdHotSparseSpookyDense,
 				new MobSpawnSettings.SpawnerData(GaiaRegistry.BEE.getEntityType(), 80, 2, 4)
@@ -357,9 +357,9 @@ public class GaiaBiomeModifiers {
 				new MobSpawnSettings.SpawnerData(GaiaRegistry.WERECAT.getEntityType(), 80, 4, 6)
 		);
 
-		List<TagKey<Biome>> overworldRareDenseForest = List.of(BiomeTags.IS_OVERWORLD, BiomeTags.IS_FOREST, Tags.Biomes.IS_DENSE, Tags.Biomes.IS_RARE);
-		List<TagKey<Biome>> notConiferousColdHotSparseSpooky = List.of(Tags.Biomes.IS_CONIFEROUS, Tags.Biomes.IS_COLD, Tags.Biomes.IS_HOT,
-				Tags.Biomes.IS_SPARSE, Tags.Biomes.IS_SPOOKY);
+		List<TagKey<Biome>> overworldRareDenseForest = List.of(BiomeTags.IS_OVERWORLD, BiomeTags.IS_FOREST, Tags.Biomes.IS_DENSE_VEGETATION, Tags.Biomes.IS_RARE);
+		List<TagKey<Biome>> notConiferousColdHotSparseSpooky = List.of(Tags.Biomes.IS_CONIFEROUS_TREE, Tags.Biomes.IS_COLD, Tags.Biomes.IS_HOT,
+				Tags.Biomes.IS_SPARSE_VEGETATION, Tags.Biomes.IS_SPOOKY);
 		registerBiomeModifier(context, "add_dense_forest_bee",
 				overworldRareDenseForest, notConiferousColdHotSparseSpooky,
 				new MobSpawnSettings.SpawnerData(GaiaRegistry.BEE.getEntityType(), 80, 2, 4)
@@ -389,7 +389,7 @@ public class GaiaBiomeModifiers {
 		);
 	}
 
-	private static void registerBiomeModifier(BootstapContext<BiomeModifier> context,
+	private static void registerBiomeModifier(BootstrapContext<BiomeModifier> context,
 	                                          String name,
 	                                          @NotNull List<TagKey<Biome>> tags,
 	                                          @Nullable List<TagKey<Biome>> blacklistTags,

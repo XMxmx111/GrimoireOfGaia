@@ -4,6 +4,7 @@ import gaia.registry.GaiaRegistry;
 import gaia.util.SharedEntityData;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
@@ -18,7 +19,6 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.MobSpawnType;
-import net.minecraft.world.entity.MobType;
 import net.minecraft.world.entity.SpawnGroupData;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -35,7 +35,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
-import net.neoforged.neoforge.common.NeoForgeMod;
 import net.neoforged.neoforge.event.EventHooks;
 import org.jetbrains.annotations.Nullable;
 
@@ -65,12 +64,12 @@ public class Mummy extends AbstractGaiaEntity {
 				.add(Attributes.ARMOR, SharedEntityData.RATE_ARMOR_1)
 
 				.add(Attributes.KNOCKBACK_RESISTANCE, 0.5D)
-				.add(NeoForgeMod.STEP_HEIGHT.value(), 1.0F);
+				.add(Attributes.STEP_HEIGHT, 1.0F);
 	}
 
 	@Override
-	protected void defineSynchedData() {
-		super.defineSynchedData();
+	protected void defineSynchedData(SynchedEntityData.Builder builder) {
+		super.defineSynchedData(builder);
 	}
 
 	@Override
@@ -111,7 +110,7 @@ public class Mummy extends AbstractGaiaEntity {
 			float effectiveDifficulty = this.level().getCurrentDifficultyAt(blockPosition()).getEffectiveDifficulty();
 
 			if (this.getMainHandItem().isEmpty() && this.isOnFire() && this.random.nextFloat() < effectiveDifficulty * 0.3F) {
-				entityIn.setSecondsOnFire(2 * (int) effectiveDifficulty);
+				entityIn.setRemainingFireTicks(20 * 2 * (int) effectiveDifficulty);
 			}
 
 			return true;
@@ -139,7 +138,7 @@ public class Mummy extends AbstractGaiaEntity {
 				}
 
 				if (flag) {
-					this.setSecondsOnFire(8);
+					this.setRemainingFireTicks(20 * 8);
 					this.hurt(damageSources().fellOutOfWorld(), getMaxHealth() * 0.10F);
 				}
 			}
@@ -155,7 +154,7 @@ public class Mummy extends AbstractGaiaEntity {
 				GraveMite mite = GaiaRegistry.GRAVEMITE.getEntityType().create(this.level());
 				if (mite != null) {
 					mite.moveTo(blockpos, 0.0F, 0.0F);
-					EventHooks.onFinalizeSpawn(mite, (ServerLevel) this.level(), this.level().getCurrentDifficultyAt(blockpos), MobSpawnType.MOB_SUMMONED, (SpawnGroupData) null, (CompoundTag) null);
+					EventHooks.finalizeMobSpawn(mite, (ServerLevel) this.level(), this.level().getCurrentDifficultyAt(blockpos), MobSpawnType.MOB_SUMMONED, (SpawnGroupData) null);
 					this.level().addFreshEntity(mite);
 				}
 			}
@@ -165,8 +164,8 @@ public class Mummy extends AbstractGaiaEntity {
 	@Nullable
 	@Override
 	public SpawnGroupData finalizeSpawn(ServerLevelAccessor levelAccessor, DifficultyInstance difficultyInstance,
-										MobSpawnType spawnType, @Nullable SpawnGroupData groupData, @Nullable CompoundTag tag) {
-		SpawnGroupData data = super.finalizeSpawn(levelAccessor, difficultyInstance, spawnType, groupData, tag);
+	                                    MobSpawnType spawnType, @Nullable SpawnGroupData groupData) {
+		SpawnGroupData data = super.finalizeSpawn(levelAccessor, difficultyInstance, spawnType, groupData);
 
 		return data;
 	}
@@ -196,10 +195,7 @@ public class Mummy extends AbstractGaiaEntity {
 		return GaiaRegistry.MUMMY.getDeath();
 	}
 
-	public MobType getMobType() {
-		return MobType.ARTHROPOD;
-	}
-
+	@Override
 	protected void playStepSound(BlockPos pos, BlockState state) {
 		this.playSound(SoundEvents.ZOMBIE_STEP, 0.15F, 1.0F);
 	}

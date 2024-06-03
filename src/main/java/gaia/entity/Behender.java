@@ -6,8 +6,10 @@ import gaia.util.RangedUtil;
 import gaia.util.SharedEntityData;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.Holder;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.util.RandomSource;
@@ -79,7 +81,7 @@ public class Behender extends AbstractGaiaEntity implements RangedAttackMob, Pow
 				.add(Attributes.ARMOR, SharedEntityData.RATE_ARMOR_2)
 				.add(Attributes.KNOCKBACK_RESISTANCE, 0.5D)
 
-				.add(NeoForgeMod.STEP_HEIGHT.value(), 1.0F);
+				.add(Attributes.STEP_HEIGHT, 1.0F);
 	}
 
 	@Override
@@ -88,8 +90,8 @@ public class Behender extends AbstractGaiaEntity implements RangedAttackMob, Pow
 	}
 
 	@Override
-	protected void defineSynchedData() {
-		super.defineSynchedData();
+	protected void defineSynchedData(SynchedEntityData.Builder builder) {
+		super.defineSynchedData(builder);
 	}
 
 	@Override
@@ -131,7 +133,7 @@ public class Behender extends AbstractGaiaEntity implements RangedAttackMob, Pow
 	@Override
 	public void performRangedAttack(LivingEntity target, float distanceFactor) {
 		if (target.isAlive()) {
-			List<MobEffect> effects = List.of(MobEffects.MOVEMENT_SLOWDOWN, MobEffects.DIG_SPEED, MobEffects.CONFUSION,
+			List<Holder<MobEffect>> effects = List.of(MobEffects.MOVEMENT_SLOWDOWN, MobEffects.DIG_SPEED, MobEffects.CONFUSION,
 					MobEffects.BLINDNESS, MobEffects.HUNGER, MobEffects.WEAKNESS, MobEffects.POISON, MobEffects.WITHER,
 					MobEffects.LEVITATION);
 			RangedUtil.magicRandom(target, this, distanceFactor, 0.5D, effects.get(random.nextInt(effects.size())));
@@ -216,8 +218,8 @@ public class Behender extends AbstractGaiaEntity implements RangedAttackMob, Pow
 	@Nullable
 	@Override
 	public SpawnGroupData finalizeSpawn(ServerLevelAccessor levelAccessor, DifficultyInstance difficultyInstance,
-										MobSpawnType spawnType, @Nullable SpawnGroupData groupData, @Nullable CompoundTag tag) {
-		SpawnGroupData data = super.finalizeSpawn(levelAccessor, difficultyInstance, spawnType, groupData, tag);
+										MobSpawnType spawnType, @Nullable SpawnGroupData groupData) {
+		SpawnGroupData data = super.finalizeSpawn(levelAccessor, difficultyInstance, spawnType, groupData);
 
 		return data;
 	}

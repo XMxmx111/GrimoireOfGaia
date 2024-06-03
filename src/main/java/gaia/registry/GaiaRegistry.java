@@ -207,7 +207,7 @@ public class GaiaRegistry {
 	public static final MobReg<Trader> TRADER = new MobReg.Builder<>("trader", GaiaMobType.PASSIVE, EntityType.Builder.of(Trader::new, MobCategory.CREATURE).sized(0.6F, 1.99F).clientTrackingRange(8)).traderEgg().withDefaultSounds().build();
 	public static final MobReg<CreeperGirl> CREEPER_GIRL = new MobReg.Builder<>("creeper_girl", GaiaMobType.PASSIVE, EntityType.Builder.of(CreeperGirl::new, MobCategory.CREATURE).sized(0.6F, 1.99F).clientTrackingRange(8)).traderEgg().withDefaultSounds().build();
 	public static final MobReg<EnderGirl> ENDER_GIRL = new MobReg.Builder<>("ender_girl", GaiaMobType.PASSIVE, EntityType.Builder.of(EnderGirl::new, MobCategory.CREATURE).sized(0.6F, 1.99F).clientTrackingRange(8)).traderEgg().withDefaultSounds().build();
-//	public static final MobReg<Holstaurus> HOLSTAURUS = new MobReg.Builder<>("holstaurus", GaiaMobType.PASSIVE, EntityType.Builder.of(Holstaurus::new, MobCategory.CREATURE).sized(0.6F, 1.99F).clientTrackingRange(8)).traderEgg().withDefaultSounds().build();
+	//	public static final MobReg<Holstaurus> HOLSTAURUS = new MobReg.Builder<>("holstaurus", GaiaMobType.PASSIVE, EntityType.Builder.of(Holstaurus::new, MobCategory.CREATURE).sized(0.6F, 1.99F).clientTrackingRange(8)).traderEgg().withDefaultSounds().build();
 	public static final MobReg<SlimeGirl> SLIME_GIRL = new MobReg.Builder<>("slime_girl", GaiaMobType.PASSIVE, EntityType.Builder.of(SlimeGirl::new, MobCategory.CREATURE).sized(0.6F, 1.99F).clientTrackingRange(8)).traderEgg().withDefaultSounds().build();
 //	public static final MobReg<Weresheep> WERESHEEP = new MobReg.Builder<>("weresheep", GaiaMobType.PASSIVE, EntityType.Builder.of(Weresheep::new, MobCategory.CREATURE).sized(0.6F, 1.99F).clientTrackingRange(8)).traderEgg().withDefaultSounds().build();
 
@@ -293,7 +293,7 @@ public class GaiaRegistry {
 	//Items
 	public static final DeferredItem<Item> BOOK_OF_MEMORY = ITEMS.register("book_of_memory", () -> new MemoryBookItem(itemBuilder().rarity(Rarity.RARE)));
 	public static final DeferredItem<Item> BROOM = ITEMS.register("broom", () -> new Item(itemBuilder().rarity(Rarity.RARE)));
-	public static final DeferredItem<Item> WEAPON_BOOK = ITEMS.register("weapon_book", () -> new WeaponBookItem(GaiaTiers.BOOK, itemBuilder().rarity(Rarity.RARE)));
+	public static final DeferredItem<Item> WEAPON_BOOK = ITEMS.register("weapon_book", () -> new WeaponBookItem(GaiaTiers.BOOK, itemBuilder().attributes(WeaponBookItem.createAttributes(GaiaTiers.BOOK, 3, -2.4F)).rarity(Rarity.RARE)));
 	public static final DeferredItem<Item> WEAPON_BOOK_FREEZING = ITEMS.register("weapon_book_freezing", () -> new FreezingBookItem(GaiaTiers.BOOK, itemBuilder().rarity(Rarity.RARE)));
 	public static final DeferredItem<Item> WEAPON_BOOK_NIGHTMARE = ITEMS.register("weapon_book_nightmare", () -> new NightmareBookItem(GaiaTiers.BOOK, itemBuilder().rarity(Rarity.RARE)));
 	public static final DeferredItem<Item> WEAPON_BOOK_METAL = ITEMS.register("weapon_book_metal", () -> new MetalBookItem(GaiaTiers.BOOK, itemBuilder().rarity(Rarity.RARE)));
@@ -303,8 +303,8 @@ public class GaiaRegistry {
 	public static final DeferredItem<Item> WEAPON_BOOK_NATURE = ITEMS.register("weapon_book_nature", () -> new NatureBookItem(GaiaTiers.BOOK, itemBuilder().rarity(Rarity.RARE)));
 	public static final DeferredItem<Item> WEAPON_BOOK_WITHER = ITEMS.register("weapon_book_wither", () -> new WitherBookItem(GaiaTiers.BOOK, itemBuilder().rarity(Rarity.EPIC)));
 	public static final DeferredItem<Item> WEAPON_BOOK_BUFF = ITEMS.register("weapon_book_buff", () -> new BuffBookItem(itemBuilder().durability(64).rarity(Rarity.RARE)));
-	public static final DeferredItem<Item> CURSED_METAL_SWORD = ITEMS.register("cursed_metal_sword", () -> new SwordItem(GaiaTiers.CURSED_METAL, 3, -2.2F, itemBuilder().rarity(Rarity.RARE)));
-	public static final DeferredItem<Item> METAL_CLUB = ITEMS.register("metal_club", () -> new SwordItem(Tiers.IRON, 4, -2.8F, itemBuilder().rarity(Rarity.RARE)));
+	public static final DeferredItem<Item> CURSED_METAL_SWORD = ITEMS.register("cursed_metal_sword", () -> new SwordItem(GaiaTiers.CURSED_METAL, itemBuilder().attributes(SwordItem.createAttributes(GaiaTiers.CURSED_METAL, 3, -2.2F)).rarity(Rarity.RARE)));
+	public static final DeferredItem<Item> METAL_CLUB = ITEMS.register("metal_club", () -> new SwordItem(Tiers.IRON, itemBuilder().attributes(SwordItem.createAttributes(Tiers.IRON, 4, -2.8F)).rarity(Rarity.RARE)));
 	public static final DeferredItem<Item> EXPERIENCE_IRON = ITEMS.register("experience_iron", () -> new ExperienceItem(itemBuilder().rarity(Rarity.RARE), 1));
 	public static final DeferredItem<Item> EXPERIENCE_GOLD = ITEMS.register("experience_gold", () -> new ExperienceItem(itemBuilder().rarity(Rarity.RARE), 2));
 	public static final DeferredItem<Item> EXPERIENCE_DIAMOND = ITEMS.register("experience_diamond", () -> new ExperienceItem(itemBuilder().rarity(Rarity.RARE), 4));
@@ -314,15 +314,15 @@ public class GaiaRegistry {
 	public static final DeferredItem<Item> EMERALD_SHARD = ITEMS.register("emerald_shard", () -> new Item(itemBuilder()));
 	public static final DeferredItem<Item> SHINY_PEARL = ITEMS.register("shiny_pearl", () -> new Item(itemBuilder()));
 	public static final DeferredItem<Item> FAN = ITEMS.register("fan", () -> new FanItem(itemBuilder()));
-	public static final DeferredItem<Item> FAN_FIRE = ITEMS.register("fan_fire", () -> new FireFanItem(itemBuilder()));
-	public static final DeferredItem<Item> FAN_ICE = ITEMS.register("fan_ice", () -> new IceFanItem(itemBuilder()));
+	public static final DeferredItem<Item> FAN_FIRE = ITEMS.register("fan_fire", () -> new FireFanItem(itemBuilder().attributes(IceFanItem.createAttributes(7))));
+	public static final DeferredItem<Item> FAN_ICE = ITEMS.register("fan_ice", () -> new IceFanItem(itemBuilder().attributes(IceFanItem.createAttributes(0))));
 	public static final DeferredItem<Item> FIRESHARD = ITEMS.register("fireshard", () -> new FireshardItem(itemBuilder()));
 	public static final DeferredItem<Item> FUR = ITEMS.register("fur", () -> new Item(itemBuilder()));
 	public static final DeferredItem<Item> GIGA_GEAR = ITEMS.register("giga_gear", () -> new GigaGearItem(itemBuilder().stacksTo(1).rarity(Rarity.EPIC)));
 	public static final DeferredItem<Item> GOLDEN_APPLE_PIE = ITEMS.register("golden_apple_pie", () -> new XPEdibleItem(itemBuilder().stacksTo(1).food(GaiaFoods.GOLDEN_APPLY_PIE).rarity(Rarity.RARE), (rand) -> rand.nextInt(32) + 16));
 	public static final DeferredItem<Item> GOLDEN_APPLE_PIE_SLICE = ITEMS.register("golden_apple_pie_slice", () -> new EdibleEffectItem(itemBuilder().stacksTo(64).food(GaiaFoods.GOLDEN_APPLY_PIE_SLICE).rarity(Rarity.UNCOMMON)));
 	public static final DeferredItem<Item> MANDRAKE = ITEMS.register("mandrake", () -> new MandrakeItem(itemBuilder().stacksTo(16).food(GaiaFoods.MANDRAKE).rarity(Rarity.UNCOMMON)));
-	public static final DeferredItem<Item> MINOTAUR_HAMMER = ITEMS.register("minotaur_hammer", () -> new SwordItem(Tiers.IRON, 8, -2.8F, itemBuilder()));
+	public static final DeferredItem<Item> MINOTAUR_HAMMER = ITEMS.register("minotaur_hammer", () -> new SwordItem(Tiers.IRON, itemBuilder().attributes(SwordItem.createAttributes(Tiers.IRON, 8, -2.8F))));
 	public static final DeferredItem<Item> HONEYDEW = ITEMS.register("honeydew", () -> new HoneydewItem(itemBuilder().stacksTo(64).food(GaiaFoods.HONEYDEW).rarity(Rarity.UNCOMMON)));
 	public static final DeferredItem<Item> HEADGEAR_BOOK = ITEMS.register("headgear_book", () -> new HeadgearItem(itemBuilder().stacksTo(1)));
 	public static final DeferredItem<Item> HEADGEAR_MOB = ITEMS.register("headgear_mob", () -> new HeadgearItem(itemBuilder().stacksTo(1)));
@@ -342,8 +342,8 @@ public class GaiaRegistry {
 			List.of(() -> new MobEffectInstance(MobEffects.NIGHT_VISION, 15 * 20, 1, true, false))));
 	public static final DeferredItem<Item> HEAVY_BARBELL = ITEMS.register("heavy_barbell", () -> new HeavyBarbellItem(itemBuilder()));
 	public static final DeferredItem<Item> MEAT = ITEMS.register("meat", () -> new Item(itemBuilder().food(GaiaFoods.MEAT)));
-	public static final DeferredItem<Item> METAL_DAGGER = ITEMS.register("metal_dagger", () -> new SwordItem(Tiers.IRON, 0, -2.0F, itemBuilder()));
-	public static final DeferredItem<Item> MONSTER_FEED = ITEMS.register("monster_feed", () -> new MonsterFeedItem(itemBuilder().stacksTo(1).food(GaiaFoods.MONSTER_FEED)));
+	public static final DeferredItem<Item> METAL_DAGGER = ITEMS.register("metal_dagger", () -> new SwordItem(Tiers.IRON, itemBuilder().attributes(SwordItem.createAttributes(Tiers.IRON, 0, -2.0F))));
+	public static final DeferredItem<Item> MONSTER_FEED = ITEMS.register("monster_feed", () -> new MonsterFeedItem(itemBuilder().stacksTo(4).food(GaiaFoods.MONSTER_FEED)));
 	public static final DeferredItem<Item> PREMIUM_MONSTER_FEED = ITEMS.register("premium_monster_feed", () -> new MonsterFeedItem(itemBuilder().stacksTo(1).food(GaiaFoods.PREMIUM_MONSTER_FEED)));
 	public static final DeferredItem<Item> QUILL = ITEMS.register("quill", () -> new Item(itemBuilder()));
 	public static final DeferredItem<Item> ROTTEN_HEART = ITEMS.register("rotten_heart", () -> new EdibleEffectItem(itemBuilder().food(GaiaFoods.ROTTEN_HEART).stacksTo(1)));
@@ -363,7 +363,7 @@ public class GaiaRegistry {
 	public static final DeferredItem<Item> NETHER_WART_JAM = ITEMS.register("nether_wart_jam", () -> new WartJamItem(itemBuilder().food(GaiaFoods.NETHER_WART_JAM)));
 	public static final DeferredItem<Item> WITHERED_BRAIN = ITEMS.register("withered_brain", () -> new EdibleEffectItem(itemBuilder().stacksTo(1).food(GaiaFoods.WITHERED_BRAIN)));
 
-	public static final DeferredItem<Item> STONE_SHIELD = ITEMS.register("stone_shield", () -> new TieredShieldItem(itemBuilder().rarity(Rarity.UNCOMMON).durability(150), () -> Ingredient.of(Tags.Items.COBBLESTONE)));
+	public static final DeferredItem<Item> STONE_SHIELD = ITEMS.register("stone_shield", () -> new TieredShieldItem(itemBuilder().rarity(Rarity.UNCOMMON).durability(150), () -> Ingredient.of(Tags.Items.COBBLESTONES)));
 	public static final DeferredItem<Item> IRON_SHIELD = ITEMS.register("iron_shield", () -> new TieredShieldItem(itemBuilder().rarity(Rarity.UNCOMMON).durability(336), () -> Ingredient.of(Tags.Items.INGOTS_IRON)));
 	public static final DeferredItem<Item> GOLD_SHIELD = ITEMS.register("gold_shield", () -> new TieredShieldItem(itemBuilder().rarity(Rarity.UNCOMMON).durability(260), () -> Ingredient.of(Tags.Items.INGOTS_GOLD)));
 	public static final DeferredItem<Item> BONE_SHIELD = ITEMS.register("bone_shield", () -> new TieredShieldItem(itemBuilder().rarity(Rarity.UNCOMMON).durability(200), () -> Ingredient.of(Tags.Items.BONES)));

@@ -10,6 +10,7 @@ import gaia.registry.GaiaTags;
 import gaia.util.RangedUtil;
 import gaia.util.SharedEntityData;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -44,11 +45,10 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.BowItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.alchemy.PotionUtils;
+import net.minecraft.world.item.alchemy.PotionContents;
 import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
-import net.neoforged.neoforge.common.NeoForgeMod;
 import org.jetbrains.annotations.Nullable;
 
 public class Centaur extends AbstractAssistGaiaEntity implements RangedAttackMob, IDayMob {
@@ -91,14 +91,14 @@ public class Centaur extends AbstractAssistGaiaEntity implements RangedAttackMob
 				.add(Attributes.ATTACK_DAMAGE, 4.0D)
 				.add(Attributes.ARMOR, SharedEntityData.RATE_ARMOR_1)
 				.add(Attributes.ATTACK_KNOCKBACK, SharedEntityData.KNOCKBACK_1)
-				.add(NeoForgeMod.STEP_HEIGHT.value(), 1.0F);
+				.add(Attributes.STEP_HEIGHT, 1.0F);
 	}
 
 	@Override
-	protected void defineSynchedData() {
-		super.defineSynchedData();
-		this.entityData.define(MALE, false);
-		this.entityData.define(FLEEING, false);
+	protected void defineSynchedData(SynchedEntityData.Builder builder) {
+		super.defineSynchedData(builder);
+		builder.define(MALE, false);
+		builder.define(FLEEING, false);
 	}
 
 	public boolean isMale() {
@@ -137,7 +137,8 @@ public class Centaur extends AbstractAssistGaiaEntity implements RangedAttackMob
 	public void aiStep() {
 		/* REGENERATE DATA */
 		if ((getHealth() < getMaxHealth() * 0.25F) && (fullHealth == 0)) {
-			ItemStack stacky = PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.REGENERATION);
+			ItemStack stacky = Items.POTION.getDefaultInstance();
+			stacky.set(DataComponents.POTION_CONTENTS, new PotionContents(Potions.REGENERATION));
 			setItemSlot(EquipmentSlot.MAINHAND, stacky);
 			setGoals(1);
 			setFleeing(true);
@@ -231,10 +232,13 @@ public class Centaur extends AbstractAssistGaiaEntity implements RangedAttackMob
 		setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(Items.BOW));
 
 		if (random.nextBoolean()) {
+			ItemStack tippedArrow = new ItemStack(Items.TIPPED_ARROW);
 			if (random.nextInt(2) == 0) {
-				setItemSlot(EquipmentSlot.OFFHAND, PotionUtils.setPotion(new ItemStack(Items.TIPPED_ARROW), Potions.SLOWNESS));
+				tippedArrow.set(DataComponents.POTION_CONTENTS, new PotionContents(Potions.SLOWNESS));
+				setItemSlot(EquipmentSlot.OFFHAND, tippedArrow);
 			} else {
-				setItemSlot(EquipmentSlot.OFFHAND, PotionUtils.setPotion(new ItemStack(Items.TIPPED_ARROW), Potions.WEAKNESS));
+				tippedArrow.set(DataComponents.POTION_CONTENTS, new PotionContents(Potions.WEAKNESS));
+				setItemSlot(EquipmentSlot.OFFHAND, tippedArrow);
 			}
 		}
 	}
@@ -242,8 +246,8 @@ public class Centaur extends AbstractAssistGaiaEntity implements RangedAttackMob
 	@Nullable
 	@Override
 	public SpawnGroupData finalizeSpawn(ServerLevelAccessor levelAccessor, DifficultyInstance difficultyInstance,
-										MobSpawnType spawnType, @Nullable SpawnGroupData groupData, @Nullable CompoundTag tag) {
-		SpawnGroupData data = super.finalizeSpawn(levelAccessor, difficultyInstance, spawnType, groupData, tag);
+	                                    MobSpawnType spawnType, @Nullable SpawnGroupData groupData) {
+		SpawnGroupData data = super.finalizeSpawn(levelAccessor, difficultyInstance, spawnType, groupData);
 
 		if (random.nextInt(2) == 0) {
 			setMale(true);

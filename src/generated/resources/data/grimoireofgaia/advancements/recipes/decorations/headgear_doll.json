@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "grimoireofgaia:doll_maid"
-            ]
+            "items": "grimoireofgaia:doll_maid"
           }
         ]
       },

@@ -11,6 +11,6 @@
   },
   "whitelist": [
     "#minecraft:is_overworld",
-    "#forge:is_sandy"
+    "#c:is_sandy"
   ]
 }

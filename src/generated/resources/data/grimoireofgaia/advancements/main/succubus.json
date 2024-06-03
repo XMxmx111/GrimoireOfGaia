@@ -22,7 +22,8 @@
       "translate": "advancement.grimoireofgaia.succubus.desc"
     },
     "icon": {
-      "item": "grimoireofgaia:fireshard"
+      "count": 1,
+      "id": "grimoireofgaia:fireshard"
     },
     "title": {
       "translate": "advancement.grimoireofgaia.succubus.title"

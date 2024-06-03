@@ -11,6 +11,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraft.world.item.trading.ItemCost;
 import net.minecraft.world.item.trading.MerchantOffer;
 import net.minecraft.world.level.ItemLike;
 
@@ -196,7 +197,7 @@ public class GaiaMerchantTrades {
 		@Nullable
 		public MerchantOffer getOffer(Entity entity, RandomSource random) {
 			return new MerchantOffer(
-					new ItemStack(this.fromItem.getItem(), this.fromCount),
+					new ItemCost(this.fromItem.getItem(), this.fromCount),
 					new ItemStack(this.toItem.getItem(), this.toCount),
 					this.maxUses, this.XP, this.priceMultiplier);
 		}
@@ -263,9 +264,9 @@ public class GaiaMerchantTrades {
 
 		public MerchantOffer getOffer(Entity entity, RandomSource random) {
 			int i = 5 + random.nextInt(15);
-			ItemStack itemstack = EnchantmentHelper.enchantItem(random, new ItemStack(this.itemStack.getItem()), i, false);
+			ItemStack itemstack = EnchantmentHelper.enchantItem(entity.level().enabledFeatures(), random, new ItemStack(this.itemStack.getItem()), i, false);
 			int j = Math.min(this.tokenCost + i, 64);
-			ItemStack tokenStack = new ItemStack(token, j);
+			ItemCost tokenStack = new ItemCost(token, j);
 			return new MerchantOffer(tokenStack, itemstack, this.maxUses, this.XP, this.priceMultiplier);
 		}
 	}

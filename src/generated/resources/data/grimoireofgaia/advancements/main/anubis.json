@@ -22,8 +22,8 @@
       "translate": "advancement.grimoireofgaia.anubis.desc"
     },
     "icon": {
-      "item": "grimoireofgaia:skeleton_staff",
-      "nbt": "{Damage:0}"
+      "count": 1,
+      "id": "grimoireofgaia:skeleton_staff"
     },
     "title": {
       "translate": "advancement.grimoireofgaia.anubis.title"

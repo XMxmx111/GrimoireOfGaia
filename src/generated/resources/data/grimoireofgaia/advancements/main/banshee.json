@@ -22,7 +22,8 @@
       "translate": "advancement.grimoireofgaia.banshee.desc"
     },
     "icon": {
-      "item": "grimoireofgaia:soulfire"
+      "count": 1,
+      "id": "grimoireofgaia:soulfire"
     },
     "title": {
       "translate": "advancement.grimoireofgaia.banshee.title"

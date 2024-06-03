@@ -26,7 +26,6 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.MobSpawnType;
-import net.minecraft.world.entity.MobType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.control.FlyingMoveControl;
@@ -50,8 +49,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.pathfinder.BlockPathTypes;
-import net.neoforged.neoforge.common.NeoForgeMod;
+import net.minecraft.world.level.pathfinder.PathType;
 
 public class Bee extends AbstractAssistGaiaEntity implements IDayMob, FlyingAnimal, RangedAttackMob {
 	private static final EntityDataAccessor<Boolean> MOVING = SynchedEntityData.defineId(Bee.class, EntityDataSerializers.BOOLEAN);
@@ -70,11 +68,11 @@ public class Bee extends AbstractAssistGaiaEntity implements IDayMob, FlyingAnim
 	public Bee(EntityType<? extends Monster> entityType, Level level) {
 		super(entityType, level);
 		this.moveControl = new FlyingMoveControl(this, 20, true);
-		this.setPathfindingMalus(BlockPathTypes.DANGER_FIRE, -1.0F);
-		this.setPathfindingMalus(BlockPathTypes.WATER, -1.0F);
-		this.setPathfindingMalus(BlockPathTypes.WATER_BORDER, 16.0F);
-		this.setPathfindingMalus(BlockPathTypes.COCOA, -1.0F);
-		this.setPathfindingMalus(BlockPathTypes.FENCE, -1.0F);
+		this.setPathfindingMalus(PathType.DANGER_FIRE, -1.0F);
+		this.setPathfindingMalus(PathType.WATER, -1.0F);
+		this.setPathfindingMalus(PathType.WATER_BORDER, 16.0F);
+		this.setPathfindingMalus(PathType.COCOA, -1.0F);
+		this.setPathfindingMalus(PathType.FENCE, -1.0F);
 
 		timer = 0;
 		switchDetect = 0;
@@ -129,14 +127,14 @@ public class Bee extends AbstractAssistGaiaEntity implements IDayMob, FlyingAnim
 				.add(Attributes.ATTACK_DAMAGE, 4.0D)
 				.add(Attributes.ARMOR, SharedEntityData.RATE_ARMOR_1)
 				.add(Attributes.ATTACK_KNOCKBACK, SharedEntityData.KNOCKBACK_1)
-				.add(NeoForgeMod.STEP_HEIGHT.value(), 1.0F);
+				.add(Attributes.STEP_HEIGHT, 1.0F);
 	}
 
 	@Override
-	protected void defineSynchedData() {
-		super.defineSynchedData();
-		this.entityData.define(MOVING, false);
-		this.entityData.define(ANIMATION_STATE, 0);
+	protected void defineSynchedData(SynchedEntityData.Builder builder) {
+		super.defineSynchedData(builder);
+		builder.define(MOVING, false);
+		builder.define(ANIMATION_STATE, 0);
 	}
 
 	public boolean isFlying() {
@@ -326,10 +324,6 @@ public class Bee extends AbstractAssistGaiaEntity implements IDayMob, FlyingAnim
 
 	@Override
 	protected void playStepSound(BlockPos pos, BlockState state) {
-	}
-
-	public MobType getMobType() {
-		return MobType.ARTHROPOD;
 	}
 
 	@Override

@@ -11,8 +11,8 @@ import net.minecraft.world.level.block.Block;
 public class GaiaTags {
 	public static final TagKey<Item> DIMENSIONAL_BOXES = ItemTags.create(new ResourceLocation(GrimoireOfGaia.MOD_ID, "dimensional_boxes"));
 	public static final TagKey<Item> GOLDEN_TOOLS = ItemTags.create(new ResourceLocation(GrimoireOfGaia.MOD_ID, "golden_tools"));
-	public static final TagKey<Block> REQUIRES_BOOK_TAG = BlockTags.create(new ResourceLocation(GrimoireOfGaia.MOD_ID, "needs_book"));
-	public static final TagKey<Block> REQUIRES_CURSED_METAL_TAG = BlockTags.create(new ResourceLocation(GrimoireOfGaia.MOD_ID, "needs_cursed_metal"));
+	public static final TagKey<Block> INCORRECT_FOR_BOOK_TOOL = BlockTags.create(new ResourceLocation(GrimoireOfGaia.MOD_ID, "incorrect_for_book_tool"));
+	public static final TagKey<Block> INCORRECT_FOR_CURSED_METAL_TOOL = BlockTags.create(new ResourceLocation(GrimoireOfGaia.MOD_ID, "incorrect_for_cursed_metal_tool"));
 	public static final TagKey<Block> GAIA_SPAWABLE_ON = BlockTags.create(new ResourceLocation(GrimoireOfGaia.MOD_ID, "gaia_spawnable_on"));
 	public static final TagKey<Block> FLOWER_SPAWNABLE_ON = BlockTags.create(new ResourceLocation(GrimoireOfGaia.MOD_ID, "flower_spawnable_on"));
 

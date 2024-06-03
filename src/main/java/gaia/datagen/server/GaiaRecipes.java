@@ -1,6 +1,7 @@
 package gaia.datagen.server;
 
 import gaia.registry.GaiaRegistry;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
@@ -12,9 +13,11 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.neoforged.neoforge.common.Tags;
 
+import java.util.concurrent.CompletableFuture;
+
 public class GaiaRecipes extends RecipeProvider {
-	public GaiaRecipes(PackOutput packOutput) {
-		super(packOutput);
+	public GaiaRecipes(PackOutput packOutput, CompletableFuture<HolderLookup.Provider> lookupProvider) {
+		super(packOutput, lookupProvider);
 	}
 
 	@Override

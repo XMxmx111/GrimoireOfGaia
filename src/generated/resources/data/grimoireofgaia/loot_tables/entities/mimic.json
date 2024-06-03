@@ -6,27 +6,27 @@
       "entries": [
         {
           "type": "minecraft:loot_table",
-          "name": "minecraft:entities/creeper"
+          "value": "minecraft:entities/creeper"
         },
         {
           "type": "minecraft:loot_table",
-          "name": "minecraft:entities/spider"
+          "value": "minecraft:entities/spider"
         },
         {
           "type": "minecraft:loot_table",
-          "name": "minecraft:entities/enderman"
+          "value": "minecraft:entities/enderman"
         },
         {
           "type": "minecraft:loot_table",
-          "name": "minecraft:entities/slime"
+          "value": "minecraft:entities/slime"
         },
         {
           "type": "minecraft:loot_table",
-          "name": "minecraft:entities/zombie"
+          "value": "minecraft:entities/zombie"
         },
         {
           "type": "minecraft:loot_table",
-          "name": "minecraft:entities/skeleton"
+          "value": "minecraft:entities/skeleton"
         }
       ],
       "rolls": 1.0
@@ -48,7 +48,7 @@
               "function": "minecraft:set_count"
             }
           ],
-          "name": "forge:nuggets/iron"
+          "name": "c:nuggets/iron"
         }
       ],
       "rolls": 1.0

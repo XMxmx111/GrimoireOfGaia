@@ -3,10 +3,10 @@
   "category": "misc",
   "ingredients": [
     {
-      "tag": "forge:seeds/wheat"
+      "tag": "c:seeds/wheat"
     },
     {
-      "tag": "forge:seeds/wheat"
+      "tag": "c:seeds/wheat"
     },
     {
       "item": "grimoireofgaia:experience_gold"
@@ -14,6 +14,6 @@
   ],
   "result": {
     "count": 2,
-    "item": "grimoireofgaia:monster_feed"
+    "id": "grimoireofgaia:monster_feed"
   }
 }

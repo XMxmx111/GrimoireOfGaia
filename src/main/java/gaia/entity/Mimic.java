@@ -4,6 +4,7 @@ import gaia.entity.goal.MobAttackGoal;
 import gaia.util.SharedEntityData;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.RandomSource;
@@ -33,7 +34,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
-import net.neoforged.neoforge.common.NeoForgeMod;
 
 public class Mimic extends AbstractGaiaEntity {
 
@@ -55,8 +55,8 @@ public class Mimic extends AbstractGaiaEntity {
 	}
 
 	@Override
-	public float getEyeHeight(Pose pose) {
-		return this.getDimensions(pose).height * 0.5F;
+	public float getEyeHeightAccess(Pose pose) { //TODO: Check if eye height is correct with this removed
+		return this.getDimensions(pose).height() * 0.5F;
 	}
 
 	public static AttributeSupplier.Builder createAttributes() {
@@ -67,12 +67,12 @@ public class Mimic extends AbstractGaiaEntity {
 				.add(Attributes.ATTACK_DAMAGE, 4.0D)
 				.add(Attributes.ARMOR, SharedEntityData.RATE_ARMOR_1)
 				.add(Attributes.ATTACK_KNOCKBACK, SharedEntityData.KNOCKBACK_1)
-				.add(NeoForgeMod.STEP_HEIGHT.value(), 6.0F);
+				.add(Attributes.STEP_HEIGHT, 6.0F);
 	}
 
 	@Override
-	protected void defineSynchedData() {
-		super.defineSynchedData();
+	protected void defineSynchedData(SynchedEntityData.Builder builder) {
+		super.defineSynchedData(builder);
 	}
 
 	@Override

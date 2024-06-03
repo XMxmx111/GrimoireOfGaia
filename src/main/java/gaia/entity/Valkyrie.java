@@ -94,7 +94,7 @@ public class Valkyrie extends AbstractAssistGaiaEntity implements IDayMob, Power
 				.add(Attributes.ATTACK_DAMAGE, 12.0D)
 				.add(Attributes.ARMOR, SharedEntityData.RATE_ARMOR_3)
 				.add(Attributes.ATTACK_KNOCKBACK, SharedEntityData.KNOCKBACK_3)
-				.add(NeoForgeMod.STEP_HEIGHT.value(), 1.0F);
+				.add(Attributes.STEP_HEIGHT, 1.0F);
 	}
 
 	@Override
@@ -103,11 +103,11 @@ public class Valkyrie extends AbstractAssistGaiaEntity implements IDayMob, Power
 	}
 
 	@Override
-	protected void defineSynchedData() {
-		super.defineSynchedData();
-		this.entityData.define(IS_BUFFED, false);
-		this.entityData.define(ANNOYED, false);
-		this.entityData.define(ANIMATION_STATE, 0);
+	protected void defineSynchedData(SynchedEntityData.Builder builder) {
+		super.defineSynchedData(builder);
+		builder.define(IS_BUFFED, false);
+		builder.define(ANNOYED, false);
+		builder.define(ANIMATION_STATE, 0);
 	}
 
 	public boolean isBuffed() {
@@ -309,8 +309,8 @@ public class Valkyrie extends AbstractAssistGaiaEntity implements IDayMob, Power
 	@Nullable
 	@Override
 	public SpawnGroupData finalizeSpawn(ServerLevelAccessor levelAccessor, DifficultyInstance difficultyInstance,
-										MobSpawnType spawnType, @Nullable SpawnGroupData groupData, @Nullable CompoundTag tag) {
-		SpawnGroupData data = super.finalizeSpawn(levelAccessor, difficultyInstance, spawnType, groupData, tag);
+										MobSpawnType spawnType, @Nullable SpawnGroupData groupData) {
+		SpawnGroupData data = super.finalizeSpawn(levelAccessor, difficultyInstance, spawnType, groupData);
 
 		setGoals(1);
 

@@ -59,15 +59,13 @@ public class SummonStaffItem extends Item {
 	@Override
 	public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity livingEntity) {
 		if (livingEntity instanceof Player player) {
-			stack.hurtAndBreak(1, player, (p) -> {
-				p.broadcastBreakEvent(player.getUsedItemHand());
-			});
+			stack.hurtAndBreak(1, player, Player.getSlotForHand(player.getUsedItemHand()));
 
 			if (!level.isClientSide) {
 				BlockPos spawnPos = BlockPos.containing(player.getEyePosition()).relative(player.getDirection());
 				Mob summon = typeSupplier.get().create(level);
 				summon.moveTo(spawnPos, 0.0F, 0.0F);
-				EventHooks.onFinalizeSpawn(summon, (ServerLevel) level, level.getCurrentDifficultyAt(spawnPos), MobSpawnType.MOB_SUMMONED, (SpawnGroupData) null, (CompoundTag) null);
+				EventHooks.finalizeMobSpawn(summon, (ServerLevel) level, level.getCurrentDifficultyAt(spawnPos), MobSpawnType.MOB_SUMMONED, (SpawnGroupData) null);
 				summon.setItemSlot(EquipmentSlot.HEAD, new ItemStack(GaiaRegistry.HEADGEAR_BOLT.get()));
 				summon.setDropChance(EquipmentSlot.MAINHAND, 0);
 				summon.setDropChance(EquipmentSlot.OFFHAND, 0);
@@ -103,8 +101,8 @@ public class SummonStaffItem extends Item {
 	}
 
 	@Override
-	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
-		super.appendHoverText(stack, level, list, flag);
+	public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> list, TooltipFlag flag) {
+		super.appendHoverText(stack, context, list, flag);
 		list.add(Component.translatable("text.grimoireofgaia.summoning_staff.desc", Component.translatable(typeSupplier.get().getDescriptionId()).getString()).withStyle(ChatFormatting.GRAY));
 	}
 

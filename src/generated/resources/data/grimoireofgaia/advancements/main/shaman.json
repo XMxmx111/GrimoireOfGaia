@@ -22,7 +22,8 @@
       "translate": "advancement.grimoireofgaia.shaman.desc"
     },
     "icon": {
-      "item": "grimoireofgaia:rotten_heart"
+      "count": 1,
+      "id": "grimoireofgaia:rotten_heart"
     },
     "title": {
       "translate": "advancement.grimoireofgaia.shaman.title"

@@ -9,6 +9,8 @@ import gaia.entity.projectile.PoisonProjectile;
 import gaia.entity.projectile.RandomMagicProjectile;
 import gaia.entity.projectile.WebProjectile;
 import gaia.registry.GaiaSounds;
+import net.minecraft.core.Holder;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.Mth;
 import net.minecraft.world.Difficulty;
@@ -24,7 +26,7 @@ import net.minecraft.world.entity.projectile.ThrownPotion;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.Potion;
-import net.minecraft.world.item.alchemy.PotionUtils;
+import net.minecraft.world.item.alchemy.PotionContents;
 import net.minecraft.world.phys.Vec3;
 
 public class RangedUtil {
@@ -102,10 +104,10 @@ public class RangedUtil {
 	 * @param target         the entity to fire at
 	 * @param shooter        the entity that is shooting
 	 * @param distanceFactor bonus damage (Unused)
-	 * @param potion         the potion to apply
+	 * @param potionHolder   the potion to apply
 	 * @see net.minecraft.world.entity.monster.Witch
 	 */
-	public static void potion(LivingEntity target, LivingEntity shooter, float distanceFactor, Potion potion) {
+	public static void potion(LivingEntity target, LivingEntity shooter, float distanceFactor, Holder<Potion> potionHolder) {
 		Vec3 vec3 = shooter.getDeltaMovement();
 		double d0 = target.getY() + (double) target.getEyeHeight() - 1.100000023841858D;
 		double d1 = target.getX() + vec3.x - shooter.getX();
@@ -114,7 +116,9 @@ public class RangedUtil {
 		float f = Mth.sqrt((float) (d1 * d1 + d3 * d3));
 
 		ThrownPotion thrownpotion = new ThrownPotion(shooter.level(), shooter);
-		thrownpotion.setItem(PotionUtils.setPotion(new ItemStack(Items.SPLASH_POTION), potion));
+		ItemStack potionStack = Items.SPLASH_POTION.getDefaultInstance();
+		potionStack.set(DataComponents.POTION_CONTENTS, new PotionContents(potionHolder));
+		thrownpotion.setItem(potionStack);
 		thrownpotion.setXRot(thrownpotion.getXRot() + 20.0F);
 		thrownpotion.shoot(d1, d2 + (double) (f * 0.2F), d3, 0.75F, 8.0F);
 
@@ -152,7 +156,7 @@ public class RangedUtil {
 	 * @param distanceFactor bonus damage (Unused)
 	 * @see net.minecraft.world.entity.monster.Blaze
 	 */
-	public static void magicRandom(LivingEntity target, LivingEntity shooter, float distanceFactor, double yOffset, MobEffect mobEffect) {
+	public static void magicRandom(LivingEntity target, LivingEntity shooter, float distanceFactor, double yOffset, Holder<MobEffect> mobEffect) {
 		shooter.playSound(GaiaSounds.GAIA_SHOOT.get(), 1.0F, 1.0F / (shooter.getRandom().nextFloat() * 0.4F + 0.8F));
 
 		double d0 = target.getX() - shooter.getX();

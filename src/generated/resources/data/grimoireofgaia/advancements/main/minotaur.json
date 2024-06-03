@@ -22,8 +22,8 @@
       "translate": "advancement.grimoireofgaia.minotaur.desc"
     },
     "icon": {
-      "item": "grimoireofgaia:minotaur_hammer",
-      "nbt": "{Damage:0}"
+      "count": 1,
+      "id": "grimoireofgaia:minotaur_hammer"
     },
     "title": {
       "translate": "advancement.grimoireofgaia.minotaur.title"

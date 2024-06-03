@@ -22,7 +22,8 @@
       "translate": "advancement.grimoireofgaia.cyan_flower.desc"
     },
     "icon": {
-      "item": "grimoireofgaia:mandrake"
+      "count": 1,
+      "id": "grimoireofgaia:mandrake"
     },
     "title": {
       "translate": "advancement.grimoireofgaia.cyan_flower.title"

@@ -7,7 +7,9 @@ import gaia.registry.GaiaTags;
 import gaia.util.RangedUtil;
 import gaia.util.SharedEntityData;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.Difficulty;
@@ -36,13 +38,12 @@ import net.minecraft.world.entity.monster.RangedAttackMob;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.alchemy.PotionUtils;
+import net.minecraft.world.item.alchemy.PotionContents;
 import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
-import net.minecraft.world.level.pathfinder.BlockPathTypes;
-import net.neoforged.neoforge.common.NeoForgeMod;
+import net.minecraft.world.level.pathfinder.PathType;
 import net.neoforged.neoforge.fluids.FluidType;
 import org.jetbrains.annotations.Nullable;
 
@@ -59,7 +60,7 @@ public class Siren extends AbstractGaiaEntity implements RangedAttackMob, IDayMo
 	public Siren(EntityType<? extends Monster> entityType, Level level) {
 		super(entityType, level);
 
-		this.setPathfindingMalus(BlockPathTypes.WATER, 8.0F);
+		this.setPathfindingMalus(PathType.WATER, 8.0F);
 
 		timer = 0;
 		switchDetect = 0;
@@ -87,12 +88,12 @@ public class Siren extends AbstractGaiaEntity implements RangedAttackMob, IDayMo
 				.add(Attributes.ATTACK_DAMAGE, 4.0D)
 				.add(Attributes.ARMOR, SharedEntityData.RATE_ARMOR_1)
 				.add(Attributes.ATTACK_KNOCKBACK, SharedEntityData.KNOCKBACK_1)
-				.add(NeoForgeMod.STEP_HEIGHT.value(), 1.0F);
+				.add(Attributes.STEP_HEIGHT, 1.0F);
 	}
 
 	@Override
-	protected void defineSynchedData() {
-		super.defineSynchedData();
+	protected void defineSynchedData(SynchedEntityData.Builder builder) {
+		super.defineSynchedData(builder);
 	}
 
 	@Override
@@ -235,10 +236,13 @@ public class Siren extends AbstractGaiaEntity implements RangedAttackMob, IDayMo
 		setItemSlot(EquipmentSlot.FEET, bootsSwimming);
 
 		if (random.nextBoolean()) {
+			ItemStack tippedArrow = new ItemStack(Items.TIPPED_ARROW);
 			if (random.nextInt(2) == 0) {
-				setItemSlot(EquipmentSlot.OFFHAND, PotionUtils.setPotion(new ItemStack(Items.TIPPED_ARROW), Potions.SLOWNESS));
+				tippedArrow.set(DataComponents.POTION_CONTENTS, new PotionContents(Potions.SLOWNESS));
+				setItemSlot(EquipmentSlot.OFFHAND, tippedArrow);
 			} else {
-				setItemSlot(EquipmentSlot.OFFHAND, PotionUtils.setPotion(new ItemStack(Items.TIPPED_ARROW), Potions.WEAKNESS));
+				tippedArrow.set(DataComponents.POTION_CONTENTS, new PotionContents(Potions.WEAKNESS));
+				setItemSlot(EquipmentSlot.OFFHAND, tippedArrow);
 			}
 		}
 	}
@@ -246,8 +250,8 @@ public class Siren extends AbstractGaiaEntity implements RangedAttackMob, IDayMo
 	@Nullable
 	@Override
 	public SpawnGroupData finalizeSpawn(ServerLevelAccessor levelAccessor, DifficultyInstance difficultyInstance,
-										MobSpawnType spawnType, @Nullable SpawnGroupData groupData, @Nullable CompoundTag tag) {
-		SpawnGroupData data = super.finalizeSpawn(levelAccessor, difficultyInstance, spawnType, groupData, tag);
+										MobSpawnType spawnType, @Nullable SpawnGroupData groupData) {
+		SpawnGroupData data = super.finalizeSpawn(levelAccessor, difficultyInstance, spawnType, groupData);
 
 		if (isHalloween() && random.nextFloat() < 0.25F) {
 			setVariant(1);

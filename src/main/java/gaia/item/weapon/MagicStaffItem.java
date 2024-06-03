@@ -19,7 +19,6 @@ import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import net.neoforged.neoforge.common.Tags;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 import java.util.function.Supplier;
@@ -43,9 +42,7 @@ public class MagicStaffItem extends Item {
 	@Override
 	public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity livingEntity) {
 		if (livingEntity instanceof Player player) {
-			stack.hurtAndBreak(1, player, (p) -> {
-				p.broadcastBreakEvent(player.getUsedItemHand());
-			});
+			stack.hurtAndBreak(1, player, Player.getSlotForHand(player.getUsedItemHand()));
 
 			if (!level.isClientSide) {
 				livingEntity.playSound(GaiaSounds.GAIA_SHOOT.get(), 1.0F, 1.0F / (livingEntity.getRandom().nextFloat() * 0.4F + 0.8F));
@@ -74,8 +71,8 @@ public class MagicStaffItem extends Item {
 	}
 
 	@Override
-	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
-		super.appendHoverText(stack, level, list, flag);
+	public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> list, TooltipFlag flag) {
+		super.appendHoverText(stack, context, list, flag);
 		list.add(Component.translatable("text.grimoireofgaia.magic_staff.desc").withStyle(ChatFormatting.GRAY));
 	}
 

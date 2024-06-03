@@ -22,7 +22,8 @@
       "translate": "advancement.grimoireofgaia.werecat.desc"
     },
     "icon": {
-      "item": "grimoireofgaia:meat"
+      "count": 1,
+      "id": "grimoireofgaia:meat"
     },
     "title": {
       "translate": "advancement.grimoireofgaia.werecat.title"

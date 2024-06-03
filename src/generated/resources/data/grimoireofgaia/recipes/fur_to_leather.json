@@ -6,5 +6,8 @@
   "ingredient": {
     "item": "grimoireofgaia:fur"
   },
-  "result": "minecraft:leather"
+  "result": {
+    "count": 1,
+    "id": "minecraft:leather"
+  }
 }

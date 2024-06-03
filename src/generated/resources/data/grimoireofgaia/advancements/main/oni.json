@@ -22,8 +22,8 @@
       "translate": "advancement.grimoireofgaia.oni.desc"
     },
     "icon": {
-      "item": "grimoireofgaia:metal_club",
-      "nbt": "{Damage:0}"
+      "count": 1,
+      "id": "grimoireofgaia:metal_club"
     },
     "title": {
       "translate": "advancement.grimoireofgaia.oni.title"

@@ -13,6 +13,7 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
@@ -85,7 +86,7 @@ public class FireshardItem extends FuelItem {
 		float f5 = Mth.sin(-f * ((float) Math.PI / 180F));
 		float f6 = f3 * f4;
 		float f7 = f2 * f4;
-		AttributeInstance reachInstance = player.getAttribute(NeoForgeMod.BLOCK_REACH.value());
+		AttributeInstance reachInstance = player.getAttribute(Attributes.BLOCK_INTERACTION_RANGE);
 		double d0 = 4.5D;
 		if (reachInstance != null)
 			d0 = reachInstance.getValue();
@@ -99,8 +100,8 @@ public class FireshardItem extends FuelItem {
 	}
 
 	@Override
-	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
-		super.appendHoverText(stack, level, list, flag);
+	public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> list, TooltipFlag flag) {
+		super.appendHoverText(stack, context, list, flag);
 		list.add(Component.translatable("text.grimoireofgaia.fireshard.desc").withStyle(ChatFormatting.ITALIC));
 	}
 }
