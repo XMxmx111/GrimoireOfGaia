@@ -17,7 +17,7 @@ import java.util.Random;
 public class EnderDragonGirlRenderer extends MobRenderer<EnderDragonGirl, EnderDragonGirlModel> {
 	private final Random random = new Random();
 	public static final ResourceLocation[] ENDER_DRAGON_GIRL_LOCATIONS = new ResourceLocation[]{
-			new ResourceLocation(GrimoireOfGaia.MOD_ID, "textures/entity/ender_dragon_girl/ender_dragon_girl.png")
+			ResourceLocation.fromNamespaceAndPath(GrimoireOfGaia.MOD_ID, "textures/entity/ender_dragon_girl/ender_dragon_girl.png")
 	};
 
 	public EnderDragonGirlRenderer(Context context) {

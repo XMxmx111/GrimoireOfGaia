@@ -4,6 +4,7 @@ import gaia.config.GaiaConfig;
 import gaia.entity.type.IDayMob;
 import gaia.registry.GaiaRegistry;
 import gaia.registry.GaiaTags;
+import gaia.util.EnchantUtil;
 import gaia.util.SharedEntityData;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
@@ -44,7 +45,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
-import net.neoforged.neoforge.common.NeoForgeMod;
 import org.jetbrains.annotations.Nullable;
 
 public class Valkyrie extends AbstractAssistGaiaEntity implements IDayMob, PowerableMob {
@@ -143,7 +143,7 @@ public class Valkyrie extends AbstractAssistGaiaEntity implements IDayMob, Power
 	public boolean hurt(DamageSource source, float damage) {
 		float input = getBaseDamage(source, damage);
 		if (isPowered()) {
-			return !source.isIndirect() && super.hurt(source, input);
+			return source.isDirect() && super.hurt(source, input);
 		}
 		return super.hurt(source, input);
 	}
@@ -299,18 +299,13 @@ public class Valkyrie extends AbstractAssistGaiaEntity implements IDayMob, Power
 	@Override
 	protected void populateDefaultEquipmentSlots(RandomSource random, DifficultyInstance instance) {
 		setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(Items.IRON_SWORD));
-		populateDefaultEquipmentEnchantments(random, instance);
-
-		ItemStack swimmingBoots = new ItemStack(Items.LEATHER_BOOTS);
-		setItemSlot(EquipmentSlot.FEET, swimmingBoots);
-		swimmingBoots.enchant(Enchantments.DEPTH_STRIDER, 3);
 	}
 
 	@Nullable
 	@Override
 	public SpawnGroupData finalizeSpawn(ServerLevelAccessor levelAccessor, DifficultyInstance difficultyInstance,
-										MobSpawnType spawnType, @Nullable SpawnGroupData groupData) {
-		SpawnGroupData data = super.finalizeSpawn(levelAccessor, difficultyInstance, spawnType, groupData);
+	                                    MobSpawnType spawnType, @Nullable SpawnGroupData data) {
+		data = super.finalizeSpawn(levelAccessor, difficultyInstance, spawnType, data);
 
 		setGoals(1);
 
@@ -321,6 +316,11 @@ public class Valkyrie extends AbstractAssistGaiaEntity implements IDayMob, Power
 			setBaby(true);
 		}
 		this.populateDefaultEquipmentSlots(random, difficultyInstance);
+		this.populateDefaultEquipmentEnchantments(levelAccessor, random, difficultyInstance);
+
+		ItemStack swimmingBoots = new ItemStack(Items.LEATHER_BOOTS);
+		setItemSlot(EquipmentSlot.FEET, swimmingBoots);
+		swimmingBoots.enchant(EnchantUtil.getEnchantmentHolder(this, Enchantments.DEPTH_STRIDER), 3);
 
 		setCombatTask();
 

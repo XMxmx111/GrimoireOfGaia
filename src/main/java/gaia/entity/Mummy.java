@@ -129,7 +129,7 @@ public class Mummy extends AbstractGaiaEntity {
 					if (itemstack.isDamageableItem()) {
 						itemstack.setDamageValue(itemstack.getDamageValue() + this.random.nextInt(2));
 						if (itemstack.getDamageValue() >= itemstack.getMaxDamage()) {
-							this.broadcastBreakEvent(EquipmentSlot.HEAD);
+							this.onEquippedItemBroken(itemstack.getItem(), EquipmentSlot.HEAD);
 							this.setItemSlot(EquipmentSlot.HEAD, ItemStack.EMPTY);
 						}
 					}
@@ -164,8 +164,8 @@ public class Mummy extends AbstractGaiaEntity {
 	@Nullable
 	@Override
 	public SpawnGroupData finalizeSpawn(ServerLevelAccessor levelAccessor, DifficultyInstance difficultyInstance,
-	                                    MobSpawnType spawnType, @Nullable SpawnGroupData groupData) {
-		SpawnGroupData data = super.finalizeSpawn(levelAccessor, difficultyInstance, spawnType, groupData);
+	                                    MobSpawnType spawnType, @Nullable SpawnGroupData data) {
+		data = super.finalizeSpawn(levelAccessor, difficultyInstance, spawnType, data);
 
 		return data;
 	}

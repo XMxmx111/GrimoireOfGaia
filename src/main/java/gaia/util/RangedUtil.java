@@ -73,7 +73,7 @@ public class RangedUtil {
 	}
 
 	public static AbstractArrow getArrow(LivingEntity shooter, ItemStack arrowStack, float distanceFactor) {
-		return ProjectileUtil.getMobArrow(shooter, arrowStack, distanceFactor);
+		return ProjectileUtil.getMobArrow(shooter, arrowStack, distanceFactor, null);
 	}
 
 	/**
@@ -92,8 +92,8 @@ public class RangedUtil {
 		double d2 = target.getZ() - shooter.getZ();
 		double f1 = Mth.sqrt(distanceFactor) * 0.5D;
 
-		GaiaSmallFireball smallFireball = new GaiaSmallFireball(shooter.level(), shooter,
-				d0 + shooter.getRandom().nextGaussian() * f1, d1, d2 + shooter.getRandom().nextGaussian() * f1);
+		Vec3 vec3 = new Vec3(d0 + shooter.getRandom().nextGaussian() * f1, d1, d2 + shooter.getRandom().nextGaussian() * f1);
+		GaiaSmallFireball smallFireball = new GaiaSmallFireball(shooter.level(), shooter.getX(), shooter.getY(), shooter.getZ(), vec3.normalize());
 		smallFireball.setPos(smallFireball.getX(), shooter.getY(0.5D) + 0.5D, smallFireball.getZ());
 		shooter.level().addFreshEntity(smallFireball);
 	}
@@ -142,8 +142,8 @@ public class RangedUtil {
 		double d2 = target.getZ() - shooter.getZ();
 		double f1 = Mth.sqrt(distanceFactor) * 0.5D;
 
-		MagicProjectile magic = new MagicProjectile(shooter.level(), shooter,
-				d0 + shooter.getRandom().nextGaussian() * f1, d1, d2 + shooter.getRandom().nextGaussian() * f1);
+		Vec3 vec3 = new Vec3(d0 + shooter.getRandom().nextGaussian() * f1, d1, d2 + shooter.getRandom().nextGaussian() * f1);
+		MagicProjectile magic = new MagicProjectile(shooter.level(), shooter.getX(), shooter.getY(), shooter.getZ(), vec3.normalize());
 		magic.setPos(magic.getX(), shooter.getY(0.5D) + 0.5D, magic.getZ());
 		shooter.level().addFreshEntity(magic);
 	}
@@ -164,8 +164,8 @@ public class RangedUtil {
 		double d2 = target.getZ() - shooter.getZ();
 		double f1 = Mth.sqrt(distanceFactor) * 0.5D;
 
-		RandomMagicProjectile magic = new RandomMagicProjectile(shooter.level(), shooter,
-				d0 + shooter.getRandom().nextGaussian() * f1, d1, d2 + shooter.getRandom().nextGaussian() * f1);
+		Vec3 vec3 = new Vec3(d0 + shooter.getRandom().nextGaussian() * f1, d1, d2 + shooter.getRandom().nextGaussian() * f1);
+		RandomMagicProjectile magic = new RandomMagicProjectile(shooter.level(), shooter.getX(), shooter.getY(), shooter.getZ(), vec3.normalize());
 		magic.setPos(magic.getX(), shooter.getY(0.5D) + 0.5D + yOffset, magic.getZ());
 		magic.setEffect(mobEffect);
 		shooter.level().addFreshEntity(magic);
@@ -187,8 +187,8 @@ public class RangedUtil {
 		double d2 = target.getZ() - shooter.getZ();
 		double f1 = Mth.sqrt(distanceFactor) * 0.5D;
 
-		WebProjectile web = new WebProjectile(shooter.level(), shooter,
-				d0 + shooter.getRandom().nextGaussian() * f1, d1, d2 + shooter.getRandom().nextGaussian() * f1);
+		Vec3 vec3 = new Vec3(d0 + shooter.getRandom().nextGaussian() * f1, d1, d2 + shooter.getRandom().nextGaussian() * f1);
+		WebProjectile web = new WebProjectile(shooter.level(), shooter.getX(), shooter.getY(), shooter.getZ(), vec3.normalize());
 		web.setPos(web.getX(), shooter.getY(0.5D) + 0.5D, web.getZ());
 		shooter.level().addFreshEntity(web);
 	}
@@ -209,8 +209,8 @@ public class RangedUtil {
 		double d2 = target.getZ() - shooter.getZ();
 		double f1 = Mth.sqrt(distanceFactor) * 0.5D;
 
-		BubbleProjectile bubble = new BubbleProjectile(shooter.level(), shooter,
-				d0 + shooter.getRandom().nextGaussian() * f1, d1, d2 + shooter.getRandom().nextGaussian() * f1);
+		Vec3 vec3 = new Vec3(d0 + shooter.getRandom().nextGaussian() * f1, d1, d2 + shooter.getRandom().nextGaussian() * f1);
+		BubbleProjectile bubble = new BubbleProjectile(shooter.level(), shooter.getX(), shooter.getY(), shooter.getZ(), vec3.normalize());
 		bubble.setPos(bubble.getX(), shooter.getY(0.5D) + 0.5D, bubble.getZ());
 		shooter.level().addFreshEntity(bubble);
 	}
@@ -231,8 +231,8 @@ public class RangedUtil {
 		double d2 = target.getZ() - shooter.getZ();
 		double f1 = Mth.sqrt(distanceFactor) * 0.5D;
 
-		PoisonProjectile poison = new PoisonProjectile(shooter.level(), shooter,
-				d0 + shooter.getRandom().nextGaussian() * f1, d1, d2 + shooter.getRandom().nextGaussian() * f1);
+		Vec3 vec3 = new Vec3(d0 + shooter.getRandom().nextGaussian() * f1, d1, d2 + shooter.getRandom().nextGaussian() * f1);
+		PoisonProjectile poison = new PoisonProjectile(shooter.level(), shooter.getX(), shooter.getY(), shooter.getZ(), vec3.normalize());
 		poison.setPos(poison.getX(), shooter.getY(0.5D) + 0.5D, poison.getZ());
 		shooter.level().addFreshEntity(poison);
 	}

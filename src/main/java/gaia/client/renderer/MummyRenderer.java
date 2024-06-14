@@ -12,7 +12,7 @@ import net.minecraft.resources.ResourceLocation;
 
 public class MummyRenderer extends MobRenderer<Mummy, MummyModel> {
 	public static final ResourceLocation[] MUMMY_LOCATIONS = new ResourceLocation[]{
-			new ResourceLocation(GrimoireOfGaia.MOD_ID, "textures/entity/mummy/mummy.png")
+			ResourceLocation.fromNamespaceAndPath(GrimoireOfGaia.MOD_ID, "textures/entity/mummy/mummy.png")
 	};
 
 	public MummyRenderer(Context context) {

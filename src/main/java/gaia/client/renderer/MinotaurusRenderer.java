@@ -13,8 +13,8 @@ import net.minecraft.resources.ResourceLocation;
 
 public class MinotaurusRenderer extends MobRenderer<Minotaurus, MinotaurusModel> {
 	public static final ResourceLocation[] MINOTAURUS_LOCATIONS = new ResourceLocation[]{
-			new ResourceLocation(GrimoireOfGaia.MOD_ID, "textures/entity/minotaurus/minotaurus01.png"),
-			new ResourceLocation(GrimoireOfGaia.MOD_ID, "textures/entity/minotaurus/minotaurus02.png")};
+			ResourceLocation.fromNamespaceAndPath(GrimoireOfGaia.MOD_ID, "textures/entity/minotaurus/minotaurus01.png"),
+			ResourceLocation.fromNamespaceAndPath(GrimoireOfGaia.MOD_ID, "textures/entity/minotaurus/minotaurus02.png")};
 
 	public MinotaurusRenderer(Context context) {
 		super(context, new MinotaurusModel(context.bakeLayer(ClientHandler.MINOTAURUS)), ClientHandler.smallShadow);

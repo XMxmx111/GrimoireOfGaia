@@ -13,7 +13,7 @@ import net.minecraft.resources.ResourceLocation;
 
 public class WizardHarpyRenderer extends MobRenderer<WizardHarpy, WizardHarpyModel> {
 	public static final ResourceLocation[] WIZARD_HARPY_LOCATIONS = new ResourceLocation[]{
-			new ResourceLocation(GrimoireOfGaia.MOD_ID, "textures/entity/wizard_harpy/wizard_harpy.png")};
+			ResourceLocation.fromNamespaceAndPath(GrimoireOfGaia.MOD_ID, "textures/entity/wizard_harpy/wizard_harpy.png")};
 
 	public WizardHarpyRenderer(Context context) {
 		super(context, new WizardHarpyModel(context.bakeLayer(ClientHandler.WIZARD_HARPY)), ClientHandler.smallShadow);

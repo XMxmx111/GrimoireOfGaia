@@ -1,5 +1,6 @@
 package gaia.entity;
 
+import gaia.GrimoireOfGaia;
 import gaia.config.GaiaConfig;
 import gaia.entity.goal.MobAttackGoal;
 import gaia.entity.type.IDayMob;
@@ -9,6 +10,7 @@ import gaia.util.SharedEntityData;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.Difficulty;
@@ -44,8 +46,8 @@ import org.jetbrains.annotations.Nullable;
 import java.util.UUID;
 
 public class Gryphon extends AbstractAssistGaiaEntity implements IDayMob {
-	private static final UUID KNOCKBACK_MODIFIER_UUID = UUID.fromString("3F9A8135-BC93-4EAB-B02A-33D75D54A09E");
-	private static final AttributeModifier KNOCKBACK_MODIFIER = new AttributeModifier(KNOCKBACK_MODIFIER_UUID, "Knockback boost", 2.0D, AttributeModifier.Operation.ADD_VALUE);
+	private static final ResourceLocation KNOCKBACK_ID = ResourceLocation.fromNamespaceAndPath(GrimoireOfGaia.MOD_ID, "gryphon_knockback_modifier");
+	private static final AttributeModifier KNOCKBACK_MODIFIER = new AttributeModifier(KNOCKBACK_ID, 2.0D, AttributeModifier.Operation.ADD_VALUE);
 
 	public Gryphon(EntityType<? extends Monster> entityType, Level level) {
 		super(entityType, level);
@@ -128,11 +130,11 @@ public class Gryphon extends AbstractAssistGaiaEntity implements IDayMob {
 	@Nullable
 	@Override
 	public SpawnGroupData finalizeSpawn(ServerLevelAccessor levelAccessor, DifficultyInstance difficultyInstance,
-										MobSpawnType spawnType, @Nullable SpawnGroupData groupData) {
-		SpawnGroupData data = super.finalizeSpawn(levelAccessor, difficultyInstance, spawnType, groupData);
+										MobSpawnType spawnType, @Nullable SpawnGroupData data) {
+		data = super.finalizeSpawn(levelAccessor, difficultyInstance, spawnType, data);
 
 		AttributeInstance attributeinstance = this.getAttribute(Attributes.ATTACK_KNOCKBACK);
-		attributeinstance.removeModifier(KNOCKBACK_MODIFIER_UUID);
+		attributeinstance.removeModifier(KNOCKBACK_ID);
 		attributeinstance.addTransientModifier(KNOCKBACK_MODIFIER);
 
 		return data;

@@ -91,8 +91,8 @@ public class CyanFlower extends AbstractPropEntity {
 	@Nullable
 	@Override
 	public SpawnGroupData finalizeSpawn(ServerLevelAccessor levelAccessor, DifficultyInstance difficultyInstance,
-										MobSpawnType spawnType, @Nullable SpawnGroupData groupData) {
-		SpawnGroupData data = super.finalizeSpawn(levelAccessor, difficultyInstance, spawnType, groupData);
+										MobSpawnType spawnType, @Nullable SpawnGroupData data) {
+		data = super.finalizeSpawn(levelAccessor, difficultyInstance, spawnType, data);
 
 		yBodyRot = 180.0F;
 		yBodyRotO = 180.0F;
@@ -158,7 +158,7 @@ public class CyanFlower extends AbstractPropEntity {
 	}
 
 	@Override
-	protected void dropCustomDeathLoot(DamageSource damageSource, int looting, boolean killedByPlayer) {
+	protected void dropCustomDeathLoot(ServerLevel serverLevel, DamageSource damageSource, boolean killedByPlayer) {
 		if (killedByPlayer) {
 			if (random.nextInt(4) == 0) {
 				if (!this.level().isClientSide) {
@@ -167,10 +167,10 @@ public class CyanFlower extends AbstractPropEntity {
 				}
 			} else {
 				this.level().broadcastEntityEvent(this, (byte) 6);
-				super.dropCustomDeathLoot(damageSource, looting, killedByPlayer);
+				super.dropCustomDeathLoot(serverLevel, damageSource, killedByPlayer);
 			}
 		} else {
-			super.dropCustomDeathLoot(damageSource, looting, killedByPlayer);
+			super.dropCustomDeathLoot(serverLevel, damageSource, killedByPlayer);
 		}
 	}
 

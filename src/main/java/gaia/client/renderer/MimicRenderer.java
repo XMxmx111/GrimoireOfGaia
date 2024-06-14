@@ -11,11 +11,11 @@ import net.neoforged.fml.ModList;
 
 public class MimicRenderer extends MobRenderer<Mimic, MimicModel> {
 	public static final ResourceLocation[] MIMIC_LOCATION = new ResourceLocation[]{
-			new ResourceLocation(GrimoireOfGaia.MOD_ID, "textures/entity/mimic/mimic.png")
+			ResourceLocation.fromNamespaceAndPath(GrimoireOfGaia.MOD_ID, "textures/entity/mimic/mimic.png")
 	};
 
 	public static final ResourceLocation[] LOOTR_LOCATION = new ResourceLocation[]{
-			new ResourceLocation(GrimoireOfGaia.MOD_ID, "textures/entity/mimic/lootr_mimic.png")
+			ResourceLocation.fromNamespaceAndPath(GrimoireOfGaia.MOD_ID, "textures/entity/mimic/lootr_mimic.png")
 	};
 
 	public MimicRenderer(Context context) {

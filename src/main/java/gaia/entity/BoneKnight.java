@@ -129,7 +129,7 @@ public class BoneKnight extends AbstractGaiaEntity {
 					if (itemstack.isDamageableItem()) {
 						itemstack.setDamageValue(itemstack.getDamageValue() + this.random.nextInt(2));
 						if (itemstack.getDamageValue() >= itemstack.getMaxDamage()) {
-							this.broadcastBreakEvent(EquipmentSlot.HEAD);
+							this.onEquippedItemBroken(itemstack.getItem(), EquipmentSlot.HEAD);
 							this.setItemSlot(EquipmentSlot.HEAD, ItemStack.EMPTY);
 						}
 					}
@@ -160,11 +160,11 @@ public class BoneKnight extends AbstractGaiaEntity {
 	@Nullable
 	@Override
 	public SpawnGroupData finalizeSpawn(ServerLevelAccessor levelAccessor, DifficultyInstance difficultyInstance,
-										MobSpawnType spawnType, @Nullable SpawnGroupData groupData) {
-		SpawnGroupData data = super.finalizeSpawn(levelAccessor, difficultyInstance, spawnType, groupData);
+										MobSpawnType spawnType, @Nullable SpawnGroupData data) {
+		data = super.finalizeSpawn(levelAccessor, difficultyInstance, spawnType, data);
 
 		this.populateDefaultEquipmentSlots(random, difficultyInstance);
-		this.populateDefaultEquipmentEnchantments(random, difficultyInstance);
+		this.populateDefaultEquipmentEnchantments(levelAccessor, random, difficultyInstance);
 
 		return data;
 	}

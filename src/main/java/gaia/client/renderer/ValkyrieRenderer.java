@@ -13,7 +13,7 @@ import net.minecraft.resources.ResourceLocation;
 
 public class ValkyrieRenderer extends MobRenderer<Valkyrie, ValkyrieModel> {
 	public static final ResourceLocation[] VALKYRIE_LOCATIONS = new ResourceLocation[]{
-			new ResourceLocation(GrimoireOfGaia.MOD_ID, "textures/entity/valkyrie/valkyrie.png")
+			ResourceLocation.fromNamespaceAndPath(GrimoireOfGaia.MOD_ID, "textures/entity/valkyrie/valkyrie.png")
 	};
 
 	public ValkyrieRenderer(Context context) {

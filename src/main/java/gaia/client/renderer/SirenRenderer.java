@@ -12,8 +12,8 @@ import net.minecraft.resources.ResourceLocation;
 
 public class SirenRenderer extends MobRenderer<Siren, SirenModel> {
 	public static final ResourceLocation[] SIREN_LOCATIONS = new ResourceLocation[]{
-			new ResourceLocation(GrimoireOfGaia.MOD_ID, "textures/entity/siren/siren.png"),
-			new ResourceLocation(GrimoireOfGaia.MOD_ID, "textures/entity/siren/siren_halloween.png")};
+			ResourceLocation.fromNamespaceAndPath(GrimoireOfGaia.MOD_ID, "textures/entity/siren/siren.png"),
+			ResourceLocation.fromNamespaceAndPath(GrimoireOfGaia.MOD_ID, "textures/entity/siren/siren_halloween.png")};
 
 	public SirenRenderer(Context context) {
 		super(context, new SirenModel(context.bakeLayer(ClientHandler.SIREN)), ClientHandler.smallShadow);

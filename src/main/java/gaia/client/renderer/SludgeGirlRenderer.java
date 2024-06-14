@@ -12,9 +12,9 @@ import net.minecraft.resources.ResourceLocation;
 
 public class SludgeGirlRenderer extends MobRenderer<SludgeGirl, SludgeGirlModel> {
 	public static final ResourceLocation[] SLUDGE_GIRL_LOCATIONS = new ResourceLocation[]{
-			new ResourceLocation(GrimoireOfGaia.MOD_ID, "textures/entity/sludge_girl/sludge_girl01.png"),
-			new ResourceLocation(GrimoireOfGaia.MOD_ID, "textures/entity/sludge_girl/sludge_girl02.png"),
-			new ResourceLocation(GrimoireOfGaia.MOD_ID, "textures/entity/sludge_girl/sludge_girl03.png")};
+			ResourceLocation.fromNamespaceAndPath(GrimoireOfGaia.MOD_ID, "textures/entity/sludge_girl/sludge_girl01.png"),
+			ResourceLocation.fromNamespaceAndPath(GrimoireOfGaia.MOD_ID, "textures/entity/sludge_girl/sludge_girl02.png"),
+			ResourceLocation.fromNamespaceAndPath(GrimoireOfGaia.MOD_ID, "textures/entity/sludge_girl/sludge_girl03.png")};
 
 	public SludgeGirlRenderer(Context context) {
 		super(context, new SludgeGirlModel(context.bakeLayer(ClientHandler.SLUDGE_GIRL)), ClientHandler.smallShadow);

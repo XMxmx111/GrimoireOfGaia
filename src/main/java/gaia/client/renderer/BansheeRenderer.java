@@ -12,7 +12,7 @@ import net.minecraft.resources.ResourceLocation;
 
 public class BansheeRenderer extends MobRenderer<Banshee, BansheeModel> {
 	public static final ResourceLocation[] BANSHEE_LOCATIONS = new ResourceLocation[]{
-			new ResourceLocation(GrimoireOfGaia.MOD_ID, "textures/entity/banshee/banshee.png")};
+			ResourceLocation.fromNamespaceAndPath(GrimoireOfGaia.MOD_ID, "textures/entity/banshee/banshee.png")};
 
 	public BansheeRenderer(Context context) {
 		super(context, new BansheeModel(context.bakeLayer(ClientHandler.BANSHEE)), ClientHandler.smallShadow);

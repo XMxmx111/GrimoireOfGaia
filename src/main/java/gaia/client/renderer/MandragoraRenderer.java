@@ -11,7 +11,7 @@ import net.minecraft.resources.ResourceLocation;
 
 public class MandragoraRenderer extends GaiaBabyMobRenderer<Mandragora, MandragoraModel> {
 	public static final ResourceLocation[] MANDRAGORA_LOCATIONS = new ResourceLocation[]{
-			new ResourceLocation(GrimoireOfGaia.MOD_ID, "textures/entity/mandragora/mandragora.png")
+			ResourceLocation.fromNamespaceAndPath(GrimoireOfGaia.MOD_ID, "textures/entity/mandragora/mandragora.png")
 	};
 
 	public MandragoraRenderer(Context context) {

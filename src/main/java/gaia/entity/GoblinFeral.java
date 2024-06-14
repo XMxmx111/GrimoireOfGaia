@@ -232,10 +232,8 @@ public class GoblinFeral extends AbstractGaiaEntity implements RangedAttackMob {
 			} else {
 				if (random.nextInt(4) == 0) {
 					this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(Items.WOODEN_SWORD));
-					this.populateDefaultEquipmentEnchantments(random, instance);
 				} else {
 					this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(Items.WOODEN_AXE));
-					this.populateDefaultEquipmentEnchantments(random, instance);
 				}
 				this.setVariant(0);
 			}
@@ -245,10 +243,11 @@ public class GoblinFeral extends AbstractGaiaEntity implements RangedAttackMob {
 	@Nullable
 	@Override
 	public SpawnGroupData finalizeSpawn(ServerLevelAccessor levelAccessor, DifficultyInstance difficultyInstance,
-										MobSpawnType spawnType, @Nullable SpawnGroupData groupData) {
-		SpawnGroupData data = super.finalizeSpawn(levelAccessor, difficultyInstance, spawnType, groupData);
+										MobSpawnType spawnType, @Nullable SpawnGroupData data) {
+		data = super.finalizeSpawn(levelAccessor, difficultyInstance, spawnType, data);
 
 		this.populateDefaultEquipmentSlots(random, difficultyInstance);
+		this.populateDefaultEquipmentEnchantments(levelAccessor, random, difficultyInstance);
 
 		setCombatTask();
 

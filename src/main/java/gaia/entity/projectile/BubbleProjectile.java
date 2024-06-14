@@ -17,19 +17,20 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
+import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.fluids.FluidType;
 
 public class BubbleProjectile extends SmallFireball {
-	public BubbleProjectile(EntityType<? extends SmallFireball> entityType, Level level) {
-		super(entityType, level);
+	public BubbleProjectile(EntityType<? extends SmallFireball> entityType, Level pLevel) {
+		super(entityType, pLevel);
 	}
 
-	public BubbleProjectile(Level level) {
-		this(GaiaRegistry.BUBBLE.get(), level);
+	public BubbleProjectile(Level level, LivingEntity livingEntity, Vec3 p_347501_) {
+		super(level, livingEntity, p_347501_);
 	}
 
-	public BubbleProjectile(Level level, LivingEntity livingEntity, double accelX, double accelY, double accelZ) {
-		super(level, livingEntity, accelX, accelY, accelZ);
+	public BubbleProjectile(Level level, double p_37368_, double p_37369_, double p_37370_, Vec3 p_347543_) {
+		super(level, p_37368_, p_37369_, p_37370_, p_347543_);
 	}
 
 	@Override

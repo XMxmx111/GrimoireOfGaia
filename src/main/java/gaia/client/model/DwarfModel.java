@@ -165,13 +165,13 @@ public class DwarfModel extends EntityModel<Dwarf> implements HeadedModel, Armed
 	}
 
 	@Override
-	public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
-		head.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
-		body.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
-		rightarm.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
-		leftarm.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
-		rightleg.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
-		leftleg.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
+	public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, int unused) {
+		head.render(poseStack, vertexConsumer, packedLight, packedOverlay);
+		body.render(poseStack, vertexConsumer, packedLight, packedOverlay);
+		rightarm.render(poseStack, vertexConsumer, packedLight, packedOverlay);
+		leftarm.render(poseStack, vertexConsumer, packedLight, packedOverlay);
+		rightleg.render(poseStack, vertexConsumer, packedLight, packedOverlay);
+		leftleg.render(poseStack, vertexConsumer, packedLight, packedOverlay);
 	}
 
 	@Override

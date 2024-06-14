@@ -13,7 +13,7 @@ import net.minecraft.resources.ResourceLocation;
 
 public class SphinxRenderer extends MobRenderer<Sphinx, SphinxModel> {
 	public static final ResourceLocation[] SPHINX_LOCATIONS = new ResourceLocation[]{
-			new ResourceLocation(GrimoireOfGaia.MOD_ID, "textures/entity/sphinx/sphinx.png")
+			ResourceLocation.fromNamespaceAndPath(GrimoireOfGaia.MOD_ID, "textures/entity/sphinx/sphinx.png")
 	};
 
 	public SphinxRenderer(Context context) {

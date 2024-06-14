@@ -12,7 +12,7 @@ import net.minecraft.resources.ResourceLocation;
 
 public class DullahanRenderer extends MobRenderer<Dullahan, DullahanModel> {
 	public static final ResourceLocation[] DULLAHAN_LOCATIONS = new ResourceLocation[]{
-			new ResourceLocation(GrimoireOfGaia.MOD_ID, "textures/entity/dullahan/dullahan.png")};
+			ResourceLocation.fromNamespaceAndPath(GrimoireOfGaia.MOD_ID, "textures/entity/dullahan/dullahan.png")};
 
 	public DullahanRenderer(Context context) {
 		super(context, new DullahanModel(context.bakeLayer(ClientHandler.DULLAHAN)), ClientHandler.smallShadow);

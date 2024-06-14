@@ -13,9 +13,9 @@ import net.minecraft.resources.ResourceLocation;
 
 public class DwarfRenderer extends MobRenderer<Dwarf, DwarfModel> {
 	public static final ResourceLocation[] DWARF_LOCATIONS = new ResourceLocation[]{
-			new ResourceLocation(GrimoireOfGaia.MOD_ID, "textures/entity/dwarf/dwarf01.png"),
-			new ResourceLocation(GrimoireOfGaia.MOD_ID, "textures/entity/dwarf/dwarf02.png"),
-			new ResourceLocation(GrimoireOfGaia.MOD_ID, "textures/entity/dwarf/dwarf03.png")
+			ResourceLocation.fromNamespaceAndPath(GrimoireOfGaia.MOD_ID, "textures/entity/dwarf/dwarf01.png"),
+			ResourceLocation.fromNamespaceAndPath(GrimoireOfGaia.MOD_ID, "textures/entity/dwarf/dwarf02.png"),
+			ResourceLocation.fromNamespaceAndPath(GrimoireOfGaia.MOD_ID, "textures/entity/dwarf/dwarf03.png")
 	};
 
 	public DwarfRenderer(Context context) {

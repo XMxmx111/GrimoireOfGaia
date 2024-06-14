@@ -12,7 +12,7 @@ import net.minecraft.resources.ResourceLocation;
 
 public class FleshLichRenderer extends MobRenderer<FleshLich, FleshLichModel> {
 	public static final ResourceLocation[] FLESH_LICH_LOCATIONS = new ResourceLocation[]{
-			new ResourceLocation(GrimoireOfGaia.MOD_ID, "textures/entity/flesh_lich/flesh_lich.png")};
+			ResourceLocation.fromNamespaceAndPath(GrimoireOfGaia.MOD_ID, "textures/entity/flesh_lich/flesh_lich.png")};
 
 	public FleshLichRenderer(Context context) {
 		super(context, new FleshLichModel(context.bakeLayer(ClientHandler.FLESH_LICH)), ClientHandler.smallShadow);

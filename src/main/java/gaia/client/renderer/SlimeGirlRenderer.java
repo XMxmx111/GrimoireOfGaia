@@ -12,7 +12,7 @@ import net.minecraft.client.renderer.entity.layers.ItemInHandLayer;
 import net.minecraft.resources.ResourceLocation;
 
 public class SlimeGirlRenderer extends MobRenderer<SlimeGirl, SlimeGirlModel> {
-	public static final ResourceLocation CREEPER_GIRL_LOCATION = new ResourceLocation(GrimoireOfGaia.MOD_ID, "textures/entity/slime_girl/slime_girl.png");
+	public static final ResourceLocation CREEPER_GIRL_LOCATION = ResourceLocation.fromNamespaceAndPath(GrimoireOfGaia.MOD_ID, "textures/entity/slime_girl/slime_girl.png");
 
 	public SlimeGirlRenderer(Context context) {
 		super(context, new SlimeGirlModel(context.bakeLayer(ClientHandler.SLIME_GIRL)), ClientHandler.medShadow);

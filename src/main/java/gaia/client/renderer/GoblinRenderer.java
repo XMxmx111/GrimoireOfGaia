@@ -12,8 +12,8 @@ import net.minecraft.resources.ResourceLocation;
 
 public class GoblinRenderer extends MobRenderer<Goblin, GoblinModel<Goblin>> {
 	public static final ResourceLocation[] GOBLIN_LOCATIONS = new ResourceLocation[]{
-			new ResourceLocation(GrimoireOfGaia.MOD_ID, "textures/entity/goblin/goblin01.png"),
-			new ResourceLocation(GrimoireOfGaia.MOD_ID, "textures/entity/goblin/goblin02.png")};
+			ResourceLocation.fromNamespaceAndPath(GrimoireOfGaia.MOD_ID, "textures/entity/goblin/goblin01.png"),
+			ResourceLocation.fromNamespaceAndPath(GrimoireOfGaia.MOD_ID, "textures/entity/goblin/goblin02.png")};
 
 	public GoblinRenderer(Context context) {
 		super(context, new GoblinModel<>(context.bakeLayer(ClientHandler.GOBLIN)), ClientHandler.smallShadow);

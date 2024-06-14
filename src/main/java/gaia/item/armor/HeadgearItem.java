@@ -36,7 +36,7 @@ public class HeadgearItem extends Item {
 
 	public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
 		ItemStack stack = player.getItemInHand(hand);
-		EquipmentSlot slot = Mob.getEquipmentSlotForItem(stack);
+		EquipmentSlot slot = player.getEquipmentSlotForItem(stack);
 		ItemStack slotStack = player.getItemBySlot(slot);
 		if (slotStack.isEmpty()) {
 			player.setItemSlot(slot, stack.copy());

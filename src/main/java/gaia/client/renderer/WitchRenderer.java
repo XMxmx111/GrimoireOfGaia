@@ -13,8 +13,8 @@ import net.minecraft.world.entity.HumanoidArm;
 
 public class WitchRenderer extends MobRenderer<Witch, WitchModel> {
 	public static final ResourceLocation[] WITCH_LOCATIONS = new ResourceLocation[]{
-			new ResourceLocation(GrimoireOfGaia.MOD_ID, "textures/entity/witch/witch01.png"),
-			new ResourceLocation(GrimoireOfGaia.MOD_ID, "textures/entity/witch/witch02.png")};
+			ResourceLocation.fromNamespaceAndPath(GrimoireOfGaia.MOD_ID, "textures/entity/witch/witch01.png"),
+			ResourceLocation.fromNamespaceAndPath(GrimoireOfGaia.MOD_ID, "textures/entity/witch/witch02.png")};
 
 	public WitchRenderer(Context context) {
 		super(context, new WitchModel(context.bakeLayer(ClientHandler.WITCH)), ClientHandler.tinyShadow);

@@ -4,6 +4,7 @@ import gaia.entity.goal.MobAttackGoal;
 import gaia.entity.type.IDayMob;
 import gaia.registry.GaiaRegistry;
 import gaia.registry.GaiaTags;
+import gaia.util.EnchantUtil;
 import gaia.util.SharedEntityData;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -206,24 +207,24 @@ public class Naga extends AbstractGaiaEntity implements IDayMob {
 	@Override
 	protected void populateDefaultEquipmentSlots(RandomSource random, DifficultyInstance instance) {
 		setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(Items.GOLDEN_SWORD));
-		populateDefaultEquipmentEnchantments(random, instance);
+	}
+
+	@Nullable
+	@Override
+	public SpawnGroupData finalizeSpawn(ServerLevelAccessor levelAccessor, DifficultyInstance difficultyInstance,
+										MobSpawnType spawnType, @Nullable SpawnGroupData data) {
+		data = super.finalizeSpawn(levelAccessor, difficultyInstance, spawnType, data);
+		setGoals(0);
+
+		this.populateDefaultEquipmentSlots(random, difficultyInstance);
+		this.populateDefaultEquipmentEnchantments(levelAccessor, random, difficultyInstance);
 
 		ItemStack shield = new ItemStack(GaiaRegistry.GOLD_SHIELD.get());
 		setItemSlot(EquipmentSlot.OFFHAND, shield);
 
 		ItemStack swimmingBoots = new ItemStack(Items.LEATHER_BOOTS);
 		setItemSlot(EquipmentSlot.FEET, swimmingBoots);
-		swimmingBoots.enchant(Enchantments.DEPTH_STRIDER, 3);
-	}
-
-	@Nullable
-	@Override
-	public SpawnGroupData finalizeSpawn(ServerLevelAccessor levelAccessor, DifficultyInstance difficultyInstance,
-										MobSpawnType spawnType, @Nullable SpawnGroupData groupData) {
-		SpawnGroupData data = super.finalizeSpawn(levelAccessor, difficultyInstance, spawnType, groupData);
-		setGoals(0);
-
-		this.populateDefaultEquipmentSlots(random, difficultyInstance);
+		swimmingBoots.enchant(EnchantUtil.getEnchantmentHolder(this, Enchantments.DEPTH_STRIDER), 3);
 
 		return data;
 	}

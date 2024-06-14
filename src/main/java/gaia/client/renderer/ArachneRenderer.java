@@ -13,7 +13,7 @@ import net.minecraft.resources.ResourceLocation;
 
 public class ArachneRenderer extends MobRenderer<Arachne, ArachneModel> {
 	public static final ResourceLocation[] ARACHNE_LOCATIONS = new ResourceLocation[]{
-			new ResourceLocation(GrimoireOfGaia.MOD_ID, "textures/entity/arachne/arachne.png")};
+			ResourceLocation.fromNamespaceAndPath(GrimoireOfGaia.MOD_ID, "textures/entity/arachne/arachne.png")};
 
 	public ArachneRenderer(Context context) {
 		super(context, new ArachneModel(context.bakeLayer(ClientHandler.ARACHNE)), ClientHandler.largeShadow);

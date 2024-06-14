@@ -12,7 +12,7 @@ import net.minecraft.resources.ResourceLocation;
 
 public class ShamanRenderer extends MobRenderer<Shaman, ShamanModel> {
 	public static final ResourceLocation[] SHAMAN_LOCATIONS = new ResourceLocation[]{
-			new ResourceLocation(GrimoireOfGaia.MOD_ID, "textures/entity/shaman/shaman.png")};
+			ResourceLocation.fromNamespaceAndPath(GrimoireOfGaia.MOD_ID, "textures/entity/shaman/shaman.png")};
 
 	public ShamanRenderer(Context context) {
 		super(context, new ShamanModel(context.bakeLayer(ClientHandler.SHAMAN)), ClientHandler.smallShadow);

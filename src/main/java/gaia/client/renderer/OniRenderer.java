@@ -12,8 +12,8 @@ import net.minecraft.resources.ResourceLocation;
 
 public class OniRenderer extends MobRenderer<Oni, OniModel> {
 	public static final ResourceLocation[] ONI_LOCATIONS = new ResourceLocation[]{
-			new ResourceLocation(GrimoireOfGaia.MOD_ID, "textures/entity/oni/oni01.png"),
-			new ResourceLocation(GrimoireOfGaia.MOD_ID, "textures/entity/oni/oni02.png")};
+			ResourceLocation.fromNamespaceAndPath(GrimoireOfGaia.MOD_ID, "textures/entity/oni/oni01.png"),
+			ResourceLocation.fromNamespaceAndPath(GrimoireOfGaia.MOD_ID, "textures/entity/oni/oni02.png")};
 
 	public OniRenderer(Context context) {
 		super(context, new OniModel(context.bakeLayer(ClientHandler.ONI)), ClientHandler.smallShadow);

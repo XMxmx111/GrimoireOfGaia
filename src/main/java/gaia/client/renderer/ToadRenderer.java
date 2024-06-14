@@ -12,7 +12,7 @@ import net.minecraft.resources.ResourceLocation;
 
 public class ToadRenderer extends MobRenderer<Toad, ToadModel> {
 	public static final ResourceLocation[] TOAD_LOCATIONS = new ResourceLocation[]{
-			new ResourceLocation(GrimoireOfGaia.MOD_ID, "textures/entity/toad/toad.png")};
+			ResourceLocation.fromNamespaceAndPath(GrimoireOfGaia.MOD_ID, "textures/entity/toad/toad.png")};
 
 	public ToadRenderer(Context context) {
 		super(context, new ToadModel(context.bakeLayer(ClientHandler.TOAD)), ClientHandler.smallShadow);

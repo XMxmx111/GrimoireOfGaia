@@ -13,7 +13,7 @@ import net.minecraft.resources.ResourceLocation;
 
 public class CobbleGolemRenderer extends MobRenderer<CobbleGolem, CobbleGolemModel> {
 	public static final ResourceLocation[] COBBLE_GOLEM_LOCATIONS = new ResourceLocation[]{
-			new ResourceLocation(GrimoireOfGaia.MOD_ID, "textures/entity/cobble_golem/cobble_golem.png")};
+			ResourceLocation.fromNamespaceAndPath(GrimoireOfGaia.MOD_ID, "textures/entity/cobble_golem/cobble_golem.png")};
 
 	public CobbleGolemRenderer(Context context) {
 		super(context, new CobbleGolemModel(context.bakeLayer(ClientHandler.COBBLE_GOLEM)), ClientHandler.smallShadow);

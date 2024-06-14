@@ -1,16 +1,19 @@
 package gaia.entity;
 
+import gaia.GrimoireOfGaia;
 import gaia.config.GaiaConfig;
 import gaia.entity.goal.MobAttackGoal;
 import gaia.entity.type.IDayMob;
 import gaia.registry.GaiaRegistry;
 import gaia.registry.GaiaTags;
+import gaia.util.EnchantUtil;
 import gaia.util.SharedEntityData;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.Difficulty;
@@ -49,8 +52,8 @@ import java.util.UUID;
 public class YukiOnna extends AbstractAssistGaiaEntity implements IDayMob {
 	private static final EntityDataAccessor<Boolean> FLEEING = SynchedEntityData.defineId(YukiOnna.class, EntityDataSerializers.BOOLEAN);
 
-	private static final UUID KNOCKBACK_MODIFIER_UUID = UUID.fromString("D2EF3144-4329-4118-860A-80D2820C2CF1");
-	private static final AttributeModifier KNOCKBACK_MODIFIER = new AttributeModifier(KNOCKBACK_MODIFIER_UUID, "Knockback boost", 2.0D, Operation.ADD_VALUE);
+	private static final ResourceLocation KNOCKBACK_ID = ResourceLocation.fromNamespaceAndPath(GrimoireOfGaia.MOD_ID, "yuki_onna_knockback_modifier");
+	private static final AttributeModifier KNOCKBACK_MODIFIER = new AttributeModifier(KNOCKBACK_ID, 2.0D, Operation.ADD_VALUE);
 
 	private final MobAttackGoal mobAttackGoal = new MobAttackGoal(this, SharedEntityData.ATTACK_SPEED_2, true);
 	private final AvoidEntityGoal<Player> avoidPlayerGoal = new AvoidEntityGoal<>(this, Player.class, 20.0F, SharedEntityData.ATTACK_SPEED_2, SharedEntityData.ATTACK_SPEED_3);
@@ -188,10 +191,10 @@ public class YukiOnna extends AbstractAssistGaiaEntity implements IDayMob {
 			if (random.nextInt(4) == 0) {
 				//Remove it if it's there
 				AttributeInstance attributeinstance = this.getAttribute(Attributes.ATTACK_KNOCKBACK);
-				attributeinstance.removeModifier(KNOCKBACK_MODIFIER_UUID);
+				attributeinstance.removeModifier(KNOCKBACK_ID);
 
 				ItemStack weapon = new ItemStack(GaiaRegistry.FAN.get(), 1);
-				weapon.enchant(Enchantments.KNOCKBACK, 3);
+				weapon.enchant(EnchantUtil.getEnchantmentHolder(this, Enchantments.KNOCKBACK), 3);
 				setHandOrKnockback(weapon);
 			} else {
 				setHandOrKnockback(ItemStack.EMPTY);
@@ -201,7 +204,7 @@ public class YukiOnna extends AbstractAssistGaiaEntity implements IDayMob {
 
 	protected void setHandOrKnockback(ItemStack stack) {
 		AttributeInstance attributeinstance = this.getAttribute(Attributes.ATTACK_KNOCKBACK);
-		attributeinstance.removeModifier(KNOCKBACK_MODIFIER_UUID);
+		attributeinstance.removeModifier(KNOCKBACK_ID);
 		if (stack.isEmpty()) {
 			attributeinstance.addTransientModifier(KNOCKBACK_MODIFIER);
 		} else {
@@ -212,8 +215,8 @@ public class YukiOnna extends AbstractAssistGaiaEntity implements IDayMob {
 	@Nullable
 	@Override
 	public SpawnGroupData finalizeSpawn(ServerLevelAccessor levelAccessor, DifficultyInstance difficultyInstance,
-										MobSpawnType spawnType, @Nullable SpawnGroupData groupData) {
-		SpawnGroupData data = super.finalizeSpawn(levelAccessor, difficultyInstance, spawnType, groupData);
+										MobSpawnType spawnType, @Nullable SpawnGroupData data) {
+		data = super.finalizeSpawn(levelAccessor, difficultyInstance, spawnType, data);
 
 		this.populateDefaultEquipmentSlots(random, difficultyInstance);
 

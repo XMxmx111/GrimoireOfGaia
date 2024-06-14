@@ -134,8 +134,8 @@ public abstract class AbstractPropEntity extends AgeableMob {
 
 	@Override
 	public SpawnGroupData finalizeSpawn(ServerLevelAccessor levelAccessor, DifficultyInstance difficultyInstance,
-										MobSpawnType spawnType, @Nullable SpawnGroupData groupData) {
+										MobSpawnType spawnType, @Nullable SpawnGroupData data) {
 		this.finalizeAttributes();
-		return super.finalizeSpawn(levelAccessor, difficultyInstance, spawnType, groupData);
+		return super.finalizeSpawn(levelAccessor, difficultyInstance, spawnType, data);
 	}
 }

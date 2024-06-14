@@ -28,6 +28,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
+import net.minecraft.world.phys.Vec3;
 
 import java.util.Optional;
 
@@ -35,16 +36,16 @@ public class RandomMagicProjectile extends SmallFireball {
 	private static final EntityDataAccessor<Holder<MobEffect>> EFFECT = SynchedEntityData.defineId(RandomMagicProjectile.class,
 			GaiaDataSerializers.MOB_EFFECT.get());
 
-	public RandomMagicProjectile(EntityType<? extends SmallFireball> entityType, Level level) {
-		super(entityType, level);
+	public RandomMagicProjectile(EntityType<? extends SmallFireball> pEntityType, Level pLevel) {
+		super(pEntityType, pLevel);
 	}
 
-	public RandomMagicProjectile(Level level) {
-		this(GaiaRegistry.RANDOM_MAGIC.get(), level);
+	public RandomMagicProjectile(Level p_37375_, LivingEntity p_37376_, Vec3 p_347501_) {
+		super(p_37375_, p_37376_, p_347501_);
 	}
 
-	public RandomMagicProjectile(Level level, LivingEntity livingEntity, double accelX, double accelY, double accelZ) {
-		super(level, livingEntity, accelX, accelY, accelZ);
+	public RandomMagicProjectile(Level p_37367_, double p_37368_, double p_37369_, double p_37370_, Vec3 p_347543_) {
+		super(p_37367_, p_37368_, p_37369_, p_37370_, p_347543_);
 	}
 
 	@Override

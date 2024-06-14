@@ -1,13 +1,16 @@
 package gaia.entity;
 
+import gaia.GrimoireOfGaia;
 import gaia.entity.goal.MobAttackGoal;
 import gaia.entity.type.IDayMob;
 import gaia.registry.GaiaRegistry;
 import gaia.registry.GaiaTags;
+import gaia.util.EnchantUtil;
 import gaia.util.SharedEntityData;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.Difficulty;
@@ -39,14 +42,13 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
-import net.neoforged.neoforge.common.NeoForgeMod;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.UUID;
 
 public class Toad extends AbstractGaiaEntity implements IDayMob {
-	private static final UUID KNOCKBACK_MODIFIER_UUID = UUID.fromString("C1A38308-7270-476A-BAA1-3A906F5DCC88");
-	private static final AttributeModifier KNOCKBACK_MODIFIER = new AttributeModifier(KNOCKBACK_MODIFIER_UUID, "Knockback boost", 2.0D, AttributeModifier.Operation.ADD_VALUE);
+	private static final ResourceLocation KNOCKBACK_ID = ResourceLocation.fromNamespaceAndPath(GrimoireOfGaia.MOD_ID, "toad_knockback_modifier");
+	private static final AttributeModifier KNOCKBACK_MODIFIER = new AttributeModifier(KNOCKBACK_ID, 2.0D, AttributeModifier.Operation.ADD_VALUE);
 	private byte inWaterTimer;
 
 	public Toad(EntityType<? extends Monster> entityType, Level level) {
@@ -138,16 +140,16 @@ public class Toad extends AbstractGaiaEntity implements IDayMob {
 	@Nullable
 	@Override
 	public SpawnGroupData finalizeSpawn(ServerLevelAccessor levelAccessor, DifficultyInstance difficultyInstance,
-										MobSpawnType spawnType, @Nullable SpawnGroupData groupData) {
-		SpawnGroupData data = super.finalizeSpawn(levelAccessor, difficultyInstance, spawnType, groupData);
+										MobSpawnType spawnType, @Nullable SpawnGroupData data) {
+		data = super.finalizeSpawn(levelAccessor, difficultyInstance, spawnType, data);
 
 		AttributeInstance attributeinstance = this.getAttribute(Attributes.ATTACK_KNOCKBACK);
-		attributeinstance.removeModifier(KNOCKBACK_MODIFIER_UUID);
+		attributeinstance.removeModifier(KNOCKBACK_ID);
 		attributeinstance.addTransientModifier(KNOCKBACK_MODIFIER);
 
 		ItemStack swimmingBoots = new ItemStack(Items.LEATHER_BOOTS);
 		setItemSlot(EquipmentSlot.FEET, swimmingBoots);
-		swimmingBoots.enchant(Enchantments.DEPTH_STRIDER, 2);
+		swimmingBoots.enchant(EnchantUtil.getEnchantmentHolder(this, Enchantments.DEPTH_STRIDER), 2);
 
 		return data;
 	}

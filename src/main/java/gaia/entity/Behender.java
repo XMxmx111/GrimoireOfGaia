@@ -120,7 +120,7 @@ public class Behender extends AbstractGaiaEntity implements RangedAttackMob, Pow
 	public boolean hurt(DamageSource source, float damage) {
 		float input = getBaseDamage(source, damage);
 		if (isPowered()) {
-			return !source.isIndirect() && super.hurt(source, input);
+			return source.isDirect() && super.hurt(source, input);
 		}
 		return super.hurt(source, input);
 	}
@@ -218,8 +218,8 @@ public class Behender extends AbstractGaiaEntity implements RangedAttackMob, Pow
 	@Nullable
 	@Override
 	public SpawnGroupData finalizeSpawn(ServerLevelAccessor levelAccessor, DifficultyInstance difficultyInstance,
-										MobSpawnType spawnType, @Nullable SpawnGroupData groupData) {
-		SpawnGroupData data = super.finalizeSpawn(levelAccessor, difficultyInstance, spawnType, groupData);
+										MobSpawnType spawnType, @Nullable SpawnGroupData data) {
+		data = super.finalizeSpawn(levelAccessor, difficultyInstance, spawnType, data);
 
 		return data;
 	}

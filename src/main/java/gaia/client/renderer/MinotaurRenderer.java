@@ -14,7 +14,7 @@ import net.minecraft.resources.ResourceLocation;
 
 public class MinotaurRenderer extends MobRenderer<Minotaur, MinotaurModel> {
 	public static final ResourceLocation[] MINOTAURUS_LOCATIONS = new ResourceLocation[]{
-			new ResourceLocation(GrimoireOfGaia.MOD_ID, "textures/entity/minotaur/minotaur.png")
+			ResourceLocation.fromNamespaceAndPath(GrimoireOfGaia.MOD_ID, "textures/entity/minotaur/minotaur.png")
 	};
 
 	public MinotaurRenderer(Context context) {

@@ -11,7 +11,7 @@ import net.minecraft.resources.ResourceLocation;
 
 public class YukiOnnaRenderer extends GaiaBabyMobRenderer<YukiOnna, YukiOnnaModel> {
 	public static final ResourceLocation[] YUKI_ONNA_LOCATIONS = new ResourceLocation[]{
-			new ResourceLocation(GrimoireOfGaia.MOD_ID, "textures/entity/yuki_onna/yuki_onna.png")};
+			ResourceLocation.fromNamespaceAndPath(GrimoireOfGaia.MOD_ID, "textures/entity/yuki_onna/yuki_onna.png")};
 
 	public YukiOnnaRenderer(Context context) {
 		super(context, new YukiOnnaModel(context.bakeLayer(ClientHandler.YUKI_ONNA)), ClientHandler.smallShadow);

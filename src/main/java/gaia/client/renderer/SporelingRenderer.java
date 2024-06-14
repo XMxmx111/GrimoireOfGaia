@@ -12,8 +12,8 @@ import net.minecraft.resources.ResourceLocation;
 
 public class SporelingRenderer extends MobRenderer<Sporeling, SporelingModel> {
 	public static final ResourceLocation[] SPORELING_LOCATIONS = new ResourceLocation[]{
-			new ResourceLocation(GrimoireOfGaia.MOD_ID, "textures/entity/sporeling/sporeling01.png"),
-			new ResourceLocation(GrimoireOfGaia.MOD_ID, "textures/entity/sporeling/sporeling02.png")};
+			ResourceLocation.fromNamespaceAndPath(GrimoireOfGaia.MOD_ID, "textures/entity/sporeling/sporeling01.png"),
+			ResourceLocation.fromNamespaceAndPath(GrimoireOfGaia.MOD_ID, "textures/entity/sporeling/sporeling02.png")};
 
 	public SporelingRenderer(Context context) {
 		super(context, new SporelingModel(context.bakeLayer(ClientHandler.SPORELING)), ClientHandler.tinyShadow);

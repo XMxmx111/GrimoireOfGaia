@@ -11,7 +11,7 @@ import net.minecraft.resources.ResourceLocation;
 
 public class SharkoRenderer extends MobRenderer<Sharko, SharkoModel> {
 	public static final ResourceLocation[] SHARKO_LOCATIONS = new ResourceLocation[]{
-			new ResourceLocation(GrimoireOfGaia.MOD_ID, "textures/entity/sharko/sharko.png")};
+			ResourceLocation.fromNamespaceAndPath(GrimoireOfGaia.MOD_ID, "textures/entity/sharko/sharko.png")};
 
 	public SharkoRenderer(Context context) {
 		super(context, new SharkoModel(context.bakeLayer(ClientHandler.SHARKO)), ClientHandler.medShadow);

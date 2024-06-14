@@ -6,6 +6,7 @@ import gaia.entity.type.IDayMob;
 import gaia.registry.GaiaLootTables;
 import gaia.registry.GaiaRegistry;
 import gaia.registry.GaiaTags;
+import gaia.util.EnchantUtil;
 import gaia.util.RangedUtil;
 import gaia.util.SharedEntityData;
 import net.minecraft.core.BlockPos;
@@ -206,7 +207,7 @@ public class Dwarf extends AbstractAssistGaiaEntity implements RangedAttackMob, 
 		if (applyRandomClass()) {
 			if (random.nextInt(4) == 0) {
 				ItemStack bowStack = new ItemStack(Items.BOW);
-				bowStack.enchant(Enchantments.PUNCH, 1);
+				bowStack.enchant(EnchantUtil.getEnchantmentHolder(this, Enchantments.PUNCH), 1);
 				this.setItemSlot(EquipmentSlot.MAINHAND, bowStack);
 
 				if (random.nextBoolean()) {
@@ -268,8 +269,8 @@ public class Dwarf extends AbstractAssistGaiaEntity implements RangedAttackMob, 
 	@Nullable
 	@Override
 	public SpawnGroupData finalizeSpawn(ServerLevelAccessor levelAccessor, DifficultyInstance difficultyInstance,
-										MobSpawnType spawnType, @Nullable SpawnGroupData groupData) {
-		SpawnGroupData data = super.finalizeSpawn(levelAccessor, difficultyInstance, spawnType, groupData);
+										MobSpawnType spawnType, @Nullable SpawnGroupData data) {
+		data = super.finalizeSpawn(levelAccessor, difficultyInstance, spawnType, data);
 
 		this.populateDefaultEquipmentSlots(random, difficultyInstance);
 		this.populateDefaultEquipmentSlots(random, difficultyInstance);

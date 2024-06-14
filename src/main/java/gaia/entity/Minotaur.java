@@ -2,6 +2,7 @@ package gaia.entity;
 
 import gaia.entity.goal.MobAttackGoal;
 import gaia.registry.GaiaRegistry;
+import gaia.util.EnchantUtil;
 import gaia.util.SharedEntityData;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.BlockParticleOption;
@@ -121,7 +122,7 @@ public class Minotaur extends AbstractGaiaEntity implements PowerableMob {
 	public boolean hurt(DamageSource source, float damage) {
 		float input = getBaseDamage(source, damage);
 		if (isPowered()) {
-			return !source.isIndirect() && super.hurt(source, input);
+			return source.isDirect() && super.hurt(source, input);
 		}
 		return super.hurt(source, input);
 	}
@@ -240,14 +241,14 @@ public class Minotaur extends AbstractGaiaEntity implements PowerableMob {
 
 		ItemStack swimmingBoots = new ItemStack(Items.LEATHER_BOOTS);
 		setItemSlot(EquipmentSlot.FEET, swimmingBoots);
-		swimmingBoots.enchant(Enchantments.DEPTH_STRIDER, 2);
+		swimmingBoots.enchant(EnchantUtil.getEnchantmentHolder(this, Enchantments.DEPTH_STRIDER), 2);
 	}
 
 	@Nullable
 	@Override
 	public SpawnGroupData finalizeSpawn(ServerLevelAccessor levelAccessor, DifficultyInstance difficultyInstance,
-										MobSpawnType spawnType, @Nullable SpawnGroupData groupData) {
-		SpawnGroupData data = super.finalizeSpawn(levelAccessor, difficultyInstance, spawnType, groupData);
+										MobSpawnType spawnType, @Nullable SpawnGroupData data) {
+		data = super.finalizeSpawn(levelAccessor, difficultyInstance, spawnType, data);
 
 		this.populateDefaultEquipmentSlots(random, difficultyInstance);
 		this.populateDefaultEquipmentSlots(random, difficultyInstance);

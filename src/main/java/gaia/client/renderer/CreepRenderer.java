@@ -13,7 +13,7 @@ import net.minecraft.util.Mth;
 
 public class CreepRenderer extends MobRenderer<Creep, CreepModel> {
 	public static final ResourceLocation[] CREEP_LOCATIONS = new ResourceLocation[]{
-			new ResourceLocation(GrimoireOfGaia.MOD_ID, "textures/entity/creep/creep.png")};
+			ResourceLocation.fromNamespaceAndPath(GrimoireOfGaia.MOD_ID, "textures/entity/creep/creep.png")};
 
 	public CreepRenderer(Context context) {
 		super(context, new CreepModel(context.bakeLayer(ClientHandler.CREEP)), ClientHandler.smallShadow);

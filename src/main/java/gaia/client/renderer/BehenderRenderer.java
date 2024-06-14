@@ -12,7 +12,7 @@ import net.minecraft.resources.ResourceLocation;
 
 public class BehenderRenderer extends MobRenderer<Behender, BehenderModel> {
 	public static final ResourceLocation[] BEHENDER_LOCATIONS = new ResourceLocation[]{
-			new ResourceLocation(GrimoireOfGaia.MOD_ID, "textures/entity/behender/behender.png")
+			ResourceLocation.fromNamespaceAndPath(GrimoireOfGaia.MOD_ID, "textures/entity/behender/behender.png")
 	};
 
 	public BehenderRenderer(Context context) {

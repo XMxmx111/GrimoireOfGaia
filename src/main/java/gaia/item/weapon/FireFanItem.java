@@ -1,6 +1,7 @@
 package gaia.item.weapon;
 
 import gaia.registry.GaiaRegistry;
+import gaia.util.EnchantUtil;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantments;
@@ -15,8 +16,8 @@ public class FireFanItem extends FanItem {
 	@Override
 	public void onCraftedBy(ItemStack stack, Level level, Player player) {
 		super.onCraftedBy(stack, level, player);
-		stack.enchant(Enchantments.FIRE_ASPECT, 2);
-		stack.enchant(Enchantments.KNOCKBACK, 1);
+		stack.enchant(EnchantUtil.getEnchantmentHolder(level, Enchantments.FIRE_ASPECT), 2);
+		stack.enchant(EnchantUtil.getEnchantmentHolder(level, Enchantments.KNOCKBACK), 1);
 	}
 
 	@Override

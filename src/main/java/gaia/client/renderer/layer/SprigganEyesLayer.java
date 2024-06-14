@@ -9,7 +9,7 @@ import net.minecraft.client.renderer.entity.layers.EyesLayer;
 import net.minecraft.resources.ResourceLocation;
 
 public class SprigganEyesLayer extends EyesLayer<Spriggan, SprigganModel> {
-	private static final RenderType SPRIGGAN_EYES = RenderType.eyes(new ResourceLocation(GrimoireOfGaia.MOD_ID, "textures/entity/spriggan/eyes_spriggan.png"));
+	private static final RenderType SPRIGGAN_EYES = RenderType.eyes(ResourceLocation.fromNamespaceAndPath(GrimoireOfGaia.MOD_ID, "textures/entity/spriggan/eyes_spriggan.png"));
 
 	public SprigganEyesLayer(RenderLayerParent<Spriggan, SprigganModel> renderLayerParent) {
 		super(renderLayerParent);

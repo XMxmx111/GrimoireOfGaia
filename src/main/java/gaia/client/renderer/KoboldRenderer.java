@@ -12,8 +12,8 @@ import net.minecraft.resources.ResourceLocation;
 
 public class KoboldRenderer extends MobRenderer<Kobold, KoboldModel> {
 	public static final ResourceLocation[] KOBOLD_LOCATIONS = new ResourceLocation[]{
-			new ResourceLocation(GrimoireOfGaia.MOD_ID, "textures/entity/kobold/kobold01.png"),
-			new ResourceLocation(GrimoireOfGaia.MOD_ID, "textures/entity/kobold/kobold02.png")};
+			ResourceLocation.fromNamespaceAndPath(GrimoireOfGaia.MOD_ID, "textures/entity/kobold/kobold01.png"),
+			ResourceLocation.fromNamespaceAndPath(GrimoireOfGaia.MOD_ID, "textures/entity/kobold/kobold02.png")};
 
 	public KoboldRenderer(Context context) {
 		super(context, new KoboldModel(context.bakeLayer(ClientHandler.KOBOLD)), ClientHandler.smallShadow);

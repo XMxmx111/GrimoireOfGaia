@@ -12,7 +12,7 @@ import net.minecraft.resources.ResourceLocation;
 
 public class CecaeliaRenderer extends MobRenderer<Cecaelia, CecaeliaModel> {
 	public static final ResourceLocation[] CECAELIA_LOCATIONS = new ResourceLocation[]{
-			new ResourceLocation(GrimoireOfGaia.MOD_ID, "textures/entity/cecaelia/cecaelia.png")
+			ResourceLocation.fromNamespaceAndPath(GrimoireOfGaia.MOD_ID, "textures/entity/cecaelia/cecaelia.png")
 	};
 
 	public CecaeliaRenderer(Context context) {

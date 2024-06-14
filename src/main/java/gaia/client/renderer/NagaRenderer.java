@@ -12,7 +12,7 @@ import net.minecraft.resources.ResourceLocation;
 
 public class NagaRenderer extends MobRenderer<Naga, NagaModel> {
 	public static final ResourceLocation[] NAGA_LOCATIONS = new ResourceLocation[]{
-			new ResourceLocation(GrimoireOfGaia.MOD_ID, "textures/entity/naga/naga.png")};
+			ResourceLocation.fromNamespaceAndPath(GrimoireOfGaia.MOD_ID, "textures/entity/naga/naga.png")};
 
 	public NagaRenderer(Context context) {
 		super(context, new NagaModel(context.bakeLayer(ClientHandler.NAGA)), ClientHandler.smallShadow);

@@ -11,7 +11,7 @@ import net.minecraft.client.renderer.entity.layers.EyesLayer;
 import net.minecraft.resources.ResourceLocation;
 
 public class MinotaurEyesLayer extends EyesLayer<Minotaur, MinotaurModel> {
-	private static final RenderType MINOTAUR_EYE_EYES = RenderType.eyes(new ResourceLocation(GrimoireOfGaia.MOD_ID, "textures/entity/minotaur/eyes_minotaur.png"));
+	private static final RenderType MINOTAUR_EYE_EYES = RenderType.eyes(ResourceLocation.fromNamespaceAndPath(GrimoireOfGaia.MOD_ID, "textures/entity/minotaur/eyes_minotaur.png"));
 
 	public MinotaurEyesLayer(RenderLayerParent<Minotaur, MinotaurModel> renderLayerParent) {
 		super(renderLayerParent);

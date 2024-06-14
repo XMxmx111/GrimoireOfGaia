@@ -8,6 +8,7 @@ import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.DamageTypeTags;
@@ -29,6 +30,7 @@ import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
@@ -106,8 +108,11 @@ public class CobblestoneGolem extends AbstractGaiaEntity {
 		this.level().broadcastEntityEvent(this, (byte) 4);
 		boolean flag = entityIn.hurt(damageSources().mobAttack(this), 7F + random.nextInt(15));
 		if (flag) {
+			DamageSource damagesource = this.damageSources().mobAttack(this);
 			entityIn.setDeltaMovement(entityIn.getDeltaMovement().add(0.0D, (double) 0.6F, 0.0D));
-			this.doEnchantDamageEffects(this, entityIn);
+			if (this.level() instanceof ServerLevel serverlevel) {
+				EnchantmentHelper.doPostAttackEffects(serverlevel, entityIn, damagesource);
+			}
 		}
 
 		this.playSound(GaiaRegistry.COBBLESTONE_GOLEM.getAttack(), 1.0F, 1.0F);

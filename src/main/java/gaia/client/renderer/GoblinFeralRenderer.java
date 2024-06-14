@@ -14,9 +14,9 @@ import net.minecraft.util.Mth;
 
 public class GoblinFeralRenderer extends MobRenderer<GoblinFeral, GoblinModel<GoblinFeral>> {
 	public static final ResourceLocation[] GOBLIN_FERAL_LOCATIONS = new ResourceLocation[]{
-			new ResourceLocation(GrimoireOfGaia.MOD_ID, "textures/entity/goblin/goblin_feral01.png"),
-			new ResourceLocation(GrimoireOfGaia.MOD_ID, "textures/entity/goblin/goblin_feral02.png"),
-			new ResourceLocation(GrimoireOfGaia.MOD_ID, "textures/entity/goblin/goblin_feral03.png")};
+			ResourceLocation.fromNamespaceAndPath(GrimoireOfGaia.MOD_ID, "textures/entity/goblin/goblin_feral01.png"),
+			ResourceLocation.fromNamespaceAndPath(GrimoireOfGaia.MOD_ID, "textures/entity/goblin/goblin_feral02.png"),
+			ResourceLocation.fromNamespaceAndPath(GrimoireOfGaia.MOD_ID, "textures/entity/goblin/goblin_feral03.png")};
 
 	public GoblinFeralRenderer(Context context) {
 		super(context, new GoblinModel<>(context.bakeLayer(ClientHandler.GOBLIN_FERAL)), ClientHandler.smallShadow);

@@ -12,7 +12,7 @@ import net.minecraft.resources.ResourceLocation;
 
 public class NineTailsRenderer extends MobRenderer<NineTails, NineTailsModel> {
 	public static final ResourceLocation[] NINE_TAILS_LOCATIONS = new ResourceLocation[]{
-			new ResourceLocation(GrimoireOfGaia.MOD_ID, "textures/entity/nine_tails/nine_tails.png")};
+			ResourceLocation.fromNamespaceAndPath(GrimoireOfGaia.MOD_ID, "textures/entity/nine_tails/nine_tails.png")};
 
 	public NineTailsRenderer(Context context) {
 		super(context, new NineTailsModel(context.bakeLayer(ClientHandler.NINE_TAILS)), ClientHandler.smallShadow);

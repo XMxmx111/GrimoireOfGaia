@@ -23,11 +23,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class GaiaBiomeModifiers {
-	private static final TagKey<Biome> NO_DEFAULT_MONSTERS = TagKey.create(Registries.BIOME, new ResourceLocation("forge", "no_default_monsters"));
-
 	public static void bootstrap(BootstrapContext<BiomeModifier> context) {
 		List<TagKey<Biome>> overworld = List.of(BiomeTags.IS_OVERWORLD);
-		List<TagKey<Biome>> notPeaceful = List.of(BiomeTags.HAS_ANCIENT_CITY, Tags.Biomes.IS_MUSHROOM, NO_DEFAULT_MONSTERS);
+		List<TagKey<Biome>> notPeaceful = List.of(BiomeTags.HAS_ANCIENT_CITY, Tags.Biomes.IS_MUSHROOM, Tags.Biomes.NO_DEFAULT_MONSTERS);
 
 		List<TagKey<Biome>> overworldSandy = List.of(BiomeTags.IS_OVERWORLD, Tags.Biomes.IS_SANDY);
 		List<TagKey<Biome>> notBadlands = List.of(BiomeTags.IS_BADLANDS);
@@ -403,6 +401,6 @@ public class GaiaBiomeModifiers {
 	}
 
 	private static ResourceKey<BiomeModifier> generateKey(String name) {
-		return ResourceKey.create(NeoForgeRegistries.Keys.BIOME_MODIFIERS, new ResourceLocation(GrimoireOfGaia.MOD_ID, name));
+		return ResourceKey.create(NeoForgeRegistries.Keys.BIOME_MODIFIERS, ResourceLocation.fromNamespaceAndPath(GrimoireOfGaia.MOD_ID, name));
 	}
 }

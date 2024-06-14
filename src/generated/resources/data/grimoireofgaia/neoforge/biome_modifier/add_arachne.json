@@ -3,7 +3,7 @@
   "blacklist": [
     "#minecraft:has_structure/ancient_city",
     "#c:is_mushroom",
-    "#forge:no_default_monsters"
+    "#c:no_default_monsters"
   ],
   "spawners": {
     "type": "grimoireofgaia:arachne",

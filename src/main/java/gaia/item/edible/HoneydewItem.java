@@ -1,5 +1,6 @@
 package gaia.item.edible;
 
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.UseAnim;
 
@@ -8,7 +9,7 @@ public class HoneydewItem extends EdibleEffectItem {
 		super(properties);
 	}
 
-	public int getUseDuration(ItemStack stack) {
+	public int getUseDuration(ItemStack stack, LivingEntity livingEntity) {
 		return 20;
 	}
 

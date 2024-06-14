@@ -1,8 +1,10 @@
 package gaia.item.weapon;
 
 import gaia.entity.projectile.MagicProjectile;
+import gaia.registry.GaiaRegistry;
 import gaia.registry.GaiaSounds;
 import net.minecraft.ChatFormatting;
+import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.InteractionHand;
@@ -47,13 +49,15 @@ public class MagicStaffItem extends Item {
 			if (!level.isClientSide) {
 				livingEntity.playSound(GaiaSounds.GAIA_SHOOT.get(), 1.0F, 1.0F / (livingEntity.getRandom().nextFloat() * 0.4F + 0.8F));
 
-				MagicProjectile magic = new MagicProjectile(level);
-				magic.setOwner(livingEntity);
-				magic.setDamage(4.0F);
-				magic.setPos(livingEntity.getX(), livingEntity.getY(0.5D) + 0.5D, livingEntity.getZ());
-				magic.setOwner(livingEntity);
-				magic.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, 1.5F, 1.0F);
-				livingEntity.level().addFreshEntity(magic);
+				MagicProjectile magic = GaiaRegistry.MAGIC.get().create(level);
+				if (magic != null) {
+					magic.setOwner(livingEntity);
+					magic.setDamage(4.0F);
+					magic.setPos(livingEntity.getX(), livingEntity.getY(0.5D) + 0.5D, livingEntity.getZ());
+					magic.setOwner(livingEntity);
+					magic.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, 1.5F, 1.0F);
+					livingEntity.level().addFreshEntity(magic);
+				}
 			}
 
 			player.playSound(SoundEvents.CHICKEN_EGG, 0.5F, level.random.nextFloat() * 0.1F + 0.9F);
@@ -77,7 +81,7 @@ public class MagicStaffItem extends Item {
 	}
 
 	@Override
-	public int getUseDuration(ItemStack stack) {
+	public int getUseDuration(ItemStack stack, LivingEntity livingEntity) {
 		return 30;
 	}
 
@@ -87,7 +91,7 @@ public class MagicStaffItem extends Item {
 	}
 
 	@Override
-	public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
-		return enchantment != Enchantments.MENDING && super.canApplyAtEnchantingTable(stack, enchantment);
+	public boolean isPrimaryItemFor(ItemStack stack, Holder<Enchantment> enchantment) {
+		return enchantment != Enchantments.MENDING && super.isPrimaryItemFor(stack, enchantment);
 	}
 }

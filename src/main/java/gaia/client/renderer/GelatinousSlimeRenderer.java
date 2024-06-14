@@ -15,7 +15,7 @@ import net.minecraft.util.Mth;
 
 public class GelatinousSlimeRenderer extends MobRenderer<GelatinousSlime, GelatinousSlimeModel> {
 	public static final ResourceLocation[] GELATINOUS_SLIME_LOCATIONS = new ResourceLocation[]{
-			new ResourceLocation(GrimoireOfGaia.MOD_ID, "textures/entity/gelatinous_slime/gelatinous_slime.png")};
+			ResourceLocation.fromNamespaceAndPath(GrimoireOfGaia.MOD_ID, "textures/entity/gelatinous_slime/gelatinous_slime.png")};
 
 	public GelatinousSlimeRenderer(Context context) {
 		super(context, new GelatinousSlimeModel(context.bakeLayer(ClientHandler.GELATINOUS_SLIME)), ClientHandler.smallShadow);

@@ -12,9 +12,9 @@ import net.minecraft.resources.ResourceLocation;
 
 public class SuccubusRenderer extends MobRenderer<Succubus, SuccubusModel> {
 	public static final ResourceLocation[] SUCCUBUS_LOCATIONS = new ResourceLocation[]{
-			new ResourceLocation(GrimoireOfGaia.MOD_ID, "textures/entity/succubus/succubus.png")};
+			ResourceLocation.fromNamespaceAndPath(GrimoireOfGaia.MOD_ID, "textures/entity/succubus/succubus.png")};
 	public static final ResourceLocation[] SUCCUBUS_MALE_LOCATIONS = new ResourceLocation[]{
-			new ResourceLocation(GrimoireOfGaia.MOD_ID, "textures/entity/succubus/succubus_male.png")};
+			ResourceLocation.fromNamespaceAndPath(GrimoireOfGaia.MOD_ID, "textures/entity/succubus/succubus_male.png")};
 
 	public SuccubusRenderer(Context context) {
 		super(context, new SuccubusModel(context.bakeLayer(ClientHandler.SUCCUBUS)), ClientHandler.smallShadow);

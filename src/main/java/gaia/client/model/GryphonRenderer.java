@@ -10,7 +10,7 @@ import net.minecraft.resources.ResourceLocation;
 
 public class GryphonRenderer extends MobRenderer<Gryphon, GryphonModel> {
 	public static final ResourceLocation[] GRYPHON_LOCATIONS = new ResourceLocation[]{
-			new ResourceLocation(GrimoireOfGaia.MOD_ID, "textures/entity/gryphon/gryphon.png")};
+			ResourceLocation.fromNamespaceAndPath(GrimoireOfGaia.MOD_ID, "textures/entity/gryphon/gryphon.png")};
 
 	public GryphonRenderer(Context context) {
 		super(context, new GryphonModel(context.bakeLayer(ClientHandler.GRYPHON)), ClientHandler.largeShadow);

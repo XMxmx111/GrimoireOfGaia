@@ -12,12 +12,12 @@ import net.minecraft.resources.ResourceLocation;
 
 public class CentaurRenderer extends MobRenderer<Centaur, CentaurModel> {
 	public static final ResourceLocation[] CENTAUR_LOCATIONS = new ResourceLocation[]{
-			new ResourceLocation(GrimoireOfGaia.MOD_ID, "textures/entity/centaur/centaur01.png"),
-			new ResourceLocation(GrimoireOfGaia.MOD_ID, "textures/entity/centaur/centaur02.png")
+			ResourceLocation.fromNamespaceAndPath(GrimoireOfGaia.MOD_ID, "textures/entity/centaur/centaur01.png"),
+			ResourceLocation.fromNamespaceAndPath(GrimoireOfGaia.MOD_ID, "textures/entity/centaur/centaur02.png")
 	};
 	public static final ResourceLocation[] CENTAUR_MALE_LOCATIONS = new ResourceLocation[]{
-			new ResourceLocation(GrimoireOfGaia.MOD_ID, "textures/entity/centaur/centaur01_male.png"),
-			new ResourceLocation(GrimoireOfGaia.MOD_ID, "textures/entity/centaur/centaur02_male.png")
+			ResourceLocation.fromNamespaceAndPath(GrimoireOfGaia.MOD_ID, "textures/entity/centaur/centaur01_male.png"),
+			ResourceLocation.fromNamespaceAndPath(GrimoireOfGaia.MOD_ID, "textures/entity/centaur/centaur02_male.png")
 	};
 
 	public CentaurRenderer(Context context) {

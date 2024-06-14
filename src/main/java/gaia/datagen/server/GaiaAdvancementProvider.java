@@ -183,7 +183,7 @@ public class GaiaAdvancementProvider extends AdvancementProvider {
 		 * @return The ResourceLocation.
 		 */
 		private static ResourceLocation modLoc(String path) {
-			return new ResourceLocation(GrimoireOfGaia.MOD_ID, path);
+			return ResourceLocation.fromNamespaceAndPath(GrimoireOfGaia.MOD_ID, path);
 		}
 
 		/**

@@ -2,6 +2,7 @@ package gaia.entity;
 
 import gaia.config.GaiaConfig;
 import gaia.registry.GaiaRegistry;
+import gaia.util.EnchantUtil;
 import gaia.util.SharedEntityData;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -187,27 +188,27 @@ public class Mermaid extends AbstractAssistGaiaEntity {
 	@Override
 	protected void populateDefaultEquipmentSlots(RandomSource random, DifficultyInstance instance) {
 		setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(Items.GOLDEN_SWORD));
-		populateDefaultEquipmentEnchantments(random, instance);
-
-		ItemStack shield = new ItemStack(GaiaRegistry.GOLD_SHIELD.get());
-		setItemSlot(EquipmentSlot.OFFHAND, shield);
-
-		ItemStack swimmingBoots = new ItemStack(Items.LEATHER_BOOTS);
-		setItemSlot(EquipmentSlot.FEET, swimmingBoots);
-		swimmingBoots.enchant(Enchantments.DEPTH_STRIDER, 3);
 	}
 
 	@Nullable
 	@Override
 	public SpawnGroupData finalizeSpawn(ServerLevelAccessor levelAccessor, DifficultyInstance difficultyInstance,
-										MobSpawnType spawnType, @Nullable SpawnGroupData groupData) {
-		SpawnGroupData data = super.finalizeSpawn(levelAccessor, difficultyInstance, spawnType, groupData);
+										MobSpawnType spawnType, @Nullable SpawnGroupData data) {
+		data = super.finalizeSpawn(levelAccessor, difficultyInstance, spawnType, data);
 
 		if (random.nextInt(4) == 0) {
 			setVariant(1);
 		}
 
 		this.populateDefaultEquipmentSlots(random, difficultyInstance);
+		this.populateDefaultEquipmentEnchantments(levelAccessor, random, difficultyInstance);
+
+		ItemStack shield = new ItemStack(GaiaRegistry.GOLD_SHIELD.get());
+		setItemSlot(EquipmentSlot.OFFHAND, shield);
+
+		ItemStack swimmingBoots = new ItemStack(Items.LEATHER_BOOTS);
+		setItemSlot(EquipmentSlot.FEET, swimmingBoots);
+		swimmingBoots.enchant(EnchantUtil.getEnchantmentHolder(this, Enchantments.DEPTH_STRIDER), 3);
 
 		return data;
 	}

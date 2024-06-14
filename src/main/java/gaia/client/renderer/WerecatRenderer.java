@@ -12,8 +12,8 @@ import net.minecraft.resources.ResourceLocation;
 
 public class WerecatRenderer extends MobRenderer<Werecat, WerecatModel> {
 	public static final ResourceLocation[] WERECAT_LOCATIONS = new ResourceLocation[]{
-			new ResourceLocation(GrimoireOfGaia.MOD_ID, "textures/entity/werecat/werecat01.png"),
-			new ResourceLocation(GrimoireOfGaia.MOD_ID, "textures/entity/werecat/werecat02.png")};
+			ResourceLocation.fromNamespaceAndPath(GrimoireOfGaia.MOD_ID, "textures/entity/werecat/werecat01.png"),
+			ResourceLocation.fromNamespaceAndPath(GrimoireOfGaia.MOD_ID, "textures/entity/werecat/werecat02.png")};
 
 	public WerecatRenderer(EntityRendererProvider.Context context) {
 		super(context, new WerecatModel(context.bakeLayer(ClientHandler.WERECAT)), ClientHandler.smallShadow);

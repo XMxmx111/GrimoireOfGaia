@@ -12,7 +12,7 @@ import net.minecraft.world.entity.PowerableMob;
 import java.util.function.Supplier;
 
 public class AuraLayer<T extends LivingEntity & PowerableMob, M extends EntityModel<T>> extends EnergySwirlLayer<T, M> {
-	private static final ResourceLocation WITHER_ARMOR_LOCATION = new ResourceLocation(GrimoireOfGaia.MOD_ID, "textures/entity/layer/aura_immune_ranged.png");
+	private static final ResourceLocation WITHER_ARMOR_LOCATION = ResourceLocation.fromNamespaceAndPath(GrimoireOfGaia.MOD_ID, "textures/entity/layer/aura_immune_ranged.png");
 	private final EntityModel<T> model;
 
 	public AuraLayer(RenderLayerParent<T, M> layerParent, Supplier<M> mSupplier) {

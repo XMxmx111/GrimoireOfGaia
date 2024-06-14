@@ -2,6 +2,7 @@ package gaia.entity;
 
 import gaia.entity.goal.MobAttackGoal;
 import gaia.registry.GaiaRegistry;
+import gaia.util.EnchantUtil;
 import gaia.util.RangedUtil;
 import gaia.util.SharedEntityData;
 import net.minecraft.core.BlockPos;
@@ -263,8 +264,8 @@ public class Cecaelia extends AbstractGaiaEntity implements RangedAttackMob {
 	@Nullable
 	@Override
 	public SpawnGroupData finalizeSpawn(ServerLevelAccessor levelAccessor, DifficultyInstance difficultyInstance,
-										MobSpawnType spawnType, @Nullable SpawnGroupData groupData) {
-		SpawnGroupData data = super.finalizeSpawn(levelAccessor, difficultyInstance, spawnType, groupData);
+										MobSpawnType spawnType, @Nullable SpawnGroupData data) {
+		data = super.finalizeSpawn(levelAccessor, difficultyInstance, spawnType, data);
 
 		ItemStack itemstack = getMainHandItem();
 		if (itemstack.isEmpty()) {
@@ -275,7 +276,7 @@ public class Cecaelia extends AbstractGaiaEntity implements RangedAttackMob {
 
 		ItemStack swimmingBoots = new ItemStack(Items.LEATHER_BOOTS);
 		setItemSlot(EquipmentSlot.FEET, swimmingBoots);
-		swimmingBoots.enchant(Enchantments.DEPTH_STRIDER, 2);
+		swimmingBoots.enchant(EnchantUtil.getEnchantmentHolder(this, Enchantments.DEPTH_STRIDER), 2);
 
 		return data;
 	}

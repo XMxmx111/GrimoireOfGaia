@@ -11,8 +11,8 @@ import net.minecraft.resources.ResourceLocation;
 
 public class AntWorkerRenderer extends GaiaBabyMobRenderer<AntWorker, AntWorkerModel> {
 	public static final ResourceLocation[] ANUBIS_LOCATIONS = new ResourceLocation[]{
-			new ResourceLocation(GrimoireOfGaia.MOD_ID, "textures/entity/ant/ant01.png"),
-			new ResourceLocation(GrimoireOfGaia.MOD_ID, "textures/entity/ant/ant02.png")
+			ResourceLocation.fromNamespaceAndPath(GrimoireOfGaia.MOD_ID, "textures/entity/ant/ant01.png"),
+			ResourceLocation.fromNamespaceAndPath(GrimoireOfGaia.MOD_ID, "textures/entity/ant/ant02.png")
 	};
 
 	public AntWorkerRenderer(Context context) {

@@ -2,6 +2,7 @@ package gaia.entity;
 
 import gaia.entity.goal.MobAttackGoal;
 import gaia.registry.GaiaRegistry;
+import gaia.util.EnchantUtil;
 import gaia.util.SharedEntityData;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -223,21 +224,21 @@ public class Sharko extends AbstractGaiaEntity {
 	}
 
 	@Override
-	protected void populateDefaultEquipmentEnchantments(RandomSource random, DifficultyInstance instance) {
-		super.populateDefaultEquipmentEnchantments(random, instance);
-		getItemBySlot(EquipmentSlot.FEET).enchant(Enchantments.DEPTH_STRIDER, 2);
+	protected void populateDefaultEquipmentEnchantments(ServerLevelAccessor levelAccessor, RandomSource random, DifficultyInstance instance) {
+		super.populateDefaultEquipmentEnchantments(levelAccessor, random, instance);
+		getItemBySlot(EquipmentSlot.FEET).enchant(EnchantUtil.getEnchantmentHolder(this, Enchantments.DEPTH_STRIDER), 2);
 	}
 
 	@Nullable
 	@Override
 	public SpawnGroupData finalizeSpawn(ServerLevelAccessor levelAccessor, DifficultyInstance difficultyInstance,
-										MobSpawnType spawnType, @Nullable SpawnGroupData groupData) {
-		SpawnGroupData data = super.finalizeSpawn(levelAccessor, difficultyInstance, spawnType, groupData);
+										MobSpawnType spawnType, @Nullable SpawnGroupData data) {
+		data = super.finalizeSpawn(levelAccessor, difficultyInstance, spawnType, data);
 
 		setGoals(0);
 
 		this.populateDefaultEquipmentSlots(random, difficultyInstance);
-		this.populateDefaultEquipmentSlots(random, difficultyInstance);
+		this.populateDefaultEquipmentEnchantments(levelAccessor, random, difficultyInstance);
 
 		return data;
 	}

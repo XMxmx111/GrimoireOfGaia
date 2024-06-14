@@ -18,11 +18,11 @@ import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import java.util.concurrent.CompletableFuture;
 
 public class GaiaItemTags extends ItemTagsProvider {
-	public static final TagKey<Item> HEAD = ItemTags.create(new ResourceLocation("curios", "head"));
-	public static final TagKey<Item> BODY = ItemTags.create(new ResourceLocation("curios", "body"));
-	public static final TagKey<Item> HANDS = ItemTags.create(new ResourceLocation("curios", "hands"));
-	public static final TagKey<Item> NECKLACE = ItemTags.create(new ResourceLocation("curios", "necklace"));
-	public static final TagKey<Item> RING = ItemTags.create(new ResourceLocation("curios", "ring"));
+	public static final TagKey<Item> HEAD = ItemTags.create(ResourceLocation.fromNamespaceAndPath("curios", "head"));
+	public static final TagKey<Item> BODY = ItemTags.create(ResourceLocation.fromNamespaceAndPath("curios", "body"));
+	public static final TagKey<Item> HANDS = ItemTags.create(ResourceLocation.fromNamespaceAndPath("curios", "hands"));
+	public static final TagKey<Item> NECKLACE = ItemTags.create(ResourceLocation.fromNamespaceAndPath("curios", "necklace"));
+	public static final TagKey<Item> RING = ItemTags.create(ResourceLocation.fromNamespaceAndPath("curios", "ring"));
 
 	public GaiaItemTags(PackOutput packOutput, CompletableFuture<HolderLookup.Provider> lookupProvider, BlockTagsProvider blockTagsProvider, ExistingFileHelper existingFileHelper) {
 		super(packOutput, lookupProvider, blockTagsProvider.contentsGetter(), GrimoireOfGaia.MOD_ID, existingFileHelper);
@@ -32,9 +32,6 @@ public class GaiaItemTags extends ItemTagsProvider {
 	protected void addTags(HolderLookup.Provider provider) {
 		this.tag(GaiaTags.DIMENSIONAL_BOXES).add(GaiaRegistry.BOX_OVERWORLD.get(), GaiaRegistry.BOX_NETHER.get(), GaiaRegistry.BOX_END.get());
 		this.tag(GaiaTags.GOLDEN_TOOLS).add(Items.GOLDEN_AXE, Items.GOLDEN_SHOVEL, Items.GOLDEN_PICKAXE, Items.GOLDEN_HOE, Items.GOLDEN_SWORD);
-		this.tag(GaiaTags.TOOLS).addTags(GaiaTags.TOOLS_AXES, GaiaTags.TOOLS_SHOVELS);
-		this.tag(GaiaTags.TOOLS_AXES).add(Items.WOODEN_AXE, Items.STONE_AXE, Items.IRON_AXE, Items.DIAMOND_AXE, Items.GOLDEN_AXE, Items.NETHERITE_AXE);
-		this.tag(GaiaTags.TOOLS_SHOVELS).add(Items.WOODEN_SHOVEL, Items.STONE_SHOVEL, Items.IRON_SHOVEL, Items.DIAMOND_SHOVEL, Items.GOLDEN_SHOVEL, Items.NETHERITE_SHOVEL);
 		this.tag(GaiaTags.RECORDS).add(Items.MUSIC_DISC_13, Items.MUSIC_DISC_CAT, Items.MUSIC_DISC_BLOCKS, Items.MUSIC_DISC_CHIRP,
 				Items.MUSIC_DISC_FAR, Items.MUSIC_DISC_MALL, Items.MUSIC_DISC_MELLOHI, Items.MUSIC_DISC_STAL, Items.MUSIC_DISC_STRAD,
 				Items.MUSIC_DISC_WARD, Items.MUSIC_DISC_11, Items.MUSIC_DISC_WAIT, Items.MUSIC_DISC_OTHERSIDE, Items.MUSIC_DISC_PIGSTEP);

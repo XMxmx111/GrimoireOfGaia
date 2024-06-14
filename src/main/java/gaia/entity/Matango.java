@@ -1,5 +1,6 @@
 package gaia.entity;
 
+import gaia.GrimoireOfGaia;
 import gaia.entity.goal.MobAttackGoal;
 import gaia.entity.type.IDayMob;
 import gaia.registry.GaiaRegistry;
@@ -10,6 +11,7 @@ import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.util.Mth;
@@ -46,8 +48,8 @@ import java.util.List;
 import java.util.UUID;
 
 public class Matango extends AbstractGaiaEntity implements IDayMob {
-	private static final UUID KNOCKBACK_MODIFIER_UUID = UUID.fromString("E3E9A4AB-7D10-4380-9C8A-BBC61860A78A");
-	private static final AttributeModifier KNOCKBACK_MODIFIER = new AttributeModifier(KNOCKBACK_MODIFIER_UUID, "Knockback boost", 1.0D, Operation.ADD_VALUE);
+	private static final ResourceLocation KNOCKBACK_ID = ResourceLocation.fromNamespaceAndPath(GrimoireOfGaia.MOD_ID, "matango_knockback_modifier");
+	private static final AttributeModifier KNOCKBACK_MODIFIER = new AttributeModifier(KNOCKBACK_ID, 1.0D, Operation.ADD_VALUE);
 
 	private int spawnLimit;
 	private int spawnTime;
@@ -180,11 +182,11 @@ public class Matango extends AbstractGaiaEntity implements IDayMob {
 	@Nullable
 	@Override
 	public SpawnGroupData finalizeSpawn(ServerLevelAccessor levelAccessor, DifficultyInstance difficultyInstance,
-										MobSpawnType spawnType, @Nullable SpawnGroupData groupData) {
-		SpawnGroupData data = super.finalizeSpawn(levelAccessor, difficultyInstance, spawnType, groupData);
+										MobSpawnType spawnType, @Nullable SpawnGroupData data) {
+		data = super.finalizeSpawn(levelAccessor, difficultyInstance, spawnType, data);
 
 		AttributeInstance attributeinstance = this.getAttribute(Attributes.ATTACK_KNOCKBACK);
-		attributeinstance.removeModifier(KNOCKBACK_MODIFIER_UUID);
+		attributeinstance.removeModifier(KNOCKBACK_ID);
 		attributeinstance.addTransientModifier(KNOCKBACK_MODIFIER);
 
 		return data;

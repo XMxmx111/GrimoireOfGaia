@@ -1,5 +1,6 @@
 package gaia.entity;
 
+import gaia.GrimoireOfGaia;
 import gaia.config.GaiaConfig;
 import gaia.registry.GaiaRegistry;
 import gaia.registry.GaiaSounds;
@@ -12,6 +13,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.util.RandomSource;
@@ -55,8 +57,8 @@ import java.util.UUID;
 import java.util.function.Predicate;
 
 public class EnderEye extends AbstractAssistGaiaEntity {
-	private static final UUID SPEED_MODIFIER_ATTACKING_UUID = UUID.fromString("411AF4FD-812A-4D90-802A-6FD57A7777C2");
-	private static final AttributeModifier SPEED_MODIFIER_ATTACKING = new AttributeModifier(SPEED_MODIFIER_ATTACKING_UUID, "Attacking speed boost", SharedEntityData.ATTACK_SPEED_BOOST, AttributeModifier.Operation.ADD_VALUE);
+	private static final ResourceLocation SPEED_ID = ResourceLocation.fromNamespaceAndPath(GrimoireOfGaia.MOD_ID, "ender_eye_speed");
+	private static final AttributeModifier SPEED_MODIFIER_ATTACKING = new AttributeModifier(SPEED_ID, SharedEntityData.ATTACK_SPEED_BOOST, AttributeModifier.Operation.ADD_VALUE);
 	private static final EntityDataAccessor<Boolean> SCREAMING = SynchedEntityData.defineId(EnderEye.class, EntityDataSerializers.BOOLEAN);
 
 	private int targetChangeTime;
@@ -132,11 +134,11 @@ public class EnderEye extends AbstractAssistGaiaEntity {
 		if (livingEntity == null) {
 			this.targetChangeTime = 0;
 			this.entityData.set(SCREAMING, false);
-			attributeinstance.removeModifier(SPEED_MODIFIER_ATTACKING_UUID);
+			attributeinstance.removeModifier(SPEED_ID);
 		} else {
 			this.targetChangeTime = this.tickCount;
 			this.entityData.set(SCREAMING, true);
-			if (!attributeinstance.hasModifier(SPEED_MODIFIER_ATTACKING)) {
+			if (!attributeinstance.hasModifier(SPEED_ID)) {
 				attributeinstance.addTransientModifier(SPEED_MODIFIER_ATTACKING);
 			}
 		}
@@ -158,7 +160,7 @@ public class EnderEye extends AbstractAssistGaiaEntity {
 		float input = getBaseDamage(source, damage);
 		if (this.isInvulnerableTo(source)) {
 			return false;
-		} else if (source.isIndirect()) {
+		} else if (!source.isDirect()) {
 			Entity entity = source.getDirectEntity();
 			boolean flag1;
 			if (entity instanceof ThrownPotion) {

@@ -1,6 +1,7 @@
 package gaia.item.weapon;
 
 import gaia.registry.GaiaRegistry;
+import gaia.util.EnchantUtil;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -29,7 +30,7 @@ public class IceFanItem extends FanItem {
 	@Override
 	public void onCraftedBy(ItemStack stack, Level level, Player player) {
 		super.onCraftedBy(stack, level, player);
-		stack.enchant(Enchantments.KNOCKBACK, 4);
+		stack.enchant(EnchantUtil.getEnchantmentHolder(level, Enchantments.KNOCKBACK), 4);
 	}
 
 	@Override

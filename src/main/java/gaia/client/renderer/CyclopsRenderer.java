@@ -12,7 +12,7 @@ import net.minecraft.resources.ResourceLocation;
 
 public class CyclopsRenderer extends MobRenderer<Cyclops, CyclopsModel> {
 	public static final ResourceLocation[] CYCLOPS_LOCATIONS = new ResourceLocation[]{
-			new ResourceLocation(GrimoireOfGaia.MOD_ID, "textures/entity/cyclops/cyclops.png")};
+			ResourceLocation.fromNamespaceAndPath(GrimoireOfGaia.MOD_ID, "textures/entity/cyclops/cyclops.png")};
 
 	public CyclopsRenderer(Context context) {
 		super(context, new CyclopsModel(context.bakeLayer(ClientHandler.CYCLOPS)), ClientHandler.smallShadow);

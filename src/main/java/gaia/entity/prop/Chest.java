@@ -15,7 +15,6 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.DifficultyInstance;
@@ -109,8 +108,8 @@ public class Chest extends AbstractPropEntity {
 	@Nullable
 	@Override
 	public SpawnGroupData finalizeSpawn(ServerLevelAccessor levelAccessor, DifficultyInstance difficultyInstance,
-										MobSpawnType spawnType, @Nullable SpawnGroupData groupData) {
-		SpawnGroupData data = super.finalizeSpawn(levelAccessor, difficultyInstance, spawnType, groupData);
+										MobSpawnType spawnType, @Nullable SpawnGroupData data) {
+		data = super.finalizeSpawn(levelAccessor, difficultyInstance, spawnType, data);
 
 		yBodyRot = 180.0F;
 		yBodyRotO = 180.0F;
@@ -231,23 +230,21 @@ public class Chest extends AbstractPropEntity {
 	}
 
 	@Override
-	protected void dropCustomDeathLoot(DamageSource damageSource, int looting, boolean killedByPlayer) {
+	protected void dropCustomDeathLoot(ServerLevel serverLevel, DamageSource damageSource, boolean killedByPlayer) {
 		if (!this.level().isClientSide) {
-			LootTable loottable = this.level().getServer().reloadableRegistries().getLootTable(GaiaLootTables.CHEST_TABLES);
-
 			LootParams.Builder lootcontext$builder = (new LootParams.Builder((ServerLevel) this.level()))
 					.withParameter(LootContextParams.THIS_ENTITY, this).withParameter(LootContextParams.ORIGIN, this.position())
-					.withParameter(LootContextParams.DAMAGE_SOURCE, damageSource).withOptionalParameter(LootContextParams.KILLER_ENTITY, damageSource.getEntity())
-					.withOptionalParameter(LootContextParams.DIRECT_KILLER_ENTITY, damageSource.getDirectEntity());
+					.withParameter(LootContextParams.DAMAGE_SOURCE, damageSource).withOptionalParameter(LootContextParams.ATTACKING_ENTITY, damageSource.getEntity())
+					.withOptionalParameter(LootContextParams.DIRECT_ATTACKING_ENTITY, damageSource.getDirectEntity());
 			if (killedByPlayer && this.lastHurtByPlayer != null) {
 				lootcontext$builder = lootcontext$builder.withParameter(LootContextParams.LAST_DAMAGE_PLAYER, this.lastHurtByPlayer).withLuck(this.lastHurtByPlayer.getLuck());
 			}
 
 			List<ItemStack> stacks = LootHelper.getStacksFromTable((ServerLevel) this.level(),
-					lootcontext$builder, LootContextParamSets.ENTITY, GaiaLootTables.CHEST_TABLES, 2 + Mth.clamp(looting, 0, 2));
+					lootcontext$builder, LootContextParamSets.ENTITY, GaiaLootTables.CHEST_TABLES, 2);
 			stacks.forEach(this::spawnAtLocation);
 		}
-		super.dropCustomDeathLoot(damageSource, looting, killedByPlayer);
+		super.dropCustomDeathLoot(serverLevel, damageSource, killedByPlayer);
 	}
 
 	//Immune to potion effects

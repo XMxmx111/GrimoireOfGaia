@@ -1,23 +1,32 @@
 package gaia.entity.projectile;
 
 import gaia.registry.GaiaRegistry;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.SmallFireball;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
+import net.minecraft.world.phys.Vec3;
 
 public class GaiaSmallFireball extends SmallFireball {
-	public GaiaSmallFireball(EntityType<? extends SmallFireball> entityType, Level level) {
-		super(entityType, level);
+
+
+	public GaiaSmallFireball(EntityType<? extends SmallFireball> pEntityType, Level pLevel) {
+		super(pEntityType, pLevel);
 	}
 
-	public GaiaSmallFireball(Level level, LivingEntity livingEntity, double accelX, double accelY, double accelZ) {
-		super(level, livingEntity, accelX, accelY, accelZ);
+	public GaiaSmallFireball(Level p_37375_, LivingEntity p_37376_, Vec3 p_347501_) {
+		super(p_37375_, p_37376_, p_347501_);
+	}
+
+	public GaiaSmallFireball(Level p_37367_, double p_37368_, double p_37369_, double p_37370_, Vec3 p_347543_) {
+		super(p_37367_, p_37368_, p_37369_, p_37370_, p_347543_);
 	}
 
 	@Override
@@ -38,11 +47,14 @@ public class GaiaSmallFireball extends SmallFireball {
 				Entity entity1 = this.getOwner();
 				int i = entity.getRemainingFireTicks();
 				entity.setRemainingFireTicks(20 * 4);
-				boolean flag = entity.hurt(damageSources().fireball(this, entity1), 4.0F);
+				DamageSource damagesource = damageSources().fireball(this, entity1);
+				boolean flag = entity.hurt(damagesource, 4.0F);
 				if (!flag) {
 					entity.setRemainingFireTicks(i);
 				} else if (entity1 instanceof LivingEntity) {
-					this.doEnchantDamageEffects((LivingEntity) entity1, entity);
+					if (this.level() instanceof ServerLevel serverlevel) {
+						EnchantmentHelper.doPostAttackEffects(serverlevel, entity1, damagesource);
+					}
 				}
 			}
 		}

@@ -1,5 +1,6 @@
 package gaia.entity;
 
+import gaia.GrimoireOfGaia;
 import gaia.registry.GaiaRegistry;
 import gaia.util.SharedEntityData;
 import net.minecraft.core.BlockPos;
@@ -11,6 +12,7 @@ import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
@@ -67,8 +69,8 @@ public class Witch extends AbstractGaiaEntity implements RangedAttackMob {
 	private static final EntityDataAccessor<Boolean> IS_DRINKING = SynchedEntityData.defineId(Witch.class, EntityDataSerializers.BOOLEAN);
 	private static final EntityDataAccessor<Boolean> IS_RIDING = SynchedEntityData.defineId(Witch.class, EntityDataSerializers.BOOLEAN);
 
-	private static final UUID SPEED_MODIFIER_DRINKING_UUID = UUID.fromString("E5EEE9D2-C325-415F-ADAF-A320D2AABC8B");
-	private static final AttributeModifier SPEED_MODIFIER_DRINKING = new AttributeModifier(SPEED_MODIFIER_DRINKING_UUID, "Drinking speed penalty", -0.25D, AttributeModifier.Operation.ADD_VALUE);
+	private static final ResourceLocation DRINKING_ID = ResourceLocation.fromNamespaceAndPath(GrimoireOfGaia.MOD_ID, "drinking");
+	private static final AttributeModifier SPEED_MODIFIER_DRINKING = new AttributeModifier(DRINKING_ID, -0.25D, AttributeModifier.Operation.ADD_VALUE);
 
 	protected final FlyingMoveControl flyingControl;
 	protected final MoveControl normalControl;
@@ -249,7 +251,7 @@ public class Witch extends AbstractGaiaEntity implements RangedAttackMob {
 					}
 				}
 
-				this.getAttribute(Attributes.MOVEMENT_SPEED).removeModifier(SPEED_MODIFIER_DRINKING_UUID);
+				this.getAttribute(Attributes.MOVEMENT_SPEED).removeModifier(DRINKING_ID);
 			}
 		} else {
 			Holder<Potion> potion = null;
@@ -267,14 +269,14 @@ public class Witch extends AbstractGaiaEntity implements RangedAttackMob {
 				ItemStack potionStack = new ItemStack(Items.POTION);
 				potionStack.set(DataComponents.POTION_CONTENTS, new PotionContents(potion));
 				this.setItemSlot(EquipmentSlot.MAINHAND, potionStack);
-				this.usingTime = this.getMainHandItem().getUseDuration();
+				this.usingTime = this.getMainHandItem().getUseDuration(this);
 				this.setUsingItem(true);
 				if (!this.isSilent()) {
 					this.level().playSound((Player) null, this.getX(), this.getY(), this.getZ(), SoundEvents.WITCH_DRINK, this.getSoundSource(), 1.0F, 0.8F + this.random.nextFloat() * 0.4F);
 				}
 
 				AttributeInstance attributeinstance = this.getAttribute(Attributes.MOVEMENT_SPEED);
-				attributeinstance.removeModifier(SPEED_MODIFIER_DRINKING_UUID);
+				attributeinstance.removeModifier(DRINKING_ID);
 				attributeinstance.addTransientModifier(SPEED_MODIFIER_DRINKING);
 			}
 		}
@@ -344,8 +346,8 @@ public class Witch extends AbstractGaiaEntity implements RangedAttackMob {
 	@Nullable
 	@Override
 	public SpawnGroupData finalizeSpawn(ServerLevelAccessor levelAccessor, DifficultyInstance difficultyInstance,
-	                                    MobSpawnType spawnType, @Nullable SpawnGroupData groupData) {
-		SpawnGroupData data = super.finalizeSpawn(levelAccessor, difficultyInstance, spawnType, groupData);
+	                                    MobSpawnType spawnType, @Nullable SpawnGroupData data) {
+		data = super.finalizeSpawn(levelAccessor, difficultyInstance, spawnType, data);
 
 		if (random.nextInt(4) == 0) {
 			setVariant(1);

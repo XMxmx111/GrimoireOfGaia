@@ -1,8 +1,10 @@
 package gaia.item.accessory;
 
+import gaia.GrimoireOfGaia;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
@@ -10,16 +12,13 @@ import net.minecraft.world.entity.ai.attributes.AttributeModifier.Operation;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.level.Level;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
-import java.util.UUID;
 
 public class KnucklesItem extends AbstractAccessoryItem {
 	private static final int damage = 2;
-	private static final UUID BOOST_UUID = UUID.fromString("d2cc095e-1f15-49a9-a32b-993e7f5c4910");
-	private static final AttributeModifier BOOST = new AttributeModifier(BOOST_UUID, "GoG Knuckles Damage boost", (double) damage, Operation.ADD_VALUE);
+	private static final ResourceLocation BOOST_UUID = ResourceLocation.fromNamespaceAndPath(GrimoireOfGaia.MOD_ID, "knuckles_damage_boost");
+	private static final AttributeModifier BOOST = new AttributeModifier(BOOST_UUID, (double) damage, Operation.ADD_VALUE);
 
 	public KnucklesItem(Properties properties) {
 		super(properties);
@@ -49,7 +48,7 @@ public class KnucklesItem extends AbstractAccessoryItem {
 	@Override
 	public void applyModifier(LivingEntity player, ItemStack stack) {
 		AttributeInstance attribute = player.getAttribute(Attributes.ATTACK_DAMAGE);
-		if (!attribute.hasModifier(BOOST)) {
+		if (!attribute.hasModifier(BOOST_UUID)) {
 			attribute.addTransientModifier(BOOST);
 		}
 	}
@@ -57,7 +56,7 @@ public class KnucklesItem extends AbstractAccessoryItem {
 	@Override
 	public void removeModifier(LivingEntity player, ItemStack stack) {
 		AttributeInstance attribute = player.getAttribute(Attributes.ATTACK_DAMAGE);
-		if (attribute.hasModifier(BOOST)) {
+		if (attribute.hasModifier(BOOST_UUID)) {
 			attribute.removeModifier(BOOST_UUID);
 		}
 	}

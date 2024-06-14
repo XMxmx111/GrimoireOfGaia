@@ -17,7 +17,7 @@ import net.minecraft.client.renderer.entity.layers.RenderLayer;
 import net.minecraft.resources.ResourceLocation;
 
 public class SlimeGirlHairLayer extends RenderLayer<SlimeGirl, SlimeGirlModel> {
-	private static final ResourceLocation HAIR_LOCATION = new ResourceLocation(GrimoireOfGaia.MOD_ID, "textures/entity/slime_girl/hair_slime_girl.png");
+	private static final ResourceLocation HAIR_LOCATION = ResourceLocation.fromNamespaceAndPath(GrimoireOfGaia.MOD_ID, "textures/entity/slime_girl/hair_slime_girl.png");
 
 	private final EntityModel<SlimeGirl> model;
 
@@ -42,7 +42,7 @@ public class SlimeGirlHairLayer extends RenderLayer<SlimeGirl, SlimeGirlModel> {
 			this.model.prepareMobModel(slimeGirl, limbSwing, limbSwingAmount, partialTicks);
 			this.model.setupAnim(slimeGirl, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
 			this.model.renderToBuffer(poseStack, vertexconsumer, packedLightIn,
-					LivingEntityRenderer.getOverlayCoords(slimeGirl, 0F), 1.0F, 1.0F, 1.0F, 1.0F);
+					LivingEntityRenderer.getOverlayCoords(slimeGirl, 0F));
 		}
 	}
 

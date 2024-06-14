@@ -12,9 +12,9 @@ import net.minecraft.resources.ResourceLocation;
 
 public class OrcRenderer extends MobRenderer<Orc, OrcModel> {
 	public static final ResourceLocation[] ORC_LOCATIONS = new ResourceLocation[]{
-			new ResourceLocation(GrimoireOfGaia.MOD_ID, "textures/entity/orc/orc01.png"),
-			new ResourceLocation(GrimoireOfGaia.MOD_ID, "textures/entity/orc/orc02.png"),
-			new ResourceLocation(GrimoireOfGaia.MOD_ID, "textures/entity/orc/orc03.png")};
+			ResourceLocation.fromNamespaceAndPath(GrimoireOfGaia.MOD_ID, "textures/entity/orc/orc01.png"),
+			ResourceLocation.fromNamespaceAndPath(GrimoireOfGaia.MOD_ID, "textures/entity/orc/orc02.png"),
+			ResourceLocation.fromNamespaceAndPath(GrimoireOfGaia.MOD_ID, "textures/entity/orc/orc03.png")};
 
 	public OrcRenderer(Context context) {
 		super(context, new OrcModel(context.bakeLayer(ClientHandler.ORC)), ClientHandler.smallShadow);

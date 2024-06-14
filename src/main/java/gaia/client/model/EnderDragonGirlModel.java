@@ -218,8 +218,8 @@ public class EnderDragonGirlModel extends EntityModel<EnderDragonGirl> implement
 	}
 
 	@Override
-	public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
-		root.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
+	public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, int unused) {
+		root.render(poseStack, vertexConsumer, packedLight, packedOverlay);
 	}
 
 	@Override

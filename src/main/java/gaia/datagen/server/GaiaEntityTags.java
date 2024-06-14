@@ -19,7 +19,7 @@ public class GaiaEntityTags extends EntityTypeTagsProvider {
 		super(packOutput, lookupProvider, GrimoireOfGaia.MOD_ID, existingFileHelper);
 	}
 
-	public static final TagKey<EntityType<?>> MOB_ATTACK_BLACKLIST = TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation("minecolonies", "mob_attack_blacklist"));
+	public static final TagKey<EntityType<?>> MOB_ATTACK_BLACKLIST = TagKey.create(Registries.ENTITY_TYPE, ResourceLocation.fromNamespaceAndPath("minecolonies", "mob_attack_blacklist"));
 
 	@Override
 	protected void addTags(HolderLookup.Provider provider) {

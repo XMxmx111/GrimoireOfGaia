@@ -11,8 +11,8 @@ import net.minecraft.resources.ResourceLocation;
 
 public class DryadRenderer extends GaiaBabyMobRenderer<Dryad, DryadModel> {
 	public static final ResourceLocation[] DRYAD_LOCATIONS = new ResourceLocation[]{
-			new ResourceLocation(GrimoireOfGaia.MOD_ID, "textures/entity/dryad/dryad01.png"),
-			new ResourceLocation(GrimoireOfGaia.MOD_ID, "textures/entity/dryad/dryad02.png")};
+			ResourceLocation.fromNamespaceAndPath(GrimoireOfGaia.MOD_ID, "textures/entity/dryad/dryad01.png"),
+			ResourceLocation.fromNamespaceAndPath(GrimoireOfGaia.MOD_ID, "textures/entity/dryad/dryad02.png")};
 
 	public DryadRenderer(Context context) {
 		super(context, new DryadModel(context.bakeLayer(ClientHandler.DRYAD)), ClientHandler.smallShadow);

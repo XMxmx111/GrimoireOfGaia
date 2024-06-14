@@ -12,7 +12,7 @@ import net.minecraft.resources.ResourceLocation;
 
 public class MatangoRenderer extends MobRenderer<Matango, MatangoModel> {
 	public static final ResourceLocation[] MATANGO_LOCATIONS = new ResourceLocation[]{
-			new ResourceLocation(GrimoireOfGaia.MOD_ID, "textures/entity/matango/matango.png")};
+			ResourceLocation.fromNamespaceAndPath(GrimoireOfGaia.MOD_ID, "textures/entity/matango/matango.png")};
 
 	public MatangoRenderer(Context context) {
 		super(context, new MatangoModel(context.bakeLayer(ClientHandler.MATANGO)), ClientHandler.smallShadow);

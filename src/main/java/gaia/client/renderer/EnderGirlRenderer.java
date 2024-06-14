@@ -12,7 +12,7 @@ import net.minecraft.client.renderer.entity.layers.ItemInHandLayer;
 import net.minecraft.resources.ResourceLocation;
 
 public class EnderGirlRenderer extends MobRenderer<EnderGirl, EnderGirlModel> {
-	public static final ResourceLocation ENDER_GIRL_LOCATION = new ResourceLocation(GrimoireOfGaia.MOD_ID, "textures/entity/ender_girl/ender_girl.png");
+	public static final ResourceLocation ENDER_GIRL_LOCATION = ResourceLocation.fromNamespaceAndPath(GrimoireOfGaia.MOD_ID, "textures/entity/ender_girl/ender_girl.png");
 
 	public EnderGirlRenderer(Context context) {
 		super(context, new EnderGirlModel(context.bakeLayer(ClientHandler.ENDER_GIRL)), ClientHandler.medShadow);

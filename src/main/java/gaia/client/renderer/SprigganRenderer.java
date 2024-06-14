@@ -13,7 +13,7 @@ import net.minecraft.resources.ResourceLocation;
 
 public class SprigganRenderer extends MobRenderer<Spriggan, SprigganModel> {
 	public static final ResourceLocation[] SPRIGGAN_LOCATIONS = new ResourceLocation[]{
-			new ResourceLocation(GrimoireOfGaia.MOD_ID, "textures/entity/spriggan/spriggan.png")};
+			ResourceLocation.fromNamespaceAndPath(GrimoireOfGaia.MOD_ID, "textures/entity/spriggan/spriggan.png")};
 
 	public SprigganRenderer(Context context) {
 		super(context, new SprigganModel(context.bakeLayer(ClientHandler.SPRIGGAN)), ClientHandler.smallShadow);

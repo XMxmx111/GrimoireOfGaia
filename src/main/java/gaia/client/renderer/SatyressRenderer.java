@@ -12,8 +12,8 @@ import net.minecraft.resources.ResourceLocation;
 
 public class SatyressRenderer extends MobRenderer<Satyress, SatyressModel> {
 	public static final ResourceLocation[] DRYAD_LOCATIONS = new ResourceLocation[]{
-			new ResourceLocation(GrimoireOfGaia.MOD_ID, "textures/entity/satyress/satyress01.png"),
-			new ResourceLocation(GrimoireOfGaia.MOD_ID, "textures/entity/satyress/satyress02.png")};
+			ResourceLocation.fromNamespaceAndPath(GrimoireOfGaia.MOD_ID, "textures/entity/satyress/satyress01.png"),
+			ResourceLocation.fromNamespaceAndPath(GrimoireOfGaia.MOD_ID, "textures/entity/satyress/satyress02.png")};
 
 	public SatyressRenderer(Context context) {
 		super(context, new SatyressModel(context.bakeLayer(ClientHandler.SATYRESS)), ClientHandler.smallShadow);

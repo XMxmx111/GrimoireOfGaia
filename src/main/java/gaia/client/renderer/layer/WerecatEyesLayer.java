@@ -9,7 +9,7 @@ import net.minecraft.client.renderer.entity.layers.EyesLayer;
 import net.minecraft.resources.ResourceLocation;
 
 public class WerecatEyesLayer extends EyesLayer<Werecat, WerecatModel> {
-	private static final RenderType WERECAT_EYES = RenderType.eyes(new ResourceLocation(GrimoireOfGaia.MOD_ID, "textures/entity/werecat/eyes_werecat.png"));
+	private static final RenderType WERECAT_EYES = RenderType.eyes(ResourceLocation.fromNamespaceAndPath(GrimoireOfGaia.MOD_ID, "textures/entity/werecat/eyes_werecat.png"));
 
 	public WerecatEyesLayer(RenderLayerParent<Werecat, WerecatModel> renderLayerParent) {
 		super(renderLayerParent);

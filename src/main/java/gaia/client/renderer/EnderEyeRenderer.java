@@ -15,7 +15,7 @@ import java.util.Random;
 public class EnderEyeRenderer extends MobRenderer<EnderEye, EnderEyeModel> {
 	private final Random random = new Random();
 	public static final ResourceLocation[] ENDER_EYE_LOCATIONS = new ResourceLocation[]{
-			new ResourceLocation(GrimoireOfGaia.MOD_ID, "textures/entity/ender_eye/ender_eye.png")
+			ResourceLocation.fromNamespaceAndPath(GrimoireOfGaia.MOD_ID, "textures/entity/ender_eye/ender_eye.png")
 	};
 
 	public EnderEyeRenderer(Context context) {

@@ -2,6 +2,7 @@ package gaia.entity;
 
 import gaia.entity.goal.MobAttackGoal;
 import gaia.registry.GaiaRegistry;
+import gaia.util.EnchantUtil;
 import gaia.util.RangedUtil;
 import gaia.util.SharedEntityData;
 import net.minecraft.core.BlockPos;
@@ -305,15 +306,15 @@ public class Arachne extends AbstractGaiaEntity implements RangedAttackMob {
 	@Override
 	protected void populateDefaultEquipmentSlots(RandomSource random, DifficultyInstance instance) {
 		ItemStack staffStack = new ItemStack(GaiaRegistry.CAVE_SPIDER_STAFF.get());
-		staffStack.enchant(Enchantments.KNOCKBACK, 2);
+		staffStack.enchant(EnchantUtil.getEnchantmentHolder(this, Enchantments.KNOCKBACK), 2);
 		setItemSlot(EquipmentSlot.MAINHAND, staffStack);
 	}
 
 	@Nullable
 	@Override
 	public SpawnGroupData finalizeSpawn(ServerLevelAccessor levelAccessor, DifficultyInstance difficultyInstance,
-										MobSpawnType spawnType, @Nullable SpawnGroupData groupData) {
-		SpawnGroupData data = super.finalizeSpawn(levelAccessor, difficultyInstance, spawnType, groupData);
+										MobSpawnType spawnType, @Nullable SpawnGroupData data) {
+		data = super.finalizeSpawn(levelAccessor, difficultyInstance, spawnType, data);
 
 		this.populateDefaultEquipmentSlots(random, difficultyInstance);
 

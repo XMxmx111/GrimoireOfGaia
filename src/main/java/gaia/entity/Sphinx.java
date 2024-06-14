@@ -3,6 +3,7 @@ package gaia.entity;
 import gaia.config.GaiaConfig;
 import gaia.entity.goal.MobAttackGoal;
 import gaia.registry.GaiaRegistry;
+import gaia.util.EnchantUtil;
 import gaia.util.SharedEntityData;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
@@ -104,7 +105,7 @@ public class Sphinx extends AbstractGaiaEntity implements PowerableMob {
 	public boolean hurt(DamageSource source, float damage) {
 		float input = getBaseDamage(source, damage);
 		if (isPowered()) {
-			return !source.isIndirect() && super.hurt(source, input);
+			return source.isDirect() && super.hurt(source, input);
 		}
 		return super.hurt(source, input);
 	}
@@ -175,15 +176,15 @@ public class Sphinx extends AbstractGaiaEntity implements PowerableMob {
 	@Override
 	protected void populateDefaultEquipmentSlots(RandomSource random, DifficultyInstance instance) {
 		ItemStack swimmingBoots = new ItemStack(Items.LEATHER_BOOTS);
-		swimmingBoots.enchant(Enchantments.DEPTH_STRIDER, 2);
+		swimmingBoots.enchant(EnchantUtil.getEnchantmentHolder(this, Enchantments.DEPTH_STRIDER), 2);
 		setItemSlot(EquipmentSlot.FEET, swimmingBoots);
 	}
 
 	@Nullable
 	@Override
 	public SpawnGroupData finalizeSpawn(ServerLevelAccessor levelAccessor, DifficultyInstance difficultyInstance,
-										MobSpawnType spawnType, @Nullable SpawnGroupData groupData) {
-		SpawnGroupData data = super.finalizeSpawn(levelAccessor, difficultyInstance, spawnType, groupData);
+										MobSpawnType spawnType, @Nullable SpawnGroupData data) {
+		data = super.finalizeSpawn(levelAccessor, difficultyInstance, spawnType, data);
 
 		this.populateDefaultEquipmentSlots(random, difficultyInstance);
 

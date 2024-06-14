@@ -17,18 +17,21 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
+import net.minecraft.world.phys.Vec3;
 
 public class PoisonProjectile extends SmallFireball {
-	public PoisonProjectile(EntityType<? extends SmallFireball> entityType, Level level) {
-		super(entityType, level);
+
+
+	public PoisonProjectile(EntityType<? extends SmallFireball> pEntityType, Level pLevel) {
+		super(pEntityType, pLevel);
 	}
 
-	public PoisonProjectile(Level level) {
-		this(GaiaRegistry.MAGIC.get(), level);
+	public PoisonProjectile(Level p_37375_, LivingEntity p_37376_, Vec3 p_347501_) {
+		super(p_37375_, p_37376_, p_347501_);
 	}
 
-	public PoisonProjectile(Level level, LivingEntity livingEntity, double accelX, double accelY, double accelZ) {
-		super(level, livingEntity, accelX, accelY, accelZ);
+	public PoisonProjectile(Level p_37367_, double p_37368_, double p_37369_, double p_37370_, Vec3 p_347543_) {
+		super(p_37367_, p_37368_, p_37369_, p_37370_, p_347543_);
 	}
 
 	@Override

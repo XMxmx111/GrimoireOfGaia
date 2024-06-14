@@ -1,5 +1,6 @@
 package gaia.entity;
 
+import gaia.GrimoireOfGaia;
 import gaia.entity.goal.MobAttackGoal;
 import gaia.registry.GaiaRegistry;
 import gaia.util.SharedEntityData;
@@ -8,6 +9,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.RandomSource;
@@ -47,8 +49,8 @@ import org.jetbrains.annotations.Nullable;
 import java.util.UUID;
 
 public class Harpy extends AbstractGaiaEntity {
-	private static final UUID KNOCKBACK_MODIFIER_UUID = UUID.fromString("94A1EB78-7029-4390-9756-AD564F43CA4C");
-	private static final AttributeModifier KNOCKBACK_MODIFIER = new AttributeModifier(KNOCKBACK_MODIFIER_UUID, "Knockback boost", 2.0D, Operation.ADD_VALUE);
+	private static final ResourceLocation KNOCKBACK_ID = ResourceLocation.fromNamespaceAndPath(GrimoireOfGaia.MOD_ID, "harpy_knockback_modifier");
+	private static final AttributeModifier KNOCKBACK_MODIFIER = new AttributeModifier(KNOCKBACK_ID, 2.0D, Operation.ADD_VALUE);
 
 	private static final EntityDataAccessor<Boolean> FLEEING = SynchedEntityData.defineId(Harpy.class, EntityDataSerializers.BOOLEAN);
 	private static final EntityDataAccessor<Boolean> DATA_BABY_ID = SynchedEntityData.defineId(Harpy.class, EntityDataSerializers.BOOLEAN);
@@ -205,8 +207,8 @@ public class Harpy extends AbstractGaiaEntity {
 	@Nullable
 	@Override
 	public SpawnGroupData finalizeSpawn(ServerLevelAccessor levelAccessor, DifficultyInstance difficultyInstance,
-										MobSpawnType spawnType, @Nullable SpawnGroupData groupData) {
-		SpawnGroupData data = super.finalizeSpawn(levelAccessor, difficultyInstance, spawnType, groupData);
+										MobSpawnType spawnType, @Nullable SpawnGroupData data) {
+		data = super.finalizeSpawn(levelAccessor, difficultyInstance, spawnType, data);
 
 		if (levelAccessor.getBiome(blockPosition()).value().getTemperature(blockPosition()) > 1.0F) {
 			setVariant(2);
@@ -219,7 +221,7 @@ public class Harpy extends AbstractGaiaEntity {
 		}
 		if (!isBaby()) {
 			AttributeInstance attributeinstance = this.getAttribute(Attributes.ATTACK_KNOCKBACK);
-			attributeinstance.removeModifier(KNOCKBACK_MODIFIER_UUID);
+			attributeinstance.removeModifier(KNOCKBACK_ID);
 			attributeinstance.addTransientModifier(KNOCKBACK_MODIFIER);
 		}
 

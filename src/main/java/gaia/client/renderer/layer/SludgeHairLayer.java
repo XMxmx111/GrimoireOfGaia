@@ -17,9 +17,9 @@ import net.minecraft.resources.ResourceLocation;
 
 public class SludgeHairLayer extends RenderLayer<SludgeGirl, SludgeGirlModel> {
 	public static final ResourceLocation[] SLUDGE_GIRL_HAIR_LOCATIONS = new ResourceLocation[]{
-			new ResourceLocation(GrimoireOfGaia.MOD_ID, "textures/entity/sludge_girl/hair_sludge_girl01.png"),
-			new ResourceLocation(GrimoireOfGaia.MOD_ID, "textures/entity/sludge_girl/hair_sludge_girl02.png"),
-			new ResourceLocation(GrimoireOfGaia.MOD_ID, "textures/entity/sludge_girl/hair_sludge_girl03.png")};
+			ResourceLocation.fromNamespaceAndPath(GrimoireOfGaia.MOD_ID, "textures/entity/sludge_girl/hair_sludge_girl01.png"),
+			ResourceLocation.fromNamespaceAndPath(GrimoireOfGaia.MOD_ID, "textures/entity/sludge_girl/hair_sludge_girl02.png"),
+			ResourceLocation.fromNamespaceAndPath(GrimoireOfGaia.MOD_ID, "textures/entity/sludge_girl/hair_sludge_girl03.png")};
 
 	private final SludgeGirlModel model;
 
@@ -42,7 +42,7 @@ public class SludgeHairLayer extends RenderLayer<SludgeGirl, SludgeGirlModel> {
 			this.getParentModel().copyPropertiesTo(this.model);
 			this.model.prepareMobModel(sludgeGirl, limbSwing, limbSwingAmount, partialTicks);
 			this.model.setupAnim(sludgeGirl, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
-			this.model.renderToBuffer(poseStack, vertexconsumer, packedLight, LivingEntityRenderer.getOverlayCoords(sludgeGirl, 0.0F), 1.0F, 1.0F, 1.0F, 1.0F);
+			this.model.renderToBuffer(poseStack, vertexconsumer, packedLight, LivingEntityRenderer.getOverlayCoords(sludgeGirl, 0.0F));
 		}
 	}
 

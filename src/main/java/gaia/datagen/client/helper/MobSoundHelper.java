@@ -156,7 +156,7 @@ public class MobSoundHelper {
 		}
 
 		private SoundDefinition.Sound sound(String name) {
-			return SoundDefinition.Sound.sound(new ResourceLocation(GrimoireOfGaia.MOD_ID, name), SoundType.SOUND);
+			return SoundDefinition.Sound.sound(ResourceLocation.fromNamespaceAndPath(GrimoireOfGaia.MOD_ID, name), SoundType.SOUND);
 		}
 
 		public MobSoundHelper build() {

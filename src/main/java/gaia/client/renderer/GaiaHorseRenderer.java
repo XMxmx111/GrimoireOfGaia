@@ -8,7 +8,7 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
 
 public class GaiaHorseRenderer extends AbstractHorseRenderer<GaiaHorse, HorseModel<GaiaHorse>> {
-	private static final ResourceLocation LOCATION = new ResourceLocation("textures/entity/horse/horse_zombie.png");
+	private static final ResourceLocation LOCATION = ResourceLocation.parse("textures/entity/horse/horse_zombie.png");
 
 	public GaiaHorseRenderer(EntityRendererProvider.Context context) {
 		super(context, new HorseModel<>(context.bakeLayer(ClientHandler.HORSE)), 1.0F);

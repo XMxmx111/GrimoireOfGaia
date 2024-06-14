@@ -12,7 +12,7 @@ import net.minecraft.resources.ResourceLocation;
 
 public class BoneKnightRenderer extends MobRenderer<BoneKnight, BoneKnightModel> {
 	public static final ResourceLocation[] BONE_KNIGHT_LOCATIONS = new ResourceLocation[]{
-			new ResourceLocation(GrimoireOfGaia.MOD_ID, "textures/entity/bone_knight/bone_knight.png")};
+			ResourceLocation.fromNamespaceAndPath(GrimoireOfGaia.MOD_ID, "textures/entity/bone_knight/bone_knight.png")};
 
 	public BoneKnightRenderer(Context context) {
 		super(context, new BoneKnightModel(context.bakeLayer(ClientHandler.BONE_KNIGHT)), ClientHandler.smallShadow);

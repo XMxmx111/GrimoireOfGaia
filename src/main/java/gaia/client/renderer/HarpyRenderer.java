@@ -10,9 +10,9 @@ import net.minecraft.resources.ResourceLocation;
 
 public class HarpyRenderer extends GaiaBabyMobRenderer<Harpy, HarpyModel> {
 	public static final ResourceLocation[] HARPY_LOCATIONS = new ResourceLocation[]{
-			new ResourceLocation(GrimoireOfGaia.MOD_ID, "textures/entity/harpy/harpy01.png"),
-			new ResourceLocation(GrimoireOfGaia.MOD_ID, "textures/entity/harpy/harpy02.png"),
-			new ResourceLocation(GrimoireOfGaia.MOD_ID, "textures/entity/harpy/harpy03.png")};
+			ResourceLocation.fromNamespaceAndPath(GrimoireOfGaia.MOD_ID, "textures/entity/harpy/harpy01.png"),
+			ResourceLocation.fromNamespaceAndPath(GrimoireOfGaia.MOD_ID, "textures/entity/harpy/harpy02.png"),
+			ResourceLocation.fromNamespaceAndPath(GrimoireOfGaia.MOD_ID, "textures/entity/harpy/harpy03.png")};
 
 	public HarpyRenderer(Context context) {
 		super(context, new HarpyModel(context.bakeLayer(ClientHandler.HARPY)), ClientHandler.smallShadow);

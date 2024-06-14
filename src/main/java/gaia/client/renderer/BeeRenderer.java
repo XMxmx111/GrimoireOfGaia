@@ -12,7 +12,7 @@ import net.minecraft.resources.ResourceLocation;
 
 public class BeeRenderer extends MobRenderer<Bee, BeeModel> {
 	public static final ResourceLocation[] BEE_LOCATIONS = new ResourceLocation[]{
-			new ResourceLocation(GrimoireOfGaia.MOD_ID, "textures/entity/bee/bee.png")};
+			ResourceLocation.fromNamespaceAndPath(GrimoireOfGaia.MOD_ID, "textures/entity/bee/bee.png")};
 
 	public BeeRenderer(Context context) {
 		super(context, new BeeModel(context.bakeLayer(ClientHandler.BEE)), ClientHandler.smallShadow);

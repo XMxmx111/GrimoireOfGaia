@@ -1,7 +1,9 @@
 package gaia.entity;
 
+import gaia.GrimoireOfGaia;
 import gaia.entity.goal.MobAttackGoal;
 import gaia.registry.GaiaRegistry;
+import gaia.util.EnchantUtil;
 import gaia.util.RangedUtil;
 import gaia.util.SharedEntityData;
 import net.minecraft.core.BlockPos;
@@ -9,6 +11,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.DifficultyInstance;
@@ -38,14 +41,11 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
-import net.neoforged.neoforge.common.NeoForgeMod;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.UUID;
-
 public class NineTails extends AbstractGaiaEntity implements RangedAttackMob {
-	private static final UUID KNOCKBACK_MODIFIER_UUID = UUID.fromString("E1F5906C-E05C-11EC-9D64-0242AC120002");
-	private static final AttributeModifier KNOCKBACK_MODIFIER = new AttributeModifier(KNOCKBACK_MODIFIER_UUID, "Knockback boost", 2.0D, Operation.ADD_VALUE);
+	private static final ResourceLocation KNOCKBACK_ID = ResourceLocation.fromNamespaceAndPath(GrimoireOfGaia.MOD_ID, "nine_tails_knockback_modifier");
+	private static final AttributeModifier KNOCKBACK_MODIFIER = new AttributeModifier(KNOCKBACK_ID, 2.0D, Operation.ADD_VALUE);
 	private static final EntityDataAccessor<Boolean> THROWING = SynchedEntityData.defineId(NineTails.class, EntityDataSerializers.BOOLEAN);
 	private static final EntityDataAccessor<Integer> WEAPON_TYPE = SynchedEntityData.defineId(NineTails.class, EntityDataSerializers.INT);
 
@@ -200,7 +200,7 @@ public class NineTails extends AbstractGaiaEntity implements RangedAttackMob {
 	}
 
 	private void setCombatTask() {
-		if (getMainHandItem().isEmpty() || getAttribute(Attributes.ATTACK_KNOCKBACK).hasModifier(KNOCKBACK_MODIFIER)) {
+		if (getMainHandItem().isEmpty() || getAttribute(Attributes.ATTACK_KNOCKBACK).hasModifier(KNOCKBACK_ID)) {
 			setGoals(0);
 		} else {
 			setGoals(1);
@@ -212,14 +212,14 @@ public class NineTails extends AbstractGaiaEntity implements RangedAttackMob {
 			setHandOrKnockback(ItemStack.EMPTY);
 		} else if (id == 2) {
 			ItemStack weapon = new ItemStack(GaiaRegistry.FAN.get(), 1);
-			weapon.enchant(Enchantments.KNOCKBACK, 2);
+			weapon.enchant(EnchantUtil.getEnchantmentHolder(this, Enchantments.KNOCKBACK), 2);
 			setHandOrKnockback(weapon);
 		}
 	}
 
 	protected void setHandOrKnockback(ItemStack stack) {
 		AttributeInstance attributeinstance = this.getAttribute(Attributes.ATTACK_KNOCKBACK);
-		attributeinstance.removeModifier(KNOCKBACK_MODIFIER_UUID);
+		attributeinstance.removeModifier(KNOCKBACK_ID);
 		if (stack.isEmpty()) {
 			attributeinstance.addTransientModifier(KNOCKBACK_MODIFIER);
 		} else {
@@ -230,8 +230,8 @@ public class NineTails extends AbstractGaiaEntity implements RangedAttackMob {
 	@Nullable
 	@Override
 	public SpawnGroupData finalizeSpawn(ServerLevelAccessor levelAccessor, DifficultyInstance difficultyInstance,
-										MobSpawnType spawnType, @Nullable SpawnGroupData groupData) {
-		SpawnGroupData data = super.finalizeSpawn(levelAccessor, difficultyInstance, spawnType, groupData);
+	                                    MobSpawnType spawnType, @Nullable SpawnGroupData data) {
+		data = super.finalizeSpawn(levelAccessor, difficultyInstance, spawnType, data);
 
 		setCombatTask();
 

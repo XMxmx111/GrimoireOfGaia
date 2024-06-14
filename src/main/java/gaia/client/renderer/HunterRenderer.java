@@ -12,7 +12,7 @@ import net.minecraft.resources.ResourceLocation;
 
 public class HunterRenderer extends MobRenderer<Hunter, HunterModel> {
 	public static final ResourceLocation[] HUNTER_LOCATIONS = new ResourceLocation[]{
-			new ResourceLocation(GrimoireOfGaia.MOD_ID, "textures/entity/hunter/hunter.png")};
+			ResourceLocation.fromNamespaceAndPath(GrimoireOfGaia.MOD_ID, "textures/entity/hunter/hunter.png")};
 
 	public HunterRenderer(Context context) {
 		super(context, new HunterModel(context.bakeLayer(ClientHandler.HUNTER)), ClientHandler.smallShadow);

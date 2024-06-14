@@ -9,7 +9,7 @@ import net.minecraft.client.renderer.entity.layers.EyesLayer;
 import net.minecraft.resources.ResourceLocation;
 
 public class EnderEyeEyesLayer extends EyesLayer<EnderEye, EnderEyeModel> {
-	private static final RenderType ENDER_EYE_EYES = RenderType.eyes(new ResourceLocation(GrimoireOfGaia.MOD_ID, "textures/entity/ender_eye/eyes_ender_eye.png"));
+	private static final RenderType ENDER_EYE_EYES = RenderType.eyes(ResourceLocation.fromNamespaceAndPath(GrimoireOfGaia.MOD_ID, "textures/entity/ender_eye/eyes_ender_eye.png"));
 
 	public EnderEyeEyesLayer(RenderLayerParent<EnderEye, EnderEyeModel> renderLayerParent) {
 		super(renderLayerParent);

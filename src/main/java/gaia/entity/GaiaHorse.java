@@ -35,7 +35,7 @@ public class GaiaHorse extends AbstractHorse {
 	}
 
 	@Override
-	public boolean canBeLeashed(Player player) {
+	public boolean canBeLeashed() {
 		return false;
 	}
 

@@ -16,6 +16,7 @@ import net.minecraft.world.item.trading.MerchantOffer;
 import net.minecraft.world.level.ItemLike;
 
 import javax.annotation.Nullable;
+import java.util.Optional;
 
 public class GaiaMerchantTrades {
 	public static final Int2ObjectMap<VillagerTrades.ItemListing[]> MERCHANT_TRADES = toIntMap(ImmutableMap.of(
@@ -264,7 +265,8 @@ public class GaiaMerchantTrades {
 
 		public MerchantOffer getOffer(Entity entity, RandomSource random) {
 			int i = 5 + random.nextInt(15);
-			ItemStack itemstack = EnchantmentHelper.enchantItem(entity.level().enabledFeatures(), random, new ItemStack(this.itemStack.getItem()), i, false);
+
+			ItemStack itemstack = EnchantmentHelper.enchantItem(random, new ItemStack(this.itemStack.getItem()), i, entity.registryAccess(), Optional.empty());
 			int j = Math.min(this.tokenCost + i, 64);
 			ItemCost tokenStack = new ItemCost(token, j);
 			return new MerchantOffer(tokenStack, itemstack, this.maxUses, this.XP, this.priceMultiplier);

@@ -25,8 +25,7 @@ public class FanItem extends Item {
 				.add(
 						Attributes.ATTACK_DAMAGE,
 						new AttributeModifier(
-								BASE_ATTACK_DAMAGE_UUID,
-								"Weapon modifier",
+								BASE_ATTACK_DAMAGE_ID,
 								(double) attackDamage,
 								AttributeModifier.Operation.ADD_VALUE
 						),
@@ -34,7 +33,7 @@ public class FanItem extends Item {
 				)
 				.add(
 						Attributes.ATTACK_SPEED,
-						new AttributeModifier(BASE_ATTACK_SPEED_UUID, "Weapon modifier", (double) -2.4000000953674316D, AttributeModifier.Operation.ADD_VALUE),
+						new AttributeModifier(BASE_ATTACK_SPEED_ID, (double) -2.4000000953674316D, AttributeModifier.Operation.ADD_VALUE),
 						EquipmentSlotGroup.MAINHAND
 				)
 				.build();

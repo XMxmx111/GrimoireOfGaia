@@ -12,10 +12,10 @@ import net.minecraft.resources.ResourceLocation;
 
 public class AnubisRenderer extends MobRenderer<Anubis, AnubisModel> {
 	public static final ResourceLocation[] ANUBIS_LOCATIONS = new ResourceLocation[]{
-			new ResourceLocation(GrimoireOfGaia.MOD_ID, "textures/entity/anubis/anubis.png")
+			ResourceLocation.fromNamespaceAndPath(GrimoireOfGaia.MOD_ID, "textures/entity/anubis/anubis.png")
 	};
 	public static final ResourceLocation[] ANUBIS_MALE_LOCATIONS = new ResourceLocation[]{
-			new ResourceLocation(GrimoireOfGaia.MOD_ID, "textures/entity/anubis/anubis_male.png")
+			ResourceLocation.fromNamespaceAndPath(GrimoireOfGaia.MOD_ID, "textures/entity/anubis/anubis_male.png")
 	};
 
 	public AnubisRenderer(Context context) {

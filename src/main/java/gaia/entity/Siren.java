@@ -4,6 +4,7 @@ import gaia.entity.goal.MobAttackGoal;
 import gaia.entity.type.IDayMob;
 import gaia.registry.GaiaRegistry;
 import gaia.registry.GaiaTags;
+import gaia.util.EnchantUtil;
 import gaia.util.RangedUtil;
 import gaia.util.SharedEntityData;
 import net.minecraft.core.BlockPos;
@@ -232,7 +233,7 @@ public class Siren extends AbstractGaiaEntity implements RangedAttackMob, IDayMo
 		setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(Items.BOW));
 
 		ItemStack bootsSwimming = new ItemStack(Items.LEATHER_BOOTS);
-		bootsSwimming.enchant(Enchantments.DEPTH_STRIDER, 2);
+		bootsSwimming.enchant(EnchantUtil.getEnchantmentHolder(this, Enchantments.DEPTH_STRIDER), 2);
 		setItemSlot(EquipmentSlot.FEET, bootsSwimming);
 
 		if (random.nextBoolean()) {
@@ -250,8 +251,8 @@ public class Siren extends AbstractGaiaEntity implements RangedAttackMob, IDayMo
 	@Nullable
 	@Override
 	public SpawnGroupData finalizeSpawn(ServerLevelAccessor levelAccessor, DifficultyInstance difficultyInstance,
-										MobSpawnType spawnType, @Nullable SpawnGroupData groupData) {
-		SpawnGroupData data = super.finalizeSpawn(levelAccessor, difficultyInstance, spawnType, groupData);
+										MobSpawnType spawnType, @Nullable SpawnGroupData data) {
+		data = super.finalizeSpawn(levelAccessor, difficultyInstance, spawnType, data);
 
 		if (isHalloween() && random.nextFloat() < 0.25F) {
 			setVariant(1);
