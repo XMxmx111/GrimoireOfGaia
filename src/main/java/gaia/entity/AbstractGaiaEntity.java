@@ -113,7 +113,10 @@ public abstract class AbstractGaiaEntity extends Monster {
 	public abstract float getBaseDefense();
 
 	protected float getBaseDamage(DamageSource source, float damage) {
-		return source.is(DamageTypes.FELL_OUT_OF_WORLD) ? damage : Math.min(damage, getBaseDefense());
+		if (getBaseDefense() > 0) {
+			return source.is(DamageTypes.FELL_OUT_OF_WORLD) ? damage : Math.min(damage, getBaseDefense());
+		}
+		return damage;
 	}
 
 	protected void spawnLingeringCloud(List<MobEffectInstance> effectInstances) {
