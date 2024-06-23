@@ -47,14 +47,16 @@ public class GaiaEntityTags extends EntityTypeTagsProvider {
 				GaiaRegistry.ANT_WORKER.getEntityType(),
 				GaiaRegistry.ARACHNE.getEntityType(),
 				GaiaRegistry.BEE.getEntityType(),
-				GaiaRegistry.GRAVEMITE.getEntityType(),
-				GaiaRegistry.MUMMY.getEntityType()
+				GaiaRegistry.GRAVEMITE.getEntityType()
 		);
 
 		this.tag(EntityTypeTags.UNDEAD).add(
 				GaiaRegistry.BONE_KNIGHT.getEntityType(),
 				GaiaRegistry.FLESH_LICH.getEntityType(),
-				GaiaRegistry.YUKI_ONNA.getEntityType()
+				GaiaRegistry.YUKI_ONNA.getEntityType(),
+				GaiaRegistry.MUMMY.getEntityType(),
+				GaiaRegistry.BANSHEE.getEntityType(),
+				GaiaRegistry.WITHER_COW.getEntityType()
 		);
 	}
 }
