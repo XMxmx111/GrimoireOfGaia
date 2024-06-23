@@ -197,7 +197,7 @@ public class Mummy extends AbstractGaiaEntity {
 	}
 
 	public MobType getMobType() {
-		return MobType.ARTHROPOD;
+		return MobType.UNDEAD;
 	}
 
 	protected void playStepSound(BlockPos pos, BlockState state) {
