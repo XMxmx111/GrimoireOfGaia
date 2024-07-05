@@ -3,7 +3,7 @@ plugins {
     id 'eclipse'
     id 'idea'
     id 'maven-publish'
-    id 'net.neoforged.gradle.userdev' version '7.0.145'
+    id 'net.neoforged.gradle.userdev' version '7.0.153'
 }
 
 version = "${version}"
@@ -64,19 +64,20 @@ repositories {
         url = "https://maven.blamejared.com"
     }
     maven {
-        url = "https://maven.theillusivec4.top/"
+        name = "Curios Continuation - OctoStudios"
+        url = uri("https://maven.octo-studios.com/releases")
     }
 }
 
 dependencies {
     implementation "net.neoforged:neoforge:${neo_version}"
 
-//    compileOnly "mezz.jei:jei-${mc_version}-common-api:${jei_version}"
-//    compileOnly "mezz.jei:jei-${mc_version}-neoforge-api:${jei_version}"
+    compileOnly "mezz.jei:jei-${mc_version}-common-api:${jei_version}"
+    compileOnly "mezz.jei:jei-${mc_version}-neoforge-api:${jei_version}"
 
-//    runtimeOnly "mezz.jei:jei-${mc_version}-neoforge:${jei_version}"
+    runtimeOnly "mezz.jei:jei-${mc_version}-neoforge:${jei_version}"
 
-//    implementation "top.theillusivec4.curios:curios-neoforge:${curios_version}+${mc_version}"
+    implementation "top.theillusivec4.curios:curios-neoforge:${curios_version}+${mc_version}"
 
 //    implementation "vazkii.patchouli:Patchouli:${patchouli_version}"
 //    implementation "xyz.brassgoggledcoders:PatchouliProvider:${patchouli_provider_version}"
