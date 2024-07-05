@@ -38,7 +38,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.phys.Vec3;
-import net.neoforged.neoforge.common.NeoForgeMod;
 import org.jetbrains.annotations.Nullable;
 
 public class WizardHarpy extends AbstractAssistGaiaEntity implements RangedAttackMob {
@@ -86,11 +85,6 @@ public class WizardHarpy extends AbstractAssistGaiaEntity implements RangedAttac
 
 				.add(Attributes.KNOCKBACK_RESISTANCE, 1.0D)
 				.add(Attributes.STEP_HEIGHT, 1.0F);
-	}
-
-	@Override
-	public float getEyeHeightAccess(Pose pose) { //TODO: Check eye height!
-		return this.getDimensions(pose).height() * 0.5F;
 	}
 
 	@Override

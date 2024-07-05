@@ -29,7 +29,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
-import net.neoforged.neoforge.common.ToolActions;
+import net.neoforged.neoforge.common.ItemAbilities;
 import org.jetbrains.annotations.Nullable;
 
 public class CyanFlower extends AbstractPropEntity {
@@ -62,7 +62,7 @@ public class CyanFlower extends AbstractPropEntity {
 		Entity entity = source.getEntity();
 		if (entity instanceof Player player) {
 			ItemStack heldStack = player.getItemInHand(player.getUsedItemHand());
-			if (heldStack.canPerformAction(ToolActions.SHOVEL_DIG)) {
+			if (heldStack.canPerformAction(ItemAbilities.SHOVEL_DIG)) {
 				input = input * 1.5F;
 			}
 		}

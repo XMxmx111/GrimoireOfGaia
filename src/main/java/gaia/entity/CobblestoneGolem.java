@@ -35,8 +35,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.pathfinder.PathType;
-import net.neoforged.neoforge.common.NeoForgeMod;
-import net.neoforged.neoforge.common.ToolActions;
+import net.neoforged.neoforge.common.ItemAbilities;
 import org.jetbrains.annotations.Nullable;
 
 public class CobblestoneGolem extends AbstractGaiaEntity {
@@ -94,7 +93,7 @@ public class CobblestoneGolem extends AbstractGaiaEntity {
 		if (source.getEntity() instanceof Player player) {
 			ItemStack itemstack = player.getItemInHand(player.getUsedItemHand());
 
-			if (itemstack.canPerformAction(ToolActions.PICKAXE_DIG)) {
+			if (itemstack.canPerformAction(ItemAbilities.PICKAXE_DIG)) {
 				input += 5;
 			}
 		}

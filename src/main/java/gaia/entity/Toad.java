@@ -44,8 +44,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.UUID;
-
 public class Toad extends AbstractGaiaEntity implements IDayMob {
 	private static final ResourceLocation KNOCKBACK_ID = ResourceLocation.fromNamespaceAndPath(GrimoireOfGaia.MOD_ID, "toad_knockback_modifier");
 	private static final AttributeModifier KNOCKBACK_MODIFIER = new AttributeModifier(KNOCKBACK_ID, 2.0D, AttributeModifier.Operation.ADD_VALUE);

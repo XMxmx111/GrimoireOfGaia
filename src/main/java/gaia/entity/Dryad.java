@@ -35,8 +35,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
-import net.neoforged.neoforge.common.NeoForgeMod;
-import net.neoforged.neoforge.common.ToolActions;
+import net.neoforged.neoforge.common.ItemAbilities;
 import org.jetbrains.annotations.Nullable;
 
 public class Dryad extends AbstractAssistGaiaEntity implements IDayMob {
@@ -113,7 +112,7 @@ public class Dryad extends AbstractAssistGaiaEntity implements IDayMob {
 		if (source.getEntity() instanceof Player player) {
 			ItemStack itemstack = player.getItemInHand(player.getUsedItemHand());
 
-			if (itemstack.canPerformAction(ToolActions.AXE_DIG)) {
+			if (itemstack.canPerformAction(ItemAbilities.AXE_DIG)) {
 				input = input * 1.5F;
 			}
 		}

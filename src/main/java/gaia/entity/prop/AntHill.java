@@ -32,7 +32,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.phys.AABB;
-import net.neoforged.neoforge.common.ToolActions;
+import net.neoforged.neoforge.common.ItemAbilities;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -66,7 +66,7 @@ public class AntHill extends AbstractPropEntity {
 		if (source.getEntity() instanceof Player player) {
 			ItemStack itemstack = player.getItemInHand(player.getUsedItemHand());
 
-			if (itemstack.canPerformAction(ToolActions.SHOVEL_DIG)) {
+			if (itemstack.canPerformAction(ItemAbilities.SHOVEL_DIG)) {
 				input = input * 8;
 			} else {
 				input = 0F;

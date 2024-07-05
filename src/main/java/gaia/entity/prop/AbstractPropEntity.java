@@ -2,7 +2,6 @@ package gaia.entity.prop;
 
 import gaia.config.GaiaConfig;
 import net.minecraft.core.BlockPos;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.TagKey;
 import net.minecraft.util.RandomSource;

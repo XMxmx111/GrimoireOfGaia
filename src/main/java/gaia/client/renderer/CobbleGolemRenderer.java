@@ -6,7 +6,6 @@ import gaia.GrimoireOfGaia;
 import gaia.client.ClientHandler;
 import gaia.client.model.CobbleGolemModel;
 import gaia.entity.CobbleGolem;
-import gaia.entity.CobblestoneGolem;
 import net.minecraft.client.renderer.entity.EntityRendererProvider.Context;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;

@@ -36,8 +36,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
-import net.neoforged.neoforge.common.NeoForgeMod;
-import net.neoforged.neoforge.common.ToolActions;
+import net.neoforged.neoforge.common.ItemAbilities;
 import org.jetbrains.annotations.Nullable;
 
 public class Goblin extends AbstractAssistGaiaEntity implements RangedAttackMob, IDayMob {
@@ -91,7 +90,7 @@ public class Goblin extends AbstractAssistGaiaEntity implements RangedAttackMob,
 	@Override
 	public boolean hurt(DamageSource source, float damage) {
 		float input = getBaseDamage(source, damage);
-		if (!getOffhandItem().isEmpty() && getOffhandItem().canPerformAction(ToolActions.SHIELD_BLOCK)) {
+		if (!getOffhandItem().isEmpty() && getOffhandItem().canPerformAction(ItemAbilities.SHIELD_BLOCK)) {
 			return !(source.getDirectEntity() instanceof AbstractArrow) && super.hurt(source, input);
 		}
 		return super.hurt(source, input);

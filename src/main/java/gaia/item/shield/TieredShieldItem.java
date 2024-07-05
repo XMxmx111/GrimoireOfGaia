@@ -7,8 +7,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ShieldItem;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.DispenserBlock;
-import net.neoforged.neoforge.common.ToolAction;
-import net.neoforged.neoforge.common.ToolActions;
+import net.neoforged.neoforge.common.ItemAbilities;
+import net.neoforged.neoforge.common.ItemAbility;
 
 import java.util.function.Supplier;
 
@@ -26,7 +26,7 @@ public class TieredShieldItem extends ShieldItem {
 	}
 
 	@Override
-	public boolean canPerformAction(ItemStack stack, ToolAction toolAction) {
-		return ToolActions.DEFAULT_SHIELD_ACTIONS.contains(toolAction);
+	public boolean canPerformAction(ItemStack stack, ItemAbility ItemAbility) {
+		return ItemAbilities.DEFAULT_SHIELD_ACTIONS.contains(ItemAbility);
 	}
 }

@@ -41,11 +41,10 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
-import net.neoforged.neoforge.common.ToolActions;
+import net.neoforged.neoforge.common.ItemAbilities;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
-import java.util.UUID;
 
 public class Matango extends AbstractGaiaEntity implements IDayMob {
 	private static final ResourceLocation KNOCKBACK_ID = ResourceLocation.fromNamespaceAndPath(GrimoireOfGaia.MOD_ID, "matango_knockback_modifier");
@@ -101,7 +100,7 @@ public class Matango extends AbstractGaiaEntity implements IDayMob {
 		if (source.getEntity() instanceof Player player) {
 			ItemStack itemstack = player.getItemInHand(player.getUsedItemHand());
 
-			if (itemstack.canPerformAction(ToolActions.AXE_DIG)) {
+			if (itemstack.canPerformAction(ItemAbilities.AXE_DIG)) {
 				input = input * 1.5F;
 			}
 		}

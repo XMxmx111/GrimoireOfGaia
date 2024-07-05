@@ -10,7 +10,7 @@ public class CuriosRendering {
 	public static void onRenderSetup() {
 		for (DeferredHolder<Item, ? extends Item> registryObject : GaiaRegistry.ITEMS.getEntries()) {
 			if (registryObject.isBound() && registryObject.get() instanceof HeadgearItem headgearItem) {
-//				top.theillusivec4.curios.api.client.CuriosRendererRegistry.register(headgearItem, HeadgearRenderer::new);
+				top.theillusivec4.curios.api.client.CuriosRendererRegistry.register(headgearItem, HeadgearRenderer::new);
 			}
 		}
 	}

@@ -49,7 +49,7 @@ import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.phys.AABB;
-import net.neoforged.neoforge.common.ToolActions;
+import net.neoforged.neoforge.common.ItemAbilities;
 import org.jetbrains.annotations.Nullable;
 
 import java.time.LocalDate;
@@ -462,6 +462,6 @@ public abstract class AbstractGaiaEntity extends Monster {
 
 	protected boolean hasShield() {
 		ItemStack offStack = this.getItemBySlot(EquipmentSlot.OFFHAND);
-		return offStack.canPerformAction(ToolActions.SHIELD_BLOCK);
+		return offStack.canPerformAction(ItemAbilities.SHIELD_BLOCK);
 	}
 }

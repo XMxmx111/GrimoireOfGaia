@@ -62,7 +62,6 @@ import net.neoforged.neoforge.event.EventHooks;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
-import java.util.UUID;
 
 public class Witch extends AbstractGaiaEntity implements RangedAttackMob {
 

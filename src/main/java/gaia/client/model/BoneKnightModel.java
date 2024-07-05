@@ -15,7 +15,7 @@ import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.client.model.geom.builders.PartDefinition;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.HumanoidArm;
-import net.neoforged.neoforge.common.ToolActions;
+import net.neoforged.neoforge.common.ItemAbilities;
 
 public class BoneKnightModel extends EntityModel<BoneKnight> implements HeadedModel, ArmedModel {
 	private final ModelPart root;
@@ -79,7 +79,7 @@ public class BoneKnightModel extends EntityModel<BoneKnight> implements HeadedMo
 	@Override
 	public void prepareMobModel(BoneKnight boneKnight, float limbSwing, float limbSwingAmount, float partialTick) {
 		super.prepareMobModel(boneKnight, limbSwing, limbSwingAmount, partialTick);
-		this.shielded = boneKnight.getMainHandItem().canPerformAction(ToolActions.SHIELD_BLOCK);
+		this.shielded = boneKnight.getMainHandItem().canPerformAction(ItemAbilities.SHIELD_BLOCK);
 	}
 
 	@Override

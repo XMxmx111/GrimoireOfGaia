@@ -53,7 +53,6 @@ import net.neoforged.neoforge.event.EventHooks;
 import net.neoforged.neoforge.event.entity.EntityTeleportEvent;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.UUID;
 import java.util.function.Predicate;
 
 public class EnderEye extends AbstractAssistGaiaEntity {

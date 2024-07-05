@@ -1,6 +1,5 @@
 package gaia.modifier;
 
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import gaia.registry.GaiaModifiers;
 import net.minecraft.core.Holder;

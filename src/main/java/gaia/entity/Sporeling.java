@@ -28,7 +28,6 @@ import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
-import net.neoforged.neoforge.common.NeoForgeMod;
 import org.jetbrains.annotations.Nullable;
 
 public class Sporeling extends AbstractGaiaEntity {
@@ -47,11 +46,6 @@ public class Sporeling extends AbstractGaiaEntity {
 		this.goalSelector.addGoal(4, new RandomLookAroundGoal(this));
 		this.targetSelector.addGoal(1, (new HurtByTargetGoal(this)).setAlertOthers(new Class[0]));
 		this.targetSelector.addGoal(2, this.targetPlayerGoal = new NearestAttackableTargetGoal<>(this, Player.class, true));
-	}
-
-	@Override
-	public float getEyeHeightAccess(Pose pose) {
-		return 0.45F;
 	}
 
 	public static AttributeSupplier.Builder createAttributes() {

@@ -54,7 +54,7 @@ import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.storage.loot.LootTable;
-import net.neoforged.neoforge.common.ToolActions;
+import net.neoforged.neoforge.common.ItemAbilities;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.function.Predicate;
@@ -133,7 +133,7 @@ public class Dwarf extends AbstractAssistGaiaEntity implements RangedAttackMob, 
 	@Override
 	public boolean hurt(DamageSource source, float damage) {
 		float input = getBaseDamage(source, damage);
-		if (!getOffhandItem().isEmpty() && getOffhandItem().canPerformAction(ToolActions.SHIELD_BLOCK)) {
+		if (!getOffhandItem().isEmpty() && getOffhandItem().canPerformAction(ItemAbilities.SHIELD_BLOCK)) {
 			return !(source.getDirectEntity() instanceof AbstractArrow) && super.hurt(source, input);
 		}
 		return super.hurt(source, input);
