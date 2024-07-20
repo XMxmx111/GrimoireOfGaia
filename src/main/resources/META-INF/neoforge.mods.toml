@@ -18,6 +18,6 @@ logoFile="logo.png"
 [[dependencies.grimoireofgaia]]
 modId="neoforge"
 type="required"
-versionRange="[21.0.75-beta,)"
+versionRange="[21.0.110-beta,)"
 ordering="NONE"
 side="BOTH"

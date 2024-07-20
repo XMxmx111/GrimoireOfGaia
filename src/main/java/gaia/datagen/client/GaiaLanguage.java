@@ -656,6 +656,43 @@ public class GaiaLanguage extends LanguageProvider {
 		addPatchouliEntry("drop.spawn_ender_girl.info", "They can drop a $(item)Ender Girl Egg$() on death. This item can be used to spawn a passive $(mob)Trader$() helper for the player.");
 		addPatchouliEntry("drop.spawn_slime_girl.info", "They can drop a $(item)Slime Egg$() on death. This item can be used to spawn a passive $(mob)Trader$() helper for the player.");
 
+		//Config
+		addConfig("title", "Grimoire of Gaia", "Grimoire of Gaia Config");
+		addConfig("client", "Client", "Client Settings");
+		addConfig("genderNeutral", "Gender Neutral", "When enabled makes the mobs look more gender neutral (default: false)");
+
+		addConfig("General", "General", "General Settings");
+		addConfig("disableInvisibility", "Disable Invisibility", "Disable mobs that use the Invisibility status effect when far from a player [Default: false]");
+		addConfig("allPassiveMobsHostile", "All Passive Mobs Hostile", "All mobs are now hostile [Default: false]");
+		addConfig("passiveHostileMobs", "Passive Hostile Mobs", "Hostile day mobs will no longer attack players on sight [default: false]");
+		addConfig("friendlyPersistence", "Friendly Persistence", "Stop befriended mobs from despawning [Default: false]");
+
+		addConfig("Attributes", "Attributes", "Attribute Settings");
+		addConfig("Tier1", "Tier 1", "Tier 1 settings");
+		addConfig("tier1maxHealth", "Tier 1 Max Health", "Defines the health of Tier 1 Gaia mobs [40 = 20 Hearts]");
+		addConfig("tier1attackDamage", "Tier 1 Attack Damage", "Defines the attack damage of Tier 1 Gaia mobs [4 = 2 Hearts]");
+		addConfig("tier1baseDefense", "Tier 1 Base Defense", "Defines the maximum amount of hits required to defeat Tier 1 Gaia mobs (0 = disable)");
+		addConfig("Tier2", "Tier 2", "Tier 2 settings");
+		addConfig("tier2maxHealth", "Tier 2 Max Health", "Defines the health of Tier 2 Gaia mobs [80 = 40 Hearts]");
+		addConfig("tier2attackDamage", "Tier 2 Attack Damage", "Defines the attack damage of Tier 2 Gaia mobs [8 = 4 Hearts]");
+		addConfig("tier2baseDefense", "Tier 2 Base Defense", "Defines the maximum amount of hits required to defeat Tier 2 Gaia mobs (0 = disable)");
+		addConfig("Tier3", "Tier 3", "Tier 3 settings");
+		addConfig("tier3maxHealth", "Tier 3 Max Health", "Defines the health of Tier 3 Gaia mobs [160 = 80 Hearts]");
+		addConfig("tier3attackDamage", "Tier 3 Attack Damage", "Defines the attack damage of Tier 3 Gaia mobs [12 = 6 Hearts]");
+		addConfig("tier3baseDefense", "Tier 3 Base Defense", "Defines the maximum amount of hits required to defeat Tier 3 Gaia mobs (0 = disable)");
+
+		addConfig("Damage", "Damage", "Damage settings");
+		addConfig("baseDamage", "Base Damage", "Melee attacks deal an additional 2.0 (1 heart) of damage [Default: true]");
+		addConfig("shieldsBlockPiercing", "Shields Block Piercing", "Archers arrows deal an additional 1 (0.5 heart) of damage. [Default: true]");
+		addConfig("baseDamageArchers", "Base Damage Archers", "Base Damage (melee) won't penetrate Shields. [Default: true]");
+
+		addConfig("Spawn", "Spawn", "Spawn Settings");
+		addConfig("spawnDaysPassed", "Spawn Days Passed", "Mobs only spawn after a certain amount of days have passed [Default: false]");
+		addConfig("spawnDaysSet", "Spawn Days Set", "Amount of days required to have passed before they can start spawning [Default: 3]");
+		addConfig("spawnLevel3Rain", "Spawn Level 3 Rain", "Level 3 mobs only spawn when it is raining/snowing [Default: false]");
+		addConfig("disableYRestriction", "Disable Y Restriction", "Remove spawn conditions related to height (Y-axis) [Default: false]");
+		addConfig("spawnWeather", "Spawn Weather", "Remove spawn conditions related to weather [Default: false]");
+
 	}
 
 	/**
@@ -774,5 +811,16 @@ public class GaiaLanguage extends LanguageProvider {
 	 */
 	private void addPatchouliEntry(String entry, String translation) {
 		add("info.grimoireofgaia.book." + entry, translation);
+	}
+
+	/**
+	 * Add the translation for a config entry
+	 * @param path The path of the config entry
+	 * @param name The name of the config entry
+	 * @param description The description of the config entry
+	 */
+	private void addConfig(String path, String name, String description) {
+		this.add("grimoireofgaia.configuration." + path, name);
+		this.add("grimoireofgaia.configuration." + path + ".tooltip", description);
 	}
 }
