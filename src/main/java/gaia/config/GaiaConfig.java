@@ -11,6 +11,8 @@ import org.apache.commons.lang3.tuple.Pair;
 public class GaiaConfig {
 	public static class Client {
 		public final BooleanValue genderNeutral;
+		public final BooleanValue hideFoodEffectTooltips;
+		public final BooleanValue hideFoodXpTooltips;
 
 		Client(ModConfigSpec.Builder builder) {
 			builder.comment("Client settings")
@@ -19,6 +21,14 @@ public class GaiaConfig {
 			genderNeutral = builder
 					.comment("When enabled makes the mobs look more gender neutral (default: false)")
 					.define("genderNeutral", false);
+
+			hideFoodEffectTooltips = builder
+					.comment("When enabled effect tooltips on edible items will be hidden (default: false)")
+					.define("hideFoodEffectTooltips", false);
+
+			hideFoodXpTooltips = builder
+					.comment("When enabled effect tooltips on edible items will be hidden (default: false)")
+					.define("hideFoodEffectTooltips", false);
 
 			builder.pop();
 		}
