@@ -29,8 +29,7 @@ public class EdibleEffectItem extends Item {
 				int totalSeconds = effect.getDuration() / 20;
 				int minutes = (totalSeconds % 3600) / 60;
 				int seconds = totalSeconds % 60;
-				String formattedSeconds = seconds <= 9 ? "0" + String.valueOf(seconds) : String.valueOf(seconds);
-				list.add(Component.translatable(effect.getDescriptionId()).append(Component.literal(" (" + minutes + ":" + formattedSeconds + ")")).withStyle(ChatFormatting.GRAY));
+				list.add(Component.translatable(effect.getDescriptionId()).append(Component.literal(String.format(" (%d:%02d)", minutes, seconds))).withStyle(ChatFormatting.GRAY));
 			}
 		}
 	}

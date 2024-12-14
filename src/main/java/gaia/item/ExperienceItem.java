@@ -51,7 +51,7 @@ public class ExperienceItem extends Item {
 	@Override
 	public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> list, TooltipFlag flag) {
 		super.appendHoverText(stack, context, list, flag);
-		if (levels > 1) {
+		if (levels == 1) {
 			list.add(Component.translatable("text.grimoireofgaia.gain_level", levels).withStyle(ChatFormatting.GRAY));
 		} else {
 			list.add(Component.translatable("text.grimoireofgaia.gain_levels", levels).withStyle(ChatFormatting.GRAY));
