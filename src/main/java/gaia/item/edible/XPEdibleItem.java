@@ -1,5 +1,6 @@
 package gaia.item.edible;
 
+import gaia.config.GaiaConfig;
 import net.minecraft.network.chat.Component;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.LivingEntity;
@@ -22,7 +23,9 @@ public class XPEdibleItem extends EdibleEffectItem {
 	@Override
 	public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> list, TooltipFlag flag) {
 		super.appendHoverText(stack, context, list, flag);
-		list.add(Component.translatable("text.grimoireofgaia.gain_experience"));
+		if(!GaiaConfig.CLIENT.hideFoodXpTooltips.getAsBoolean()){
+			list.add(Component.translatable("text.grimoireofgaia.gain_experience"));
+		}
 	}
 
 	@Override
