@@ -111,7 +111,7 @@ public class Deathword extends AbstractGaiaEntity {
 				.add(Attributes.FLYING_SPEED, 0.25D)
 				.add(Attributes.ATTACK_DAMAGE, 4.0D)
 				.add(Attributes.ARMOR, SharedEntityData.RATE_ARMOR_1)
-				.add(Attributes.ATTACK_KNOCKBACK, SharedEntityData.KNOCKBACK_1)
+				.add(Attributes.KNOCKBACK_RESISTANCE, SharedEntityData.KNOCKBACK_1)
 				.add(Attributes.STEP_HEIGHT, 1.0F);
 	}
 

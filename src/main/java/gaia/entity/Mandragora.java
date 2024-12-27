@@ -71,7 +71,7 @@ public class Mandragora extends AbstractGaiaEntity implements IDayMob {
 				.add(Attributes.MOVEMENT_SPEED, SharedEntityData.MOVE_SPEED_0)
 				.add(Attributes.ATTACK_DAMAGE, 4.0D)
 				.add(Attributes.ARMOR, SharedEntityData.RATE_ARMOR_1)
-				.add(Attributes.ATTACK_KNOCKBACK, SharedEntityData.KNOCKBACK_1)
+				.add(Attributes.KNOCKBACK_RESISTANCE, SharedEntityData.KNOCKBACK_1)
 				.add(Attributes.STEP_HEIGHT, 1.0F);
 	}
 

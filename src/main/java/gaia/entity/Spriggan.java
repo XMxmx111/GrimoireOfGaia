@@ -60,7 +60,7 @@ public class Spriggan extends AbstractGaiaEntity {
 				.add(Attributes.MOVEMENT_SPEED, SharedEntityData.MOVE_SPEED_2)
 				.add(Attributes.ATTACK_DAMAGE, 8.0D)
 				.add(Attributes.ARMOR, SharedEntityData.RATE_ARMOR_2)
-				.add(Attributes.ATTACK_KNOCKBACK, SharedEntityData.KNOCKBACK_2)
+				.add(Attributes.KNOCKBACK_RESISTANCE, SharedEntityData.KNOCKBACK_2)
 				.add(Attributes.STEP_HEIGHT, 1.0F);
 	}
 

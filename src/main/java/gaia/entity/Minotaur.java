@@ -83,7 +83,7 @@ public class Minotaur extends AbstractGaiaEntity implements PowerableMob {
 				.add(Attributes.MOVEMENT_SPEED, SharedEntityData.MOVE_SPEED_3)
 				.add(Attributes.ATTACK_DAMAGE, 12.0D)
 				.add(Attributes.ARMOR, SharedEntityData.RATE_ARMOR_3)
-				.add(Attributes.ATTACK_KNOCKBACK, SharedEntityData.KNOCKBACK_3)
+				.add(Attributes.KNOCKBACK_RESISTANCE, SharedEntityData.KNOCKBACK_3)
 
 				.add(Attributes.STEP_HEIGHT, 5.0F);
 	}
