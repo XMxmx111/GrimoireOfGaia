@@ -204,6 +204,8 @@
   "grimoireofgaia.configuration.friendlyPersistence.tooltip": "Stop befriended mobs from despawning [Default: false]",
   "grimoireofgaia.configuration.genderNeutral": "Gender Neutral",
   "grimoireofgaia.configuration.genderNeutral.tooltip": "When enabled makes the mobs look more gender neutral (default: false)",
+  "grimoireofgaia.configuration.hideFoodEffectTooltips": "Hide Food Effect Tooltips",
+  "grimoireofgaia.configuration.hideFoodEffectTooltips.tooltip": "When enabled effect tooltips on edible items will be hidden (default: false)",
   "grimoireofgaia.configuration.passiveHostileMobs": "Passive Hostile Mobs",
   "grimoireofgaia.configuration.passiveHostileMobs.tooltip": "Hostile day mobs will no longer attack players on sight [default: false]",
   "grimoireofgaia.configuration.shieldsBlockPiercing": "Shields Block Piercing",

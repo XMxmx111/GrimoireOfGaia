@@ -660,6 +660,7 @@ public class GaiaLanguage extends LanguageProvider {
 		addConfig("title", "Grimoire of Gaia", "Grimoire of Gaia Config");
 		addConfig("client", "Client", "Client Settings");
 		addConfig("genderNeutral", "Gender Neutral", "When enabled makes the mobs look more gender neutral (default: false)");
+		addConfig("hideFoodEffectTooltips", "Hide Food Effect Tooltips", "When enabled effect tooltips on edible items will be hidden (default: false)");
 
 		addConfig("General", "General", "General Settings");
 		addConfig("disableInvisibility", "Disable Invisibility", "Disable mobs that use the Invisibility status effect when far from a player [Default: false]");
