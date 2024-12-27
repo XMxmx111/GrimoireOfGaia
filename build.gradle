@@ -3,7 +3,7 @@ plugins {
     id 'eclipse'
     id 'idea'
     id 'maven-publish'
-    id 'net.neoforged.gradle.userdev' version '7.0.155'
+    id 'net.neoforged.gradle.userdev' version '7.0.171'
 }
 
 version = "${version}"
@@ -85,7 +85,7 @@ dependencies {
 
     localRuntime "mezz.jei:jei-${mc_version}-neoforge:${jei_version}"
 
-    compileOnly "top.theillusivec4.curios:curios-neoforge:${curios_version}:api"
+    compileOnly "top.theillusivec4.curios:curios-neoforge:${curios_version}"
     localRuntime "top.theillusivec4.curios:curios-neoforge:${curios_version}"
 
 //    implementation "vazkii.patchouli:Patchouli:${patchouli_version}"
