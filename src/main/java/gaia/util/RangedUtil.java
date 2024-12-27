@@ -65,6 +65,7 @@ public class RangedUtil {
 		double d3 = Math.sqrt(d0 * d0 + d2 * d2);
 		abstractarrow.shoot(d0, d1 + d3 * (double) 0.2F, d2, 1.6F, (float) (14 - shooter.level().getDifficulty().getId() * 4));
 		abstractarrow.setBaseDamage(distanceFactor * 2.0D + shooter.getRandom().nextGaussian() * 0.25D + shooter.level().getDifficulty().getId() * 0.11D);
+		abstractarrow.setOwner(shooter);
 
 		if (shooter.level().getDifficulty() == Difficulty.HARD && GaiaConfig.COMMON.baseDamageArchers.get() && abstractarrow instanceof Arrow arrow) {
 			arrow.addEffect(new MobEffectInstance(MobEffects.HARM, 1, 0));
@@ -97,6 +98,7 @@ public class RangedUtil {
 		Vec3 vec3 = new Vec3(d0 + shooter.getRandom().nextGaussian() * f1, d1, d2 + shooter.getRandom().nextGaussian() * f1);
 		GaiaSmallFireball smallFireball = new GaiaSmallFireball(shooter.level(), shooter.getX(), shooter.getY(), shooter.getZ(), vec3.normalize());
 		smallFireball.setPos(smallFireball.getX(), shooter.getY(0.5D) + 0.5D, smallFireball.getZ());
+		smallFireball.setOwner(shooter);
 		shooter.level().addFreshEntity(smallFireball);
 	}
 
@@ -123,6 +125,7 @@ public class RangedUtil {
 		thrownpotion.setItem(potionStack);
 		thrownpotion.setXRot(thrownpotion.getXRot() + 20.0F);
 		thrownpotion.shoot(d1, d2 + (double) (f * 0.2F), d3, 0.75F, 8.0F);
+		thrownpotion.setOwner(shooter);
 
 		shooter.level().playSound((Player) null, shooter.getX(), shooter.getY(), shooter.getZ(), SoundEvents.WITCH_THROW, shooter.getSoundSource(), 1.0F, 0.8F + shooter.getRandom().nextFloat() * 0.4F);
 		shooter.level().addFreshEntity(thrownpotion);
@@ -147,6 +150,7 @@ public class RangedUtil {
 		Vec3 vec3 = new Vec3(d0 + shooter.getRandom().nextGaussian() * f1, d1, d2 + shooter.getRandom().nextGaussian() * f1);
 		MagicProjectile magic = new MagicProjectile(shooter.level(), shooter.getX(), shooter.getY(), shooter.getZ(), vec3.normalize());
 		magic.setPos(magic.getX(), shooter.getY(0.5D) + 0.5D, magic.getZ());
+		magic.setOwner(shooter);
 		shooter.level().addFreshEntity(magic);
 	}
 
@@ -170,6 +174,7 @@ public class RangedUtil {
 		RandomMagicProjectile magic = new RandomMagicProjectile(shooter.level(), shooter.getX(), shooter.getY(), shooter.getZ(), vec3.normalize());
 		magic.setPos(magic.getX(), shooter.getY(0.5D) + 0.5D + yOffset, magic.getZ());
 		magic.setEffect(mobEffect);
+		magic.setOwner(shooter);
 		shooter.level().addFreshEntity(magic);
 	}
 
@@ -192,6 +197,7 @@ public class RangedUtil {
 		Vec3 vec3 = new Vec3(d0 + shooter.getRandom().nextGaussian() * f1, d1, d2 + shooter.getRandom().nextGaussian() * f1);
 		WebProjectile web = new WebProjectile(shooter.level(), shooter.getX(), shooter.getY(), shooter.getZ(), vec3.normalize());
 		web.setPos(web.getX(), shooter.getY(0.5D) + 0.5D, web.getZ());
+		web.setOwner(shooter);
 		shooter.level().addFreshEntity(web);
 	}
 
@@ -214,6 +220,7 @@ public class RangedUtil {
 		Vec3 vec3 = new Vec3(d0 + shooter.getRandom().nextGaussian() * f1, d1, d2 + shooter.getRandom().nextGaussian() * f1);
 		BubbleProjectile bubble = new BubbleProjectile(shooter.level(), shooter.getX(), shooter.getY(), shooter.getZ(), vec3.normalize());
 		bubble.setPos(bubble.getX(), shooter.getY(0.5D) + 0.5D, bubble.getZ());
+		bubble.setOwner(shooter);
 		shooter.level().addFreshEntity(bubble);
 	}
 
@@ -236,6 +243,7 @@ public class RangedUtil {
 		Vec3 vec3 = new Vec3(d0 + shooter.getRandom().nextGaussian() * f1, d1, d2 + shooter.getRandom().nextGaussian() * f1);
 		PoisonProjectile poison = new PoisonProjectile(shooter.level(), shooter.getX(), shooter.getY(), shooter.getZ(), vec3.normalize());
 		poison.setPos(poison.getX(), shooter.getY(0.5D) + 0.5D, poison.getZ());
+		poison.setOwner(shooter);
 		shooter.level().addFreshEntity(poison);
 	}
 
@@ -257,6 +265,7 @@ public class RangedUtil {
 		double d3 = target.getZ() - shooter.getZ();
 		double d4 = Math.sqrt(d1 * d1 + d3 * d3) * (double) 0.2F;
 		bomb.shoot(d1, d2 + d4, d3, 0.75F, 8.0F);
+		bomb.setOwner(shooter);
 		shooter.level().addFreshEntity(bomb);
 	}
 }
