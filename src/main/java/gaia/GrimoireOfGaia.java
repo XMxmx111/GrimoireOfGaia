@@ -3,6 +3,7 @@ package gaia;
 import com.mojang.logging.LogUtils;
 import gaia.attachment.AttachmentHandler;
 import gaia.client.ClientHandler;
+import gaia.compat.curios.CuriosCompat;
 import gaia.config.GaiaConfig;
 import gaia.handler.CureHandler;
 import gaia.handler.DropHandler;
@@ -13,6 +14,7 @@ import gaia.registry.GaiaSounds;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
+import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.neoforge.client.gui.ConfigurationScreen;
@@ -40,6 +42,10 @@ public class GrimoireOfGaia {
 
 		NeoForge.EVENT_BUS.register(new DropHandler());
 		NeoForge.EVENT_BUS.register(new CureHandler());
+
+		if (ModList.get().isLoaded("curios")) {
+			eventBus.addListener(CuriosCompat::registerCapabilities);
+		}
 
 		if (dist.isClient()) {
 			container.registerConfig(ModConfig.Type.CLIENT, GaiaConfig.clientSpec);
