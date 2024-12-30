@@ -22,8 +22,8 @@ public class RenderGaiaCreep extends RenderLiving {
 
 	static RenderManager rend = Minecraft.getMinecraft().getRenderManager();
 	public RenderGaiaCreep(float shadowSize) {
-        super(rend, new ModelGaiaCreep(), shadowSize);
-    }
+		super(rend, new ModelGaiaCreep(), shadowSize);
+	}
 
 	protected void updateCreepScale(EntityGaiaCreep par1EntityGaiaCreep, float par2) {
 		float f1 = par1EntityGaiaCreep.getGaiaCreepFlashIntensity(par2);
@@ -104,18 +104,18 @@ public class RenderGaiaCreep extends RenderLiving {
 
 	//new
 	private void setRenderPassModel(ModelBase gaiaCreepModel2) {
-		
+
 	}
 
 	protected int func_77061_b(EntityGaiaCreep par1EntityGaiaCreep, int par2, float par3) {
 		return -1;
 	}
-	
+
 	//Normally EntityLivingBase
 	protected void preRenderCallback(EntityLivingBase par1EntityLivingBase, float par2) {
 		this.updateCreepScale((EntityGaiaCreep)par1EntityLivingBase, par2);
 	}
-	
+
 	//Normally EntityLivingBase
 	protected int getColorMultiplier(EntityLivingBase par1EntityLivingBase, float par2, float par3) {
 		return this.updateCreepColorMultiplier((EntityGaiaCreep)par1EntityLivingBase, par2, par3);

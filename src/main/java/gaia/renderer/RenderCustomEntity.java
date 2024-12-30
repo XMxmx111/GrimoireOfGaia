@@ -13,14 +13,14 @@ import net.minecraft.util.ResourceLocation;
 
 
 public class RenderCustomEntity extends RenderLiving {
-	
+
 	private static final ResourceLocation texture = new ResourceLocation(GaiaReference.MOD_ID, "textures/models/Mimic.png");
 
 	private ModelBase model;
 
 	public RenderCustomEntity(RenderManager renderManager, ModelGaiaMimic model, float shadowSize) {
-        super(renderManager, model, shadowSize);
-    }
+		super(renderManager, model, shadowSize);
+	}
 
 	@Override
 	protected ResourceLocation getEntityTexture(Entity entity) {
@@ -30,7 +30,7 @@ public class RenderCustomEntity extends RenderLiving {
 	private ResourceLocation getCustomTexture(EntityGaiaProjectileMagic entity) {
 		return texture;
 	}
-	
+
 	//Normally has @Override
 	public void doRender(Entity entity, double x, double y, double z, float yaw, float partialTick) {
 		GL11.glPushMatrix();

@@ -54,13 +54,13 @@ public class EntityGaiaSwamper extends EntityMobBase {
 	public boolean attackEntityAsMob(Entity par1Entity) {
 		if(super.attackEntityAsMob(par1Entity)) {
 			if(par1Entity instanceof EntityLivingBase) {
-                byte byte0 = 0;
+				byte byte0 = 0;
 
-                if (this.worldObj.getDifficulty() == EnumDifficulty.NORMAL){
-                	byte0 = 7;
-                } else if (this.worldObj.getDifficulty() == EnumDifficulty.HARD) {
-                	byte0 = 15;
-                }
+				if (this.worldObj.getDifficulty() == EnumDifficulty.NORMAL){
+					byte0 = 7;
+				} else if (this.worldObj.getDifficulty() == EnumDifficulty.HARD) {
+					byte0 = 15;
+				}
 
 				if(byte0 > 0) {
 					((EntityLivingBase)par1Entity).addPotionEffect(new PotionEffect(Potion.poison.id, byte0 * 30, 0));
@@ -77,7 +77,7 @@ public class EntityGaiaSwamper extends EntityMobBase {
 	public boolean isAIEnabled() {
 		return true;
 	}
-	
+
 	public boolean isPotionApplicable(PotionEffect par1PotionEffect) {
 		return par1PotionEffect.getPotionID() == Potion.poison.id?false:super.isPotionApplicable(par1PotionEffect);
 	}
@@ -103,7 +103,7 @@ public class EntityGaiaSwamper extends EntityMobBase {
 		}
 
 		if(par1 && (this.rand.nextInt(2) == 0 || this.rand.nextInt(1 + par2) > 0)) {
-            this.entityDropItem(new ItemStack(GaiaItem.Shard, 1, 1), 0.0F);
+			this.entityDropItem(new ItemStack(GaiaItem.Shard, 1, 1), 0.0F);
 		}
 
 		if(par1 && (this.rand.nextInt(4) == 0 || this.rand.nextInt(1 + par2) > 0)) {
@@ -113,17 +113,17 @@ public class EntityGaiaSwamper extends EntityMobBase {
 
 	protected void dropRareDrop(int par1) {
 		switch(this.rand.nextInt(4)) {
-		case 0:
-			this.dropItem(GaiaItem.BoxGold,1);
-			break;
-		case 1:
-			this.dropItem(GaiaItem.BagBook,1);
-			break;
-		case 2:
-			this.dropItem(GaiaItem.BookHunger,1);
-			break;
-		case 3:
-			this.dropItem(GaiaItem.SpawnCardSlimeGirl,1);
+			case 0:
+				this.dropItem(GaiaItem.BoxGold,1);
+				break;
+			case 1:
+				this.dropItem(GaiaItem.BagBook,1);
+				break;
+			case 2:
+				this.dropItem(GaiaItem.BookHunger,1);
+				break;
+			case 3:
+				this.dropItem(GaiaItem.SpawnCardSlimeGirl,1);
 		}
 	}
 
@@ -147,7 +147,7 @@ public class EntityGaiaSwamper extends EntityMobBase {
 			}
 		}
 	}
-	
+
 	public boolean getCanSpawnHere() {
 		return this.posY > 60.0D && super.getCanSpawnHere();
 	}

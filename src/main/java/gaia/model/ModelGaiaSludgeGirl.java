@@ -11,8 +11,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class ModelGaiaSludgeGirl extends ModelBase {
 	ModelRenderer head;
 	ModelRenderer headaccessory;
-    ModelRenderer righteye;
-    ModelRenderer lefteye;
+	ModelRenderer righteye;
+	ModelRenderer lefteye;
 	ModelRenderer headslime;
 	ModelRenderer headslime1;
 	ModelRenderer headslime2;

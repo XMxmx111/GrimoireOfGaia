@@ -16,7 +16,7 @@ public class RenderGaiaPropFlowerCyan extends RenderLiving {
 	static RenderManager rend = Minecraft.getMinecraft().getRenderManager();
 
 	public RenderGaiaPropFlowerCyan( float shadowSize) {
-        super(rend, new ModelGaiaPropFlowerCyan(), 0.0F);
+		super(rend, new ModelGaiaPropFlowerCyan(), 0.0F);
 	}
 
 	protected void preRenderFlowerCyan(EntityGaiaPropFlowerCyan par1EntityFlowerCyan, float par2) {

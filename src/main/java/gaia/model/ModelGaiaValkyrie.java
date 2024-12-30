@@ -285,30 +285,30 @@ public class ModelGaiaValkyrie extends ModelBase{
 		this.leftwing.rotateAngleZ = 0.0F;
 		this.rightwing.rotateAngleY -= 0.9599311F;
 		this.leftwing.rotateAngleY += 0.9599311F;
-		
-        float f6;
-        float f7;
 
-        if (this.swingProgress > -9990.0F)
-        {
-            f6 = this.swingProgress;
-            f6 = 1.0F - this.swingProgress;
-            f6 *= f6;
-            f6 *= f6;
-            f6 = 1.0F - f6;
-            f7 = MathHelper.sin(f6 * (float)Math.PI);
-            float f8 = MathHelper.sin(this.swingProgress * (float)Math.PI) * -(this.head.rotateAngleX - 0.7F) * 0.75F;
-            
-            this.rightarm.rotateAngleX = (float)((double)this.rightarm.rotateAngleX - ((double)f7 * 1.2D + (double)f8)) + 0.0872665F;
-            this.rightpauldron.rotateAngleX = this.rightarm.rotateAngleX;
-            this.rightgauntlet.rotateAngleX = this.rightarm.rotateAngleX;
-            this.rightarm.rotateAngleY += (this.bodytop.rotateAngleY * 2.0F);
-            this.rightpauldron.rotateAngleY = this.rightarm.rotateAngleY;
-            this.rightgauntlet.rotateAngleY = this.rightarm.rotateAngleY;
-            this.rightarm.rotateAngleZ = (MathHelper.sin(this.swingProgress * (float)Math.PI) * -0.4F);
-            this.rightpauldron.rotateAngleZ = this.rightarm.rotateAngleZ - 0.1745329F;
-            this.rightgauntlet.rotateAngleZ = this.rightarm.rotateAngleZ + 0.1745329F;
-            this.rightarm.rotateAngleZ = this.rightarm.rotateAngleZ + 0.1745329F;
-        }
+		float f6;
+		float f7;
+
+		if (this.swingProgress > -9990.0F)
+		{
+			f6 = this.swingProgress;
+			f6 = 1.0F - this.swingProgress;
+			f6 *= f6;
+			f6 *= f6;
+			f6 = 1.0F - f6;
+			f7 = MathHelper.sin(f6 * (float)Math.PI);
+			float f8 = MathHelper.sin(this.swingProgress * (float)Math.PI) * -(this.head.rotateAngleX - 0.7F) * 0.75F;
+
+			this.rightarm.rotateAngleX = (float)((double)this.rightarm.rotateAngleX - ((double)f7 * 1.2D + (double)f8)) + 0.0872665F;
+			this.rightpauldron.rotateAngleX = this.rightarm.rotateAngleX;
+			this.rightgauntlet.rotateAngleX = this.rightarm.rotateAngleX;
+			this.rightarm.rotateAngleY += (this.bodytop.rotateAngleY * 2.0F);
+			this.rightpauldron.rotateAngleY = this.rightarm.rotateAngleY;
+			this.rightgauntlet.rotateAngleY = this.rightarm.rotateAngleY;
+			this.rightarm.rotateAngleZ = (MathHelper.sin(this.swingProgress * (float)Math.PI) * -0.4F);
+			this.rightpauldron.rotateAngleZ = this.rightarm.rotateAngleZ - 0.1745329F;
+			this.rightgauntlet.rotateAngleZ = this.rightarm.rotateAngleZ + 0.1745329F;
+			this.rightarm.rotateAngleZ = this.rightarm.rotateAngleZ + 0.1745329F;
+		}
 	}
 }

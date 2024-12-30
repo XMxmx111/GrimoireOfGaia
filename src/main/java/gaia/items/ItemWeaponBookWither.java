@@ -43,7 +43,7 @@ public class ItemWeaponBookWither extends ItemSword {
 	public EnumRarity getRarity(ItemStack par1ItemStack) {
 		return EnumRarity.RARE;
 	}
-	
+
 	@Override
 	public Multimap getItemAttributeModifiers() {
 		Multimap multimap = super.getItemAttributeModifiers();
@@ -65,7 +65,7 @@ public class ItemWeaponBookWither extends ItemSword {
 			world.spawnEntityInWorld(fireball2);
 		}
 	}
-	
+
 	public void addInformation(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List par3List, boolean par4) {
 		par3List.add(StatCollector.translateToLocal("potion.wither") + " (0:04)");
 	}
@@ -75,7 +75,7 @@ public class ItemWeaponBookWither extends ItemSword {
 		par2EntityLiving.addPotionEffect(new PotionEffect(Potion.wither.id, 80, 0));
 		return true;
 	}
-	
+
 	public EnumAction getItemUseAction(ItemStack par1ItemStack) {
 		return EnumAction.BOW;
 	}

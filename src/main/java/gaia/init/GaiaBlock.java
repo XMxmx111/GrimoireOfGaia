@@ -65,7 +65,7 @@ public class GaiaBlock {
 		GameRegistry.registerTileEntity(TileEntityDollSlimeGirl.class, "DollSlimeGirl");
 		GameRegistry.registerTileEntity(TileEntityDollMaid.class, "DollMaid");
 	}
-	
+
 	public static void registerRenders()
 	{
 		registerRender(BustSphinx);
@@ -76,8 +76,8 @@ public class GaiaBlock {
 		registerRender(DollSlimeGirl);
 		registerRender(DollMaid);
 	}
-	
-	
+
+
 	public static void registerRender(Block block)
 	{
 		Item item = Item.getItemFromBlock(block);

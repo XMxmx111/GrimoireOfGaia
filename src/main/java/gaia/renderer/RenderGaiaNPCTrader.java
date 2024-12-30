@@ -14,7 +14,7 @@ public class RenderGaiaNPCTrader extends RenderLiving {
 
 	static RenderManager rend = Minecraft.getMinecraft().getRenderManager();
 	public RenderGaiaNPCTrader( float shadowSize) {
-        super(rend, new ModelGaiaNPCTrader(), shadowSize);
+		super(rend, new ModelGaiaNPCTrader(), shadowSize);
 	}
 
 	protected ResourceLocation getEntityTexture(Entity entity) {

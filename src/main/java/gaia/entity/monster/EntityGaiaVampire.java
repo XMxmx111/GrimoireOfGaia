@@ -72,13 +72,13 @@ public class EntityGaiaVampire extends EntityMobBase {
 	public boolean attackEntityAsMob(Entity par1Entity) {
 		if(super.attackEntityAsMob(par1Entity)) {
 			if(par1Entity instanceof EntityLivingBase) {
-                byte byte0 = 0;
+				byte byte0 = 0;
 
-                if (this.worldObj.getDifficulty() == EnumDifficulty.NORMAL){
-                	byte0 = 7;
-                } else if (this.worldObj.getDifficulty() == EnumDifficulty.HARD) {
-                	byte0 = 15;
-                }
+				if (this.worldObj.getDifficulty() == EnumDifficulty.NORMAL){
+					byte0 = 7;
+				} else if (this.worldObj.getDifficulty() == EnumDifficulty.HARD) {
+					byte0 = 15;
+				}
 
 				if(byte0 > 0 && this.getHealth() < EntityAttributes.maxHealth3 * 0.75F) {
 					((EntityLivingBase)par1Entity).addPotionEffect(new PotionEffect(Potion.confusion.id, byte0 * 60, 0));
@@ -103,7 +103,7 @@ public class EntityGaiaVampire extends EntityMobBase {
 
 		if(this.worldObj.isDaytime() && !this.worldObj.isRemote) {
 			float f = this.getBrightness(1.0F);
-			
+
 			if(f > 0.5F && this.rand.nextFloat() * 30.0F < (f - 0.4F) * 2.0F && this.worldObj.canSeeSky(this.getPosition())) {
 				this.attackEntityFrom(DamageSource.generic, EntityAttributes.maxHealth3 * 0.25F);
 				this.addPotionEffect(new PotionEffect(Potion.fireResistance.id, 100, 0));
@@ -137,7 +137,7 @@ public class EntityGaiaVampire extends EntityMobBase {
 				//"largeexplode"
 				this.worldObj.spawnParticle(EnumParticleTypes.EXPLOSION_LARGE, this.posX + (this.rand.nextDouble() - 0.5D) * (double)this.width, this.posY + this.rand.nextDouble() * (double)this.height, this.posZ + (this.rand.nextDouble() - 0.5D) * (double)this.width, 0.0D, 0.0D, 0.0D);
 			}
-			
+
 			EntityBat spawnMob2 = new EntityBat(this.worldObj);
 			if(this.spawnTime2 == 0 && !this.worldObj.isRemote) {
 				this.spawnTime2 = 1;
@@ -172,31 +172,31 @@ public class EntityGaiaVampire extends EntityMobBase {
 
 	protected void dropFewItems(boolean par1, int par2) {
 		if(par1 && (this.rand.nextInt(2) == 0 || this.rand.nextInt(1 + par2) > 0)) {
-            this.entityDropItem(new ItemStack(GaiaItem.Shard, 1, 2), 0.0F);
+			this.entityDropItem(new ItemStack(GaiaItem.Shard, 1, 2), 0.0F);
 		}
 
 		if(par1 && (this.rand.nextInt(4) == 0 || this.rand.nextInt(1 + par2) > 0)) {
 			this.dropItem(GaiaItem.FoodSmallAppleGold,1);
 		}
-		
+
 		if(par1 && (this.rand.nextInt(2) == 0 || this.rand.nextInt(1 + par2) > 0)) {
-            this.entityDropItem(new ItemStack(GaiaItem.Shard, 1, 3), 0.0F);
+			this.entityDropItem(new ItemStack(GaiaItem.Shard, 1, 3), 0.0F);
 		}
 	}
 
 	protected void dropRareDrop(int par1) {
 		switch(this.rand.nextInt(4)) {
-		case 0:
-			this.dropItem(GaiaItem.BoxDiamond,1);
-			break;
-		case 1:
-			this.dropItem(Item.getItemFromBlock(GaiaBlock.BustVampire), 1);
-			break;
-		case 2:
-            this.entityDropItem(new ItemStack(GaiaItem.MiscRing, 1, 3), 0.0F);
-			break;
-		case 3:
-			this.dropItem(GaiaItem.MiscPage,1);
+			case 0:
+				this.dropItem(GaiaItem.BoxDiamond,1);
+				break;
+			case 1:
+				this.dropItem(Item.getItemFromBlock(GaiaBlock.BustVampire), 1);
+				break;
+			case 2:
+				this.entityDropItem(new ItemStack(GaiaItem.MiscRing, 1, 3), 0.0F);
+				break;
+			case 3:
+				this.dropItem(GaiaItem.MiscPage,1);
 		}
 	}
 

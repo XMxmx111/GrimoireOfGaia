@@ -62,13 +62,13 @@ public class EntityGaiaDryad extends EntityMobDay {
 	public boolean attackEntityAsMob(Entity par1Entity) {
 		if(super.attackEntityAsMob(par1Entity)) {
 			if(par1Entity instanceof EntityLivingBase) {
-                byte byte0 = 0;
+				byte byte0 = 0;
 
-                if (this.worldObj.getDifficulty() == EnumDifficulty.NORMAL){
-                	byte0 = 7;
-                } else if (this.worldObj.getDifficulty() == EnumDifficulty.HARD) {
-                	byte0 = 15;
-                }
+				if (this.worldObj.getDifficulty() == EnumDifficulty.NORMAL){
+					byte0 = 7;
+				} else if (this.worldObj.getDifficulty() == EnumDifficulty.HARD) {
+					byte0 = 15;
+				}
 
 				if(byte0 > 0) {
 					((EntityLivingBase)par1Entity).addPotionEffect(new PotionEffect(Potion.poison.id, byte0 * 20, 0));
@@ -130,35 +130,35 @@ public class EntityGaiaDryad extends EntityMobDay {
 		}
 
 		super.setTarget(par1Entity);
-	}
-	*/
+	}*/
+
 	public void onLivingUpdate() {
-        super.onLivingUpdate();
-        int i = MathHelper.floor_double(this.posX);
-        int j = MathHelper.floor_double(this.posY);
-        int k = MathHelper.floor_double(this.posZ);
-        
+		super.onLivingUpdate();
+		int i = MathHelper.floor_double(this.posX);
+		int j = MathHelper.floor_double(this.posY);
+		int k = MathHelper.floor_double(this.posZ);
+
 		if(this.isBurning()) {
 			this.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 100, 0));
 			this.addPotionEffect(new PotionEffect(Potion.weakness.id, 100, 0));
 		}
-		
-        for (int l = 0; l < 4; ++l)
-        {
-            i = MathHelper.floor_double(this.posX + (double)((float)(l % 2 * 2 - 1) * 0.25F));
-            j = MathHelper.floor_double(this.posY);
-            k = MathHelper.floor_double(this.posZ + (double)((float)(l / 2 % 2 * 2 - 1) * 0.25F));
-            BlockPos pos = new BlockPos(i,j,k);
-            //if (this.worldObj.getBlockState(i, j, k).getMaterial() == Material.air && Blocks.tallgrass.canPlaceBlockAt(this.worldObj, pos) && (this.rand.nextFloat() < 0.8F))
-            if (BlockStateHelper.getBlockfromState(worldObj, pos).getMaterial() == Material.air && Blocks.tallgrass.canPlaceBlockAt(this.worldObj, pos) && (this.rand.nextFloat() < 0.8F))
-            {
-               // this.worldObj.setBlock(i, j, k, Blocks.tallgrass, 1, 3);
-            	IBlockState iblockstate1 = Blocks.tallgrass.getDefaultState().withProperty(BlockTallGrass.TYPE, BlockTallGrass.EnumType.GRASS);//why is this so big :(
-                this.worldObj.setBlockState(pos, iblockstate1, 3);
-            
-            	
-            }
-        }
+
+		for (int l = 0; l < 4; ++l)
+		{
+			i = MathHelper.floor_double(this.posX + (double)((float)(l % 2 * 2 - 1) * 0.25F));
+			j = MathHelper.floor_double(this.posY);
+			k = MathHelper.floor_double(this.posZ + (double)((float)(l / 2 % 2 * 2 - 1) * 0.25F));
+			BlockPos pos = new BlockPos(i,j,k);
+			//if (this.worldObj.getBlockState(i, j, k).getMaterial() == Material.air && Blocks.tallgrass.canPlaceBlockAt(this.worldObj, pos) && (this.rand.nextFloat() < 0.8F))
+			if (BlockStateHelper.getBlockfromState(worldObj, pos).getMaterial() == Material.air && Blocks.tallgrass.canPlaceBlockAt(this.worldObj, pos) && (this.rand.nextFloat() < 0.8F))
+			{
+				// this.worldObj.setBlock(i, j, k, Blocks.tallgrass, 1, 3);
+				IBlockState iblockstate1 = Blocks.tallgrass.getDefaultState().withProperty(BlockTallGrass.TYPE, BlockTallGrass.EnumType.GRASS);//why is this so big :(
+				this.worldObj.setBlockState(pos, iblockstate1, 3);
+
+
+			}
+		}
 	}
 
 	protected String getLivingSound() {
@@ -179,29 +179,29 @@ public class EntityGaiaDryad extends EntityMobDay {
 		for(int var4 = 0; var4 < var3; ++var4) {
 			this.entityDropItem(new ItemStack(Item.getItemFromBlock(Blocks.sapling), 1, 0), 0.0F);
 		}
-		
+
 		if(par1 && (this.rand.nextInt(10) == 0 || this.rand.nextInt(1 + par2) > 0)) {
 			this.dropItem(GaiaItem.FoodBerryCure,1);
 		}
 
 		if(par1 && (this.rand.nextInt(2) == 0 || this.rand.nextInt(1 + par2) > 0)) {
-            this.entityDropItem(new ItemStack(GaiaItem.Shard, 1, 0), 0.0F);
+			this.entityDropItem(new ItemStack(GaiaItem.Shard, 1, 0), 0.0F);
 		}
 	}
 
 	protected void dropRareDrop(int par1) {
 		switch(this.rand.nextInt(2)) {
-		case 0:
-			this.dropItem(GaiaItem.BoxIron,1);
-			break;
-		case 1:
-			this.experienceValue = EntityAttributes.experienceValue1 * 5;
+			case 0:
+				this.dropItem(GaiaItem.BoxIron,1);
+				break;
+			case 1:
+				this.experienceValue = EntityAttributes.experienceValue1 * 5;
 		}
 	}
-	
+
 	@Override
-    protected void dropEquipment(boolean p_82160_1_, int p_82160_2_) {
-    }
+	protected void dropEquipment(boolean p_82160_1_, int p_82160_2_) {
+	}
 	/*
 	public IEntityLivingData onSpawnWithEgg(IEntityLivingData par1IEntityLivingData) {
 		par1IEntityLivingData = super.onSpawnWithEgg(par1IEntityLivingData);
@@ -214,20 +214,20 @@ public class EntityGaiaDryad extends EntityMobDay {
 	}
 	*/
 	public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, IEntityLivingData livingdata)
-    {
+	{
 		livingdata = super.onInitialSpawn(difficulty, livingdata);
 		this.setCurrentItemOrArmor(0, new ItemStack(GaiaItem.PropWeaponInvisible));
 		this.setEnchantmentBasedOnDifficulty(difficulty);
-		return livingdata;		
-		
-    }
-	
+		return livingdata;
+
+	}
+
 	protected void entityInit() {
 		super.entityInit();
 		this.dataWatcher.addObject(19, new Byte((byte)0));
 		this.dataWatcher.addObject(13, new Byte((byte)0));
 	}
-	
+
 	public int getTextureType() {
 		return this.dataWatcher.getWatchableObjectByte(13);
 	}
@@ -265,7 +265,7 @@ public class EntityGaiaDryad extends EntityMobDay {
 			}
 		}
 	}
-	
+
 	public boolean getCanSpawnHere() {
 		return this.posY > 60.0D && super.getCanSpawnHere();
 	}

@@ -14,12 +14,12 @@ public class RenderGaiaCentaur extends RenderLiving<EntityGaiaCentaur> {
 
 	private static final ResourceLocation texture = new ResourceLocation(GaiaReference.MOD_ID, "textures/models/Centaur.png");
 	static RenderManager rend = Minecraft.getMinecraft().getRenderManager();
-	
+
 	public RenderGaiaCentaur(float shadowSize) {
-        super(rend, new ModelGaiaCentaur(), shadowSize);
-        
-        this.addLayer(new held_rightarm(this, ModelGaiaCentaur.rightarm));
-    }
+		super(rend, new ModelGaiaCentaur(), shadowSize);
+
+		this.addLayer(new held_rightarm(this, ModelGaiaCentaur.rightarm));
+	}
 	
 	/*protected void renderEquippedItems(EntityLivingBase par1EntityLiving, float par2) {
 		float var3 = 1.0F;

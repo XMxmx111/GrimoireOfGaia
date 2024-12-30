@@ -39,7 +39,7 @@ public class ModelGaiaSharko extends ModelBase {
 	public ModelGaiaSharko() {
 		this.textureWidth = 128;
 		this.textureHeight = 64;
-		
+
 		this.head = new ModelRenderer(this, 0, 0);
 		this.head.addBox(-4.0F, -7.0F, -4.0F, 8, 7, 8);
 		this.head.setRotationPoint(0.0F, 4.0F, -4.0F);
@@ -259,37 +259,37 @@ public class ModelGaiaSharko extends ModelBase {
 		this.leftfoot.rotateAngleX = this.leftleg.rotateAngleX - 0.1745329F;
 		this.rightleg.rotateAngleX -= 0.5585054F;
 		this.leftleg.rotateAngleX -= 0.5585054F;
-		
-        float f6;
-        float f7;
 
-        if (this.swingProgress > -9990.0F)
-        {
-            f6 = this.swingProgress;
-            f6 = 1.0F - this.swingProgress;
-            f6 *= f6;
-            f6 *= f6;
-            f6 = 1.0F - f6;
-            f7 = MathHelper.sin(f6 * (float)Math.PI);
-            float f8 = MathHelper.sin(this.swingProgress * (float)Math.PI) * -(this.head.rotateAngleX - 0.7F) * 0.75F;
+		float f6;
+		float f7;
 
-            this.rightarmlower.rotateAngleX = (float)((double)this.rightarmlower.rotateAngleX - ((double)f7 * 1.2D + (double)f8));
-            this.rightarm.rotateAngleX = this.rightarmlower.rotateAngleX + 0.5235988F;
-            this.rightarmfin.rotateAngleX = this.rightarmlower.rotateAngleX - 0.5235988F;
-            this.rightpauldron.rotateAngleX = this.rightarmlower.rotateAngleX + 0.3490659F;
-            this.rightarmlower.rotateAngleX = this.rightarmlower.rotateAngleX - 0.5235988F;
+		if (this.swingProgress > -9990.0F)
+		{
+			f6 = this.swingProgress;
+			f6 = 1.0F - this.swingProgress;
+			f6 *= f6;
+			f6 *= f6;
+			f6 = 1.0F - f6;
+			f7 = MathHelper.sin(f6 * (float)Math.PI);
+			float f8 = MathHelper.sin(this.swingProgress * (float)Math.PI) * -(this.head.rotateAngleX - 0.7F) * 0.75F;
 
-            this.rightarmlower.rotateAngleY = (this.bodyfront.rotateAngleY * 2.0F);
-            this.rightarm.rotateAngleY = this.rightarmlower.rotateAngleY - 0.2617994F;
-            this.rightarmfin.rotateAngleY = this.rightarmlower.rotateAngleY - 0.2617994F;
-            this.rightpauldron.rotateAngleY = this.rightarmlower.rotateAngleY;
-            this.rightarmlower.rotateAngleY = this.rightarmlower.rotateAngleY - 0.2617994F;
+			this.rightarmlower.rotateAngleX = (float)((double)this.rightarmlower.rotateAngleX - ((double)f7 * 1.2D + (double)f8));
+			this.rightarm.rotateAngleX = this.rightarmlower.rotateAngleX + 0.5235988F;
+			this.rightarmfin.rotateAngleX = this.rightarmlower.rotateAngleX - 0.5235988F;
+			this.rightpauldron.rotateAngleX = this.rightarmlower.rotateAngleX + 0.3490659F;
+			this.rightarmlower.rotateAngleX = this.rightarmlower.rotateAngleX - 0.5235988F;
 
-            this.rightarmlower.rotateAngleZ = (MathHelper.sin(this.swingProgress * (float)Math.PI) * -0.4F);
-            this.rightarm.rotateAngleZ = this.rightarmlower.rotateAngleZ + 0.2617994F;
-            this.rightarmfin.rotateAngleZ = this.rightarmlower.rotateAngleZ + 0.2617994F;
-            this.rightpauldron.rotateAngleZ = this.rightarmlower.rotateAngleZ - 0.0872665F;
-            this.rightarmlower.rotateAngleZ = this.rightarmlower.rotateAngleZ + 0.2617994F;
-        }
+			this.rightarmlower.rotateAngleY = (this.bodyfront.rotateAngleY * 2.0F);
+			this.rightarm.rotateAngleY = this.rightarmlower.rotateAngleY - 0.2617994F;
+			this.rightarmfin.rotateAngleY = this.rightarmlower.rotateAngleY - 0.2617994F;
+			this.rightpauldron.rotateAngleY = this.rightarmlower.rotateAngleY;
+			this.rightarmlower.rotateAngleY = this.rightarmlower.rotateAngleY - 0.2617994F;
+
+			this.rightarmlower.rotateAngleZ = (MathHelper.sin(this.swingProgress * (float)Math.PI) * -0.4F);
+			this.rightarm.rotateAngleZ = this.rightarmlower.rotateAngleZ + 0.2617994F;
+			this.rightarmfin.rotateAngleZ = this.rightarmlower.rotateAngleZ + 0.2617994F;
+			this.rightpauldron.rotateAngleZ = this.rightarmlower.rotateAngleZ - 0.0872665F;
+			this.rightarmlower.rotateAngleZ = this.rightarmlower.rotateAngleZ + 0.2617994F;
+		}
 	}
 }

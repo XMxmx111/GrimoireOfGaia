@@ -17,13 +17,13 @@ public class RenderGaiaWerecat extends RenderLiving {
 	private static final ResourceLocation texture01 = new ResourceLocation(GaiaReference.MOD_ID, "textures/models/Werecat01.png");
 	private static final ResourceLocation texture02 = new ResourceLocation(GaiaReference.MOD_ID, "textures/models/alternate/Werecat02.png");
 	static RenderManager rend = Minecraft.getMinecraft().getRenderManager();
-	
+
 	public RenderGaiaWerecat( float shadowSize) {
-        super(rend, new ModelGaiaWerecat(), shadowSize);
-        this.addLayer(new Glowing_layer(this, werecatEyesTexture));
-        
-        //Not sure why this is here - but okay
-        this.addLayer(new held_rightarm(this, ModelGaiaWerecat.righthand));        
+		super(rend, new ModelGaiaWerecat(), shadowSize);
+		this.addLayer(new Glowing_layer(this, werecatEyesTexture));
+
+		//Not sure why this is here - but okay
+		this.addLayer(new held_rightarm(this, ModelGaiaWerecat.righthand));
 		//this.setRenderPassModel(new ModelGaiaWerecat());
 	}
 	/*
@@ -60,7 +60,7 @@ public class RenderGaiaWerecat extends RenderLiving {
 		return this.shouldRenderPass((EntityGaiaWerecat)par1EntityLiving, par2, par3);
 	}
 	*/
-	
+
 	//Well thats weird
 	/*protected void renderEquippedItems(EntityLivingBase par1EntityLiving, float par2) {
 		float var3 = 1.0F;
@@ -174,7 +174,7 @@ public class RenderGaiaWerecat extends RenderLiving {
 	protected void func_82422_c() {
 		GL11.glTranslatef(0.0F, 0.1875F, 0.0F);
 	}
-	
+
 	@Override
 	protected ResourceLocation getEntityTexture(Entity entity) {
 		return this.getTexture((EntityGaiaWerecat) entity);
@@ -182,9 +182,9 @@ public class RenderGaiaWerecat extends RenderLiving {
 
 	protected ResourceLocation getTexture(EntityGaiaWerecat par1EntityGaiaWerecat) {
 		switch(par1EntityGaiaWerecat.getTextureType()) {
-		case 0: return texture01;
-		case 1: return texture02;
-		default: return texture01;
+			case 0: return texture01;
+			case 1: return texture02;
+			default: return texture01;
 		}
 	}
 }

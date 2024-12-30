@@ -35,26 +35,26 @@ public class ItemBagOre extends Item {
 
 	public ItemStack onItemRightClick(ItemStack itemstack, World world, EntityPlayer entityplayer) {
 		world.playSoundAtEntity(entityplayer, "grimoireofgaia:bag_open", 0.5F, world.rand.nextFloat() * 0.1F + 0.9F);
-		
+
 		Random random = new Random();
 		int i = random.nextInt(7);
 		switch(i) {
-		case 0:
-			return new ItemStack(Blocks.coal_ore);
-		case 1:
-			return new ItemStack(Blocks.iron_ore);
-		case 2:
-			return new ItemStack(Blocks.gold_ore);
-		case 3:
-			return new ItemStack(Blocks.diamond_ore);
-		case 4:
-			return new ItemStack(Blocks.emerald_ore);
-		case 5:
-			return new ItemStack(Blocks.redstone_ore);
-		case 6:
-			return new ItemStack(Blocks.lapis_ore);
-		default:
-			return itemstack;
+			case 0:
+				return new ItemStack(Blocks.coal_ore);
+			case 1:
+				return new ItemStack(Blocks.iron_ore);
+			case 2:
+				return new ItemStack(Blocks.gold_ore);
+			case 3:
+				return new ItemStack(Blocks.diamond_ore);
+			case 4:
+				return new ItemStack(Blocks.emerald_ore);
+			case 5:
+				return new ItemStack(Blocks.redstone_ore);
+			case 6:
+				return new ItemStack(Blocks.lapis_ore);
+			default:
+				return itemstack;
 		}
 	}
 }

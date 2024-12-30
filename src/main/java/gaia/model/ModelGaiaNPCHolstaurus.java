@@ -9,8 +9,8 @@ public class ModelGaiaNPCHolstaurus extends ModelBase {
 
 	ModelRenderer head;
 	ModelRenderer headaccessory;
-    ModelRenderer hair1;
-    ModelRenderer hair2;
+	ModelRenderer hair1;
+	ModelRenderer hair2;
 	ModelRenderer horn;
 	ModelRenderer righthorn;
 	ModelRenderer lefthorn;

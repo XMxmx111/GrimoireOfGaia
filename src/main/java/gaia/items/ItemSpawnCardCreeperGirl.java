@@ -42,7 +42,7 @@ public class ItemSpawnCardCreeperGirl extends Item {
 		world.playSoundAtEntity(entityplayer, "grimoireofgaia:book_hit", 0.5F, 0.4F / (itemRand.nextFloat() * 0.4F + 0.8F));
 		if(!world.isRemote) {
 			EntityGaiaNPCCreeperGirl entityspawning = new EntityGaiaNPCCreeperGirl(world);
-			entityspawning.setLocationAndAngles(entityplayer.posX + 0.5, entityplayer.posY, entityplayer.posZ + 0.5, 0,0); 
+			entityspawning.setLocationAndAngles(entityplayer.posX + 0.5, entityplayer.posY, entityplayer.posZ + 0.5, 0,0);
 			world.spawnEntityInWorld(entityspawning);
 		}
 

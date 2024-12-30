@@ -27,10 +27,10 @@ import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.World;
 
 public class EntityGaiaSuccubus extends EntityMobBase {
-	private static final Item[] succubusDrops = new Item[] { 
-		Item.getItemFromBlock(Blocks.red_mushroom), 
-		Item.getItemFromBlock(Blocks.brown_mushroom) };
-	
+	private static final Item[] succubusDrops = new Item[] {
+			Item.getItemFromBlock(Blocks.red_mushroom),
+			Item.getItemFromBlock(Blocks.brown_mushroom) };
+
 	public EntityGaiaSuccubus(World par1World) {
 		super(par1World);
 		this.experienceValue = EntityAttributes.experienceValue1;
@@ -61,13 +61,13 @@ public class EntityGaiaSuccubus extends EntityMobBase {
 		if(super.attackEntityAsMob(par1Entity)) {
 			if(par1Entity instanceof EntityLivingBase) {
 				((EntityLivingBase)par1Entity).setFire(8);
-                byte byte0 = 0;
+				byte byte0 = 0;
 
-                if (this.worldObj.getDifficulty() == EnumDifficulty.NORMAL){
-                	byte0 = 7;
-                } else if (this.worldObj.getDifficulty() == EnumDifficulty.HARD) {
-                	byte0 = 15;
-                }
+				if (this.worldObj.getDifficulty() == EnumDifficulty.NORMAL){
+					byte0 = 7;
+				} else if (this.worldObj.getDifficulty() == EnumDifficulty.HARD) {
+					byte0 = 15;
+				}
 
 				if(byte0 > 0) {
 					((EntityLivingBase)par1Entity).addPotionEffect(new PotionEffect(Potion.confusion.id, byte0 * 60, 0));
@@ -123,7 +123,7 @@ public class EntityGaiaSuccubus extends EntityMobBase {
 		}
 
 		if(par1 && (this.rand.nextInt(2) == 0 || this.rand.nextInt(1 + par2) > 0)) {
-            this.entityDropItem(new ItemStack(GaiaItem.Shard, 1, 0), 0.0F);
+			this.entityDropItem(new ItemStack(GaiaItem.Shard, 1, 0), 0.0F);
 		}
 
 		if(par1 && (this.rand.nextInt(8) == 0 || this.rand.nextInt(1 + par2) > 0)) {
@@ -133,11 +133,11 @@ public class EntityGaiaSuccubus extends EntityMobBase {
 
 	protected void dropRareDrop(int par1) {
 		switch(this.rand.nextInt(2)) {
-		case 0:
-			this.dropItem(GaiaItem.BoxIron,1);
-			break;
-		case 1:
-			this.experienceValue = EntityAttributes.experienceValue1 * 5;
+			case 0:
+				this.dropItem(GaiaItem.BoxIron,1);
+				break;
+			case 1:
+				this.experienceValue = EntityAttributes.experienceValue1 * 5;
 		}
 	}
 	/*
@@ -151,15 +151,15 @@ public class EntityGaiaSuccubus extends EntityMobBase {
 		return par1IEntityLivingData;
 	}
 	*/
-	
+
 	public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, IEntityLivingData livingdata)
-    {
+	{
 		livingdata = super.onInitialSpawn(difficulty, livingdata);
-		this.setCurrentItemOrArmor(0, new ItemStack(GaiaItem.PropWeaponInvisible));	
+		this.setCurrentItemOrArmor(0, new ItemStack(GaiaItem.PropWeaponInvisible));
 		this.setEnchantmentBasedOnDifficulty(difficulty);
-		return livingdata;		
-		
-    }
+		return livingdata;
+
+	}
 
 	protected void fall(float f) {}
 

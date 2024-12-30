@@ -21,24 +21,24 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 /** Original Vanilla code can be found at held_layer.class **/
 public class held_rightarm implements LayerRenderer<EntityLivingBase>
 {
-    
+
     /** The Model Object to append Item on **/
     ModelRenderer rightarm;
     /** The Entity's Renderer **/
     private final RendererLivingEntity<?> livingEntityRenderer;
-    
+
     /**
      * [ Render Item being held in entity's right arm ]
      * PARAMETERS - Entity's Renderer, Entity Model Object (boxes, limbs head)
      *
-     **/    
-    
+     **/
+
     public held_rightarm(RendererLivingEntity<?> livingEntityRendererIn, ModelRenderer limb)
     {
         this.livingEntityRenderer = livingEntityRendererIn;
         this.rightarm = limb;
     }
-        
+
 
     /** The Actual rendering code**/
     public void doRenderLayer(EntityLivingBase entity, float p_177141_2_, float p_177141_3_, float partialTicks, float p_177141_5_, float p_177141_6_, float p_177141_7_, float scale)
@@ -48,7 +48,7 @@ public class held_rightarm implements LayerRenderer<EntityLivingBase>
         if (itemstack != null)
         {
             GlStateManager.pushMatrix();
-            
+
 
             if (this.livingEntityRenderer.getMainModel().isChild)
             {
@@ -57,12 +57,12 @@ public class held_rightarm implements LayerRenderer<EntityLivingBase>
                 GlStateManager.rotate(-20.0F, -1.0F, 0.0F, 0.0F);
                 GlStateManager.scale(f, f, f);
             }
-            
+
             //Original Line
             //((base_held)this.livingEntityRenderer.getMainModel()).postRenderArm(0.0625F);    
-            rightarm.postRender(0.0625F);            
+            rightarm.postRender(0.0625F);
             GlStateManager.translate(-0.0625F, 0.4375F, 0.0625F);
-            
+
 
             if (entity instanceof EntityPlayer && ((EntityPlayer)entity).fishEntity != null)
             {
@@ -80,23 +80,23 @@ public class held_rightarm implements LayerRenderer<EntityLivingBase>
                 float f1 = 0.375F;
                 GlStateManager.scale(-f1, -f1, f1);
             }
-            
+
             //We can add more checks to tweak and fix item locations like so
             //Or add more rendering effects if we fancy it
             if(item == Items.bow) {
-            	GlStateManager.translate(0.0F, 0F, -0.05F);
+                GlStateManager.translate(0.0F, 0F, -0.05F);
             }
-            	
+
             if (entity.isSneaking())
             {
                 GlStateManager.translate(0.0F, 0.203125F, 0.0F);
-            }            
-            
+            }
+
             minecraft.getItemRenderer().renderItem(entity, itemstack, ItemCameraTransforms.TransformType.THIRD_PERSON);
             GlStateManager.popMatrix();
         }
     }
-        
+
     /** Required field for layers **/
     public boolean shouldCombineTextures()
     {

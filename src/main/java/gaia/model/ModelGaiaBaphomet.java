@@ -9,34 +9,34 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class ModelGaiaBaphomet extends ModelBase {
-    ModelRenderer head;
-    ModelRenderer headaccessory;
-    ModelRenderer righthorn;
-    ModelRenderer leftthorn;
-    ModelRenderer righthair;
-    ModelRenderer lefthair;
-    ModelRenderer righthairclip;
-    ModelRenderer lefthairclip;
-    ModelRenderer rightear;
-    ModelRenderer leftear;
-    ModelRenderer mantle;
-    ModelRenderer mantlefront;
-    ModelRenderer bodytop;
-    ModelRenderer bodymiddle;
-    ModelRenderer bodymiddlebutton;
-    ModelRenderer bodybottom;
-    ModelRenderer cloak1;
-    ModelRenderer cloak2;
-    ModelRenderer cloak3;
-    ModelRenderer rightarm;
-    ModelRenderer leftarm;
+	ModelRenderer head;
+	ModelRenderer headaccessory;
+	ModelRenderer righthorn;
+	ModelRenderer leftthorn;
+	ModelRenderer righthair;
+	ModelRenderer lefthair;
+	ModelRenderer righthairclip;
+	ModelRenderer lefthairclip;
+	ModelRenderer rightear;
+	ModelRenderer leftear;
+	ModelRenderer mantle;
+	ModelRenderer mantlefront;
+	ModelRenderer bodytop;
+	ModelRenderer bodymiddle;
+	ModelRenderer bodymiddlebutton;
+	ModelRenderer bodybottom;
+	ModelRenderer cloak1;
+	ModelRenderer cloak2;
+	ModelRenderer cloak3;
+	ModelRenderer rightarm;
+	ModelRenderer leftarm;
 	public static ModelRenderer righthand;
-    ModelRenderer lefthand;
-    ModelRenderer waist;
-    ModelRenderer rightleg;
-    ModelRenderer leftleg;
-    ModelRenderer rightfoot;
-    ModelRenderer leftfoot;
+	ModelRenderer lefthand;
+	ModelRenderer waist;
+	ModelRenderer rightleg;
+	ModelRenderer leftleg;
+	ModelRenderer rightfoot;
+	ModelRenderer leftfoot;
 
 	public ModelGaiaBaphomet() {
 		this.textureWidth = 128;
@@ -277,26 +277,26 @@ public class ModelGaiaBaphomet extends ModelBase {
 		this.leftleg.rotateAngleX = MathHelper.cos(par1 * 0.6662F + (float)Math.PI) * 0.5F * par2;
 		this.rightfoot.rotateAngleX = this.rightleg.rotateAngleX;
 		this.leftfoot.rotateAngleX = this.leftleg.rotateAngleX;
-		
-        float f6;
-        float f7;
 
-        if (this.swingProgress > -9990.0F)
-        {
-            f6 = this.swingProgress;
-            f6 = 1.0F - this.swingProgress;
-            f6 *= f6;
-            f6 *= f6;
-            f6 = 1.0F - f6;
-            f7 = MathHelper.sin(f6 * (float)Math.PI);
-            float f8 = MathHelper.sin(this.swingProgress * (float)Math.PI) * -(this.head.rotateAngleX - 0.7F) * 0.75F;
-            
-            this.righthand.rotateAngleX = (float)((double)this.righthand.rotateAngleX - ((double)f7 * 1.2D + (double)f8));
-            this.rightarm.rotateAngleX = this.righthand.rotateAngleX;
-            this.righthand.rotateAngleY += (this.bodytop.rotateAngleY * 2.0F);
-            this.rightarm.rotateAngleY = this.righthand.rotateAngleY;
-            this.righthand.rotateAngleZ = (MathHelper.sin(this.swingProgress * (float)Math.PI) * -0.4F) + 0.0872665F;
-            this.rightarm.rotateAngleZ = this.righthand.rotateAngleZ;
-        }
+		float f6;
+		float f7;
+
+		if (this.swingProgress > -9990.0F)
+		{
+			f6 = this.swingProgress;
+			f6 = 1.0F - this.swingProgress;
+			f6 *= f6;
+			f6 *= f6;
+			f6 = 1.0F - f6;
+			f7 = MathHelper.sin(f6 * (float)Math.PI);
+			float f8 = MathHelper.sin(this.swingProgress * (float)Math.PI) * -(this.head.rotateAngleX - 0.7F) * 0.75F;
+
+			this.righthand.rotateAngleX = (float)((double)this.righthand.rotateAngleX - ((double)f7 * 1.2D + (double)f8));
+			this.rightarm.rotateAngleX = this.righthand.rotateAngleX;
+			this.righthand.rotateAngleY += (this.bodytop.rotateAngleY * 2.0F);
+			this.rightarm.rotateAngleY = this.righthand.rotateAngleY;
+			this.righthand.rotateAngleZ = (MathHelper.sin(this.swingProgress * (float)Math.PI) * -0.4F) + 0.0872665F;
+			this.rightarm.rotateAngleZ = this.righthand.rotateAngleZ;
+		}
 	}
 }

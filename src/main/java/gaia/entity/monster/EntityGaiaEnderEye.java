@@ -78,7 +78,7 @@ public class EntityGaiaEnderEye extends EntityMobBase
             }
         }));
     }
-    
+
     public float getEyeHeight()
     {
         return 2.05F;
@@ -93,10 +93,10 @@ public class EntityGaiaEnderEye extends EntityMobBase
         this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue((double)EntityAttributes.attackDamage1);
         //this.getEntityAttribute(SharedMonsterAttributes.followRange).setBaseValue(64.0D);
     }
-    
+
     public int getTotalArmorValue() {
-		return EntityAttributes.rateArmor1;
-	}
+        return EntityAttributes.rateArmor1;
+    }
 
     protected void entityInit()
     {
@@ -159,7 +159,7 @@ public class EntityGaiaEnderEye extends EntityMobBase
         }
     }
 
-    
+
 
     /**
      * Called frequently so the entity can update its state every tick as required. For example, zombies and skeletons
@@ -329,11 +329,11 @@ public class EntityGaiaEnderEye extends EntityMobBase
     {
         return "mob.endermen.death";
     }
-    
+
     protected void playStepSound(int par1, int par2, int par3, int par4) {
-    	//TODO double check no sound working
-		//this.worldObj.playSoundAtEntity(this, "none", 1.0F, 1.0F);
-	}
+        //TODO double check no sound working
+        //this.worldObj.playSoundAtEntity(this, "none", 1.0F, 1.0F);
+    }
 
     protected Item getDropItem()
     {
@@ -341,40 +341,40 @@ public class EntityGaiaEnderEye extends EntityMobBase
     }
 
 
-	protected void dropFewItems(boolean par1, int par2) {
-		int var3 = this.rand.nextInt(3 + par2);
+    protected void dropFewItems(boolean par1, int par2) {
+        int var3 = this.rand.nextInt(3 + par2);
 
-		for(int var4 = 0; var4 < var3; ++var4) {
-			this.dropItem(Items.ender_pearl,1);
-		}
-		
-		var3 = this.rand.nextInt(3 + par2);
+        for(int var4 = 0; var4 < var3; ++var4) {
+            this.dropItem(Items.ender_pearl,1);
+        }
 
-		for(int var4 = 0; var4 < var3; ++var4) {
-			this.dropItem(GaiaItem.Shard,1);
-		}
-		
-		if(par1 && (this.rand.nextInt(2) == 0 || this.rand.nextInt(1 + par2) > 0)) {
+        var3 = this.rand.nextInt(3 + par2);
+
+        for(int var4 = 0; var4 < var3; ++var4) {
+            this.dropItem(GaiaItem.Shard,1);
+        }
+
+        if(par1 && (this.rand.nextInt(2) == 0 || this.rand.nextInt(1 + par2) > 0)) {
             this.entityDropItem(new ItemStack(GaiaItem.Shard, 1, 0), 0.0F);
-		}
-	}
+        }
+    }
 
-	protected void dropRareDrop(int par1) {
-		switch(this.rand.nextInt(3)) {
-		case 0:
-			this.dropItem(GaiaItem.BagOre,1);
-			break;
-		case 1:
-			this.dropItem(Item.getItemFromBlock(GaiaBlock.DollEnderGirl), 1);
-			break;
-		case 2:
-			this.experienceValue = EntityAttributes.experienceValue1 * 5;
-		}
-	}
+    protected void dropRareDrop(int par1) {
+        switch(this.rand.nextInt(3)) {
+            case 0:
+                this.dropItem(GaiaItem.BagOre,1);
+                break;
+            case 1:
+                this.dropItem(Item.getItemFromBlock(GaiaBlock.DollEnderGirl), 1);
+                break;
+            case 2:
+                this.experienceValue = EntityAttributes.experienceValue1 * 5;
+        }
+    }
 
-	protected void fall(float f) {}
+    protected void fall(float f) {}
 
-	public void setInWeb() {}
+    public void setInWeb() {}
 
     /**
      * Sets this enderman's held block state
@@ -490,206 +490,206 @@ public class EntityGaiaEnderEye extends EntityMobBase
     }
 
     static class AIFindPlayer extends EntityAINearestAttackableTarget
+    {
+        /** The player */
+        private EntityPlayer player;
+        private int field_179450_h;
+        private int field_179451_i;
+        private EntityGaiaEnderEye enderman;
+
+        public AIFindPlayer(EntityGaiaEnderEye p_i45842_1_)
         {
-            /** The player */
-            private EntityPlayer player;
-            private int field_179450_h;
-            private int field_179451_i;
-            private EntityGaiaEnderEye enderman;
+            super(p_i45842_1_, EntityPlayer.class, true);
+            this.enderman = p_i45842_1_;
+        }
 
-            public AIFindPlayer(EntityGaiaEnderEye p_i45842_1_)
+        /**
+         * Returns whether the EntityAIBase should begin execution.
+         */
+        public boolean shouldExecute()
+        {
+            double d0 = this.getTargetDistance();
+            List<EntityPlayer> list = this.taskOwner.worldObj.<EntityPlayer>getEntitiesWithinAABB(EntityPlayer.class, this.taskOwner.getEntityBoundingBox().expand(d0, 4.0D, d0), this.targetEntitySelector);
+            Collections.sort(list, this.theNearestAttackableTargetSorter);
+
+            if (list.isEmpty())
             {
-                super(p_i45842_1_, EntityPlayer.class, true);
-                this.enderman = p_i45842_1_;
+                return false;
             }
-
-            /**
-             * Returns whether the EntityAIBase should begin execution.
-             */
-            public boolean shouldExecute()
+            else
             {
-                double d0 = this.getTargetDistance();
-                List<EntityPlayer> list = this.taskOwner.worldObj.<EntityPlayer>getEntitiesWithinAABB(EntityPlayer.class, this.taskOwner.getEntityBoundingBox().expand(d0, 4.0D, d0), this.targetEntitySelector);
-                Collections.sort(list, this.theNearestAttackableTargetSorter);
+                this.player = (EntityPlayer)list.get(0);
+                return true;
+            }
+        }
 
-                if (list.isEmpty())
+        /**
+         * Execute a one shot task or start executing a continuous task
+         */
+        public void startExecuting()
+        {
+            this.field_179450_h = 5;
+            this.field_179451_i = 0;
+        }
+
+        /**
+         * Resets the task
+         */
+        public void resetTask()
+        {
+            this.player = null;
+            this.enderman.setScreaming(false);
+            IAttributeInstance iattributeinstance = this.enderman.getEntityAttribute(SharedMonsterAttributes.movementSpeed);
+            iattributeinstance.removeModifier(EntityGaiaEnderEye.attackingSpeedBoostModifier);
+            super.resetTask();
+        }
+
+        /**
+         * Returns whether an in-progress EntityAIBase should continue executing
+         */
+        public boolean continueExecuting()
+        {
+            if (this.player != null)
+            {
+                if (!this.enderman.shouldAttackPlayer(this.player))
                 {
                     return false;
                 }
                 else
                 {
-                    this.player = (EntityPlayer)list.get(0);
+                    this.enderman.isAggressive = true;
+                    this.enderman.faceEntity(this.player, 10.0F, 10.0F);
                     return true;
                 }
             }
-
-            /**
-             * Execute a one shot task or start executing a continuous task
-             */
-            public void startExecuting()
+            else
             {
-                this.field_179450_h = 5;
-                this.field_179451_i = 0;
-            }
-
-            /**
-             * Resets the task
-             */
-            public void resetTask()
-            {
-                this.player = null;
-                this.enderman.setScreaming(false);
-                IAttributeInstance iattributeinstance = this.enderman.getEntityAttribute(SharedMonsterAttributes.movementSpeed);
-                iattributeinstance.removeModifier(EntityGaiaEnderEye.attackingSpeedBoostModifier);
-                super.resetTask();
-            }
-
-            /**
-             * Returns whether an in-progress EntityAIBase should continue executing
-             */
-            public boolean continueExecuting()
-            {
-                if (this.player != null)
-                {
-                    if (!this.enderman.shouldAttackPlayer(this.player))
-                    {
-                        return false;
-                    }
-                    else
-                    {
-                        this.enderman.isAggressive = true;
-                        this.enderman.faceEntity(this.player, 10.0F, 10.0F);
-                        return true;
-                    }
-                }
-                else
-                {
-                    return super.continueExecuting();
-                }
-            }
-
-            /**
-             * Updates the task
-             */
-            public void updateTask()
-            {
-                if (this.player != null)
-                {
-                    if (--this.field_179450_h <= 0)
-                    {
-                        this.targetEntity = this.player;
-                        this.player = null;
-                        super.startExecuting();
-                        this.enderman.playSound("mob.endermen.stare", 1.0F, 1.0F);
-                        this.enderman.setScreaming(true);
-                        IAttributeInstance iattributeinstance = this.enderman.getEntityAttribute(SharedMonsterAttributes.movementSpeed);
-                        iattributeinstance.applyModifier(EntityGaiaEnderEye.attackingSpeedBoostModifier);
-                    }
-                }
-                else
-                {
-                    if (this.targetEntity != null)
-                    {
-                        if (this.targetEntity instanceof EntityPlayer && this.enderman.shouldAttackPlayer((EntityPlayer)this.targetEntity))
-                        {
-                            if (this.targetEntity.getDistanceSqToEntity(this.enderman) < 16.0D)
-                            {
-                                this.enderman.teleportRandomly();
-                            }
-
-                            this.field_179451_i = 0;
-                        }
-                        else if (this.targetEntity.getDistanceSqToEntity(this.enderman) > 256.0D && this.field_179451_i++ >= 30 && this.enderman.teleportToEntity(this.targetEntity))
-                        {
-                            this.field_179451_i = 0;
-                        }
-                    }
-
-                    super.updateTask();
-                }
+                return super.continueExecuting();
             }
         }
+
+        /**
+         * Updates the task
+         */
+        public void updateTask()
+        {
+            if (this.player != null)
+            {
+                if (--this.field_179450_h <= 0)
+                {
+                    this.targetEntity = this.player;
+                    this.player = null;
+                    super.startExecuting();
+                    this.enderman.playSound("mob.endermen.stare", 1.0F, 1.0F);
+                    this.enderman.setScreaming(true);
+                    IAttributeInstance iattributeinstance = this.enderman.getEntityAttribute(SharedMonsterAttributes.movementSpeed);
+                    iattributeinstance.applyModifier(EntityGaiaEnderEye.attackingSpeedBoostModifier);
+                }
+            }
+            else
+            {
+                if (this.targetEntity != null)
+                {
+                    if (this.targetEntity instanceof EntityPlayer && this.enderman.shouldAttackPlayer((EntityPlayer)this.targetEntity))
+                    {
+                        if (this.targetEntity.getDistanceSqToEntity(this.enderman) < 16.0D)
+                        {
+                            this.enderman.teleportRandomly();
+                        }
+
+                        this.field_179451_i = 0;
+                    }
+                    else if (this.targetEntity.getDistanceSqToEntity(this.enderman) > 256.0D && this.field_179451_i++ >= 30 && this.enderman.teleportToEntity(this.targetEntity))
+                    {
+                        this.field_179451_i = 0;
+                    }
+                }
+
+                super.updateTask();
+            }
+        }
+    }
 
     static class AIPlaceBlock extends EntityAIBase
+    {
+        private EntityGaiaEnderEye enderman;
+
+        public AIPlaceBlock(EntityGaiaEnderEye p_i45843_1_)
         {
-            private EntityGaiaEnderEye enderman;
+            this.enderman = p_i45843_1_;
+        }
 
-            public AIPlaceBlock(EntityGaiaEnderEye p_i45843_1_)
+        /**
+         * Returns whether the EntityAIBase should begin execution.
+         */
+        public boolean shouldExecute()
+        {
+            return !this.enderman.worldObj.getGameRules().getBoolean("mobGriefing") ? false : (this.enderman.getHeldBlockState().getBlock().getMaterial() == Material.air ? false : this.enderman.getRNG().nextInt(2000) == 0);
+        }
+
+        /**
+         * Updates the task
+         */
+        public void updateTask()
+        {
+            Random random = this.enderman.getRNG();
+            World world = this.enderman.worldObj;
+            int i = MathHelper.floor_double(this.enderman.posX - 1.0D + random.nextDouble() * 2.0D);
+            int j = MathHelper.floor_double(this.enderman.posY + random.nextDouble() * 2.0D);
+            int k = MathHelper.floor_double(this.enderman.posZ - 1.0D + random.nextDouble() * 2.0D);
+            BlockPos blockpos = new BlockPos(i, j, k);
+            Block block = world.getBlockState(blockpos).getBlock();
+            Block block1 = world.getBlockState(blockpos.down()).getBlock();
+
+            if (this.func_179474_a(world, blockpos, this.enderman.getHeldBlockState().getBlock(), block, block1))
             {
-                this.enderman = p_i45843_1_;
-            }
-
-            /**
-             * Returns whether the EntityAIBase should begin execution.
-             */
-            public boolean shouldExecute()
-            {
-                return !this.enderman.worldObj.getGameRules().getBoolean("mobGriefing") ? false : (this.enderman.getHeldBlockState().getBlock().getMaterial() == Material.air ? false : this.enderman.getRNG().nextInt(2000) == 0);
-            }
-
-            /**
-             * Updates the task
-             */
-            public void updateTask()
-            {
-                Random random = this.enderman.getRNG();
-                World world = this.enderman.worldObj;
-                int i = MathHelper.floor_double(this.enderman.posX - 1.0D + random.nextDouble() * 2.0D);
-                int j = MathHelper.floor_double(this.enderman.posY + random.nextDouble() * 2.0D);
-                int k = MathHelper.floor_double(this.enderman.posZ - 1.0D + random.nextDouble() * 2.0D);
-                BlockPos blockpos = new BlockPos(i, j, k);
-                Block block = world.getBlockState(blockpos).getBlock();
-                Block block1 = world.getBlockState(blockpos.down()).getBlock();
-
-                if (this.func_179474_a(world, blockpos, this.enderman.getHeldBlockState().getBlock(), block, block1))
-                {
-                    world.setBlockState(blockpos, this.enderman.getHeldBlockState(), 3);
-                    this.enderman.setHeldBlockState(Blocks.air.getDefaultState());
-                }
-            }
-
-            private boolean func_179474_a(World worldIn, BlockPos p_179474_2_, Block p_179474_3_, Block p_179474_4_, Block p_179474_5_)
-            {
-                return !p_179474_3_.canPlaceBlockAt(worldIn, p_179474_2_) ? false : (p_179474_4_.getMaterial() != Material.air ? false : (p_179474_5_.getMaterial() == Material.air ? false : p_179474_5_.isFullCube()));
+                world.setBlockState(blockpos, this.enderman.getHeldBlockState(), 3);
+                this.enderman.setHeldBlockState(Blocks.air.getDefaultState());
             }
         }
+
+        private boolean func_179474_a(World worldIn, BlockPos p_179474_2_, Block p_179474_3_, Block p_179474_4_, Block p_179474_5_)
+        {
+            return !p_179474_3_.canPlaceBlockAt(worldIn, p_179474_2_) ? false : (p_179474_4_.getMaterial() != Material.air ? false : (p_179474_5_.getMaterial() == Material.air ? false : p_179474_5_.isFullCube()));
+        }
+    }
 
     static class AITakeBlock extends EntityAIBase
+    {
+        private EntityGaiaEnderEye enderman;
+
+        public AITakeBlock(EntityGaiaEnderEye p_i45841_1_)
         {
-            private EntityGaiaEnderEye enderman;
+            this.enderman = p_i45841_1_;
+        }
 
-            public AITakeBlock(EntityGaiaEnderEye p_i45841_1_)
+        /**
+         * Returns whether the EntityAIBase should begin execution.
+         */
+        public boolean shouldExecute()
+        {
+            return !this.enderman.worldObj.getGameRules().getBoolean("mobGriefing") ? false : (this.enderman.getHeldBlockState().getBlock().getMaterial() != Material.air ? false : this.enderman.getRNG().nextInt(20) == 0);
+        }
+
+        /**
+         * Updates the task
+         */
+        public void updateTask()
+        {
+            Random random = this.enderman.getRNG();
+            World world = this.enderman.worldObj;
+            int i = MathHelper.floor_double(this.enderman.posX - 2.0D + random.nextDouble() * 4.0D);
+            int j = MathHelper.floor_double(this.enderman.posY + random.nextDouble() * 3.0D);
+            int k = MathHelper.floor_double(this.enderman.posZ - 2.0D + random.nextDouble() * 4.0D);
+            BlockPos blockpos = new BlockPos(i, j, k);
+            IBlockState iblockstate = world.getBlockState(blockpos);
+            Block block = iblockstate.getBlock();
+
+            if (EntityGaiaEnderEye.carriableBlocks.contains(block))
             {
-                this.enderman = p_i45841_1_;
-            }
-
-            /**
-             * Returns whether the EntityAIBase should begin execution.
-             */
-            public boolean shouldExecute()
-            {
-                return !this.enderman.worldObj.getGameRules().getBoolean("mobGriefing") ? false : (this.enderman.getHeldBlockState().getBlock().getMaterial() != Material.air ? false : this.enderman.getRNG().nextInt(20) == 0);
-            }
-
-            /**
-             * Updates the task
-             */
-            public void updateTask()
-            {
-                Random random = this.enderman.getRNG();
-                World world = this.enderman.worldObj;
-                int i = MathHelper.floor_double(this.enderman.posX - 2.0D + random.nextDouble() * 4.0D);
-                int j = MathHelper.floor_double(this.enderman.posY + random.nextDouble() * 3.0D);
-                int k = MathHelper.floor_double(this.enderman.posZ - 2.0D + random.nextDouble() * 4.0D);
-                BlockPos blockpos = new BlockPos(i, j, k);
-                IBlockState iblockstate = world.getBlockState(blockpos);
-                Block block = iblockstate.getBlock();
-
-                if (EntityGaiaEnderEye.carriableBlocks.contains(block))
-                {
-                    this.enderman.setHeldBlockState(iblockstate);
-                    world.setBlockState(blockpos, Blocks.air.getDefaultState());
-                }
+                this.enderman.setHeldBlockState(iblockstate);
+                world.setBlockState(blockpos, Blocks.air.getDefaultState());
             }
         }
+    }
 }

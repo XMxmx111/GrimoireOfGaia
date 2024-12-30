@@ -65,13 +65,13 @@ public class EntityGaiaValkyrie extends EntityMobDay {
 	public boolean attackEntityAsMob(Entity par1Entity) {
 		if(super.attackEntityAsMob(par1Entity)) {
 			if(par1Entity instanceof EntityLivingBase) {
-                byte byte0 = 0;
+				byte byte0 = 0;
 
-                if (this.worldObj.getDifficulty() == EnumDifficulty.NORMAL){
-                	byte0 = 7;
-                } else if (this.worldObj.getDifficulty() == EnumDifficulty.HARD) {
-                	byte0 = 15;
-                }
+				if (this.worldObj.getDifficulty() == EnumDifficulty.NORMAL){
+					byte0 = 7;
+				} else if (this.worldObj.getDifficulty() == EnumDifficulty.HARD) {
+					byte0 = 15;
+				}
 
 				if(byte0 > 0) {
 					((EntityLivingBase)par1Entity).addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, byte0 * 60, 0));
@@ -103,7 +103,7 @@ public class EntityGaiaValkyrie extends EntityMobDay {
 			BlockPos pos = new BlockPos(var1, var2, var3);
 			int crackid = BlockStateHelper.getblock_ID(world, pos);
 			int crackmeta = BlockStateHelper.getMetafromState(world, pos);
-			
+
 			Block var4 = BlockStateHelper.getBlockfromState(this.worldObj, pos);
 			if(var4 != Blocks.air) {
 				//this.worldObj.spawnParticle("blockcrack_" + Block.getIdFromBlock(var4) + "_" + this.worldObj.getBlockMetadata(var1, var2, var3), this.posX + ((double)this.rand.nextFloat() - 0.5D) * (double)this.width, this.boundingBox.minY + 0.1D, this.posZ + ((double)this.rand.nextFloat() - 0.5D) * (double)this.width, 4.0D * ((double)this.rand.nextFloat() - 0.5D), 0.5D, ((double)this.rand.nextFloat() - 0.5D) * 4.0D);
@@ -151,34 +151,34 @@ public class EntityGaiaValkyrie extends EntityMobDay {
 
 	protected void dropFewItems(boolean par1, int par2) {
 		if(par1 && (this.rand.nextInt(2) == 0 || this.rand.nextInt(1 + par2) > 0)) {
-            this.entityDropItem(new ItemStack(GaiaItem.Shard, 1, 2), 0.0F);
+			this.entityDropItem(new ItemStack(GaiaItem.Shard, 1, 2), 0.0F);
 		}
 
 		if(par1 && (this.rand.nextInt(4) == 0 || this.rand.nextInt(1 + par2) > 0)) {
 			this.dropItem(GaiaItem.FoodSmallAppleGold,1);
 		}
-		
+
 		if(par1 && (this.rand.nextInt(2) == 0 || this.rand.nextInt(1 + par2) > 0)) {
-            this.entityDropItem(new ItemStack(GaiaItem.Shard, 1, 3), 0.0F);
+			this.entityDropItem(new ItemStack(GaiaItem.Shard, 1, 3), 0.0F);
 		}
 	}
 
 	protected void dropRareDrop(int par1) {
 		switch(this.rand.nextInt(3)) {
-		case 0:
-			this.dropItem(GaiaItem.BoxDiamond,1);
-			break;
-		case 1:
-			this.dropItem(Item.getItemFromBlock(GaiaBlock.BustValkyrie), 1);
-			break;
-		case 2:
-            this.entityDropItem(new ItemStack(GaiaItem.MiscRing, 1, 0), 0.0F);
+			case 0:
+				this.dropItem(GaiaItem.BoxDiamond,1);
+				break;
+			case 1:
+				this.dropItem(Item.getItemFromBlock(GaiaBlock.BustValkyrie), 1);
+				break;
+			case 2:
+				this.entityDropItem(new ItemStack(GaiaItem.MiscRing, 1, 0), 0.0F);
 		}
 	}
-	
+
 	@Override
-    protected void dropEquipment(boolean p_82160_1_, int p_82160_2_) {
-    }
+	protected void dropEquipment(boolean p_82160_1_, int p_82160_2_) {
+	}
 	/*
 	public IEntityLivingData onSpawnWithEgg(IEntityLivingData par1IEntityLivingData) {
 		par1IEntityLivingData = super.onSpawnWithEgg(par1IEntityLivingData);
@@ -187,13 +187,13 @@ public class EntityGaiaValkyrie extends EntityMobDay {
 	}
 	*/
 	public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, IEntityLivingData livingdata)
-    {
+	{
 		livingdata = super.onInitialSpawn(difficulty, livingdata);
-		this.setCurrentItemOrArmor(0, new ItemStack(GaiaItem.PropWeapon, 1, 2));	
+		this.setCurrentItemOrArmor(0, new ItemStack(GaiaItem.PropWeapon, 1, 2));
 		this.setEnchantmentBasedOnDifficulty(difficulty);
-		return livingdata;		
-		
-    }
+		return livingdata;
+
+	}
 
 	protected void fall(float f) {
 	}

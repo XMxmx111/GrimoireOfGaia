@@ -17,7 +17,7 @@ public class ItemMiscCurrency extends Item {
 
 	public ItemMiscCurrency(String texture) {
 		this.texture = texture;
-        this.setHasSubtypes(true);
+		this.setHasSubtypes(true);
 		this.setUnlocalizedName("GrimoireOfGaia.MiscCurrency");
 		this.setCreativeTab(Gaia.tabGaia);
 	}
@@ -26,13 +26,13 @@ public class ItemMiscCurrency extends Item {
 	public EnumRarity getRarity(ItemStack par1ItemStack) {
 		return EnumRarity.UNCOMMON;
 	}
-	
+
 	public void addInformation(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List par3List, boolean par4) {
 		if (par1ItemStack.getItemDamage() == 1) {
 			par3List.add(StatCollector.translateToLocal("item.GrimoireOfGaia.MiscCurrency.desc"));
 		}
 	}
-	
+
 	@Override
 	public void getSubItems(Item item, CreativeTabs tab, List list) {
 		for (int i = 0; i < 3; i ++) {

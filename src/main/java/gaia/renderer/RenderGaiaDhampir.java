@@ -13,16 +13,16 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.ResourceLocation;
 
 public class RenderGaiaDhampir extends RenderLiving<EntityGaiaDhampir> {
-	
+
 	private static final ResourceLocation dhampirEyesTexture = new ResourceLocation(GaiaReference.MOD_ID, "textures/models/eyes/Eyes_Dhampir.png");
 	private static final ResourceLocation texture = new ResourceLocation(GaiaReference.MOD_ID, "textures/models/Dhampir.png");
 	static RenderManager rend = Minecraft.getMinecraft().getRenderManager();
-	
+
 	public RenderGaiaDhampir(float shadowSize) {
-        super(rend, new ModelGaiaDhampir(), shadowSize);
-        this.addLayer(new held_rightarm(this, ModelGaiaDhampir.rightarm));
-        this.addLayer(new Glowing_layer(this, dhampirEyesTexture));
-    }
+		super(rend, new ModelGaiaDhampir(), shadowSize);
+		this.addLayer(new held_rightarm(this, ModelGaiaDhampir.rightarm));
+		this.addLayer(new Glowing_layer(this, dhampirEyesTexture));
+	}
 
 	/*protected void renderEquippedItems(EntityLivingBase par1EntityLiving, float par2) {
 		float var3 = 1.0F;

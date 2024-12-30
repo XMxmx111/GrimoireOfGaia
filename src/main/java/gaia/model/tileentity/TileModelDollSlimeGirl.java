@@ -142,7 +142,7 @@ public class TileModelDollSlimeGirl extends ModelBase {
 		model.rotateAngleY = y;
 		model.rotateAngleZ = z;
 	}
-	
+
 	public void renderModel(float par7) {
 		this.head.render(par7);
 		this.headaccessory.render(par7);

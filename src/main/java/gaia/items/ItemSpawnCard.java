@@ -36,22 +36,22 @@ public class ItemSpawnCard extends Item {
 
 	public ItemStack onItemRightClick(ItemStack itemstack, World world, EntityPlayer entityplayer) {
 		world.playSoundAtEntity(entityplayer, "grimoireofgaia:box_open2", 0.5F, world.rand.nextFloat() * 0.1F + 0.9F);
-		
+
 		Random random = new Random();
 		int i = random.nextInt(5);
 		switch(i) {
-		case 0:
-			return new ItemStack(GaiaItem.SpawnCardCreeperGirl);
-		case 1:
-			return new ItemStack(GaiaItem.SpawnCardEnderGirl);
-		case 2:
-			return new ItemStack(GaiaItem.SpawnCardHolstaurus);
-		case 3:
-			return new ItemStack(GaiaItem.SpawnCardSlimeGirl);
-		case 4:
-			return new ItemStack(GaiaItem.SpawnCardTrader);
-		default:
-			return itemstack;
+			case 0:
+				return new ItemStack(GaiaItem.SpawnCardCreeperGirl);
+			case 1:
+				return new ItemStack(GaiaItem.SpawnCardEnderGirl);
+			case 2:
+				return new ItemStack(GaiaItem.SpawnCardHolstaurus);
+			case 3:
+				return new ItemStack(GaiaItem.SpawnCardSlimeGirl);
+			case 4:
+				return new ItemStack(GaiaItem.SpawnCardTrader);
+			default:
+				return itemstack;
 		}
 	}
 }

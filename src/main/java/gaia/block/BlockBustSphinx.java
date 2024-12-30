@@ -40,12 +40,12 @@ public class BlockBustSphinx extends BlockContainer {
 	public boolean renderAsNormalBlock() {
 		return false;
 	}
-	
+
 	/** Had an odd occlusion shadow issue **/
 	public boolean isFullCube()
-    {
-        return false;
-    }
+	{
+		return false;
+	}
 
 	/*public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack stack) {
 		if(entity != null) {
@@ -53,9 +53,10 @@ public class BlockBustSphinx extends BlockContainer {
 			tile.direction = MathHelper.floor_double((double)(entity.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
 		}
 	}*/
+
 	/** Replaced and updated method with the new BockPos version **/
 	public void onBlockPlacedBy(World world, BlockPos pos, IBlockState state, EntityLivingBase entity, ItemStack stack)
-    {	
+	{
 		if(entity != null) {
 			TileEntityBustSphinx tile = (TileEntityBustSphinx)world.getTileEntity(pos);
 			tile.direction = MathHelper.floor_double((double)(entity.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;

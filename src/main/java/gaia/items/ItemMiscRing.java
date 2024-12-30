@@ -15,7 +15,7 @@ public class ItemMiscRing extends Item {
 
 	public ItemMiscRing(String texture) {
 		this.texture = texture;
-        this.setHasSubtypes(true);
+		this.setHasSubtypes(true);
 		this.setUnlocalizedName("GrimoireOfGaia.MiscRing");
 		this.setCreativeTab(Gaia.tabGaia);
 	}
@@ -24,7 +24,7 @@ public class ItemMiscRing extends Item {
 	public EnumRarity getRarity(ItemStack par1ItemStack) {
 		return EnumRarity.RARE;
 	}
-	
+
 	@Override
 	public void getSubItems(Item item, CreativeTabs tab, List list) {
 		for (int i = 0; i < 4; i ++) {

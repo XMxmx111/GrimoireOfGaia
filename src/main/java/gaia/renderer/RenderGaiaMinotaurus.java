@@ -17,10 +17,10 @@ public class RenderGaiaMinotaurus extends RenderLiving {
 	private static final ResourceLocation texture01 = new ResourceLocation(GaiaReference.MOD_ID, "textures/models/Minotaurus01.png");
 	private static final ResourceLocation texture02 = new ResourceLocation(GaiaReference.MOD_ID, "textures/models/alternate/Minotaurus02.png");
 	static RenderManager rend = Minecraft.getMinecraft().getRenderManager();
-	
+
 	public RenderGaiaMinotaurus( float shadowSize) {
-        super(rend, new ModelGaiaMinotaurus(), shadowSize);
-        this.addLayer(new held_rightarm(this, ModelGaiaMinotaurus.rightarm));
+		super(rend, new ModelGaiaMinotaurus(), shadowSize);
+		this.addLayer(new held_rightarm(this, ModelGaiaMinotaurus.rightarm));
 	}
 
 	/*protected void renderEquippedItems(EntityLivingBase par1EntityLiving, float par2) {
@@ -87,12 +87,12 @@ public class RenderGaiaMinotaurus extends RenderLiving {
 	protected ResourceLocation getEntityTexture(Entity entity) {
 		return this.getTexture((EntityGaiaMinotaurus) entity);
 	}
-	
+
 	protected ResourceLocation getTexture(EntityGaiaMinotaurus par1EntityGaiaMinotaurus) {
 		switch(par1EntityGaiaMinotaurus.getTextureType()) {
-		case 0: return texture01;
-		case 1: return texture02;
-		default: return texture01;
+			case 0: return texture01;
+			case 1: return texture02;
+			default: return texture01;
 		}
 	}
 }

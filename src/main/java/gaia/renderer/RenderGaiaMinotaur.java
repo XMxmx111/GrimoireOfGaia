@@ -18,12 +18,12 @@ public class RenderGaiaMinotaur extends RenderLiving {
 	private static final ResourceLocation minotaurEyesTexture = new ResourceLocation(GaiaReference.MOD_ID, "textures/models/eyes/Eyes_Minotaur.png");
 	private static final ResourceLocation texture = new ResourceLocation(GaiaReference.MOD_ID, "textures/models/Minotaur.png");
 	static RenderManager rend = Minecraft.getMinecraft().getRenderManager();
-	
+
 	public RenderGaiaMinotaur(float shadowSize) {
-        super(rend, new ModelGaiaMinotaur(), shadowSize);
-        
-        this.addLayer(new held_rightarm(this, ModelGaiaMinotaur.rightarmlower));
-        this.addLayer(new Glowing_layer(this, minotaurEyesTexture));
+		super(rend, new ModelGaiaMinotaur(), shadowSize);
+
+		this.addLayer(new held_rightarm(this, ModelGaiaMinotaur.rightarmlower));
+		this.addLayer(new Glowing_layer(this, minotaurEyesTexture));
 	}
 
 	/*protected void renderEquippedItems(EntityLivingBase par1EntityLiving, float par2) {
@@ -82,12 +82,12 @@ public class RenderGaiaMinotaur extends RenderLiving {
 			GL11.glPopMatrix();
 		}
 	}*/
-	
+
 	protected void func_82422_c() {
 		GL11.glTranslatef(0.0F, 0.1875F, 0.0F);
 	}
-	
-	
+
+
 	protected int shouldRenderPass(EntityGaiaMinotaur par1EntityGaiaMinotaur, int par2, float par3) {
 		if (par1EntityGaiaMinotaur.isInvisible()) {
 			return 0;
@@ -98,22 +98,22 @@ public class RenderGaiaMinotaur extends RenderLiving {
 			GL11.glEnable(GL11.GL_BLEND);
 			GL11.glDisable(GL11.GL_ALPHA_TEST);
 			GL11.glBlendFunc(GL11.GL_ONE, GL11.GL_ONE);
-			
-            if (par1EntityGaiaMinotaur.isInvisible())
-            {
-                GL11.glDepthMask(false);
-            }
-            else
-            {
-                GL11.glDepthMask(true);
-            }
 
-            char c0 = 61680;
-            int j = c0 % 65536;
-            int k = c0 / 65536;
-            OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, (float)j / 1.0F, (float)k / 1.0F);
-            GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-            return 1;
+			if (par1EntityGaiaMinotaur.isInvisible())
+			{
+				GL11.glDepthMask(false);
+			}
+			else
+			{
+				GL11.glDepthMask(true);
+			}
+
+			char c0 = 61680;
+			int j = c0 % 65536;
+			int k = c0 / 65536;
+			OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, (float)j / 1.0F, (float)k / 1.0F);
+			GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
+			return 1;
 		}
 	}
 

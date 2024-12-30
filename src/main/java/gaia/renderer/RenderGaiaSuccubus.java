@@ -12,9 +12,9 @@ public class RenderGaiaSuccubus extends RenderLiving {
 
 	private static final ResourceLocation texture = new ResourceLocation(GaiaReference.MOD_ID, "textures/models/Succubus.png");
 	static RenderManager rend = Minecraft.getMinecraft().getRenderManager();
-	
+
 	public RenderGaiaSuccubus( float shadowSize) {
-        super(rend, new ModelGaiaSuccubus(), shadowSize);
+		super(rend, new ModelGaiaSuccubus(), shadowSize);
 	}
 
 	protected ResourceLocation getEntityTexture(Entity entity) {

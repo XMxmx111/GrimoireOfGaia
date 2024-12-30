@@ -17,12 +17,12 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class RenderGaiaProjectileMagic extends Render
 {
-    
 
-	protected final Item T_item;
+
+    protected final Item T_item;
     //private final RenderItem render;
     private final RenderItem render= Minecraft.getMinecraft().getRenderItem();
-    
+
     //Oh boy the main client proxy has some big issue with passing down the renderer managers
     //Finally figured it out/gave up and statically assigned it like the rest of the renderers :^)
     public RenderGaiaProjectileMagic(RenderManager rend, Item itemin, RenderItem rendin)
@@ -32,7 +32,7 @@ public class RenderGaiaProjectileMagic extends Render
         //this.render = rendin;
     }
 
-    
+
     public void doRender(Entity entity, double x, double y, double z, float p_76986_8_, float partialTicks)
     {
         GlStateManager.pushMatrix();
@@ -52,7 +52,7 @@ public class RenderGaiaProjectileMagic extends Render
     {
         //return new ItemStack(this.T_item, 1, 0);
         return new ItemStack(this.T_item, 1, 5);
-        
+
     }
 
     protected ResourceLocation getEntityTexture(Entity entity)
@@ -61,7 +61,7 @@ public class RenderGaiaProjectileMagic extends Render
     }
 }
 
-	//Old stuff
+//Old stuff
 
 	/*
 	@SideOnly(Side.CLIENT)

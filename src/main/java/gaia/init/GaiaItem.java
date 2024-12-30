@@ -189,73 +189,73 @@ public class GaiaItem {
 		AccessoryDollCursed = new ItemAccessoryDollCursed("AccessoryDollCursed");
 		SpawnEgg = new ItemGaiaSpawnEgg();
 	}
-	
+
 	public static void register()
 	{
-		Item[] items = new Item[] { 
-				Shard, 
+		Item[] items = new Item[] {
+				Shard,
 				Fragment,
-				FoodMeatMorsel, 
-				FoodMeat, 
-				FoodCoalfish, 
+				FoodMeatMorsel,
+				FoodMeat,
+				FoodCoalfish,
 				FoodWitherMeat,
-				FoodSmallAppleGold, 
-				FoodBerryHealth, 
-				FoodBerryCure, 
-				FoodBerryIce, 
+				FoodSmallAppleGold,
+				FoodBerryHealth,
+				FoodBerryCure,
+				FoodBerryIce,
 				FoodBerryFire,
-				FoodDriedNetherWart, 
-				FoodMandrake, 
-				FoodPieMandrake, 
+				FoodDriedNetherWart,
+				FoodMandrake,
+				FoodPieMandrake,
 				FoodPieMeat,
 				FoodPieBerry,
-				MiscSoulFire, 
-				MiscSoulFiery, 
-				MiscGigaGear, 
+				MiscSoulFire,
+				MiscSoulFiery,
+				MiscGigaGear,
 				MiscPage,
-				MiscBook, 
-				MiscRing, 
+				MiscBook,
+				MiscRing,
 				MiscFurnaceFuel,
 				MiscCurrency,
 				MiscWeaponEnchanted,
-				SpawnCard, 
-				SpawnCardCreeperGirl, 
-				SpawnCardEnderGirl, 
+				SpawnCard,
+				SpawnCardCreeperGirl,
+				SpawnCardEnderGirl,
 				SpawnCardHolstaurus,
 				SpawnCardSlimeGirl,
-				SpawnCardTrader, 
-				BoxIron, 
-				BoxGold, 
-				BoxDiamond, 
-				BagOre, 
-				BagBook, 
-				BagRecord, 
-				BoxOld, 
-				PropWeapon, 
+				SpawnCardTrader,
+				BoxIron,
+				BoxGold,
+				BoxDiamond,
+				BagOre,
+				BagBook,
+				BagRecord,
+				BoxOld,
+				PropWeapon,
 				PropWeaponInvisible,
-				FanIce, 
-				FanFire, 
-				BookFreezing, 
-				BookNightmare, 
-				BookMetal, 
-				BookEnder, 
+				FanIce,
+				FanFire,
+				BookFreezing,
+				BookNightmare,
+				BookMetal,
+				BookEnder,
 				BookHunger,
-				BookBattle, 
+				BookBattle,
 				BookNature,
-				BookWither, 
+				BookWither,
 				BookBuff,
-				AccessoryRingSpeed, 
-				AccessoryRingHaste, 
-				AccessoryRingJump, 
+				AccessoryRingSpeed,
+				AccessoryRingHaste,
+				AccessoryRingJump,
 				AccessoryRingNight,
 				AccessoryDollCursed,
 				SpawnEgg
-				
+
 		};
 		for (int i = 0; i < items.length; i++) {
 			GameRegistry.registerItem(items[i], items[i].getUnlocalizedName());
 		}
-		
+
 		BlockDispenser.dispenseBehaviorRegistry.putObject(SpawnEgg, new GaiaDispenserBehaviorMobEgg());
 	}
 
@@ -286,16 +286,16 @@ public class GaiaItem {
 		GameRegistry.addShapelessRecipe(new ItemStack(AccessoryRingJump, 1), new Object[]{new ItemStack(MiscRing, 1, 2), Blocks.beacon});
 		GameRegistry.addShapelessRecipe(new ItemStack(AccessoryRingNight, 1), new Object[]{new ItemStack(MiscRing, 1, 3), Blocks.beacon});
 	}
-	
-    public static void oreRegistration() {
-            OreDictionary.registerOre("shardIronIngot", new ItemStack(Shard, 1, 0));
-            OreDictionary.registerOre("shardGoldIngot", new ItemStack(Shard, 1, 1));
-            OreDictionary.registerOre("shardDiamond", new ItemStack(Shard, 1, 2));
-            OreDictionary.registerOre("shardEmerald", new ItemStack(Shard, 1, 3));
-            OreDictionary.registerOre("shardEnderPearl", new ItemStack(Shard, 1, 5));
-            OreDictionary.registerOre("shardBlazeRod", new ItemStack(Shard, 1, 6));
-            OreDictionary.registerOre("fragmentEmerald", Fragment);
-    }
+
+	public static void oreRegistration() {
+		OreDictionary.registerOre("shardIronIngot", new ItemStack(Shard, 1, 0));
+		OreDictionary.registerOre("shardGoldIngot", new ItemStack(Shard, 1, 1));
+		OreDictionary.registerOre("shardDiamond", new ItemStack(Shard, 1, 2));
+		OreDictionary.registerOre("shardEmerald", new ItemStack(Shard, 1, 3));
+		OreDictionary.registerOre("shardEnderPearl", new ItemStack(Shard, 1, 5));
+		OreDictionary.registerOre("shardBlazeRod", new ItemStack(Shard, 1, 6));
+		OreDictionary.registerOre("fragmentEmerald", Fragment);
+	}
 	public static void registerRenders()
 	{
 		registerRender(Shard);
@@ -356,10 +356,10 @@ public class GaiaItem {
 		registerRender(AccessoryDollCursed);
 		//registerRender(SpawnEgg);
 	}
-	
+
 	public static void registerRender(Item item)
 	{
 		ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation(GaiaReference.MOD_ID + ":" + item.getUnlocalizedName().substring(20).toLowerCase(Locale.US), "inventory"));
 	}
-	
+
 }

@@ -16,8 +16,8 @@ public class RenderGaiaSiren extends RenderLiving {
 
 	static RenderManager rend = Minecraft.getMinecraft().getRenderManager();
 	public RenderGaiaSiren( float shadowSize) {
-        super(rend, new ModelGaiaSiren(), shadowSize);
-        this.addLayer(new held_rightarm(this, ModelGaiaSiren.rightarm));
+		super(rend, new ModelGaiaSiren(), shadowSize);
+		this.addLayer(new held_rightarm(this, ModelGaiaSiren.rightarm));
 	}
 
 	/*protected void renderEquippedItems(EntityLivingBase par1EntityLiving, float par2) {

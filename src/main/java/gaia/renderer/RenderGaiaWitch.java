@@ -14,10 +14,10 @@ public class RenderGaiaWitch extends RenderLiving {
 
 	private static final ResourceLocation texture = new ResourceLocation(GaiaReference.MOD_ID, "textures/models/Witch.png");
 	static RenderManager rend = Minecraft.getMinecraft().getRenderManager();
-	
+
 	public RenderGaiaWitch( float shadowSize) {
-        super(rend, new ModelGaiaWitch(), shadowSize);
-        this.addLayer(new held_rightarm(this, ModelGaiaWitch.rightarm));    
+		super(rend, new ModelGaiaWitch(), shadowSize);
+		this.addLayer(new held_rightarm(this, ModelGaiaWitch.rightarm));
 	}
 
 	/*protected void renderEquippedItems(EntityLivingBase par1EntityLiving, float par2) {

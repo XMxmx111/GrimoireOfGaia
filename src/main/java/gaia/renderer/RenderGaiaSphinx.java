@@ -16,9 +16,9 @@ public class RenderGaiaSphinx extends RenderLiving {
 
 	private static final ResourceLocation texture = new ResourceLocation(GaiaReference.MOD_ID, "textures/models/Sphinx.png");
 	static RenderManager rend = Minecraft.getMinecraft().getRenderManager();
-	
+
 	public RenderGaiaSphinx( float shadowSize) {
-        super(rend, new ModelGaiaSphinx(), shadowSize);
+		super(rend, new ModelGaiaSphinx(), shadowSize);
 		//this.setRenderPassModel(new ModelGaiaSphinx());
 	}
 
@@ -30,7 +30,7 @@ public class RenderGaiaSphinx extends RenderLiving {
 	protected void preRenderCallback(EntityLivingBase par1EntityLiving, float par2) {
 		this.scaleSphinx((EntityGaiaSphinx)par1EntityLiving, par2);
 	}
-	
+
 	protected ResourceLocation getEntityTexture(Entity entity) {
 		return texture;
 	}

@@ -105,7 +105,7 @@ public class EntityGaiaBanshee extends EntityMobBase {
 		}
 
 		if(par1 && (this.rand.nextInt(2) == 0 || this.rand.nextInt(1 + par2) > 0)) {
-            this.entityDropItem(new ItemStack(GaiaItem.Shard, 1, 1), 0.0F);
+			this.entityDropItem(new ItemStack(GaiaItem.Shard, 1, 1), 0.0F);
 		}
 
 		if(par1 && (this.rand.nextInt(4) == 0 || this.rand.nextInt(1 + par2) > 0)) {
@@ -115,14 +115,14 @@ public class EntityGaiaBanshee extends EntityMobBase {
 
 	protected void dropRareDrop(int par1) {
 		switch(this.rand.nextInt(3)) {
-		case 0:
-			this.dropItem(GaiaItem.BoxGold,1);
-			break;
-		case 1:
-			this.dropItem(GaiaItem.BagBook,1);
-			break;
-		case 2:
-			this.dropItem(GaiaItem.BookNightmare,1);
+			case 0:
+				this.dropItem(GaiaItem.BoxGold,1);
+				break;
+			case 1:
+				this.dropItem(GaiaItem.BagBook,1);
+				break;
+			case 2:
+				this.dropItem(GaiaItem.BookNightmare,1);
 		}
 	}
 

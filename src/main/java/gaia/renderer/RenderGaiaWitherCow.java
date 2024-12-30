@@ -11,10 +11,10 @@ import net.minecraft.util.ResourceLocation;
 public class RenderGaiaWitherCow extends RenderLiving {
 
 	private static final ResourceLocation texture = new ResourceLocation(GaiaReference.MOD_ID, "textures/models/Wither_Cow.png");
-	
+
 	static RenderManager rend = Minecraft.getMinecraft().getRenderManager();
 	public RenderGaiaWitherCow( float shadowSize) {
-        super(rend, new ModelGaiaWitherCow(), shadowSize);
+		super(rend, new ModelGaiaWitherCow(), shadowSize);
 	}
 
 	protected ResourceLocation getEntityTexture(Entity entity) {

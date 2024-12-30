@@ -111,7 +111,7 @@ public class EntityGaiaSpriggan extends EntityMobBase {
 		}
 
 		if(par1 && (this.rand.nextInt(2) == 0 || this.rand.nextInt(1 + par2) > 0)) {
-            this.entityDropItem(new ItemStack(GaiaItem.Shard, 1, 1), 0.0F);
+			this.entityDropItem(new ItemStack(GaiaItem.Shard, 1, 1), 0.0F);
 		}
 
 		if(par1 && (this.rand.nextInt(4) == 0 || this.rand.nextInt(1 + par2) > 0)) {
@@ -121,21 +121,21 @@ public class EntityGaiaSpriggan extends EntityMobBase {
 
 	protected void dropRareDrop(int par1) {
 		switch(this.rand.nextInt(3)) {
-		case 0:
-			this.dropItem(GaiaItem.BoxGold,1);
-			break;
-		case 1:
-			this.dropItem(GaiaItem.BagBook,1);
-			break;
-		case 2:
-			this.dropItem(GaiaItem.BookNature,1);
+			case 0:
+				this.dropItem(GaiaItem.BoxGold,1);
+				break;
+			case 1:
+				this.dropItem(GaiaItem.BagBook,1);
+				break;
+			case 2:
+				this.dropItem(GaiaItem.BookNature,1);
 		}
 	}
-	
+
 	@Override
-    protected void dropEquipment(boolean p_82160_1_, int p_82160_2_) {
-    }
-	
+	protected void dropEquipment(boolean p_82160_1_, int p_82160_2_) {
+	}
+
 	public IEntityLivingData onSpawnWithEgg(IEntityLivingData eld) {
 		IEntityLivingData res = super.onSpawnWithEgg(eld);
 		this.setCurrentItemOrArmor(0, new ItemStack(GaiaItem.PropWeaponInvisible));

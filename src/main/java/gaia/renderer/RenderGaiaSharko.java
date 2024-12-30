@@ -16,11 +16,11 @@ public class RenderGaiaSharko extends RenderLiving {
 
 	private static final ResourceLocation texture = new ResourceLocation(GaiaReference.MOD_ID, "textures/models/Sharko.png");
 	static RenderManager rend = Minecraft.getMinecraft().getRenderManager();
-	
+
 	public RenderGaiaSharko(float shadow) {
-        super(rend, new ModelGaiaSharko(), shadow);
-        this.addLayer(new held_rightarm_special(this, ModelGaiaSharko.rightarmlower));
-       
+		super(rend, new ModelGaiaSharko(), shadow);
+		this.addLayer(new held_rightarm_special(this, ModelGaiaSharko.rightarmlower));
+
 	}
 
 	protected void func_82422_c() {

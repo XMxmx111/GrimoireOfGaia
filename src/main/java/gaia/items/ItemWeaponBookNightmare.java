@@ -30,7 +30,7 @@ public class ItemWeaponBookNightmare extends ItemSword {
 		this.setUnlocalizedName("GrimoireOfGaia.WeaponBookNightmare");
 		this.setCreativeTab(Gaia.tabGaia);
 	}
-	
+
 	@SideOnly(Side.CLIENT)
 	public EnumRarity getRarity(ItemStack par1ItemStack) {
 		return EnumRarity.RARE;

@@ -11,7 +11,7 @@ public class ModelWeaponBook extends ModelBase {
 	ModelRenderer rightpage;
 	ModelRenderer leftpage;
 	ModelRenderer middlepage;
-	
+
 	ModelRenderer rightcoveropposite;
 	ModelRenderer leftcoveropposite;
 
@@ -58,7 +58,7 @@ public class ModelWeaponBook extends ModelBase {
 		this.middlepage.setTextureSize(64, 32);
 		this.middlepage.mirror = true;
 		this.setRotation(middlepage, 0F, -1.570796F, 0F);
-		
+
 		this.rightcoveropposite = new ModelRenderer(this, 12, 0);
 		this.rightcoveropposite.addBox(-6F, -5F, 0F, 6, 10, 0);
 		this.rightcoveropposite.setRotationPoint(-1F, 0F, 0F);

@@ -15,12 +15,12 @@ public class RenderGaiaCyclops extends RenderLiving<EntityGaiaCyclops> {
 
 	private static final ResourceLocation texture = new ResourceLocation(GaiaReference.MOD_ID, "textures/models/Cyclops.png");
 	static RenderManager rend = Minecraft.getMinecraft().getRenderManager();
-	
+
 	public RenderGaiaCyclops( float shadowSize) {
-        super(rend, new ModelGaiaCyclops(), shadowSize);
-        this.addLayer(new held_rightarm(this, ModelGaiaCyclops.rightarm));
-        this.addLayer(new Held_leftarm(this, ModelGaiaCyclops.leftarm));
-    }
+		super(rend, new ModelGaiaCyclops(), shadowSize);
+		this.addLayer(new held_rightarm(this, ModelGaiaCyclops.rightarm));
+		this.addLayer(new Held_leftarm(this, ModelGaiaCyclops.leftarm));
+	}
 	
 	/*protected void renderEquippedItems(EntityLivingBase par1EntityLiving, float par2) {
 		float var3 = 1.0F;

@@ -16,9 +16,9 @@ public class RenderGaiaMandragora extends RenderLiving {
 
 	private static final ResourceLocation texture = new ResourceLocation(GaiaReference.MOD_ID, "textures/models/Mandragora.png");
 	static RenderManager rend = Minecraft.getMinecraft().getRenderManager();
-	
+
 	public RenderGaiaMandragora( float shadowSize) {
-        super(rend, new ModelGaiaMandragora(), shadowSize);
+		super(rend, new ModelGaiaMandragora(), shadowSize);
 		//this.setRenderPassModel(new ModelGaiaMandragora());
 	}
 

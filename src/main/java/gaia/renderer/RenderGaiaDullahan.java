@@ -13,12 +13,12 @@ import net.minecraft.util.ResourceLocation;
 public class RenderGaiaDullahan extends RenderLiving<EntityGaiaDullahan> {
 
 	private static final ResourceLocation texture = new ResourceLocation(GaiaReference.MOD_ID, "textures/models/Dullahan.png");
-	
+
 	static RenderManager rend = Minecraft.getMinecraft().getRenderManager();
 	public RenderGaiaDullahan( float shadowSize) {
-        super(rend, new ModelGaiaDullahan(), shadowSize);
-        this.addLayer(new held_rightarm(this, ModelGaiaDullahan.rightgauntlet));
-    }
+		super(rend, new ModelGaiaDullahan(), shadowSize);
+		this.addLayer(new held_rightarm(this, ModelGaiaDullahan.rightgauntlet));
+	}
 
 	/*protected void renderEquippedItems(EntityLivingBase par1EntityLiving, float par2) {
 		float var3 = 1.0F;

@@ -14,7 +14,7 @@ public class RenderGaiaNPCHolstaurus extends RenderLiving {
 
 	static RenderManager rend = Minecraft.getMinecraft().getRenderManager();
 	public RenderGaiaNPCHolstaurus( float shadowSize) {
-        super(rend, new ModelGaiaNPCHolstaurus(), shadowSize);
+		super(rend, new ModelGaiaNPCHolstaurus(), shadowSize);
 	}
 
 	protected ResourceLocation getEntityTexture(Entity entity) {

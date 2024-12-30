@@ -20,9 +20,9 @@ public class RenderGaiaNPCEnderGirl extends RenderLiving {
 
 	static RenderManager rend = Minecraft.getMinecraft().getRenderManager();
 	public RenderGaiaNPCEnderGirl( float shadowSize) {
-        super(rend, new ModelGaiaNPCEnderGirl(), shadowSize);
+		super(rend, new ModelGaiaNPCEnderGirl(), shadowSize);
 		//this.setRenderPassModel(new ModelGaiaNPCEnderGirl());
-        this.addLayer(new Glowing_layer(this, endergirlEyesTexture));
+		this.addLayer(new Glowing_layer(this, endergirlEyesTexture));
 	}
 
 	protected int shouldRenderPass(EntityGaiaNPCEnderGirl par1EntityGaiaNPCEnderGirl, int par2, float par3) {
@@ -35,22 +35,22 @@ public class RenderGaiaNPCEnderGirl extends RenderLiving {
 			GL11.glEnable(GL11.GL_BLEND);
 			GL11.glDisable(GL11.GL_ALPHA_TEST);
 			GL11.glBlendFunc(GL11.GL_ONE, GL11.GL_ONE);
-			
-            if (par1EntityGaiaNPCEnderGirl.isInvisible())
-            {
-                GL11.glDepthMask(false);
-            }
-            else
-            {
-                GL11.glDepthMask(true);
-            }
 
-            char c0 = 61680;
-            int j = c0 % 65536;
-            int k = c0 / 65536;
-            OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, (float)j / 1.0F, (float)k / 1.0F);
-            GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-            return 1;
+			if (par1EntityGaiaNPCEnderGirl.isInvisible())
+			{
+				GL11.glDepthMask(false);
+			}
+			else
+			{
+				GL11.glDepthMask(true);
+			}
+
+			char c0 = 61680;
+			int j = c0 % 65536;
+			int k = c0 / 65536;
+			OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, (float)j / 1.0F, (float)k / 1.0F);
+			GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
+			return 1;
 		}
 	}
 

@@ -61,13 +61,13 @@ public class EntityGaiaBoneKnight extends EntityMobBase {
 	public boolean attackEntityAsMob(Entity par1Entity) {
 		if(super.attackEntityAsMob(par1Entity)) {
 			if(par1Entity instanceof EntityLivingBase) {
-                byte byte0 = 0;
+				byte byte0 = 0;
 
-                if (this.worldObj.getDifficulty() == EnumDifficulty.NORMAL){
-                	byte0 = 7;
-                } else if (this.worldObj.getDifficulty() == EnumDifficulty.HARD) {
-                	byte0 = 15;
-                }
+				if (this.worldObj.getDifficulty() == EnumDifficulty.NORMAL){
+					byte0 = 7;
+				} else if (this.worldObj.getDifficulty() == EnumDifficulty.HARD) {
+					byte0 = 15;
+				}
 
 				if(byte0 > 0) {
 					((EntityLivingBase)par1Entity).addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, byte0 * 60, 0));
@@ -87,10 +87,10 @@ public class EntityGaiaBoneKnight extends EntityMobBase {
 
 	public void onLivingUpdate() {
 		if(this.worldObj.isDaytime() && !this.worldObj.isRemote) {
-			float f = this.getBrightness(1.0F);			
+			float f = this.getBrightness(1.0F);
 			//if(f > 0.5F && this.rand.nextFloat() * 30.0F < (f - 0.4F) * 2.0F && this.worldObj.canBlockSeeTheSky(MathHelper.floor_double(this.posX), MathHelper.floor_double(this.posY), MathHelper.floor_double(this.posZ))) {
 			if (f > 0.5F && this.rand.nextFloat() * 30.0F < (f - 0.4F) * 2.0F && this.worldObj.canSeeSky(this.getPosition())){
-			this.setFire(8);
+				this.setFire(8);
 				this.heal(-20.0F);
 			}
 		}
@@ -124,15 +124,15 @@ public class EntityGaiaBoneKnight extends EntityMobBase {
 		for(int var4 = 0; var4 < var3; ++var4) {
 			this.dropItem(GaiaItem.MiscFurnaceFuel,1);
 		}
-		
+
 		var3 = this.rand.nextInt(3 + par2);
 
 		for(int var4 = 0; var4 < var3; ++var4) {
 			this.dropItem(Items.redstone,1);
 		}
-		
+
 		if(par1 && (this.rand.nextInt(2) == 0 || this.rand.nextInt(1 + par2) > 0)) {
-            this.entityDropItem(new ItemStack(GaiaItem.Shard, 1, 1), 0.0F);
+			this.entityDropItem(new ItemStack(GaiaItem.Shard, 1, 1), 0.0F);
 		}
 
 		if(par1 && (this.rand.nextInt(4) == 0 || this.rand.nextInt(1 + par2) > 0)) {
@@ -142,14 +142,14 @@ public class EntityGaiaBoneKnight extends EntityMobBase {
 
 	protected void dropRareDrop(int par1) {
 		switch(this.rand.nextInt(3)) {
-		case 0:
-			this.dropItem(GaiaItem.BagOre,1);
-			break;
-		case 1:
-			this.dropItem(Item.getItemFromBlock(Blocks.redstone_block), 1);
-			break;
-		case 2:
-			this.entityDropItem(new ItemStack(Items.skull, 1, 0), 0.0F);
+			case 0:
+				this.dropItem(GaiaItem.BagOre,1);
+				break;
+			case 1:
+				this.dropItem(Item.getItemFromBlock(Blocks.redstone_block), 1);
+				break;
+			case 2:
+				this.entityDropItem(new ItemStack(Items.skull, 1, 0), 0.0F);
 		}
 	}
 	/*
@@ -160,15 +160,15 @@ public class EntityGaiaBoneKnight extends EntityMobBase {
 		return par1IEntityLivingData;
 	}
 	*/
-	
+
 	public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, IEntityLivingData livingdata)
-    {
+	{
 		livingdata = super.onInitialSpawn(difficulty, livingdata);
-		this.setCurrentItemOrArmor(0, new ItemStack(Items.iron_sword));		
+		this.setCurrentItemOrArmor(0, new ItemStack(Items.iron_sword));
 		this.setEnchantmentBasedOnDifficulty(difficulty);
-		return livingdata;		
-		
-    }
+		return livingdata;
+
+	}
 
 	public void knockBack(Entity par1Entity, float par2, double par3, double par5) {
 		if(this.rand.nextDouble() >= this.getEntityAttribute(SharedMonsterAttributes.knockbackResistance).getAttributeValue()) {

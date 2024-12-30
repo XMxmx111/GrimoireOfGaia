@@ -12,8 +12,8 @@ public class TileModelBustVampire extends ModelBase {
 	ModelRenderer earright;
 	ModelRenderer earleft;
 	ModelRenderer body;
-    ModelRenderer rightchest;
-    ModelRenderer leftchest;
+	ModelRenderer rightchest;
+	ModelRenderer leftchest;
 	ModelRenderer chestribbon;
 	ModelRenderer rightshoulder;
 	ModelRenderer rightarm;

@@ -35,14 +35,14 @@ public abstract class EntityMobMerchant extends EntityVillager implements INpc, 
 	private int wealth;
 	private String buyersName;
 	private float buying;
-	
+
 	public EntityMobMerchant(World var1) {
 		super(var1);
 		this.setSize(1.0F, 2.0F);
 		this.randomTickDivider = 0;
 		this.villageObj = null;
 	}
-	
+
 	@Override
 	protected void applyEntityAttributes() {
 		super.applyEntityAttributes();
@@ -51,13 +51,14 @@ public abstract class EntityMobMerchant extends EntityVillager implements INpc, 
 		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue((double)EntityAttributes.moveSpeed1);
 //		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue((double)GaiaEntityAttributes.attackDamage1);
 	}
-	/**
+
+/*
 	@Override
 	public boolean isAIEnabled() {
 		return true;
 	}
-	*/
-	
+*/
+
 	@Override
 	protected boolean canDespawn() {
 		return false;
@@ -134,13 +135,13 @@ public abstract class EntityMobMerchant extends EntityVillager implements INpc, 
 	}
 
 	public abstract void addRecipies(MerchantRecipeList list);
-	
+
 	@Override
 	public void writeEntityToNBT(NBTTagCompound var1) {
 		super.writeEntityToNBT(var1);
 		var1.setInteger("Profession", this.getProfession());
 		var1.setInteger("Riches", this.wealth);
-		
+
 		if(this.buyingList != null) {
 			var1.setTag("Offers", this.buyingList.getRecipiesAsTags());
 		}
@@ -150,18 +151,19 @@ public abstract class EntityMobMerchant extends EntityVillager implements INpc, 
 		super.readEntityFromNBT(var1);
 		this.setProfession(var1.getInteger("Profession"));
 		this.wealth = var1.getInteger("Riches");
-		
+
 		if(var1.hasKey("Offers")) {
 			NBTTagCompound var2 = var1.getCompoundTag("Offers");
 			if(this instanceof EntityGaiaNPCCreeperGirl || this instanceof EntityGaiaNPCEnderGirl || this instanceof EntityGaiaNPCHolstaurus || this instanceof EntityGaiaNPCSlimeGirl || this instanceof EntityGaiaNPCTrader) this.buyingList = new TradeList(var2);
 			else this.buyingList = new MerchantRecipeList(var2);
 		}
 	}
-	/**
+
+/*
 	@Override
 	public void useRecipe(MerchantRecipe recipe) {
 		recipe.incrementToolUses();
-		
+
 		if(recipe.hasSameIDsAs((MerchantRecipe)this.buyingList.get(this.buyingList.size() - 1))) {
 			this.timeUntilReset = 40;
 			this.needsInitilization = true;
@@ -171,52 +173,52 @@ public abstract class EntityMobMerchant extends EntityVillager implements INpc, 
 				this.buyersName = null;
 			}
 		}
-		
+
 		if(recipe.getItemToBuy().getItem() == Items.emerald) {
 			this.wealth += recipe.getItemToBuy().stackSize;
 		}
 	}
-	*/
-	
+*/
+
 	@Override
 	public void useRecipe(MerchantRecipe recipe)
-    {
-        recipe.incrementToolUses();
-        this.livingSoundTime = -this.getTalkInterval();
-        //this.playSound("mob.villager.yes", this.getSoundVolume(), 4.F);
-        int i = 3 + this.rand.nextInt(4);
+	{
+		recipe.incrementToolUses();
+		this.livingSoundTime = -this.getTalkInterval();
+		//this.playSound("mob.villager.yes", this.getSoundVolume(), 4.F);
+		int i = 3 + this.rand.nextInt(4);
 
-        if (recipe.getToolUses() == 1 || this.rand.nextInt(5) == 0)
-        {
-            this.timeUntilReset = 40;
-            this.needsInitilization = true;
-            ///TODO Will need to come back to this, mating code got changed
-            //TODO this.isWillingToMate = true;
+		if (recipe.getToolUses() == 1 || this.rand.nextInt(5) == 0)
+		{
+			this.timeUntilReset = 40;
+			this.needsInitilization = true;
+			///TODO Will need to come back to this, mating code got changed
+			//TODO this.isWillingToMate = true;
 
-            if (this.buyingPlayer != null)
-            {
-                this.lastBuyingPlayer = this.buyingPlayer.getName();
-            }
-            else
-            {
-                this.lastBuyingPlayer = null;
-            }
+			if (this.buyingPlayer != null)
+			{
+				this.lastBuyingPlayer = this.buyingPlayer.getName();
+			}
+			else
+			{
+				this.lastBuyingPlayer = null;
+			}
 
-            i += 5;
-        }
+			i += 5;
+		}
 
-        if (recipe.getItemToBuy().getItem() == Items.emerald)
-        {
-            this.wealth += recipe.getItemToBuy().stackSize;
-        }
+		if (recipe.getItemToBuy().getItem() == Items.emerald)
+		{
+			this.wealth += recipe.getItemToBuy().stackSize;
+		}
 
-        if (recipe.getRewardsExp())
-        {
-            this.worldObj.spawnEntityInWorld(new EntityXPOrb(this.worldObj, this.posX, this.posY + 0.5D, this.posZ, i));
-        }
-    }
-	
-	
+		if (recipe.getRewardsExp())
+		{
+			this.worldObj.spawnEntityInWorld(new EntityXPOrb(this.worldObj, this.posX, this.posY + 0.5D, this.posZ, i));
+		}
+	}
+
+
 	public void func_110297_a_(ItemStack itemstack) { }
 	@Override
 	public MerchantRecipeList getRecipes(EntityPlayer var1) {
@@ -231,7 +233,7 @@ public abstract class EntityMobMerchant extends EntityVillager implements INpc, 
 		} else {
 			this.buying = 0.0F;
 		}
-		
+
 		MerchantRecipeList rec = new MerchantRecipeList();
 		addRecipies(rec);
 		if(this.buyingList == null) {
@@ -241,7 +243,7 @@ public abstract class EntityMobMerchant extends EntityVillager implements INpc, 
 			this.buyingList.add((MerchantRecipe)rec.get(var3));
 		}
 	}
-	
+
 	public boolean getCanSpawnHere() {
 		return this.posY < 0.0D && super.getCanSpawnHere();
 	}

@@ -64,7 +64,7 @@ public class ItemAccessoryRingSpeed extends Item implements IBauble{
 		}
 	}
 
-	public void doEffect(EntityPlayer player, ItemStack item){ 	
+	public void doEffect(EntityPlayer player, ItemStack item){
 		player.addPotionEffect(new PotionEffect(Potion.moveSpeed.id, 10, 10));
 	}
 
@@ -75,18 +75,18 @@ public class ItemAccessoryRingSpeed extends Item implements IBauble{
 
 	@Override
 	public void onWornTick(ItemStack itemstack, EntityLivingBase player) {
-		
-		this.doEffect((EntityPlayer)player, itemstack);	
+
+		this.doEffect((EntityPlayer)player, itemstack);
 	}
 
 	@Override
 	public void onEquipped(ItemStack itemstack, EntityLivingBase player) {
-		
+
 	}
 
 	@Override
 	public void onUnequipped(ItemStack itemstack, EntityLivingBase player) {
-		
+
 	}
 
 	@Override

@@ -17,13 +17,13 @@ public class RenderGaiaAnubis extends RenderLiving {
 
 	private static final ResourceLocation texture = new ResourceLocation(GaiaReference.MOD_ID, "textures/models/Anubis.png");
 	static RenderManager rend = Minecraft.getMinecraft().getRenderManager();
-	
+
 	public RenderGaiaAnubis(float shadow) {
-        super(rend, new ModelGaiaAnubis(), shadow);
-        //Held Item rendering simplified to a single class
-        //May need more parameters in the future to accommodate or tweak per mob
-        this.addLayer(new held_rightarm(this, ModelGaiaAnubis.rightarmhand));
-    }
+		super(rend, new ModelGaiaAnubis(), shadow);
+		//Held Item rendering simplified to a single class
+		//May need more parameters in the future to accommodate or tweak per mob
+		this.addLayer(new held_rightarm(this, ModelGaiaAnubis.rightarmhand));
+	}
 
 	protected void func_82422_c() {
 		GL11.glTranslatef(0.0F, 0.1875F, 0.0F);

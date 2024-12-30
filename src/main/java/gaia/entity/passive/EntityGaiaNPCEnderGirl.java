@@ -15,13 +15,13 @@ public class EntityGaiaNPCEnderGirl extends EntityMobMerchant {
 	public EntityGaiaNPCEnderGirl(World var1) {
 		super(var1);
 	}
-	
+
 	public IChatComponent getDisplayName()
-    {
-		 String s = "Ender Girl";
-		 ChatComponentText chatcomponenttext = new ChatComponentText(s);
-		 return chatcomponenttext;
-    }
+	{
+		String s = "Ender Girl";
+		ChatComponentText chatcomponenttext = new ChatComponentText(s);
+		return chatcomponenttext;
+	}
 	@Override
 	protected String getLivingSound() {
 		return "grimoireofgaia:passive_say";
@@ -36,16 +36,16 @@ public class EntityGaiaNPCEnderGirl extends EntityMobMerchant {
 	protected String getDeathSound() {
 		return "grimoireofgaia:passive_death";
 	}
-	
+
 	protected void dropFewItems(boolean par1, int par2) {
 		if(par1 && (this.rand.nextInt(1) == 0 || this.rand.nextInt(1 + par2) > 0)) {
-            this.entityDropItem(new ItemStack(GaiaItem.SpawnCardEnderGirl, 1, 0), 0.0F);
+			this.entityDropItem(new ItemStack(GaiaItem.SpawnCardEnderGirl, 1, 0), 0.0F);
 		}
 	}
 
 	@Override
 	public void addRecipies(MerchantRecipeList recipes) {
-		recipes.add(new Trade(new ItemStack(GaiaItem.MiscCurrency, 1, 1), new ItemStack(Items.ender_pearl, 1, 0)));	
+		recipes.add(new Trade(new ItemStack(GaiaItem.MiscCurrency, 1, 1), new ItemStack(Items.ender_pearl, 1, 0)));
 		//Buy List
 		recipes.add(new Trade(new ItemStack(Items.ender_pearl, 1, 0), new ItemStack(Items.bone, 8, 0)));
 		recipes.add(new Trade(new ItemStack(Items.ender_pearl, 1, 0), new ItemStack(Items.rotten_flesh, 16, 0)));

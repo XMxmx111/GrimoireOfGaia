@@ -14,10 +14,10 @@ public class RenderGaiaValkyrie extends RenderLiving {
 
 	private static final ResourceLocation texture = new ResourceLocation(GaiaReference.MOD_ID, "textures/models/Valkyrie.png");
 	static RenderManager rend = Minecraft.getMinecraft().getRenderManager();
-	
+
 	public RenderGaiaValkyrie( float shadowSize) {
-        super(rend, new ModelGaiaValkyrie(), shadowSize);
-        this.addLayer(new held_rightarm(this, ModelGaiaValkyrie.rightarm));
+		super(rend, new ModelGaiaValkyrie(), shadowSize);
+		this.addLayer(new held_rightarm(this, ModelGaiaValkyrie.rightarm));
 	}
 
 	/*protected void renderEquippedItems(EntityLivingBase par1EntityLiving, float par2) {

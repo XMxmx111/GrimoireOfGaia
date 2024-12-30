@@ -17,8 +17,8 @@ public class ModelGaiaSiren extends ModelBase {
 	ModelRenderer headaccessory;
 	ModelRenderer finright;
 	ModelRenderer finleft;
-    ModelRenderer hair1;
-    ModelRenderer hair2;
+	ModelRenderer hair1;
+	ModelRenderer hair2;
 	ModelRenderer pauldron;
 	ModelRenderer rightchest;
 	ModelRenderer leftchest;
@@ -231,24 +231,24 @@ public class ModelGaiaSiren extends ModelBase {
 		this.tail5.rotateAngleZ = MathHelper.cos(par1 * 0.6562F) * 0.1F * par2;
 		this.tail6.rotateAngleZ = MathHelper.cos(par1 * 0.6662F) * 0.1F * par2;
 		this.tail7.rotateAngleZ = MathHelper.cos(par1 * 0.6762F) * 0.1F * par2;
-		this.tail8.rotateAngleZ = MathHelper.cos(par1 * 0.6762F) * 0.1F * par2;		
+		this.tail8.rotateAngleZ = MathHelper.cos(par1 * 0.6762F) * 0.1F * par2;
 
-        float f6;
-        float f7;
+		float f6;
+		float f7;
 
-        if (this.swingProgress > -9990.0F)
-        {
-            f6 = this.swingProgress;
-            f6 = 1.0F - this.swingProgress;
-            f6 *= f6;
-            f6 *= f6;
-            f6 = 1.0F - f6;
-            f7 = MathHelper.sin(f6 * (float)Math.PI);
-            float f8 = MathHelper.sin(this.swingProgress * (float)Math.PI) * -(this.head.rotateAngleX - 0.7F) * 0.75F;
-            
-            this.rightarm.rotateAngleX = (float)((double)this.rightarm.rotateAngleX - ((double)f7 * 1.2D + (double)f8));
-            this.rightarm.rotateAngleY += this.bodytop.rotateAngleY * 2.0F;
-            this.rightarm.rotateAngleZ = (MathHelper.sin(this.swingProgress * (float)Math.PI) * -0.4F) + 0.2617994F;
-        }
+		if (this.swingProgress > -9990.0F)
+		{
+			f6 = this.swingProgress;
+			f6 = 1.0F - this.swingProgress;
+			f6 *= f6;
+			f6 *= f6;
+			f6 = 1.0F - f6;
+			f7 = MathHelper.sin(f6 * (float)Math.PI);
+			float f8 = MathHelper.sin(this.swingProgress * (float)Math.PI) * -(this.head.rotateAngleX - 0.7F) * 0.75F;
+
+			this.rightarm.rotateAngleX = (float)((double)this.rightarm.rotateAngleX - ((double)f7 * 1.2D + (double)f8));
+			this.rightarm.rotateAngleY += this.bodytop.rotateAngleY * 2.0F;
+			this.rightarm.rotateAngleZ = (MathHelper.sin(this.swingProgress * (float)Math.PI) * -0.4F) + 0.2617994F;
+		}
 	}
 }

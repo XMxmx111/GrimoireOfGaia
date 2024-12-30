@@ -30,7 +30,7 @@ import net.minecraft.world.World;
 public class EntityGaiaSahuagin extends EntityMobBase implements IRangedAttackMob {
 	private EntityAIArrowAttack aiArrowAttack = new EntityAIArrowAttack(this, 1.0D, 20, 60, 15.0F);
 	private EntityAIGaiaAttackOnCollide aiAttackOnCollide = new EntityAIGaiaAttackOnCollide(this, 1.0D, true);
-	
+
 	private int switchHealth;
 
 	public EntityGaiaSahuagin(World par1World) {
@@ -79,22 +79,22 @@ public class EntityGaiaSahuagin extends EntityMobBase implements IRangedAttackMo
 		this.playSound("random.bow", 1.0F, 1.0F / (this.getRNG().nextFloat() * 0.4F + 0.8F));
 		this.worldObj.spawnEntityInWorld(entityarrow);
 	}
-	
+
 	@Override
-    public boolean canAttackClass(Class par1Class) {
-        return super.canAttackClass(par1Class) && par1Class != EntityGaiaSahuagin.class;
-    }
-	
+	public boolean canAttackClass(Class par1Class) {
+		return super.canAttackClass(par1Class) && par1Class != EntityGaiaSahuagin.class;
+	}
+
 	public boolean attackEntityAsMob(Entity par1Entity) {
 		if(super.attackEntityAsMob(par1Entity)) {
 			if(par1Entity instanceof EntityLivingBase) {
-                byte byte0 = 0;
+				byte byte0 = 0;
 
-                if (this.worldObj.getDifficulty() == EnumDifficulty.NORMAL){
-                	byte0 = 7;
-                } else if (this.worldObj.getDifficulty() == EnumDifficulty.HARD) {
-                	byte0 = 15;
-                }
+				if (this.worldObj.getDifficulty() == EnumDifficulty.NORMAL){
+					byte0 = 7;
+				} else if (this.worldObj.getDifficulty() == EnumDifficulty.HARD) {
+					byte0 = 15;
+				}
 
 				if(byte0 > 0) {
 					((EntityLivingBase)par1Entity).addPotionEffect(new PotionEffect(Potion.digSlowdown.id, byte0 * 30, 1));
@@ -157,20 +157,20 @@ public class EntityGaiaSahuagin extends EntityMobBase implements IRangedAttackMo
 		}
 
 		if(par1 && (this.rand.nextInt(2) == 0 || this.rand.nextInt(1 + par2) > 0)) {
-            this.entityDropItem(new ItemStack(GaiaItem.Shard, 1, 0), 0.0F);
+			this.entityDropItem(new ItemStack(GaiaItem.Shard, 1, 0), 0.0F);
 		}
 	}
 
 	protected void dropRareDrop(int par1) {
 		switch(this.rand.nextInt(3)) {
-		case 0:
-			this.dropItem(GaiaItem.BagOre,1);
-			break;
-		case 1:
-			this.dropItem(GaiaItem.MiscPage,1);
-			break;
-		case 2:
-			this.experienceValue = EntityAttributes.experienceValue1 * 5;
+			case 0:
+				this.dropItem(GaiaItem.BagOre,1);
+				break;
+			case 1:
+				this.dropItem(GaiaItem.MiscPage,1);
+				break;
+			case 2:
+				this.experienceValue = EntityAttributes.experienceValue1 * 5;
 		}
 	}
 
@@ -181,10 +181,10 @@ public class EntityGaiaSahuagin extends EntityMobBase implements IRangedAttackMo
 	public boolean handleLavaMovement() {
 		return false;
 	}
-	
+
 	@Override
-    protected void dropEquipment(boolean p_82160_1_, int p_82160_2_) {
-    }
+	protected void dropEquipment(boolean p_82160_1_, int p_82160_2_) {
+	}
 	/*
 	public IEntityLivingData onSpawnWithEgg(IEntityLivingData par1IEntityLivingData) {
 		par1IEntityLivingData = super.onSpawnWithEgg(par1IEntityLivingData);
@@ -194,22 +194,22 @@ public class EntityGaiaSahuagin extends EntityMobBase implements IRangedAttackMo
 	}
 	*/
 	public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, IEntityLivingData livingdata)
-    {
+	{
 		livingdata = super.onInitialSpawn(difficulty, livingdata);
-		this.setCurrentItemOrArmor(0, new ItemStack(Items.bow));	
+		this.setCurrentItemOrArmor(0, new ItemStack(Items.bow));
 		this.setEnchantmentBasedOnDifficulty(difficulty);
-		return livingdata;		
-		
-    }
+		return livingdata;
 
-	
+	}
+
+
 	public void setCurrentItemOrArmor(int par1, ItemStack par2ItemStack) {
 		super.setCurrentItemOrArmor(par1, par2ItemStack);
 		if(!this.worldObj.isRemote && par1 == 0) {
 			this.setCombatTask();
 		}
 	}
-	
+
 	public void setCombatTask() {
 		this.tasks.removeTask(this.aiAttackOnCollide);
 		this.tasks.addTask(1, this.aiArrowAttack);

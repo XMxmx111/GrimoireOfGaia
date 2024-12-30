@@ -13,12 +13,12 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.ResourceLocation;
 
 public class RenderGaiaSwamper extends RenderLiving {
-	
+
 	private static final ResourceLocation texture = new ResourceLocation(GaiaReference.MOD_ID, "textures/models/Swamper.png");
 	static RenderManager rend = Minecraft.getMinecraft().getRenderManager();
-	
+
 	public RenderGaiaSwamper( float shadowSize) {
-        super(rend, new ModelGaiaSwamper(), shadowSize);
+		super(rend, new ModelGaiaSwamper(), shadowSize);
 		//this.setRenderPassModel(new ModelGaiaSwamper());
 	}
 

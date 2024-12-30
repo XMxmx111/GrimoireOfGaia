@@ -14,12 +14,12 @@ public class RenderGaiaBanshee extends RenderLiving<EntityGaiaBanshee> {
 	private static final ResourceLocation bansheeEyesTexture = new ResourceLocation(GaiaReference.MOD_ID, "textures/models/Banshee.png");
 	private static final ResourceLocation texture = new ResourceLocation(GaiaReference.MOD_ID, "textures/models/Banshee.png");
 	static RenderManager rend = Minecraft.getMinecraft().getRenderManager();
-	
+
 	public RenderGaiaBanshee( float shadowSize) {
-        super(rend, new ModelGaiaBanshee(), shadowSize);
-        
-        this.addLayer(new Glowing_layer(this, bansheeEyesTexture));
-    }
+		super(rend, new ModelGaiaBanshee(), shadowSize);
+
+		this.addLayer(new Glowing_layer(this, bansheeEyesTexture));
+	}
 	/*
 	protected int shouldRenderPass(EntityGaiaBanshee par1EntityGaiaBanshee, int par2, float par3) {
 		if(par2 != 0) {

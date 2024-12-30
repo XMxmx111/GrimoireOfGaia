@@ -15,8 +15,8 @@ public class RenderGaiaVampire extends RenderLiving {
 
 	static RenderManager rend = Minecraft.getMinecraft().getRenderManager();
 	public RenderGaiaVampire( float shadowSize) {
-        super(rend, new ModelGaiaVampire(), shadowSize);
-        this.addLayer(new Glowing_layer(this, vampireEyesTexture));
+		super(rend, new ModelGaiaVampire(), shadowSize);
+		this.addLayer(new Glowing_layer(this, vampireEyesTexture));
 		//this.setRenderPassModel(new ModelGaiaVampire());
 	}
 
@@ -58,5 +58,5 @@ public class RenderGaiaVampire extends RenderLiving {
 	protected ResourceLocation getEntityTexture(Entity entity) {
 		return texture;
 	}
-	
+
 }

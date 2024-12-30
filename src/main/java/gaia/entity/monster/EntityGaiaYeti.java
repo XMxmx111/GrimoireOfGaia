@@ -54,13 +54,13 @@ public class EntityGaiaYeti extends EntityMobDay {
 	public boolean attackEntityAsMob(Entity par1Entity) {
 		if(super.attackEntityAsMob(par1Entity)) {
 			if(par1Entity instanceof EntityLivingBase) {
-                byte byte0 = 0;
+				byte byte0 = 0;
 
-                if (this.worldObj.getDifficulty() == EnumDifficulty.NORMAL){
-                	byte0 = 7;
-                } else if (this.worldObj.getDifficulty() == EnumDifficulty.HARD) {
-                	byte0 = 15;
-                }
+				if (this.worldObj.getDifficulty() == EnumDifficulty.NORMAL){
+					byte0 = 7;
+				} else if (this.worldObj.getDifficulty() == EnumDifficulty.HARD) {
+					byte0 = 15;
+				}
 
 				if(byte0 > 0) {
 					((EntityLivingBase)par1Entity).addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, byte0 * 30, 0));
@@ -81,7 +81,7 @@ public class EntityGaiaYeti extends EntityMobDay {
 		int i = MathHelper.floor_double(this.posX);
 		int j = MathHelper.floor_double(this.posZ);
 		int k = MathHelper.floor_double(this.posY);
-		BlockPos pos = new BlockPos(i,j,k);	
+		BlockPos pos = new BlockPos(i,j,k);
 		if(this.worldObj.getBiomeGenForCoords(new BlockPos(i,j,k)).getFloatTemperature(pos) > 1.0F) {
 			this.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 100, 0));
 			this.addPotionEffect(new PotionEffect(Potion.weakness.id, 100, 0));
@@ -106,17 +106,17 @@ public class EntityGaiaYeti extends EntityMobDay {
 		}
 
 		if(par1 && (this.rand.nextInt(2) == 0 || this.rand.nextInt(1 + par2) > 0)) {
-            this.entityDropItem(new ItemStack(GaiaItem.Shard, 1, 0), 0.0F);
+			this.entityDropItem(new ItemStack(GaiaItem.Shard, 1, 0), 0.0F);
 		}
 	}
 
 	protected void dropRareDrop(int par1) {
 		switch(this.rand.nextInt(2)) {
-		case 0:
-			this.dropItem(GaiaItem.BoxIron,1);
-			break;
-		case 1:
-			this.experienceValue = EntityAttributes.experienceValue1 * 5;
+			case 0:
+				this.dropItem(GaiaItem.BoxIron,1);
+				break;
+			case 1:
+				this.experienceValue = EntityAttributes.experienceValue1 * 5;
 		}
 	}
 

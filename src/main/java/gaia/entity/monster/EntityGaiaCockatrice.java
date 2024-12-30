@@ -52,13 +52,13 @@ public class EntityGaiaCockatrice extends EntityMobDay {
 	public boolean attackEntityAsMob(Entity par1Entity) {
 		if(super.attackEntityAsMob(par1Entity)) {
 			if(par1Entity instanceof EntityLivingBase) {
-                byte byte0 = 0;
+				byte byte0 = 0;
 
-                if (this.worldObj.getDifficulty() == EnumDifficulty.NORMAL){
-                	byte0 = 7;
-                } else if (this.worldObj.getDifficulty() == EnumDifficulty.HARD) {
-                	byte0 = 15;
-                }
+				if (this.worldObj.getDifficulty() == EnumDifficulty.NORMAL){
+					byte0 = 7;
+				} else if (this.worldObj.getDifficulty() == EnumDifficulty.HARD) {
+					byte0 = 15;
+				}
 
 				if(byte0 > 0) {
 					((EntityLivingBase)par1Entity).addPotionEffect(new PotionEffect(Potion.poison.id, byte0 * 10, 0));
@@ -103,17 +103,17 @@ public class EntityGaiaCockatrice extends EntityMobDay {
 		}
 
 		if(par1 && (this.rand.nextInt(2) == 0 || this.rand.nextInt(1 + par2) > 0)) {
-            this.entityDropItem(new ItemStack(GaiaItem.Shard, 1, 0), 0.0F);
+			this.entityDropItem(new ItemStack(GaiaItem.Shard, 1, 0), 0.0F);
 		}
 	}
 
 	protected void dropRareDrop(int par1) {
 		switch(this.rand.nextInt(2)) {
-		case 0:
-			this.dropItem(GaiaItem.BoxIron,1);
-			break;
-		case 1:
-			this.experienceValue = EntityAttributes.experienceValue1 * 5;
+			case 0:
+				this.dropItem(GaiaItem.BoxIron,1);
+				break;
+			case 1:
+				this.experienceValue = EntityAttributes.experienceValue1 * 5;
 		}
 	}
 
@@ -135,7 +135,7 @@ public class EntityGaiaCockatrice extends EntityMobDay {
 			}
 		}
 	}
-	
+
 	public boolean getCanSpawnHere() {
 		return this.posY > 60.0D && super.getCanSpawnHere();
 	}

@@ -9,35 +9,35 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class ModelGaiaMinotaurus extends ModelBase {
-    ModelRenderer head;
-    ModelRenderer headaccessory;
-    ModelRenderer horn;
-    ModelRenderer righthorn;
-    ModelRenderer lefthorn;
-    ModelRenderer rightear;
-    ModelRenderer leftear;
-    ModelRenderer bodytop;
-    ModelRenderer bodymiddle;
-    ModelRenderer bodymiddlebutton;
-    ModelRenderer bodybottom;
-    ModelRenderer rightchest;
-    ModelRenderer leftchest;
-    ModelRenderer ring;
-    ModelRenderer rightpauldron;
-    ModelRenderer leftpauldron;
+	ModelRenderer head;
+	ModelRenderer headaccessory;
+	ModelRenderer horn;
+	ModelRenderer righthorn;
+	ModelRenderer lefthorn;
+	ModelRenderer rightear;
+	ModelRenderer leftear;
+	ModelRenderer bodytop;
+	ModelRenderer bodymiddle;
+	ModelRenderer bodymiddlebutton;
+	ModelRenderer bodybottom;
+	ModelRenderer rightchest;
+	ModelRenderer leftchest;
+	ModelRenderer ring;
+	ModelRenderer rightpauldron;
+	ModelRenderer leftpauldron;
 	public static ModelRenderer rightarm;
-    ModelRenderer leftarm;
-    ModelRenderer rightarmguard;
-    ModelRenderer rightarmband;
-    ModelRenderer leftarmband;
-    ModelRenderer waist;
-    ModelRenderer tail;
-    ModelRenderer rightleg;
-    ModelRenderer leftleg;
-    ModelRenderer rightleglower;
-    ModelRenderer leftleglower;
-    ModelRenderer rightfoot;
-    ModelRenderer leftfoot;
+	ModelRenderer leftarm;
+	ModelRenderer rightarmguard;
+	ModelRenderer rightarmband;
+	ModelRenderer leftarmband;
+	ModelRenderer waist;
+	ModelRenderer tail;
+	ModelRenderer rightleg;
+	ModelRenderer leftleg;
+	ModelRenderer rightleglower;
+	ModelRenderer leftleglower;
+	ModelRenderer rightfoot;
+	ModelRenderer leftfoot;
 
 	public ModelGaiaMinotaurus() {
 		this.textureWidth = 128;
@@ -290,29 +290,29 @@ public class ModelGaiaMinotaurus extends ModelBase {
 		this.leftleglower.rotateAngleX = this.leftleg.rotateAngleX - 0.2617994F;
 		this.leftfoot.rotateAngleX = this.leftleg.rotateAngleX;
 		this.leftleg.rotateAngleX -= 0.2617994F;
-		
-        float f6;
-        float f7;
 
-        if (this.swingProgress > -9990.0F)
-        {
-            f6 = this.swingProgress;
-            f6 = 1.0F - this.swingProgress;
-            f6 *= f6;
-            f6 *= f6;
-            f6 = 1.0F - f6;
-            f7 = MathHelper.sin(f6 * (float)Math.PI);
-            float f8 = MathHelper.sin(this.swingProgress * (float)Math.PI) * -(this.head.rotateAngleX - 0.7F) * 0.75F;
-            
-            this.rightarm.rotateAngleX = (float)((double)this.rightarm.rotateAngleX - ((double)f7 * 1.2D + (double)f8));
-            this.rightpauldron.rotateAngleX = this.rightarm.rotateAngleX;
-            this.rightarmband.rotateAngleX = this.rightarm.rotateAngleX;
-            this.rightarm.rotateAngleY += (this.bodytop.rotateAngleY * 2.0F);
-            this.rightpauldron.rotateAngleY = this.rightarm.rotateAngleY;
-            this.rightarmband.rotateAngleY = this.rightarm.rotateAngleY;
-            this.rightarm.rotateAngleZ = (MathHelper.sin(this.swingProgress * (float)Math.PI) * -0.4F) + 0.0872665F;
-            this.rightpauldron.rotateAngleZ = this.rightarm.rotateAngleZ;
-            this.rightarmband.rotateAngleZ = this.rightarm.rotateAngleZ;
-        }
+		float f6;
+		float f7;
+
+		if (this.swingProgress > -9990.0F)
+		{
+			f6 = this.swingProgress;
+			f6 = 1.0F - this.swingProgress;
+			f6 *= f6;
+			f6 *= f6;
+			f6 = 1.0F - f6;
+			f7 = MathHelper.sin(f6 * (float)Math.PI);
+			float f8 = MathHelper.sin(this.swingProgress * (float)Math.PI) * -(this.head.rotateAngleX - 0.7F) * 0.75F;
+
+			this.rightarm.rotateAngleX = (float)((double)this.rightarm.rotateAngleX - ((double)f7 * 1.2D + (double)f8));
+			this.rightpauldron.rotateAngleX = this.rightarm.rotateAngleX;
+			this.rightarmband.rotateAngleX = this.rightarm.rotateAngleX;
+			this.rightarm.rotateAngleY += (this.bodytop.rotateAngleY * 2.0F);
+			this.rightpauldron.rotateAngleY = this.rightarm.rotateAngleY;
+			this.rightarmband.rotateAngleY = this.rightarm.rotateAngleY;
+			this.rightarm.rotateAngleZ = (MathHelper.sin(this.swingProgress * (float)Math.PI) * -0.4F) + 0.0872665F;
+			this.rightpauldron.rotateAngleZ = this.rightarm.rotateAngleZ;
+			this.rightarmband.rotateAngleZ = this.rightarm.rotateAngleZ;
+		}
 	}
 }

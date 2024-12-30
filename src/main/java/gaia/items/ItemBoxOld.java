@@ -37,28 +37,28 @@ public class ItemBoxOld extends Item {
 
 	public ItemStack onItemRightClick(ItemStack itemstack, World world, EntityPlayer entityplayer) {
 		world.playSoundAtEntity(entityplayer, "grimoireofgaia:box_open2", 0.5F, world.rand.nextFloat() * 0.1F + 0.9F);
-		
+
 		Random random = new Random();
 		int i = random.nextInt(8);
 		switch(i) {
-		case 0:
-			return new ItemStack(GaiaItem.Shard, 1, 4);
-		case 1:
-			return new ItemStack(GaiaItem.Shard, 1, 4);
-		case 2:
-			return new ItemStack(GaiaItem.MiscGigaGear);
-		case 3:
-			return new ItemStack(GaiaItem.SpawnCard);
-		case 4:
-			return new ItemStack(Items.saddle);
-		case 5:
-			return new ItemStack(Items.name_tag);
-		case 6:
-			return new ItemStack(GaiaItem.Shard, 1, 4);
-		case 7:
-			return new ItemStack(GaiaItem.Shard, 1, 4);
-		default:
-			return itemstack;
+			case 0:
+				return new ItemStack(GaiaItem.Shard, 1, 4);
+			case 1:
+				return new ItemStack(GaiaItem.Shard, 1, 4);
+			case 2:
+				return new ItemStack(GaiaItem.MiscGigaGear);
+			case 3:
+				return new ItemStack(GaiaItem.SpawnCard);
+			case 4:
+				return new ItemStack(Items.saddle);
+			case 5:
+				return new ItemStack(Items.name_tag);
+			case 6:
+				return new ItemStack(GaiaItem.Shard, 1, 4);
+			case 7:
+				return new ItemStack(GaiaItem.Shard, 1, 4);
+			default:
+				return itemstack;
 		}
 	}
 }

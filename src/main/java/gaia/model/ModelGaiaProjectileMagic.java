@@ -26,7 +26,7 @@ public class ModelGaiaProjectileMagic extends ModelBase
 		this.setRotationAngles(par2, par3, par4, par5, par6, par7, entity);
 		body1.render(par7);
 	}
-	
+
 	private void setRotation(ModelRenderer model, float x, float y, float z) {
 		model.rotateAngleX = x;
 		model.rotateAngleY = y;
@@ -34,8 +34,8 @@ public class ModelGaiaProjectileMagic extends ModelBase
 	}
 
 	public void setRotationAngles(float par1, float par2, float par3, float par4, float par5, float par6, Entity entity) {
-        super.setRotationAngles(par1, par2, par3, par4, par5, par6, entity);
-        this.body1.rotateAngleY = par4 / (180F / (float)Math.PI);
-        this.body1.rotateAngleX = par5 / (180F / (float)Math.PI);
+		super.setRotationAngles(par1, par2, par3, par4, par5, par6, entity);
+		this.body1.rotateAngleY = par4 / (180F / (float)Math.PI);
+		this.body1.rotateAngleX = par5 / (180F / (float)Math.PI);
 	}
 }

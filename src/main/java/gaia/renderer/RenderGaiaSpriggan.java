@@ -16,8 +16,8 @@ public class RenderGaiaSpriggan extends RenderLiving {
 
 	static RenderManager rend = Minecraft.getMinecraft().getRenderManager();
 	public RenderGaiaSpriggan(float shadowSize) {
-        super(rend, new ModelGaiaSpriggan(), shadowSize);
-        this.addLayer(new held_rightarm(this, ModelGaiaSpriggan.rightarmlower));
+		super(rend, new ModelGaiaSpriggan(), shadowSize);
+		this.addLayer(new held_rightarm(this, ModelGaiaSpriggan.rightarmlower));
 	}
 	
 	/*protected void renderEquippedItems(EntityLivingBase par1EntityLiving, float par2) {
@@ -76,7 +76,7 @@ public class RenderGaiaSpriggan extends RenderLiving {
 			GL11.glPopMatrix();
 		}
 	}*/
-	
+
 	protected void func_82422_c() {
 		GL11.glTranslatef(0.0F, 0.1875F, 0.0F);
 	}

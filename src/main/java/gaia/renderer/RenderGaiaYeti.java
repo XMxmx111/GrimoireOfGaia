@@ -16,9 +16,9 @@ public class RenderGaiaYeti extends RenderLiving {
 
 	private static final ResourceLocation texture = new ResourceLocation(GaiaReference.MOD_ID, "textures/models/Yeti.png");
 	static RenderManager rend = Minecraft.getMinecraft().getRenderManager();
-	
+
 	public RenderGaiaYeti(float shadowSize) {
-        super(rend, new ModelGaiaYeti(), shadowSize);
+		super(rend, new ModelGaiaYeti(), shadowSize);
 		//this.setRenderPassModel(new ModelGaiaYeti());
 	}
 

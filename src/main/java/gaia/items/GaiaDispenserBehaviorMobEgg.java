@@ -9,7 +9,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
 
-public class GaiaDispenserBehaviorMobEgg extends BehaviorDefaultDispenseItem 
+public class GaiaDispenserBehaviorMobEgg extends BehaviorDefaultDispenseItem
 {
 	public ItemStack dispenseStack(IBlockSource BlockSource, ItemStack stack)
 	{
@@ -21,7 +21,7 @@ public class GaiaDispenserBehaviorMobEgg extends BehaviorDefaultDispenseItem
 		double d2 = BlockSource.getZ() + (double)enumfacing.getFrontOffsetZ();
 		Entity entity = ItemGaiaSpawnEgg.spawnCreature(BlockSource.getWorld(), stack.getItemDamage(), d0, d1, d2);
 
-		if(entity instanceof EntityLivingBase && stack.hasDisplayName()) 
+		if(entity instanceof EntityLivingBase && stack.hasDisplayName())
 		{
 			((EntityLiving)entity).setCustomNameTag(stack.getDisplayName());
 		}

@@ -64,14 +64,14 @@ public class EntityGaiaFleshLich extends EntityMobBase implements IRangedAttackM
 		double d1 = par1EntityLivingBase.getEntityBoundingBox().minY + (double)(par1EntityLivingBase.height / 2.0F) - (this.posY + (double)(this.height / 2.0F));
 		double d2 = par1EntityLivingBase.posZ - this.posZ;
 		float f1 = MathHelper.sqrt_float(par2) * 0.5F;
-		
+
 		for(int var10 = 0; var10 < 1; ++var10) {
 			EntityGaiaProjectileSmallFireball var11 = new EntityGaiaProjectileSmallFireball(this.worldObj, this, d0 + this.rand.nextGaussian() * (double)f1, d1, d2 + this.rand.nextGaussian() * (double)f1);
 			var11.posY = this.posY + (double)(this.height / 2.0F) + 0.5D;
 			this.worldObj.spawnEntityInWorld(var11);
 		}
 	}
-	
+
 	public boolean isAIEnabled() {
 		return true;
 	}
@@ -108,14 +108,14 @@ public class EntityGaiaFleshLich extends EntityMobBase implements IRangedAttackM
 
 		for(int var4 = 0; var4 < var3; ++var4) {
 			this.dropItem(GaiaItem.MiscFurnaceFuel,1);
-		}	
-		
+		}
+
 		var3 = this.rand.nextInt(3 + par2);
 
 		for(int var4 = 0; var4 < var3; ++var4) {
-            this.entityDropItem(new ItemStack(Items.dye, 1, 4), 0.0F);
+			this.entityDropItem(new ItemStack(Items.dye, 1, 4), 0.0F);
 		}
-		
+
 		if(par1 && (this.rand.nextInt(2) == 0 || this.rand.nextInt(1 + par2) > 0)) {
 			this.entityDropItem(new ItemStack(GaiaItem.Shard, 1, 1), 0.0F);
 		}
@@ -131,20 +131,20 @@ public class EntityGaiaFleshLich extends EntityMobBase implements IRangedAttackM
 
 	protected void dropRareDrop(int par1) {
 		switch(this.rand.nextInt(3)) {
-		case 0:
-			this.dropItem(GaiaItem.BagOre,1);
-			break;
-		case 1:
-			this.dropItem(Item.getItemFromBlock(Blocks.lapis_block), 1);
-			break;
-		case 2:
-			this.entityDropItem(new ItemStack(Items.skull, 1, 2), 0.0F);
+			case 0:
+				this.dropItem(GaiaItem.BagOre,1);
+				break;
+			case 1:
+				this.dropItem(Item.getItemFromBlock(Blocks.lapis_block), 1);
+				break;
+			case 2:
+				this.entityDropItem(new ItemStack(Items.skull, 1, 2), 0.0F);
 		}
 	}
-	
+
 	@Override
-    protected void dropEquipment(boolean p_82160_1_, int p_82160_2_) {
-    }
+	protected void dropEquipment(boolean p_82160_1_, int p_82160_2_) {
+	}
 	
 	/*
 	public IEntityLivingData onSpawnWithEgg(IEntityLivingData par1IEntityLivingData) {
@@ -153,15 +153,15 @@ public class EntityGaiaFleshLich extends EntityMobBase implements IRangedAttackM
 		return par1IEntityLivingData;
 	}
 	*/
-	
+
 	public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, IEntityLivingData livingdata)
-    {
+	{
 		livingdata = super.onInitialSpawn(difficulty, livingdata);
-		this.setCurrentItemOrArmor(0, new ItemStack(GaiaItem.PropWeapon, 1, 0));		
+		this.setCurrentItemOrArmor(0, new ItemStack(GaiaItem.PropWeapon, 1, 0));
 		this.setEnchantmentBasedOnDifficulty(difficulty);
-		return livingdata;		
-		
-    }
+		return livingdata;
+
+	}
 
 	public boolean getCanSpawnHere() {
 		return this.posY < 16.0D && super.getCanSpawnHere();

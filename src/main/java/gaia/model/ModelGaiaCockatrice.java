@@ -34,7 +34,7 @@ public class ModelGaiaCockatrice extends ModelBase {
 	public ModelGaiaCockatrice() {
 		this.textureWidth = 128;
 		this.textureHeight = 64;
-		
+
 		this.head = new ModelRenderer(this, 0, 0);
 		this.head.addBox(-2F, -12F, -5.5F, 4, 4, 4);
 		this.head.setRotationPoint(0F, 10.5F, -3F);

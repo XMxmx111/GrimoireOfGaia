@@ -21,8 +21,8 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @InterfaceList({
-	@Interface(iface="baubles.api.IBauble", modid="Baubles", striprefs=true),
-	@Interface(iface="baubles.api.BaubleType", modid="Baubles", striprefs=true)})
+		@Interface(iface="baubles.api.IBauble", modid="Baubles", striprefs=true),
+		@Interface(iface="baubles.api.BaubleType", modid="Baubles", striprefs=true)})
 
 public class ItemAccessoryRingHaste extends Item implements IBauble{
 	String texture;
@@ -61,12 +61,12 @@ public class ItemAccessoryRingHaste extends Item implements IBauble{
 		}
 	}
 
-	public void doEffect(EntityPlayer player, ItemStack item) {		
+	public void doEffect(EntityPlayer player, ItemStack item) {
 		//player.addPotionEffect(new PotionEffect(Potion.digSpeed.id, 0, 0));
-		
+
 		if (!player.isPotionActive(Potion.digSpeed)) {
-			player.addPotionEffect(new PotionEffect(Potion.digSpeed.id, 60, 0, true, false));		
-			}
+			player.addPotionEffect(new PotionEffect(Potion.digSpeed.id, 60, 0, true, false));
+		}
 	}
 
 	@Override
@@ -76,13 +76,13 @@ public class ItemAccessoryRingHaste extends Item implements IBauble{
 
 	@Override
 	public void onWornTick(ItemStack itemstack, EntityLivingBase player) {
-		
-		this.doEffect((EntityPlayer)player, itemstack);	
+
+		this.doEffect((EntityPlayer)player, itemstack);
 	}
 
 	@Override
 	public void onEquipped(ItemStack itemstack, EntityLivingBase player) {
-		
+
 	}
 
 	@Override

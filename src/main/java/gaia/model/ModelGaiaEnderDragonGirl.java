@@ -45,7 +45,7 @@ public class ModelGaiaEnderDragonGirl extends ModelBase{
 	public ModelGaiaEnderDragonGirl() {
 		this.textureWidth = 128;
 		this.textureHeight = 64;
-		
+
 		this.isCarrying = false;
 		this.isAttacking = false;
 		float f = -14.0F;
@@ -307,7 +307,7 @@ public class ModelGaiaEnderDragonGirl extends ModelBase{
 		this.tail1.rotateAngleZ = MathHelper.cos(par1 * 0.6162F) * 0.1F * par2;
 		this.tail2.rotateAngleZ = MathHelper.cos(par1 * 0.6262F) * 0.1F * par2;
 		this.tail3.rotateAngleZ = MathHelper.cos(par1 * 0.6362F) * 0.1F * par2;
-		
+
 		if(this.isCarrying) {
 			this.rightarm1.rotateAngleX = -0.5F;
 			this.leftarm1.rotateAngleX = -0.5F;

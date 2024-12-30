@@ -14,7 +14,7 @@ public class RenderGaiaNPCCreeperGirl extends RenderLiving {
 
 	static RenderManager rend = Minecraft.getMinecraft().getRenderManager();
 	public RenderGaiaNPCCreeperGirl( float shadowSize) {
-        super(rend, new ModelGaiaNPCCreeperGirl(), shadowSize);
+		super(rend, new ModelGaiaNPCCreeperGirl(), shadowSize);
 	}
 
 	protected ResourceLocation getEntityTexture(Entity entity) {

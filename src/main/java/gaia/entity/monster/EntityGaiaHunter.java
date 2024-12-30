@@ -74,11 +74,11 @@ public class EntityGaiaHunter extends EntityMobDay implements IRangedAttackMob {
 		this.playSound("random.bow", 1.0F, 1.0F / (this.getRNG().nextFloat() * 0.4F + 0.8F));
 		this.worldObj.spawnEntityInWorld(entityarrow);
 	}
-	
+
 	@Override
-    public boolean canAttackClass(Class par1Class) {
-        return super.canAttackClass(par1Class) && par1Class != EntityGaiaHunter.class;
-    }
+	public boolean canAttackClass(Class par1Class) {
+		return super.canAttackClass(par1Class) && par1Class != EntityGaiaHunter.class;
+	}
 
 	public boolean isAIEnabled() {
 		return true;
@@ -125,17 +125,17 @@ public class EntityGaiaHunter extends EntityMobDay implements IRangedAttackMob {
 		}
 
 		if(par1 && (this.rand.nextInt(2) == 0 || this.rand.nextInt(1 + par2) > 0)) {
-            this.entityDropItem(new ItemStack(GaiaItem.Shard, 1, 0), 0.0F);
+			this.entityDropItem(new ItemStack(GaiaItem.Shard, 1, 0), 0.0F);
 		}
 	}
 
 	protected void dropRareDrop(int par1) {
 		switch(this.rand.nextInt(2)) {
-		case 0:
-			this.dropItem(GaiaItem.BoxIron,1);
-			break;
-		case 1:
-			this.experienceValue = EntityAttributes.experienceValue1 * 5;
+			case 0:
+				this.dropItem(GaiaItem.BoxIron,1);
+				break;
+			case 1:
+				this.experienceValue = EntityAttributes.experienceValue1 * 5;
 		}
 	}
 	/*
@@ -146,15 +146,15 @@ public class EntityGaiaHunter extends EntityMobDay implements IRangedAttackMob {
 		return par1IEntityLivingData;
 	}
 	*/
-	
+
 	public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, IEntityLivingData livingdata)
-    {
+	{
 		livingdata = super.onInitialSpawn(difficulty, livingdata);
 		this.setCurrentItemOrArmor(0, new ItemStack(Items.bow));
 		this.setEnchantmentBasedOnDifficulty(difficulty);
-		return livingdata;		
-		
-    }
+		return livingdata;
+
+	}
 
 	public boolean getCanSpawnHere() {
 		return this.posY > 60.0D && super.getCanSpawnHere();

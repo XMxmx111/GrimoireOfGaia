@@ -148,7 +148,7 @@ public class EntityGaiaCobblestoneGolem extends EntityMobBase {
 			BlockPos pos = new BlockPos(var1, var2, var3);
 			int crackid = BlockStateHelper.getblock_ID(world, pos);
 			int crackmeta = BlockStateHelper.getMetafromState(world, pos);
-			
+
 			//Block b = this.worldObj.getBlock(var1, var2, var3);
 			Block b = BlockStateHelper.getBlockfromState(this.worldObj, pos);
 			if(b != Blocks.air) {
@@ -158,7 +158,7 @@ public class EntityGaiaCobblestoneGolem extends EntityMobBase {
 						this.posZ + ((double)this.rand.nextFloat() - 0.5D) * (double)this.width, 4.0D * ((double)this.rand.nextFloat() - 0.5D), 0.5D,
 						((double)this.rand.nextFloat() - 0.5D) * 4.0D,
 						crackid,crackmeta);
-		}}
+			}}
 
 	}
 
@@ -184,11 +184,11 @@ public class EntityGaiaCobblestoneGolem extends EntityMobBase {
 		int var3 = this.rand.nextInt(3 + par2);
 
 		for(int var4 = 0; var4 < var3; ++var4) {
-            this.entityDropItem(new ItemStack(GaiaItem.Shard, 1, 0), 0.0F);
+			this.entityDropItem(new ItemStack(GaiaItem.Shard, 1, 0), 0.0F);
 		}
 
 		if(par1 && (this.rand.nextInt(2) == 0 || this.rand.nextInt(1 + par2) > 0)) {
-            this.entityDropItem(new ItemStack(GaiaItem.Shard, 1, 1), 0.0F);
+			this.entityDropItem(new ItemStack(GaiaItem.Shard, 1, 1), 0.0F);
 		}
 
 		if(par1 && (this.rand.nextInt(4) == 0 || this.rand.nextInt(1 + par2) > 0)) {
@@ -198,14 +198,14 @@ public class EntityGaiaCobblestoneGolem extends EntityMobBase {
 
 	protected void dropRareDrop(int par1) {
 		switch(this.rand.nextInt(3)) {
-		case 0:
-			this.dropItem(GaiaItem.BoxGold,1);
-			break;
-		case 1:
-			this.dropItem(GaiaItem.BagBook,1);
-			break;
-		case 2:
-			this.dropItem(GaiaItem.BookMetal,1);
+			case 0:
+				this.dropItem(GaiaItem.BoxGold,1);
+				break;
+			case 1:
+				this.dropItem(GaiaItem.BagBook,1);
+				break;
+			case 2:
+				this.dropItem(GaiaItem.BookMetal,1);
 		}
 	}
 

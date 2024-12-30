@@ -43,7 +43,7 @@ public class ItemWeaponFanFire extends Item {
 		multimap.put(SharedMonsterAttributes.attackDamage.getAttributeUnlocalizedName(), new AttributeModifier(itemModifierUUID, "Tool modifier", (double)this.weaponDamage, 0));
 		return multimap;
 	}
-	
+
 	public void onCreated(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer) {
 		par1ItemStack.addEnchantment(Enchantment.fireAspect, 2);
 		par1ItemStack.addEnchantment(Enchantment.knockback, 1);

@@ -25,7 +25,7 @@ public class ItemMiscPage extends Item {
 	public EnumRarity getRarity(ItemStack par1ItemStack) {
 		return EnumRarity.UNCOMMON;
 	}
-	
+
 	public void addInformation(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List par3List, boolean par4) {
 		par3List.add((EnumChatFormatting.ITALIC + StatCollector.translateToLocal("item.GrimoireOfGaia.MiscPage.desc")));
 	}

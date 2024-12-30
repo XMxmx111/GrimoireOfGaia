@@ -37,34 +37,34 @@ public class ItemBoxIron extends Item {
 
 	public ItemStack onItemRightClick(ItemStack itemstack, World world, EntityPlayer entityplayer) {
 		world.playSoundAtEntity(entityplayer, "grimoireofgaia:bag_open", 0.5F, world.rand.nextFloat() * 0.1F + 0.9F);
-		
+
 		Random random = new Random();
 		int i = random.nextInt(11);
 		switch(i) {
-		case 0:
-			return new ItemStack(Items.iron_ingot);
-		case 1:
-			return new ItemStack(Items.iron_axe);
-		case 2:
-			return new ItemStack(Items.iron_pickaxe);
-		case 3:
-			return new ItemStack(Items.iron_shovel);
-		case 4:
-			return new ItemStack(Items.iron_sword);
-		case 5:
-			return new ItemStack(Items.iron_helmet);
-		case 6:
-			return new ItemStack(Items.iron_chestplate);
-		case 7:
-			return new ItemStack(Items.iron_leggings);
-		case 8:
-			return new ItemStack(Items.iron_boots);
-		case 9:
-			return new ItemStack(Blocks.iron_block);
-		case 10:
-			return new ItemStack(Items.iron_horse_armor);
-		default:
-			return itemstack;
+			case 0:
+				return new ItemStack(Items.iron_ingot);
+			case 1:
+				return new ItemStack(Items.iron_axe);
+			case 2:
+				return new ItemStack(Items.iron_pickaxe);
+			case 3:
+				return new ItemStack(Items.iron_shovel);
+			case 4:
+				return new ItemStack(Items.iron_sword);
+			case 5:
+				return new ItemStack(Items.iron_helmet);
+			case 6:
+				return new ItemStack(Items.iron_chestplate);
+			case 7:
+				return new ItemStack(Items.iron_leggings);
+			case 8:
+				return new ItemStack(Items.iron_boots);
+			case 9:
+				return new ItemStack(Blocks.iron_block);
+			case 10:
+				return new ItemStack(Items.iron_horse_armor);
+			default:
+				return itemstack;
 		}
 	}
 }

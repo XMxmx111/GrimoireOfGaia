@@ -258,27 +258,27 @@ public class ModelGaiaNaga extends ModelBase {
 		this.tail6.rotateAngleZ = MathHelper.cos(par1 * 0.6662F) * 0.05F * par2;
 		this.tail7.rotateAngleZ = MathHelper.cos(par1 * 0.6762F) * 0.05F * par2;
 		this.tail8.rotateAngleZ = MathHelper.cos(par1 * 0.6862F) * 0.05F * par2;
-		
-        float f6;
-        float f7;
 
-        if (this.swingProgress > -9990.0F)
-        {
-            f6 = this.swingProgress;
-            f6 = 1.0F - this.swingProgress;
-            f6 *= f6;
-            f6 *= f6;
-            f6 = 1.0F - f6;
-            f7 = MathHelper.sin(f6 * (float)Math.PI);
-            float f8 = MathHelper.sin(this.swingProgress * (float)Math.PI) * -(this.head.rotateAngleX - 0.7F) * 0.75F;
-            
-            this.rightarmlower.rotateAngleX = (float)((double)this.rightarmlower.rotateAngleX - ((double)f7 * 1.2D + (double)f8));
-            this.rightarm.rotateAngleX = this.rightarmlower.rotateAngleX;
-            this.rightarmlower.rotateAngleX = this.rightarmlower.rotateAngleX - 0.1745329F;
-            this.rightarmlower.rotateAngleY += (this.body.rotateAngleY * 2.0F);
-            this.rightarm.rotateAngleY = this.rightarmlower.rotateAngleY;
-            this.rightarmlower.rotateAngleZ = (MathHelper.sin(this.swingProgress * (float)Math.PI) * -0.4F) + 0.0872665F;
-            this.rightarm.rotateAngleZ = this.rightarmlower.rotateAngleZ;
-        }
+		float f6;
+		float f7;
+
+		if (this.swingProgress > -9990.0F)
+		{
+			f6 = this.swingProgress;
+			f6 = 1.0F - this.swingProgress;
+			f6 *= f6;
+			f6 *= f6;
+			f6 = 1.0F - f6;
+			f7 = MathHelper.sin(f6 * (float)Math.PI);
+			float f8 = MathHelper.sin(this.swingProgress * (float)Math.PI) * -(this.head.rotateAngleX - 0.7F) * 0.75F;
+
+			this.rightarmlower.rotateAngleX = (float)((double)this.rightarmlower.rotateAngleX - ((double)f7 * 1.2D + (double)f8));
+			this.rightarm.rotateAngleX = this.rightarmlower.rotateAngleX;
+			this.rightarmlower.rotateAngleX = this.rightarmlower.rotateAngleX - 0.1745329F;
+			this.rightarmlower.rotateAngleY += (this.body.rotateAngleY * 2.0F);
+			this.rightarm.rotateAngleY = this.rightarmlower.rotateAngleY;
+			this.rightarmlower.rotateAngleZ = (MathHelper.sin(this.swingProgress * (float)Math.PI) * -0.4F) + 0.0872665F;
+			this.rightarm.rotateAngleZ = this.rightarmlower.rotateAngleZ;
+		}
 	}
 }

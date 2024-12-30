@@ -26,7 +26,7 @@ public class ItemMiscWeaponEnchanted extends Item {
 	public EnumRarity getRarity(ItemStack par1ItemStack) {
 		return EnumRarity.RARE;
 	}
-	
+
 	public void addInformation(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List par3List, boolean par4) {
 		par3List.add(StatCollector.translateToLocal("item.GrimoireOfGaia.MiscWeaponEnchanted.desc"));
 	}

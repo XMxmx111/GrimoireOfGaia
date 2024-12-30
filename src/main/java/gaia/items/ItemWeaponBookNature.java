@@ -45,7 +45,7 @@ public class ItemWeaponBookNature extends ItemSword {
 		par2EntityLiving.addPotionEffect(new PotionEffect(Potion.poison.id, 80, 0));
 		return true;
 	}
-	
+
 	public boolean getIsRepairable(ItemStack par1ItemStack, ItemStack par2ItemStack) {
 		return Items.book == par2ItemStack.getItem()?true:super.getIsRepairable(par1ItemStack, par2ItemStack);
 	}

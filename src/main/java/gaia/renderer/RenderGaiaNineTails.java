@@ -14,10 +14,10 @@ public class RenderGaiaNineTails extends RenderLiving {
 
 	private static final ResourceLocation texture = new ResourceLocation(GaiaReference.MOD_ID, "textures/models/Nine_Tails.png");
 	static RenderManager rend = Minecraft.getMinecraft().getRenderManager();
-	
+
 	public RenderGaiaNineTails( float shadowSize) {
-        super(rend, new ModelGaiaNineTails(), shadowSize);
-        this.addLayer(new held_rightarm(this, ModelGaiaNineTails.rightarm));
+		super(rend, new ModelGaiaNineTails(), shadowSize);
+		this.addLayer(new held_rightarm(this, ModelGaiaNineTails.rightarm));
 	}
 	
 	/*protected void renderEquippedItems(EntityLivingBase par1EntityLiving, float par2) {

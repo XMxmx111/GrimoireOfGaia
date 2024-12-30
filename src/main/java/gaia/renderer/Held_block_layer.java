@@ -37,9 +37,9 @@ public class Held_block_layer implements LayerRenderer<EntityGaiaEnderDragonGirl
             GlStateManager.rotate(20.0F, 1.0F, 0.0F, 0.0F);
             GlStateManager.rotate(45.0F, 0.0F, 1.0F, 0.0F);
             GlStateManager.translate(0.25F, 0.1875F, 0.25F);
-            
+
             GlStateManager.translate(-0.2F, -0.2F, 0.3F);
-            
+
             float f = 0.6F;
             GlStateManager.scale(-f, -f, f);
             int i = entitylivingbaseIn.getBrightnessForRender(partialTicks);
@@ -49,7 +49,7 @@ public class Held_block_layer implements LayerRenderer<EntityGaiaEnderDragonGirl
             GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
             this.endermanRenderer.bindTexture(TextureMap.locationBlocksTexture);
             blockrendererdispatcher.renderBlockBrightness(iblockstate, 1.0F);
-            
+
             GlStateManager.popMatrix();
             GlStateManager.disableRescaleNormal();
         }

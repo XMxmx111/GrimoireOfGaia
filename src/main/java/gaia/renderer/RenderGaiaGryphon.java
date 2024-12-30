@@ -16,9 +16,9 @@ public class RenderGaiaGryphon extends RenderLiving {
 
 	private static final ResourceLocation texture = new ResourceLocation(GaiaReference.MOD_ID, "textures/models/Gryphon.png");
 	static RenderManager rend = Minecraft.getMinecraft().getRenderManager();
-	
+
 	public RenderGaiaGryphon(float shadowSize) {
-        super(rend, new ModelGaiaGryphon(), shadowSize);
+		super(rend, new ModelGaiaGryphon(), shadowSize);
 		//this.setRenderPassModel(new ModelGaiaGryphon());
 	}
 

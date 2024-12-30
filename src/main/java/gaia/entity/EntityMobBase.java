@@ -30,16 +30,16 @@ public abstract class EntityMobBase extends EntityMob {
 		return null;
 	}
 
-	/** 
+/*
 	public boolean attackEntityAsMob(Entity par1Entity) {
 		if(super.attackEntityAsMob(par1Entity)) {
 			if(ConfigGaia.BaseDamage) {
-	            ((EntityLivingBase)par1Entity).attackEntityFrom(CustomDamageSource.pierce, 2.0F);
+				((EntityLivingBase)par1Entity).attackEntityFrom(CustomDamageSource.pierce, 2.0F);
 			}
 			return true;
 		} else {
 			return false;
 		}
 	}
-	**/
+*/
 }

@@ -31,13 +31,13 @@ import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.World;
 
 public class EntityGaiaShaman extends EntityMobBase implements IRangedAttackMob {
-	private static final Item[] shamanDrops = new Item[] { 
-		Items.book,
-		Items.sugar, 
-		Items.paper, 
-		Items.rotten_flesh, 
-		Items.glass_bottle,
-		Items.gunpowder };
+	private static final Item[] shamanDrops = new Item[] {
+			Items.book,
+			Items.sugar,
+			Items.paper,
+			Items.rotten_flesh,
+			Items.glass_bottle,
+			Items.gunpowder };
 	private EntityAIArrowAttack aiArrowAttack = new EntityAIArrowAttack(this, 1.0D, 20, 60, 15.0F);
 	private EntityAIGaiaAttackOnCollide aiAttackOnCollide = new EntityAIGaiaAttackOnCollide(this, 1.0D, true);
 
@@ -70,7 +70,7 @@ public class EntityGaiaShaman extends EntityMobBase implements IRangedAttackMob 
 	public int getTotalArmorValue() {
 		return EntityAttributes.rateArmor2;
 	}
-	
+
 	public void attackEntityWithRangedAttack(EntityLivingBase par1EntityLivingBase, float par2) {
 		this.worldObj.playAuxSFXAtEntity((EntityPlayer)null, 1009, this.getPosition(), 0);
 		//this.worldObj.playAuxSFXAtEntity((EntityPlayer)null, 1009, (int)this.posX, (int)this.posY, (int)this.posZ, 0);
@@ -78,7 +78,7 @@ public class EntityGaiaShaman extends EntityMobBase implements IRangedAttackMob 
 		double d1 = par1EntityLivingBase.getEntityBoundingBox().minY + (double)(par1EntityLivingBase.height / 2.0F) - (this.posY + (double)(this.height / 2.0F));
 		double d2 = par1EntityLivingBase.posZ - this.posZ;
 		float f1 = MathHelper.sqrt_float(par2) * 0.5F;
-		
+
 		EntityGaiaProjectileMagic var11 = new EntityGaiaProjectileMagic(this.worldObj, this, d0 + this.rand.nextGaussian() * (double)f1, d1, d2 + this.rand.nextGaussian() * (double)f1);
 		var11.posY = this.posY + (double)(this.height / 2.0F) + 0.5D;
 		this.worldObj.spawnEntityInWorld(var11);
@@ -87,13 +87,13 @@ public class EntityGaiaShaman extends EntityMobBase implements IRangedAttackMob 
 	public boolean attackEntityAsMob(Entity par1Entity) {
 		if(super.attackEntityAsMob(par1Entity)) {
 			if(par1Entity instanceof EntityLivingBase) {
-                byte byte0 = 0;
+				byte byte0 = 0;
 
-                if (this.worldObj.getDifficulty() == EnumDifficulty.NORMAL){
-                	byte0 = 7;
-                } else if (this.worldObj.getDifficulty() == EnumDifficulty.HARD) {
-                	byte0 = 15;
-                }
+				if (this.worldObj.getDifficulty() == EnumDifficulty.NORMAL){
+					byte0 = 7;
+				} else if (this.worldObj.getDifficulty() == EnumDifficulty.HARD) {
+					byte0 = 15;
+				}
 
 				if(byte0 > 0) {
 					((EntityLivingBase)par1Entity).addPotionEffect(new PotionEffect(Potion.poison.id, byte0 * 20, 0));
@@ -110,7 +110,7 @@ public class EntityGaiaShaman extends EntityMobBase implements IRangedAttackMob 
 	public boolean isAIEnabled() {
 		return true;
 	}
-	
+
 	public boolean isPotionApplicable(PotionEffect par1PotionEffect) {
 		return par1PotionEffect.getPotionID() == Potion.poison.id?false:super.isPotionApplicable(par1PotionEffect);
 	}
@@ -127,7 +127,7 @@ public class EntityGaiaShaman extends EntityMobBase implements IRangedAttackMob 
 			this.tasks.addTask(1, this.aiArrowAttack);
 			this.switchHealth = 0;
 		}
-		
+
 		EntityZombie spawnMob;
 		if(this.getHealth() < EntityAttributes.maxHealth2 * 0.75F && this.getHealth() > 0.0F && this.spawn == 0 && !this.worldObj.isRemote) {
 			spawnMob = new EntityZombie(this.worldObj);
@@ -162,7 +162,7 @@ public class EntityGaiaShaman extends EntityMobBase implements IRangedAttackMob 
 		return "grimoireofgaia:aggressive_death";
 	}
 
-	protected void dropFewItems(boolean par1, int par2) {		
+	protected void dropFewItems(boolean par1, int par2) {
 		int var3 = this.rand.nextInt(3) + 1;
 
 		for(int var4 = 0; var4 < var3; ++var4) {
@@ -176,19 +176,19 @@ public class EntityGaiaShaman extends EntityMobBase implements IRangedAttackMob 
 				this.dropItem(var6, 1);
 			}
 		}
-		
+
 		var3 = this.rand.nextInt(3 + par2);
 
 		for(int var4 = 0; var4 < var3; ++var4) {
 			this.dropItem(GaiaItem.FoodBerryHealth,1);
 		}
-			
+
 		if(par1 && (this.rand.nextInt(4) == 0 || this.rand.nextInt(1 + par2) > 0)) {
-            this.entityDropItem(new ItemStack(GaiaItem.Shard, 1, 5), 0.0F);
+			this.entityDropItem(new ItemStack(GaiaItem.Shard, 1, 5), 0.0F);
 		}
 
 		if(par1 && (this.rand.nextInt(2) == 0 || this.rand.nextInt(1 + par2) > 0)) {
-            this.entityDropItem(new ItemStack(GaiaItem.Shard, 1, 1), 0.0F);
+			this.entityDropItem(new ItemStack(GaiaItem.Shard, 1, 1), 0.0F);
 		}
 
 		if(par1 && (this.rand.nextInt(4) == 0 || this.rand.nextInt(1 + par2) > 0)) {
@@ -198,20 +198,20 @@ public class EntityGaiaShaman extends EntityMobBase implements IRangedAttackMob 
 
 	protected void dropRareDrop(int par1) {
 		switch(this.rand.nextInt(3)) {
-		case 0:
-			this.dropItem(GaiaItem.BoxGold,1);
-			break;
-		case 1:
-			this.dropItem(GaiaItem.BagBook,1);
-			break;
-		case 2:
-			this.dropItem(GaiaItem.MiscBook,1);
+			case 0:
+				this.dropItem(GaiaItem.BoxGold,1);
+				break;
+			case 1:
+				this.dropItem(GaiaItem.BagBook,1);
+				break;
+			case 2:
+				this.dropItem(GaiaItem.MiscBook,1);
 		}
 	}
-	
+
 	@Override
-    protected void dropEquipment(boolean p_82160_1_, int p_82160_2_) {
-    }
+	protected void dropEquipment(boolean p_82160_1_, int p_82160_2_) {
+	}
 	/*
 	public IEntityLivingData onSpawnWithEgg(IEntityLivingData par1IEntityLivingData) {
 		par1IEntityLivingData = super.onSpawnWithEgg(par1IEntityLivingData);
@@ -221,21 +221,21 @@ public class EntityGaiaShaman extends EntityMobBase implements IRangedAttackMob 
 	}
 	*/
 	public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, IEntityLivingData livingdata)
-    {
+	{
 		livingdata = super.onInitialSpawn(difficulty, livingdata);
-		this.setCurrentItemOrArmor(0, new ItemStack(GaiaItem.PropWeapon, 1, 0));	
+		this.setCurrentItemOrArmor(0, new ItemStack(GaiaItem.PropWeapon, 1, 0));
 		this.setEnchantmentBasedOnDifficulty(difficulty);
-		return livingdata;		
-		
-    }
-	
+		return livingdata;
+
+	}
+
 	public void setCurrentItemOrArmor(int par1, ItemStack par2ItemStack) {
 		super.setCurrentItemOrArmor(par1, par2ItemStack);
 		if(!this.worldObj.isRemote && par1 == 0) {
 			this.setCombatTask();
 		}
 	}
-	
+
 	public void setCombatTask() {
 		this.tasks.removeTask(this.aiAttackOnCollide);
 		this.tasks.addTask(1, this.aiArrowAttack);

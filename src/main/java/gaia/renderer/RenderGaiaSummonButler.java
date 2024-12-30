@@ -14,7 +14,7 @@ public class RenderGaiaSummonButler extends RenderBiped {
 	static RenderManager rend = Minecraft.getMinecraft().getRenderManager();
 
 	public RenderGaiaSummonButler( float shadowSize) {
-        super(rend, new ModelBiped(), shadowSize);
+		super(rend, new ModelBiped(), shadowSize);
 	}
 
 	protected ResourceLocation getEntityTexture(Entity entity) {

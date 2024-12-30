@@ -16,10 +16,10 @@ public class RenderGaiaKobold extends RenderLiving {
 	private static final ResourceLocation texture01 = new ResourceLocation(GaiaReference.MOD_ID, "textures/models/Kobold01.png");
 	private static final ResourceLocation texture02 = new ResourceLocation(GaiaReference.MOD_ID, "textures/models/alternate/Kobold02.png");
 	static RenderManager rend = Minecraft.getMinecraft().getRenderManager();
-	
+
 	public RenderGaiaKobold( float shadowSize) {
-        super(rend, new ModelGaiaKobold(), shadowSize);
-        this.addLayer(new held_rightarm(this, ModelGaiaKobold.righthand));
+		super(rend, new ModelGaiaKobold(), shadowSize);
+		this.addLayer(new held_rightarm(this, ModelGaiaKobold.righthand));
 	}
 
 	/*protected void renderEquippedItems(EntityLivingBase par1EntityLiving, float par2) {
@@ -86,12 +86,12 @@ public class RenderGaiaKobold extends RenderLiving {
 	protected ResourceLocation getEntityTexture(Entity entity) {
 		return this.getTexture((EntityGaiaKobold) entity);
 	}
-	
+
 	protected ResourceLocation getTexture(EntityGaiaKobold par1EntityGaiaKobold) {
 		switch(par1EntityGaiaKobold.getTextureType()) {
-		case 0: return texture01;
-		case 1: return texture02;
-		default: return texture01;
+			case 0: return texture01;
+			case 1: return texture02;
+			default: return texture01;
 		}
 	}
 }

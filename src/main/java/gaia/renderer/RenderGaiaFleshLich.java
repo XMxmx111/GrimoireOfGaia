@@ -14,11 +14,11 @@ public class RenderGaiaFleshLich extends RenderLiving<EntityGaiaFleshLich> {
 
 	private static final ResourceLocation texture = new ResourceLocation(GaiaReference.MOD_ID, "textures/models/Flesh_Lich.png");
 	static RenderManager rend = Minecraft.getMinecraft().getRenderManager();
-	
+
 	public RenderGaiaFleshLich( float shadowSize) {
-        super(rend, new ModelGaiaFleshLich(), shadowSize);
-        this.addLayer(new held_rightarm(this, ModelGaiaFleshLich.rightarm));
-    }
+		super(rend, new ModelGaiaFleshLich(), shadowSize);
+		this.addLayer(new held_rightarm(this, ModelGaiaFleshLich.rightarm));
+	}
 
 	/*protected void renderEquippedItems(EntityLivingBase par1EntityLiving, float par2) {
 		float var3 = 1.0F;

@@ -40,19 +40,19 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class EntityGaiaWitch extends EntityMobBase implements IRangedAttackMob {
-	private static final Item[] witchDrops = new Item[] { 
-		Items.book, 
-		Items.sugar, 
-		Items.paper, 
-		Items.spider_eye, 
-		Items.glass_bottle, 
-		Items.gunpowder };
+	private static final Item[] witchDrops = new Item[] {
+			Items.book,
+			Items.sugar,
+			Items.paper,
+			Items.spider_eye,
+			Items.glass_bottle,
+			Items.gunpowder };
 	private int spawn;
-	
+
 	private static final UUID field_110184_bp = UUID.fromString("5CD17E52-A79A-43D3-A529-90FDE04B181E");
 	private static final AttributeModifier field_110185_bq = (new AttributeModifier(field_110184_bp, "Drinking speed penalty", -0.25D, 0)).setSaved(false);
 	private int witchAttackTimer;
-//	private static final String __OBFID = "CL_00001701";
+	//	private static final String __OBFID = "CL_00001701";
 	private final float moveSpeed;
 
 	public EntityGaiaWitch(World par1World) {
@@ -145,34 +145,34 @@ public class EntityGaiaWitch extends EntityMobBase implements IRangedAttackMob {
 							}
 						}
 					}
-					
+
 					this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).removeModifier(field_110185_bq);
 				}
 			} else {
 				short var7 = -1;
-                if (this.rand.nextFloat() < 0.15F && this.isInsideOfMaterial(Material.water) && !this.isPotionActive(Potion.waterBreathing)) {
-                	var7 = 8237;
-                }
-                else if(this.rand.nextFloat() < 0.15F && this.isBurning() && !this.isPotionActive(Potion.fireResistance)) {
+				if (this.rand.nextFloat() < 0.15F && this.isInsideOfMaterial(Material.water) && !this.isPotionActive(Potion.waterBreathing)) {
+					var7 = 8237;
+				}
+				else if(this.rand.nextFloat() < 0.15F && this.isBurning() && !this.isPotionActive(Potion.fireResistance)) {
 					var7 = 16307;
-				} 
-                else if(this.rand.nextFloat() < 0.05F && this.getHealth() < this.getMaxHealth()) {
+				}
+				else if(this.rand.nextFloat() < 0.05F && this.getHealth() < this.getMaxHealth()) {
 					var7 = 16341;
-				} 
-                else if(this.rand.nextFloat() < 0.25F && this.getAttackTarget() != null && !this.isPotionActive(Potion.moveSpeed) && this.getAttackTarget().getDistanceSqToEntity(this) > 121.0D) {
+				}
+				else if(this.rand.nextFloat() < 0.25F && this.getAttackTarget() != null && !this.isPotionActive(Potion.moveSpeed) && this.getAttackTarget().getDistanceSqToEntity(this) > 121.0D) {
 					var7 = 16274;
-				} 
-                else if(this.rand.nextFloat() < 0.25F && this.getAttackTarget() != null && !this.isPotionActive(Potion.moveSpeed) && this.getAttackTarget().getDistanceSqToEntity(this) > 121.0D) {
+				}
+				else if(this.rand.nextFloat() < 0.25F && this.getAttackTarget() != null && !this.isPotionActive(Potion.moveSpeed) && this.getAttackTarget().getDistanceSqToEntity(this) > 121.0D) {
 					var7 = 16274;
 				}
 
 				if(var7 > -1) {
-                    this.setCurrentItemOrArmor(0, new ItemStack(Items.potionitem, 1, var7));
-                    this.witchAttackTimer = this.getHeldItem().getMaxItemUseDuration();
-                    this.setAggressive(true);
-                    IAttributeInstance iattributeinstance = this.getEntityAttribute(SharedMonsterAttributes.movementSpeed);
-                    iattributeinstance.removeModifier(field_110185_bq);
-                    iattributeinstance.applyModifier(field_110185_bq);
+					this.setCurrentItemOrArmor(0, new ItemStack(Items.potionitem, 1, var7));
+					this.witchAttackTimer = this.getHeldItem().getMaxItemUseDuration();
+					this.setAggressive(true);
+					IAttributeInstance iattributeinstance = this.getEntityAttribute(SharedMonsterAttributes.movementSpeed);
+					iattributeinstance.removeModifier(field_110185_bq);
+					iattributeinstance.applyModifier(field_110185_bq);
 				}
 			}
 
@@ -270,17 +270,17 @@ public class EntityGaiaWitch extends EntityMobBase implements IRangedAttackMob {
 				this.dropItem(var6, 1);
 			}
 		}
-		
+
 		if(par1 && (this.rand.nextInt(4) == 0 || this.rand.nextInt(1 + par2) > 0)) {
-            this.entityDropItem(new ItemStack(GaiaItem.Shard, 1, 5), 0.0F);
+			this.entityDropItem(new ItemStack(GaiaItem.Shard, 1, 5), 0.0F);
 		}
 
 		if(par1 && (this.rand.nextInt(2) == 0 || this.rand.nextInt(1 + par2) > 0)) {
-            this.entityDropItem(new ItemStack(GaiaItem.Shard, 1, 1), 0.0F);
+			this.entityDropItem(new ItemStack(GaiaItem.Shard, 1, 1), 0.0F);
 		}
-		
+
 		if(par1 && (this.rand.nextInt(4) == 0 || this.rand.nextInt(1 + par2) > 0)) {
-            this.entityDropItem(new ItemStack(GaiaItem.FoodDriedNetherWart, 1, 3), 0.0F);
+			this.entityDropItem(new ItemStack(GaiaItem.FoodDriedNetherWart, 1, 3), 0.0F);
 		}
 
 		if(par1 && (this.rand.nextInt(4) == 0 || this.rand.nextInt(1 + par2) > 0)) {
@@ -290,22 +290,22 @@ public class EntityGaiaWitch extends EntityMobBase implements IRangedAttackMob {
 
 	protected void dropRareDrop(int par1) {
 		switch(this.rand.nextInt(3)) {
-		case 0:
-			this.dropItem(GaiaItem.BoxGold,1);
-			break;
-		case 1:
-			this.dropItem(GaiaItem.BagBook,1);
-			break;
-		case 2:
-			this.dropItem(GaiaItem.MiscBook,1);
+			case 0:
+				this.dropItem(GaiaItem.BoxGold,1);
+				break;
+			case 1:
+				this.dropItem(GaiaItem.BagBook,1);
+				break;
+			case 2:
+				this.dropItem(GaiaItem.MiscBook,1);
 		}
 	}
 
 	protected void fall(float f) {}
-	
+
 	@Override
-    protected void dropEquipment(boolean p_82160_1_, int p_82160_2_) {
-    }
+	protected void dropEquipment(boolean p_82160_1_, int p_82160_2_) {
+	}
 	/*
 	public IEntityLivingData onSpawnWithEgg(IEntityLivingData par1IEntityLivingData) {
 		par1IEntityLivingData = super.onSpawnWithEgg(par1IEntityLivingData);
@@ -315,13 +315,13 @@ public class EntityGaiaWitch extends EntityMobBase implements IRangedAttackMob {
 	}
 	*/
 	public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, IEntityLivingData livingdata)
-    {
+	{
 		livingdata = super.onInitialSpawn(difficulty, livingdata);
-		this.setCurrentItemOrArmor(0, new ItemStack(GaiaItem.PropWeapon, 1, 0));		
+		this.setCurrentItemOrArmor(0, new ItemStack(GaiaItem.PropWeapon, 1, 0));
 		this.setEnchantmentBasedOnDifficulty(difficulty);
-		return livingdata;		
-		
-    }
+		return livingdata;
+
+	}
 
 	public boolean isPotionApplicable(PotionEffect par1PotionEffect) {
 		return par1PotionEffect.getPotionID() == Potion.poison.id?false:super.isPotionApplicable(par1PotionEffect);

@@ -12,12 +12,12 @@ public class RenderGaiaCobbleGolem extends RenderLiving<EntityGaiaCobbleGolem> {
 
 	private static final ResourceLocation texture = new ResourceLocation(GaiaReference.MOD_ID, "textures/models/Cobble_Golem.png");
 	static RenderManager rend = Minecraft.getMinecraft().getRenderManager();
-	
+
 	public RenderGaiaCobbleGolem( float shadowSize) {
-        super(rend, new ModelGaiaCobbleGolem(), shadowSize);
-        
-    }
-	
+		super(rend, new ModelGaiaCobbleGolem(), shadowSize);
+
+	}
+
 	protected ResourceLocation getEntityTexture(EntityGaiaCobbleGolem entity) {
 		return texture;
 	}

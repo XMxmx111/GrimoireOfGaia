@@ -60,9 +60,9 @@ public class EntityGaiaPropFlowerCyan extends EntityAgeable {
 
 	protected void dropRareDrop(int par1) {
 		switch(this.rand.nextInt(1)) {
-		case 0:
-			this.dropItem(GaiaItem.FoodMandrake,1);
-		default:
+			case 0:
+				this.dropItem(GaiaItem.FoodMandrake,1);
+			default:
 		}
 	}
 
@@ -108,8 +108,8 @@ public class EntityGaiaPropFlowerCyan extends EntityAgeable {
 
 	//BAAAD!
 	//   public boolean getCanSpawnHere() {
-		//      int i = MathHelper.floor_double(this.posX);
-		//      int j = MathHelper.floor_double(this.boundingBox.minY);
+	//      int i = MathHelper.floor_double(this.posX);
+	//      int j = MathHelper.floor_double(this.boundingBox.minY);
 	//      int k = MathHelper.floor_double(this.posZ);
 	//      boolean[] spawnBlocks = new boolean[4096];
 	//      spawnBlocks[Block.grass.blockID] = true;
@@ -120,27 +120,27 @@ public class EntityGaiaPropFlowerCyan extends EntityAgeable {
 	//   }
 
 	static Set<Block> spawnBlocks = Sets.newHashSet(new Block[] {
-			Blocks.grass, Blocks.dirt, 
+			Blocks.grass, Blocks.dirt,
 			Blocks.double_stone_slab //???
 	});
-		
+
 	public boolean getCanSpawnHere(){
-		
+
 		if(this.worldObj.isDaytime()) {
 			float f = this.getBrightness(1.0F);
 			if(f > 0.5F && this.worldObj.canSeeSky(this.getPosition())) {
-				
+
 				int i = MathHelper.floor_double(this.posX);
-		        int j = MathHelper.floor_double(this.getEntityBoundingBox().minY);
-		        int k = MathHelper.floor_double(this.posZ);
-				BlockPos blockpos = new BlockPos(i, j, k);			
+				int j = MathHelper.floor_double(this.getEntityBoundingBox().minY);
+				int k = MathHelper.floor_double(this.posZ);
+				BlockPos blockpos = new BlockPos(i, j, k);
 				Block var1 = this.worldObj.getBlockState(blockpos.down()).getBlock();
-				
+
 				return spawnBlocks.contains(var1)&& !this.worldObj.isAnyLiquid(this.getEntityBoundingBox());
 			}}
-		
+
 		return false;
-		}
+	}
 	
 	/*
 	public boolean getCanSpawnHere() {

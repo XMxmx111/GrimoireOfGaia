@@ -15,8 +15,8 @@ public class ModelGaiaCreep extends ModelBase {
 	ModelRenderer smallhead1;
 	ModelRenderer smallhead2;
 	ModelRenderer smallhead3;
-    ModelRenderer body1;
-    ModelRenderer body2;
+	ModelRenderer body1;
+	ModelRenderer body2;
 	ModelRenderer leg1;
 	ModelRenderer leg2;
 	ModelRenderer leg3;

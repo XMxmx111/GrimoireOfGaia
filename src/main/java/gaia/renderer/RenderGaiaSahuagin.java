@@ -14,10 +14,10 @@ public class RenderGaiaSahuagin extends RenderLiving {
 
 	private static final ResourceLocation texture = new ResourceLocation(GaiaReference.MOD_ID, "textures/models/Sahuagin.png");
 	static RenderManager rend = Minecraft.getMinecraft().getRenderManager();
-	
+
 	public RenderGaiaSahuagin( float shadowSize) {
-        super(rend, new ModelGaiaSahuagin(), shadowSize);
-        this.addLayer(new held_rightarm(this, ModelGaiaSahuagin.rightarm));
+		super(rend, new ModelGaiaSahuagin(), shadowSize);
+		this.addLayer(new held_rightarm(this, ModelGaiaSahuagin.rightarm));
 	}
 
 	/*protected void renderEquippedItems(EntityLivingBase par1EntityLiving, float par2) {

@@ -11,7 +11,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class ModelGaiaYeti extends ModelBase {
 	ModelRenderer head;
 	ModelRenderer headaccessory;
-    ModelRenderer horns;
+	ModelRenderer horns;
 	ModelRenderer headjaw;
 	ModelRenderer mantle;
 	ModelRenderer body1;
@@ -145,24 +145,24 @@ public class ModelGaiaYeti extends ModelBase {
 	public void render(Entity entity, float par2, float par3, float par4, float par5, float par6, float par7) {
 		super.render(entity, par2, par3, par4, par5, par6, par7);
 		this.setRotationAngles(par2, par3, par4, par5, par6, par7);
-	    this.head.render(par7);
-	    this.headaccessory.render(par7);
-	    this.horns.render(par7);
-	    this.headjaw.render(par7);
-	    this.mantle.render(par7);
-	    this.body1.render(par7);
-	    this.body2.render(par7);
-	    this.body3.render(par7);
-	    this.rightarm.render(par7);
-	    this.rightarmlower.render(par7);
-	    this.rightarmhand.render(par7);
-	    this.leftarm.render(par7);
-	    this.leftarmlower.render(par7);
-	    this.leftarmhand.render(par7);
-	    this.rightleg.render(par7);
-	    this.rightleglower.render(par7);
-	    this.leftleg.render(par7);
-	    this.leftleglower.render(par7);
+		this.head.render(par7);
+		this.headaccessory.render(par7);
+		this.horns.render(par7);
+		this.headjaw.render(par7);
+		this.mantle.render(par7);
+		this.body1.render(par7);
+		this.body2.render(par7);
+		this.body3.render(par7);
+		this.rightarm.render(par7);
+		this.rightarmlower.render(par7);
+		this.rightarmhand.render(par7);
+		this.leftarm.render(par7);
+		this.leftarmlower.render(par7);
+		this.leftarmhand.render(par7);
+		this.rightleg.render(par7);
+		this.rightleglower.render(par7);
+		this.leftleg.render(par7);
+		this.leftleglower.render(par7);
 	}
 
 	private void setRotation(ModelRenderer model, float x, float y, float z) {

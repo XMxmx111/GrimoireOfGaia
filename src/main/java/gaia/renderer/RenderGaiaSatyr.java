@@ -14,10 +14,10 @@ public class RenderGaiaSatyr extends RenderLiving {
 
 	private static final ResourceLocation texture = new ResourceLocation(GaiaReference.MOD_ID, "textures/models/Satyr.png");
 	static RenderManager rend = Minecraft.getMinecraft().getRenderManager();
-	
+
 	public RenderGaiaSatyr( float shadowSize) {
-        super(rend, new ModelGaiaSatyr(), shadowSize);
-        this.addLayer(new held_rightarm(this, ModelGaiaSatyr.rightarm));
+		super(rend, new ModelGaiaSatyr(), shadowSize);
+		this.addLayer(new held_rightarm(this, ModelGaiaSatyr.rightarm));
 	}
 
 	/*protected void renderEquippedItems(EntityLivingBase par1EntityLiving, float par2) {

@@ -23,14 +23,14 @@ import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.World;
 
 public class EntityGaiaMimic extends EntityMobBase {
-	private static final Item[] chestDrops = new Item[] { 
-		Items.gunpowder, Items.gunpowder, 
-		Items.ender_pearl, Items.ender_pearl,
-		Items.slime_ball, Items.slime_ball,
-		Items.string,
-		Items.spider_eye,
-		Items.bone,
-		Items.rotten_flesh };
+	private static final Item[] chestDrops = new Item[] {
+			Items.gunpowder, Items.gunpowder,
+			Items.ender_pearl, Items.ender_pearl,
+			Items.slime_ball, Items.slime_ball,
+			Items.string,
+			Items.spider_eye,
+			Items.bone,
+			Items.rotten_flesh };
 
 	public EntityGaiaMimic(World par1World) {
 		super(par1World);
@@ -61,13 +61,13 @@ public class EntityGaiaMimic extends EntityMobBase {
 	public boolean attackEntityAsMob(Entity par1Entity) {
 		if(super.attackEntityAsMob(par1Entity)) {
 			if(par1Entity instanceof EntityLivingBase) {
-                byte byte0 = 0;
+				byte byte0 = 0;
 
-                if (this.worldObj.getDifficulty() == EnumDifficulty.NORMAL){
-                	byte0 = 7;
-                } else if (this.worldObj.getDifficulty() == EnumDifficulty.HARD) {
-                	byte0 = 15;
-                }
+				if (this.worldObj.getDifficulty() == EnumDifficulty.NORMAL){
+					byte0 = 7;
+				} else if (this.worldObj.getDifficulty() == EnumDifficulty.HARD) {
+					byte0 = 15;
+				}
 
 				if(byte0 > 0) {
 					((EntityLivingBase)par1Entity).addPotionEffect(new PotionEffect(Potion.hunger.id, byte0 * 60, 0));
@@ -119,23 +119,23 @@ public class EntityGaiaMimic extends EntityMobBase {
 		}
 
 		if(par1 && (this.rand.nextInt(2) == 0 || this.rand.nextInt(1 + par2) > 0)) {
-            this.entityDropItem(new ItemStack(GaiaItem.Shard, 1, 0), 0.0F);
+			this.entityDropItem(new ItemStack(GaiaItem.Shard, 1, 0), 0.0F);
 		}
 	}
 
 	protected void dropRareDrop(int par1) {
 		switch(this.rand.nextInt(4)) {
-		case 0:
-			this.dropItem(GaiaItem.BagOre,1);
-			break;
-		case 1:
-			this.dropItem(GaiaItem.BagRecord,1);
-			break;
-		case 2:
-			this.dropItem(GaiaItem.SpawnCardTrader,1);
-			break;
-		case 3:
-			this.experienceValue = EntityAttributes.experienceValue1 * 5;
+			case 0:
+				this.dropItem(GaiaItem.BagOre,1);
+				break;
+			case 1:
+				this.dropItem(GaiaItem.BagRecord,1);
+				break;
+			case 2:
+				this.dropItem(GaiaItem.SpawnCardTrader,1);
+				break;
+			case 3:
+				this.experienceValue = EntityAttributes.experienceValue1 * 5;
 		}
 	}
 

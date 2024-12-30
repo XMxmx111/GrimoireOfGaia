@@ -14,11 +14,11 @@ public class RenderGaiaHunter extends RenderLiving {
 
 	private static final ResourceLocation texture = new ResourceLocation(GaiaReference.MOD_ID, "textures/models/Hunter.png");
 	static RenderManager rend = Minecraft.getMinecraft().getRenderManager();
-	
+
 	public RenderGaiaHunter( float shadowSize) {
-        super(rend, new ModelGaiaHunter(), shadowSize);
-        this.addLayer(new held_rightarm(this, ModelGaiaHunter.rightarm));
-    }
+		super(rend, new ModelGaiaHunter(), shadowSize);
+		this.addLayer(new held_rightarm(this, ModelGaiaHunter.rightarm));
+	}
 
 	/*protected void renderEquippedItems(EntityLivingBase par1EntityLiving, float par2) {
 		float var3 = 1.0F;

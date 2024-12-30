@@ -19,12 +19,12 @@ public class RenderGaiaJorogumo extends RenderLiving {
 	private static final ResourceLocation texture = new ResourceLocation(GaiaReference.MOD_ID, "textures/models/Jorogumo.png");
 
 	static RenderManager rend = Minecraft.getMinecraft().getRenderManager();
-	
+
 	public RenderGaiaJorogumo( float shadowSize) {
-        super(rend, new ModelGaiaJorogumo(), shadowSize);
+		super(rend, new ModelGaiaJorogumo(), shadowSize);
 		//this.setRenderPassModel(new ModelGaiaJorogumo());
-        this.addLayer(new held_rightarm(this, ModelGaiaJorogumo.rightarm));
-        this.addLayer(new Glowing_layer(this, jorogumoEyesTexture));
+		this.addLayer(new held_rightarm(this, ModelGaiaJorogumo.rightarm));
+		this.addLayer(new Glowing_layer(this, jorogumoEyesTexture));
 	}
 
 	/*protected void renderEquippedItems(EntityLivingBase par1EntityLiving, float par2) {
@@ -98,22 +98,22 @@ public class RenderGaiaJorogumo extends RenderLiving {
 			GL11.glEnable(GL11.GL_BLEND);
 			GL11.glDisable(GL11.GL_ALPHA_TEST);
 			GL11.glBlendFunc(GL11.GL_ONE, GL11.GL_ONE);
-			
-            if (par1EntityGaiaJorogumo.isInvisible())
-            {
-                GL11.glDepthMask(false);
-            }
-            else
-            {
-                GL11.glDepthMask(true);
-            }
 
-            char c0 = 61680;
-            int j = c0 % 65536;
-            int k = c0 / 65536;
-            OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, (float)j / 1.0F, (float)k / 1.0F);
-            GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-            return 1;
+			if (par1EntityGaiaJorogumo.isInvisible())
+			{
+				GL11.glDepthMask(false);
+			}
+			else
+			{
+				GL11.glDepthMask(true);
+			}
+
+			char c0 = 61680;
+			int j = c0 % 65536;
+			int k = c0 / 65536;
+			OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, (float)j / 1.0F, (float)k / 1.0F);
+			GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
+			return 1;
 		}
 	}
 

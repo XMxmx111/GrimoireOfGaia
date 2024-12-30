@@ -69,8 +69,8 @@ public class EntityGaiaCreep extends EntityMobBase {
 	}
 
 	public void fall(float distance, float damageMultiplier)
-    {
-	//protected void fall(float par1) {
+	{
+		//protected void fall(float par1) {
 		//super.fall(par1)
 		super.fall(distance, damageMultiplier);
 		this.timeSinceIgnited = (int)((float)this.timeSinceIgnited + distance * 1.5F);
@@ -160,29 +160,29 @@ public class EntityGaiaCreep extends EntityMobBase {
 		for(int var4 = 0; var4 < var3; ++var4) {
 			this.dropItem(Items.gunpowder, 1);
 		}
-		
+
 		if(par1 && (this.rand.nextInt(10) == 0 || this.rand.nextInt(1 + par2) > 0)) {
 			this.dropItem(Items.gunpowder,1);
 		}
 
 		if(par1 && (this.rand.nextInt(2) == 0 || this.rand.nextInt(1 + par2) > 0)) {
-            this.entityDropItem(new ItemStack(GaiaItem.Shard, 1, 0), 0.0F);
+			this.entityDropItem(new ItemStack(GaiaItem.Shard, 1, 0), 0.0F);
 		}
 	}
 
 	protected void dropRareDrop(int par1) {
 		switch(this.rand.nextInt(4)) {
-		case 0:
-			this.dropItem(GaiaItem.BagOre,1);
-			break;
-		case 1:
-			this.dropItem(GaiaItem.SpawnCardCreeperGirl,1);
-			break;
-		case 2:
-			this.dropItem(Item.getItemFromBlock(GaiaBlock.DollCreeperGirl), 1);
-			break;
-		case 3:	
-			this.experienceValue = EntityAttributes.experienceValue1 * 5;
+			case 0:
+				this.dropItem(GaiaItem.BagOre,1);
+				break;
+			case 1:
+				this.dropItem(GaiaItem.SpawnCardCreeperGirl,1);
+				break;
+			case 2:
+				this.dropItem(Item.getItemFromBlock(GaiaBlock.DollCreeperGirl), 1);
+				break;
+			case 3:
+				this.experienceValue = EntityAttributes.experienceValue1 * 5;
 		}
 	}
 

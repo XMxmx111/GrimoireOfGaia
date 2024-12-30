@@ -20,22 +20,22 @@ public class RenderGaiaEnderDragonGirl extends RenderLiving<EntityGaiaEnderDrago
 	private static ModelGaiaEnderDragonGirl EnderDragonGirlModel = new ModelGaiaEnderDragonGirl();
 	private Random rnd = new Random();
 	static RenderManager rend = Minecraft.getMinecraft().getRenderManager();
-	
-	
+
+
 	public RenderGaiaEnderDragonGirl(float shadowSize) {
-        super(rend, EnderDragonGirlModel, shadowSize);
-        this.addLayer(new Glowing_layer(this, enderdragongirlEyesTexture));        
-        this.addLayer(new Held_block_layer(this));
+		super(rend, EnderDragonGirlModel, shadowSize);
+		this.addLayer(new Glowing_layer(this, enderdragongirlEyesTexture));
+		this.addLayer(new Held_block_layer(this));
 	}
 
-		
+
 	public void renderEnderDragonGirl(EntityGaiaEnderDragonGirl entity, double par2, double par4, double par6, float par8, float par9) {
-		
+
 		//this.EnderDragonGirlModel.isCarrying = entity.getCarried() > 0;
 		//this.EnderDragonGirlModel.isAttacking = entity.isScreaming();		
 		this.EnderDragonGirlModel.isCarrying = entity.getHeldBlockState().getBlock().getMaterial() != Material.air;
-        this.EnderDragonGirlModel.isAttacking = entity.isScreaming();
-        
+		this.EnderDragonGirlModel.isAttacking = entity.isScreaming();
+
 		if(entity.isScreaming()) {
 			double var10 = 0.02D;
 			par2 += this.rnd.nextGaussian() * var10;
@@ -44,7 +44,7 @@ public class RenderGaiaEnderDragonGirl extends RenderLiving<EntityGaiaEnderDrago
 
 		super.doRender(entity, par2, par4, par6, par8, par9);
 	}
-	
+
 	/*protected void renderCarrying(EntityGaiaEnderDragonGirl entity, float par2) {
 		super.renderEquippedItems(entity, par2);
 		int id = entity.getCarried();
@@ -107,11 +107,11 @@ public class RenderGaiaEnderDragonGirl extends RenderLiving<EntityGaiaEnderDrago
 	/*protected void renderEquippedItems(EntityLivingBase par1EntityLiving, float par2) {
 		this.renderCarrying((EntityGaiaEnderDragonGirl)par1EntityLiving, par2);
 	}*/
-	
+
 	public void doRender(EntityGaiaEnderDragonGirl par1Entity, double par2, double par4, double par6, float par8, float par9) {
 		this.renderEnderDragonGirl((EntityGaiaEnderDragonGirl)par1Entity, par2, par4, par6, par8, par9);
 	}
-	
+
 	protected ResourceLocation getEntityTexture(EntityGaiaEnderDragonGirl entity) {
 		return texture;
 	}

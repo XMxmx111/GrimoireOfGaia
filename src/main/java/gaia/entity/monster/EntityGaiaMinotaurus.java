@@ -77,13 +77,13 @@ public class EntityGaiaMinotaurus extends EntityMobBase implements IRangedAttack
 	public boolean attackEntityAsMob(Entity entity) {
 		if(super.attackEntityAsMob(entity)) {
 			if(this.getMobType() == 1 && entity instanceof EntityLivingBase) {
-                byte byte0 = 0;
+				byte byte0 = 0;
 
-                if (this.worldObj.getDifficulty() == EnumDifficulty.NORMAL){
-                	byte0 = 7;
-                } else if (this.worldObj.getDifficulty() == EnumDifficulty.HARD) {
-                	byte0 = 15;
-                }
+				if (this.worldObj.getDifficulty() == EnumDifficulty.NORMAL){
+					byte0 = 7;
+				} else if (this.worldObj.getDifficulty() == EnumDifficulty.HARD) {
+					byte0 = 15;
+				}
 
 				if(byte0 > 0) {
 					((EntityLivingBase)entity).addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 60));
@@ -98,7 +98,7 @@ public class EntityGaiaMinotaurus extends EntityMobBase implements IRangedAttack
 	}
 
 	public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, IEntityLivingData livingdata)
-    {
+	{
 		livingdata = super.onInitialSpawn(difficulty, livingdata);
 		if(this.worldObj.rand.nextInt(4) == 0) {
 			this.tasks.addTask(2, this.aiArrowAttack);
@@ -107,27 +107,27 @@ public class EntityGaiaMinotaurus extends EntityMobBase implements IRangedAttack
 			this.setTextureType(1);
 		} else {
 			this.tasks.addTask(2, this.aiAttackOnCollide);
-	        this.setEquipmentBasedOnDifficulty(difficulty);
-	        this.setEnchantmentBasedOnDifficulty(difficulty);
+			this.setEquipmentBasedOnDifficulty(difficulty);
+			this.setEnchantmentBasedOnDifficulty(difficulty);
 			this.setMobType(1);
 			this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(8.0D);
 			this.setTextureType(0);
 		}
-		
+
 		return livingdata;
 	}
-	
-	protected void setEquipmentBasedOnDifficulty(DifficultyInstance difficulty)
-    {
-        int i = this.rand.nextInt(3);
 
-        if (i == 0) {
-        	this.setCurrentItemOrArmor(0, new ItemStack(Items.stone_sword));
-        } else {
-        	this.setCurrentItemOrArmor(0, new ItemStack(Items.stone_axe));
-        }
-    }
-	
+	protected void setEquipmentBasedOnDifficulty(DifficultyInstance difficulty)
+	{
+		int i = this.rand.nextInt(3);
+
+		if (i == 0) {
+			this.setCurrentItemOrArmor(0, new ItemStack(Items.stone_sword));
+		} else {
+			this.setCurrentItemOrArmor(0, new ItemStack(Items.stone_axe));
+		}
+	}
+
 	public void setCurrentItemOrArmor(int par1, ItemStack stack) {
 		super.setCurrentItemOrArmor(par1, stack);
 		if(!this.worldObj.isRemote && par1 == 0) {
@@ -166,7 +166,7 @@ public class EntityGaiaMinotaurus extends EntityMobBase implements IRangedAttack
 		this.playSound("random.bow", 1.0F, 1.0F / (this.getRNG().nextFloat() * 0.4F + 0.8F));
 		this.worldObj.spawnEntityInWorld(entityarrow);
 	}
-	
+
 	public int getTextureType() {
 		return this.dataWatcher.getWatchableObjectByte(13);
 	}
@@ -200,25 +200,25 @@ public class EntityGaiaMinotaurus extends EntityMobBase implements IRangedAttack
 		par1NBTTagCompound.setByte("MobType", (byte)this.getTextureType());
 	}
 
-    protected void enchantEquipmentRanged(DifficultyInstance difficulty)
-    {
-    	float f = difficulty.getClampedAdditionalDifficulty();
+	protected void enchantEquipmentRanged(DifficultyInstance difficulty)
+	{
+		float f = difficulty.getClampedAdditionalDifficulty();
 
-        if (this.getHeldItem() != null && this.rand.nextFloat() < 2.5F * f)
-        {
-            EnchantmentHelper.addRandomEnchantment(this.rand, this.getHeldItem(), (int)(5.0F + f * (float)this.rand.nextInt(18)));
-        }
+		if (this.getHeldItem() != null && this.rand.nextFloat() < 2.5F * f)
+		{
+			EnchantmentHelper.addRandomEnchantment(this.rand, this.getHeldItem(), (int)(5.0F + f * (float)this.rand.nextInt(18)));
+		}
 
-        for (int i = 0; i < 4; ++i)
-        {
-            ItemStack itemstack = this.getCurrentArmor(i);
+		for (int i = 0; i < 4; ++i)
+		{
+			ItemStack itemstack = this.getCurrentArmor(i);
 
-            if (itemstack != null && this.rand.nextFloat() < 5.0F * f)
-            {
-                EnchantmentHelper.addRandomEnchantment(this.rand, itemstack, (int)(5.0F + f * (float)this.rand.nextInt(18)));
-            }
-        }
-    }
+			if (itemstack != null && this.rand.nextFloat() < 5.0F * f)
+			{
+				EnchantmentHelper.addRandomEnchantment(this.rand, itemstack, (int)(5.0F + f * (float)this.rand.nextInt(18)));
+			}
+		}
+	}
 
 	protected String getLivingSound() {
 		return "grimoireofgaia:aggressive_say";
@@ -255,20 +255,20 @@ public class EntityGaiaMinotaurus extends EntityMobBase implements IRangedAttack
 
 	protected void dropRareDrop(int par1) {
 		switch(this.rand.nextInt(5)) {
-		case 0:
-			this.dropItem(GaiaItem.BoxGold,1);
-			break;
-		case 1:
-			this.dropItem(GaiaItem.BagBook,1);
-			break;
-		case 2:
-			this.dropItem(GaiaItem.BookBattle,1);
-			break;
-		case 3:
-			this.dropItem(GaiaItem.MiscPage,1);
-			break;
-		case 4:
-			this.dropItem(GaiaItem.SpawnCardHolstaurus,1);
+			case 0:
+				this.dropItem(GaiaItem.BoxGold,1);
+				break;
+			case 1:
+				this.dropItem(GaiaItem.BagBook,1);
+				break;
+			case 2:
+				this.dropItem(GaiaItem.BookBattle,1);
+				break;
+			case 3:
+				this.dropItem(GaiaItem.MiscPage,1);
+				break;
+			case 4:
+				this.dropItem(GaiaItem.SpawnCardHolstaurus,1);
 		}
 	}
 

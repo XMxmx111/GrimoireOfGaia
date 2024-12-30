@@ -59,7 +59,7 @@ public class EntityGaiaNineTails extends EntityMobBase implements IRangedAttackM
 		double d1 = par1EntityLivingBase.getEntityBoundingBox().minY + (double)(par1EntityLivingBase.height / 2.0F) - (this.posY + (double)(this.height / 2.0F));
 		double d2 = par1EntityLivingBase.posZ - this.posZ;
 		float f1 = MathHelper.sqrt_float(par2) * 0.5F;
-		
+
 		for(int var10 = 0; var10 < 3; ++var10) {
 			EntityGaiaProjectileSmallFireball var11 = new EntityGaiaProjectileSmallFireball(this.worldObj, this, d0 + this.rand.nextGaussian() * (double)f1, d1, d2 + this.rand.nextGaussian() * (double)f1);
 			var11.posY = this.posY + (double)(this.height / 2.0F) + 0.5D;
@@ -95,7 +95,7 @@ public class EntityGaiaNineTails extends EntityMobBase implements IRangedAttackM
 		}
 
 		if(par1 && (this.rand.nextInt(2) == 0 || this.rand.nextInt(1 + par2) > 0)) {
-            this.entityDropItem(new ItemStack(GaiaItem.Shard, 1, 1), 0.0F);
+			this.entityDropItem(new ItemStack(GaiaItem.Shard, 1, 1), 0.0F);
 		}
 
 		if(par1 && (this.rand.nextInt(4) == 0 || this.rand.nextInt(1 + par2) > 0)) {
@@ -105,20 +105,20 @@ public class EntityGaiaNineTails extends EntityMobBase implements IRangedAttackM
 
 	protected void dropRareDrop(int par1) {
 		switch(this.rand.nextInt(3)) {
-		case 0:
-			this.dropItem(GaiaItem.BoxGold,1);
-			break;
-		case 1:
-			this.dropItem(GaiaItem.BagBook,1);
-			break;
-		case 2:
-            this.entityDropItem(new ItemStack(GaiaItem.MiscWeaponEnchanted, 1, 1), 0.0F);
+			case 0:
+				this.dropItem(GaiaItem.BoxGold,1);
+				break;
+			case 1:
+				this.dropItem(GaiaItem.BagBook,1);
+				break;
+			case 2:
+				this.entityDropItem(new ItemStack(GaiaItem.MiscWeaponEnchanted, 1, 1), 0.0F);
 		}
 	}
-	
+
 	@Override
-    protected void dropEquipment(boolean p_82160_1_, int p_82160_2_) {
-    }
+	protected void dropEquipment(boolean p_82160_1_, int p_82160_2_) {
+	}
 	/*
 	  	public IEntityLivingData onSpawnWithEgg(IEntityLivingData par1IEntityLivingData) {	 
 		par1IEntityLivingData = super.onSpawnWithEgg(par1IEntityLivingData);
@@ -127,13 +127,13 @@ public class EntityGaiaNineTails extends EntityMobBase implements IRangedAttackM
 	}
 	*/
 	public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, IEntityLivingData livingdata)
-    {
+	{
 		livingdata = super.onInitialSpawn(difficulty, livingdata);
-		this.setCurrentItemOrArmor(0, new ItemStack(GaiaItem.PropWeaponInvisible));	
+		this.setCurrentItemOrArmor(0, new ItemStack(GaiaItem.PropWeaponInvisible));
 		this.setEnchantmentBasedOnDifficulty(difficulty);
-		return livingdata;		
-		
-    }
+		return livingdata;
+
+	}
 
 	public boolean getCanSpawnHere() {
 		return this.posY > 60.0D && super.getCanSpawnHere();

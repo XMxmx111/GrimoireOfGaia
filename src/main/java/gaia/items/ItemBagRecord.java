@@ -36,36 +36,36 @@ public class ItemBagRecord extends Item {
 
 	public ItemStack onItemRightClick(ItemStack itemstack, World world, EntityPlayer entityplayer) {
 		world.playSoundAtEntity(entityplayer, "grimoireofgaia:bag_open", 0.5F, world.rand.nextFloat() * 0.1F + 0.9F);
-		
+
 		Random random = new Random();
 		int i = random.nextInt(12);
 		switch(i) {
-		case 0:
-			return new ItemStack(Items.record_13);
-		case 1:
-			return new ItemStack(Items.record_cat);
-		case 2:
-			return new ItemStack(Items.record_blocks);
-		case 3:
-			return new ItemStack(Items.record_chirp);
-		case 4:
-			return new ItemStack(Items.record_far);
-		case 5:
-			return new ItemStack(Items.record_mall);
-		case 6:
-			return new ItemStack(Items.record_mellohi);
-		case 7:
-			return new ItemStack(Items.record_stal);
-		case 8:
-			return new ItemStack(Items.record_strad);
-		case 9:
-			return new ItemStack(Items.record_ward);
-		case 10:
-			return new ItemStack(Items.record_11);
-		case 11:
-			return new ItemStack(Items.record_wait);
-		default:
-			return itemstack;
+			case 0:
+				return new ItemStack(Items.record_13);
+			case 1:
+				return new ItemStack(Items.record_cat);
+			case 2:
+				return new ItemStack(Items.record_blocks);
+			case 3:
+				return new ItemStack(Items.record_chirp);
+			case 4:
+				return new ItemStack(Items.record_far);
+			case 5:
+				return new ItemStack(Items.record_mall);
+			case 6:
+				return new ItemStack(Items.record_mellohi);
+			case 7:
+				return new ItemStack(Items.record_stal);
+			case 8:
+				return new ItemStack(Items.record_strad);
+			case 9:
+				return new ItemStack(Items.record_ward);
+			case 10:
+				return new ItemStack(Items.record_11);
+			case 11:
+				return new ItemStack(Items.record_wait);
+			default:
+				return itemstack;
 		}
 	}
 }

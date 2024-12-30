@@ -14,9 +14,9 @@ public class RenderGaiaCockatrice extends RenderLiving<EntityGaiaCockatrice> {
 
 	static RenderManager rend = Minecraft.getMinecraft().getRenderManager();
 	public RenderGaiaCockatrice( float shadowSize) {
-        super(rend, new ModelGaiaCockatrice(), shadowSize);
-    }
-	
+		super(rend, new ModelGaiaCockatrice(), shadowSize);
+	}
+
 	protected ResourceLocation getEntityTexture(EntityGaiaCockatrice entity) {
 		return texture;
 	}

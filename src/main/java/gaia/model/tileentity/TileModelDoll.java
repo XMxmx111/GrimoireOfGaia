@@ -7,7 +7,7 @@ import net.minecraft.entity.Entity;
 public class TileModelDoll extends ModelBase {
 	ModelRenderer head;
 	ModelRenderer headaccessory;
-    ModelRenderer hair;
+	ModelRenderer hair;
 	ModelRenderer upperbody;
 	ModelRenderer lowerbody;
 	ModelRenderer rightchest;

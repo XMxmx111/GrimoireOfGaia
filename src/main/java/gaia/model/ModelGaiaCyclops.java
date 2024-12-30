@@ -235,40 +235,40 @@ public class ModelGaiaCyclops extends ModelBase {
 		this.leftleg.rotateAngleX = MathHelper.cos(par1 * 0.6662F + (float)Math.PI) * 0.5F * par2;
 		this.leftlegpauldron.rotateAngleX = this.leftleg.rotateAngleX;
 		this.leftlegupper.rotateAngleX = this.leftleg.rotateAngleX;
-		
-        float f6;
-        float f7;
 
-        if (this.swingProgress > -9990.0F)
-        {
-            f6 = this.swingProgress;
-            f6 = 1.0F - this.swingProgress;
-            f6 *= f6;
-            f6 *= f6;
-            f6 = 1.0F - f6;
-            f7 = MathHelper.sin(f6 * (float)Math.PI);
-            float f8 = MathHelper.sin(this.swingProgress * (float)Math.PI) * -(this.head.rotateAngleX - 0.7F) * 0.75F;
-            
-            this.rightarm.rotateAngleX = (float)((double)this.rightarm.rotateAngleX - ((double)f7 * 1.2D + (double)f8)) + 0.1745329F;
-            this.rightarmpauldron.rotateAngleX = this.rightarm.rotateAngleX;
-            this.rightarmgauntlet.rotateAngleX = this.rightarm.rotateAngleX;
-            
-            this.leftarm.rotateAngleX = (float)((double)this.leftarm.rotateAngleX - ((double)f7 * 1.2D + (double)f8)) + 0.1745329F;
-            this.leftarmcloth.rotateAngleX = this.leftarm.rotateAngleX;
-            
-            this.rightarm.rotateAngleY += (this.bodytop.rotateAngleY * 2.0F);
-            this.rightarmpauldron.rotateAngleY = this.rightarm.rotateAngleY;
-            this.rightarmgauntlet.rotateAngleY = this.rightarm.rotateAngleY;
-            
-            this.leftarm.rotateAngleY += (this.bodytop.rotateAngleY * 2.0F);
-            this.leftarmcloth.rotateAngleY = this.leftarm.rotateAngleY;
-            
-            this.rightarm.rotateAngleZ = (MathHelper.sin(this.swingProgress * (float)Math.PI) * -0.4F) + 0.1745329F;
-            this.rightarmpauldron.rotateAngleZ = this.rightarm.rotateAngleZ;
-            this.rightarmgauntlet.rotateAngleZ = this.rightarm.rotateAngleZ;
-            
-            this.leftarm.rotateAngleZ = (MathHelper.sin(this.swingProgress * (float)Math.PI) * -0.4F) - 0.1745329F;
-            this.leftarmcloth.rotateAngleZ = this.leftarm.rotateAngleZ;
-        }
+		float f6;
+		float f7;
+
+		if (this.swingProgress > -9990.0F)
+		{
+			f6 = this.swingProgress;
+			f6 = 1.0F - this.swingProgress;
+			f6 *= f6;
+			f6 *= f6;
+			f6 = 1.0F - f6;
+			f7 = MathHelper.sin(f6 * (float)Math.PI);
+			float f8 = MathHelper.sin(this.swingProgress * (float)Math.PI) * -(this.head.rotateAngleX - 0.7F) * 0.75F;
+
+			this.rightarm.rotateAngleX = (float)((double)this.rightarm.rotateAngleX - ((double)f7 * 1.2D + (double)f8)) + 0.1745329F;
+			this.rightarmpauldron.rotateAngleX = this.rightarm.rotateAngleX;
+			this.rightarmgauntlet.rotateAngleX = this.rightarm.rotateAngleX;
+
+			this.leftarm.rotateAngleX = (float)((double)this.leftarm.rotateAngleX - ((double)f7 * 1.2D + (double)f8)) + 0.1745329F;
+			this.leftarmcloth.rotateAngleX = this.leftarm.rotateAngleX;
+
+			this.rightarm.rotateAngleY += (this.bodytop.rotateAngleY * 2.0F);
+			this.rightarmpauldron.rotateAngleY = this.rightarm.rotateAngleY;
+			this.rightarmgauntlet.rotateAngleY = this.rightarm.rotateAngleY;
+
+			this.leftarm.rotateAngleY += (this.bodytop.rotateAngleY * 2.0F);
+			this.leftarmcloth.rotateAngleY = this.leftarm.rotateAngleY;
+
+			this.rightarm.rotateAngleZ = (MathHelper.sin(this.swingProgress * (float)Math.PI) * -0.4F) + 0.1745329F;
+			this.rightarmpauldron.rotateAngleZ = this.rightarm.rotateAngleZ;
+			this.rightarmgauntlet.rotateAngleZ = this.rightarm.rotateAngleZ;
+
+			this.leftarm.rotateAngleZ = (MathHelper.sin(this.swingProgress * (float)Math.PI) * -0.4F) - 0.1745329F;
+			this.leftarmcloth.rotateAngleZ = this.leftarm.rotateAngleZ;
+		}
 	}
 }

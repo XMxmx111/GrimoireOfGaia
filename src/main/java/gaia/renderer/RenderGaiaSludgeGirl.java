@@ -17,11 +17,11 @@ public class RenderGaiaSludgeGirl extends RenderLiving {
 	private static final ResourceLocation hairSludgeGirl = new ResourceLocation(GaiaReference.MOD_ID, "textures/models/Sludge_Girl_Hair.png");
 	private static final ResourceLocation texture = new ResourceLocation(GaiaReference.MOD_ID, "textures/models/Sludge_Girl.png");
 	static RenderManager rend = Minecraft.getMinecraft().getRenderManager();
-	
+
 	public RenderGaiaSludgeGirl(float shadowSize) {
-        super(rend, new ModelGaiaSludgeGirl(), shadowSize);
+		super(rend, new ModelGaiaSludgeGirl(), shadowSize);
 		//this.setRenderPassModel(new ModelGaiaSludgeGirl());
-        this.addLayer(new Alpha_layer(this, hairSludgeGirl));
+		this.addLayer(new Alpha_layer(this, hairSludgeGirl));
 	}
 	/*
 	protected int shouldRenderPass(EntityGaiaSludgeGirl par1EntityGaiaSludgeGirl, int par2, float par3) {

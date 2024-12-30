@@ -9,43 +9,43 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class ModelGaiaCentaur extends ModelBase {
-    ModelRenderer head;
-    ModelRenderer headaccessory;
-    ModelRenderer rightear;
-    ModelRenderer leftear;
-    ModelRenderer hair1;
-    ModelRenderer hair2;
-    ModelRenderer bodytop;
-    ModelRenderer bodymiddle;
-    ModelRenderer bodymiddlebutton;
-    ModelRenderer bodybottom;
-    ModelRenderer rightchest;
-    ModelRenderer leftchest;
-    ModelRenderer rightpauldron;
+	ModelRenderer head;
+	ModelRenderer headaccessory;
+	ModelRenderer rightear;
+	ModelRenderer leftear;
+	ModelRenderer hair1;
+	ModelRenderer hair2;
+	ModelRenderer bodytop;
+	ModelRenderer bodymiddle;
+	ModelRenderer bodymiddlebutton;
+	ModelRenderer bodybottom;
+	ModelRenderer rightchest;
+	ModelRenderer leftchest;
+	ModelRenderer rightpauldron;
 	public static ModelRenderer rightarm;
-    ModelRenderer rightarmguard;
-    ModelRenderer leftarm;
-    ModelRenderer front;
-    ModelRenderer body1;
-    ModelRenderer body2;
-    ModelRenderer saddle;
-    ModelRenderer saddle1;
-    ModelRenderer saddle2;
-    ModelRenderer rightsaddlestrap1;
-    ModelRenderer rightsaddlestrap2;
-    ModelRenderer leftsaddlestrap1;
-    ModelRenderer leftsaddlestrap2;
-    ModelRenderer rightlegupper;
-    ModelRenderer rightleglower;
-    ModelRenderer rightlegback1;
-    ModelRenderer rightlegback2;
-    ModelRenderer rightlegback3;
-    ModelRenderer leftlegupper;
-    ModelRenderer leftleglower;
-    ModelRenderer leftlegback1;
-    ModelRenderer leftlegback2;
-    ModelRenderer leftlegback3;
-    ModelRenderer tail;
+	ModelRenderer rightarmguard;
+	ModelRenderer leftarm;
+	ModelRenderer front;
+	ModelRenderer body1;
+	ModelRenderer body2;
+	ModelRenderer saddle;
+	ModelRenderer saddle1;
+	ModelRenderer saddle2;
+	ModelRenderer rightsaddlestrap1;
+	ModelRenderer rightsaddlestrap2;
+	ModelRenderer leftsaddlestrap1;
+	ModelRenderer leftsaddlestrap2;
+	ModelRenderer rightlegupper;
+	ModelRenderer rightleglower;
+	ModelRenderer rightlegback1;
+	ModelRenderer rightlegback2;
+	ModelRenderer rightlegback3;
+	ModelRenderer leftlegupper;
+	ModelRenderer leftleglower;
+	ModelRenderer leftlegback1;
+	ModelRenderer leftlegback2;
+	ModelRenderer leftlegback3;
+	ModelRenderer tail;
 
 	public ModelGaiaCentaur() {
 		this.textureWidth = 128;
@@ -278,43 +278,43 @@ public class ModelGaiaCentaur extends ModelBase {
 	public void render(Entity entity, float par2, float par3, float par4, float par5, float par6, float par7) {
 		super.render(entity, par2, par3, par4, par5, par6, par7);
 		this.setRotationAngles(par2, par3, par4, par5, par6, par7);
-	    this.head.render(par7);
-	    this.headaccessory.render(par7);
-	    this.rightear.render(par7);
-	    this.leftear.render(par7);
-	    this.hair1.render(par7);
-	    this.hair2.render(par7);
-	    this.bodytop.render(par7);
-	    this.bodymiddle.render(par7);
-	    this.bodymiddlebutton.render(par7);
-	    this.bodybottom.render(par7);
-	    this.rightchest.render(par7);
-	    this.leftchest.render(par7);
-	    this.rightpauldron.render(par7);
-	    this.rightarm.render(par7);
-	    this.rightarmguard.render(par7);
-	    this.leftarm.render(par7);
-	    this.front.render(par7);
-	    this.body1.render(par7);
-	    this.body2.render(par7);
-	    this.saddle.render(par7);
-	    this.saddle1.render(par7);
-	    this.saddle2.render(par7);
-	    this.rightsaddlestrap1.render(par7);
-	    this.rightsaddlestrap2.render(par7);
-	    this.leftsaddlestrap1.render(par7);
-	    this.leftsaddlestrap2.render(par7);
-	    this.rightlegupper.render(par7);
-	    this.rightleglower.render(par7);
-	    this.rightlegback1.render(par7);
-	    this.rightlegback2.render(par7);
-	    this.rightlegback3.render(par7);
-	    this.leftlegupper.render(par7);
-	    this.leftleglower.render(par7);
-	    this.leftlegback1.render(par7);
-	    this.leftlegback2.render(par7);
-	    this.leftlegback3.render(par7);
-	    this.tail.render(par7);
+		this.head.render(par7);
+		this.headaccessory.render(par7);
+		this.rightear.render(par7);
+		this.leftear.render(par7);
+		this.hair1.render(par7);
+		this.hair2.render(par7);
+		this.bodytop.render(par7);
+		this.bodymiddle.render(par7);
+		this.bodymiddlebutton.render(par7);
+		this.bodybottom.render(par7);
+		this.rightchest.render(par7);
+		this.leftchest.render(par7);
+		this.rightpauldron.render(par7);
+		this.rightarm.render(par7);
+		this.rightarmguard.render(par7);
+		this.leftarm.render(par7);
+		this.front.render(par7);
+		this.body1.render(par7);
+		this.body2.render(par7);
+		this.saddle.render(par7);
+		this.saddle1.render(par7);
+		this.saddle2.render(par7);
+		this.rightsaddlestrap1.render(par7);
+		this.rightsaddlestrap2.render(par7);
+		this.leftsaddlestrap1.render(par7);
+		this.leftsaddlestrap2.render(par7);
+		this.rightlegupper.render(par7);
+		this.rightleglower.render(par7);
+		this.rightlegback1.render(par7);
+		this.rightlegback2.render(par7);
+		this.rightlegback3.render(par7);
+		this.leftlegupper.render(par7);
+		this.leftleglower.render(par7);
+		this.leftlegback1.render(par7);
+		this.leftlegback2.render(par7);
+		this.leftlegback3.render(par7);
+		this.tail.render(par7);
 	}
 
 	private void setRotation(ModelRenderer model, float x, float y, float z) {
@@ -356,25 +356,25 @@ public class ModelGaiaCentaur extends ModelBase {
 		this.rightlegback1.rotateAngleX -= 0.296706F;
 		this.leftlegback1.rotateAngleX -= 0.296706F;
 
-        float f6;
-        float f7;
+		float f6;
+		float f7;
 
-        if (this.swingProgress > -9990.0F)
-        {
-            f6 = this.swingProgress;
-            f6 = 1.0F - this.swingProgress;
-            f6 *= f6;
-            f6 *= f6;
-            f6 = 1.0F - f6;
-            f7 = MathHelper.sin(f6 * (float)Math.PI);
-            float f8 = MathHelper.sin(this.swingProgress * (float)Math.PI) * -(this.head.rotateAngleX - 0.7F) * 0.75F;
-            
-            this.rightarm.rotateAngleX = (float)((double)this.rightarm.rotateAngleX - ((double)f7 * 1.2D + (double)f8));
-            this.rightpauldron.rotateAngleX = this.rightarm.rotateAngleX; 
-            this.rightarm.rotateAngleY += (this.bodytop.rotateAngleY * 2.0F);
-            this.rightpauldron.rotateAngleY = this.rightarm.rotateAngleY; 
-            this.rightarm.rotateAngleZ = (MathHelper.sin(this.swingProgress * (float)Math.PI) * -0.4F) + 0.1745329F;
-            this.rightpauldron.rotateAngleZ = this.rightarm.rotateAngleZ; 
-        }
+		if (this.swingProgress > -9990.0F)
+		{
+			f6 = this.swingProgress;
+			f6 = 1.0F - this.swingProgress;
+			f6 *= f6;
+			f6 *= f6;
+			f6 = 1.0F - f6;
+			f7 = MathHelper.sin(f6 * (float)Math.PI);
+			float f8 = MathHelper.sin(this.swingProgress * (float)Math.PI) * -(this.head.rotateAngleX - 0.7F) * 0.75F;
+
+			this.rightarm.rotateAngleX = (float)((double)this.rightarm.rotateAngleX - ((double)f7 * 1.2D + (double)f8));
+			this.rightpauldron.rotateAngleX = this.rightarm.rotateAngleX;
+			this.rightarm.rotateAngleY += (this.bodytop.rotateAngleY * 2.0F);
+			this.rightpauldron.rotateAngleY = this.rightarm.rotateAngleY;
+			this.rightarm.rotateAngleZ = (MathHelper.sin(this.swingProgress * (float)Math.PI) * -0.4F) + 0.1745329F;
+			this.rightpauldron.rotateAngleZ = this.rightarm.rotateAngleZ;
+		}
 	}
 }

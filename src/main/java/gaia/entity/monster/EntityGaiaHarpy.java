@@ -59,13 +59,13 @@ public class EntityGaiaHarpy extends EntityMobDay {
 	public boolean attackEntityAsMob(Entity par1Entity) {
 		if(super.attackEntityAsMob(par1Entity)) {
 			if(par1Entity instanceof EntityLivingBase) {
-                byte byte0 = 0;
+				byte byte0 = 0;
 
-                if (this.worldObj.getDifficulty() == EnumDifficulty.NORMAL){
-                	byte0 = 7;
-                } else if (this.worldObj.getDifficulty() == EnumDifficulty.HARD) {
-                	byte0 = 15;
-                }
+				if (this.worldObj.getDifficulty() == EnumDifficulty.NORMAL){
+					byte0 = 7;
+				} else if (this.worldObj.getDifficulty() == EnumDifficulty.HARD) {
+					byte0 = 15;
+				}
 
 				if(byte0 > 0) {
 					((EntityLivingBase)par1Entity).addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, byte0 * 20, 0));
@@ -83,7 +83,7 @@ public class EntityGaiaHarpy extends EntityMobDay {
 	}
 
 	protected void fall(float f) {}
-    
+
 	public void onLivingUpdate() {
 		if(!this.onGround && this.motionY < 0.0D) {
 			this.motionY *= 0.8D;
@@ -118,26 +118,26 @@ public class EntityGaiaHarpy extends EntityMobDay {
 		for(int var4 = 0; var4 < var3; ++var4) {
 			this.dropItem(Items.feather,1);
 		}
-		
+
 		if(par1 && (this.rand.nextInt(10) == 0 || this.rand.nextInt(1 + par2) > 0)) {
 			this.dropItem(GaiaItem.FoodBerryFire,1);
 		}
 
 		if(par1 && (this.rand.nextInt(2) == 0 || this.rand.nextInt(1 + par2) > 0)) {
-            this.entityDropItem(new ItemStack(GaiaItem.Shard, 1, 0), 0.0F);
+			this.entityDropItem(new ItemStack(GaiaItem.Shard, 1, 0), 0.0F);
 		}
 	}
 
 	protected void dropRareDrop(int par1) {
 		switch(this.rand.nextInt(2)) {
-		case 0:
-			this.dropItem(GaiaItem.BoxIron,1);
-			break;
-		case 1:
-			this.experienceValue = EntityAttributes.experienceValue1 * 5;
+			case 0:
+				this.dropItem(GaiaItem.BoxIron,1);
+				break;
+			case 1:
+				this.experienceValue = EntityAttributes.experienceValue1 * 5;
 		}
 	}
-	
+
 	protected void entityInit() {
 		super.entityInit();
 		this.dataWatcher.addObject(13, new Byte((byte)0));
@@ -151,7 +151,7 @@ public class EntityGaiaHarpy extends EntityMobDay {
 
 		return par1IEntityLivingData;
 	}
-	
+
 	public int getTextureType() {
 		return this.dataWatcher.getWatchableObjectByte(13);
 	}
@@ -189,7 +189,7 @@ public class EntityGaiaHarpy extends EntityMobDay {
 			}
 		}
 	}
-	
+
 	public boolean getCanSpawnHere() {
 		return this.posY > 60.0D && super.getCanSpawnHere();
 	}

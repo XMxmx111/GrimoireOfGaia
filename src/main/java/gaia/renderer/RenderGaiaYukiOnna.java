@@ -14,9 +14,9 @@ public class RenderGaiaYukiOnna extends RenderLiving {
 
 	private static final ResourceLocation texture = new ResourceLocation(GaiaReference.MOD_ID, "textures/models/Yuki_Onna.png");
 	static RenderManager rend = Minecraft.getMinecraft().getRenderManager();
-	
+
 	public RenderGaiaYukiOnna( float shadowSize) {
-        super(rend, new ModelGaiaYukiOnna(), shadowSize);
+		super(rend, new ModelGaiaYukiOnna(), shadowSize);
 	}
 
 	/*protected void renderEquippedItems(EntityLivingBase par1EntityLiving, float par2) {

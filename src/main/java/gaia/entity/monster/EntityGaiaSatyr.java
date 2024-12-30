@@ -26,10 +26,10 @@ import net.minecraft.world.World;
 public class EntityGaiaSatyr extends EntityMobDay {
 	private EntityAIGaiaAttackOnCollide aiMeleeAttack = new EntityAIGaiaAttackOnCollide(this, 1.0D, true);
 	private EntityAIAvoidEntity aiAvoid = new EntityAIAvoidEntity(this, EntityPlayer.class, 4.0F, 1.0D, 1.4D);
-	
+
 	private int fullHealth;
 	private int regenerateHealth;
-	
+
 	private float field_70926_e;
 	private float field_70924_f;
 
@@ -62,13 +62,13 @@ public class EntityGaiaSatyr extends EntityMobDay {
 	public boolean attackEntityAsMob(Entity par1Entity) {
 		if(super.attackEntityAsMob(par1Entity)) {
 			if(par1Entity instanceof EntityLivingBase) {
-                byte byte0 = 0;
+				byte byte0 = 0;
 
-                if (this.worldObj.getDifficulty() == EnumDifficulty.NORMAL){
-                	byte0 = 7;
-                } else if (this.worldObj.getDifficulty() == EnumDifficulty.HARD) {
-                	byte0 = 15;
-                }
+				if (this.worldObj.getDifficulty() == EnumDifficulty.NORMAL){
+					byte0 = 7;
+				} else if (this.worldObj.getDifficulty() == EnumDifficulty.HARD) {
+					byte0 = 15;
+				}
 
 				if(byte0 > 0) {
 					((EntityLivingBase)par1Entity).addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, byte0 * 30, 0));
@@ -84,10 +84,10 @@ public class EntityGaiaSatyr extends EntityMobDay {
 	public boolean isAIEnabled() {
 		return true;
 	}
-	
+
 	public void onLivingUpdate() {
 		if ((this.getHealth() < EntityAttributes.maxHealth1 * 0.25F) && (this.fullHealth == 0)){
-            this.setCurrentItemOrArmor(0, new ItemStack(Items.potionitem, 1, 16341));
+			this.setCurrentItemOrArmor(0, new ItemStack(Items.potionitem, 1, 16341));
 			this.tasks.removeTask(this.aiMeleeAttack);
 			this.tasks.addTask(1, this.aiAvoid);
 			this.fullHealth = 1;
@@ -155,23 +155,23 @@ public class EntityGaiaSatyr extends EntityMobDay {
 		}
 
 		if(par1 && (this.rand.nextInt(2) == 0 || this.rand.nextInt(1 + par2) > 0)) {
-            this.entityDropItem(new ItemStack(GaiaItem.Shard, 1, 0), 0.0F);
+			this.entityDropItem(new ItemStack(GaiaItem.Shard, 1, 0), 0.0F);
 		}
 	}
 
 	protected void dropRareDrop(int par1) {
 		switch(this.rand.nextInt(2)) {
-		case 0:
-			this.dropItem(GaiaItem.BoxIron,1);
-			break;
-		case 1:
-			this.experienceValue = EntityAttributes.experienceValue1 * 5;
+			case 0:
+				this.dropItem(GaiaItem.BoxIron,1);
+				break;
+			case 1:
+				this.experienceValue = EntityAttributes.experienceValue1 * 5;
 		}
 	}
-	
+
 	@Override
-    protected void dropEquipment(boolean p_82160_1_, int p_82160_2_) {
-    }
+	protected void dropEquipment(boolean p_82160_1_, int p_82160_2_) {
+	}
 	/*
 	public IEntityLivingData onSpawnWithEgg(IEntityLivingData par1IEntityLivingData) {
 		par1IEntityLivingData = super.onSpawnWithEgg(par1IEntityLivingData);
@@ -180,29 +180,29 @@ public class EntityGaiaSatyr extends EntityMobDay {
 		return par1IEntityLivingData;
 	}
 	*/
-	
+
 	public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, IEntityLivingData livingdata)
-    {
+	{
 		livingdata = super.onInitialSpawn(difficulty, livingdata);
 		this.setCurrentItemOrArmor(0, new ItemStack(Items.stone_sword));
 		this.setEnchantmentBasedOnDifficulty(difficulty);
-		return livingdata;		
-		
-    }
-	
+		return livingdata;
+
+	}
+
 	public void setCurrentItemOrArmor(int par1, ItemStack par2ItemStack) {
 		super.setCurrentItemOrArmor(par1, par2ItemStack);
 		if(!this.worldObj.isRemote && par1 == 0) {
 			this.setCombatTask();
 		}
 	}
-	
+
 	public void setCombatTask() {
 		this.tasks.removeTask(this.aiAvoid);
 		this.tasks.addTask(1, this.aiMeleeAttack);
 	}
-	
-	
+
+
 	public boolean getCanSpawnHere() {
 		return this.posY > 60.0D && super.getCanSpawnHere();
 	}

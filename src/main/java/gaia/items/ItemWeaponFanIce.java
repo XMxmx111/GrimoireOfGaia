@@ -56,7 +56,7 @@ public class ItemWeaponFanIce extends Item {
 		par2EntityLiving.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 100, 3));
 		return true;
 	}
-		
+
 	public void onCreated(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer) {
 		par1ItemStack.addEnchantment(Enchantment.knockback, 2);
 	}

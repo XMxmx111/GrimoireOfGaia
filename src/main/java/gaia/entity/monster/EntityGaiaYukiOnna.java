@@ -57,13 +57,13 @@ public class EntityGaiaYukiOnna extends EntityMobDay {
 	public boolean attackEntityAsMob(Entity par1Entity) {
 		if(super.attackEntityAsMob(par1Entity)) {
 			if(par1Entity instanceof EntityLivingBase) {
-                byte byte0 = 0;
+				byte byte0 = 0;
 
-                if (this.worldObj.getDifficulty() == EnumDifficulty.NORMAL){
-                	byte0 = 7;
-                } else if (this.worldObj.getDifficulty() == EnumDifficulty.HARD) {
-                	byte0 = 15;
-                }
+				if (this.worldObj.getDifficulty() == EnumDifficulty.NORMAL){
+					byte0 = 7;
+				} else if (this.worldObj.getDifficulty() == EnumDifficulty.HARD) {
+					byte0 = 15;
+				}
 
 				if(byte0 > 0) {
 					((EntityLivingBase)par1Entity).addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, byte0 * 10, 3));
@@ -97,12 +97,12 @@ public class EntityGaiaYukiOnna extends EntityMobDay {
 		super.setTarget(par1Entity);
 	}
 	*/
-	
+
 	public void onLivingUpdate() {
 		int i = MathHelper.floor_double(this.posX);
 		int j = MathHelper.floor_double(this.posZ);
 		int k = MathHelper.floor_double(this.posY);
-		BlockPos pos = new BlockPos(i,j,k);	
+		BlockPos pos = new BlockPos(i,j,k);
 		if(this.worldObj.getBiomeGenForCoords(new BlockPos(i,j,k)).getFloatTemperature(pos) > 1.0F) {
 			this.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 100, 0));
 			this.addPotionEffect(new PotionEffect(Potion.weakness.id, 100, 0));
@@ -134,9 +134,9 @@ public class EntityGaiaYukiOnna extends EntityMobDay {
 		for(int var4 = 0; var4 < var3; ++var4) {
 			this.dropItem(GaiaItem.FoodBerryIce,1);
 		}
-		
+
 		if(par1 && (this.rand.nextInt(4) == 0 || this.rand.nextInt(1 + par2) > 0)) {
-            this.entityDropItem(new ItemStack(GaiaItem.Shard, 1, 3), 0.0F);
+			this.entityDropItem(new ItemStack(GaiaItem.Shard, 1, 3), 0.0F);
 		}
 
 		if(par1 && (this.rand.nextInt(4) == 0 || this.rand.nextInt(1 + par2) > 0)) {
@@ -146,42 +146,42 @@ public class EntityGaiaYukiOnna extends EntityMobDay {
 
 	protected void dropRareDrop(int par1) {
 		switch(this.rand.nextInt(4)) {
-		case 0:
-			this.dropItem(GaiaItem.BoxGold,1);
-			break;
-		case 1:
-			this.dropItem(GaiaItem.BagBook,1);
-			break;
-		case 2:
-            this.entityDropItem(new ItemStack(GaiaItem.MiscWeaponEnchanted, 1, 0), 0.0F);
-			break;
-		case 3:
-			this.dropItem(GaiaItem.MiscPage,1);
+			case 0:
+				this.dropItem(GaiaItem.BoxGold,1);
+				break;
+			case 1:
+				this.dropItem(GaiaItem.BagBook,1);
+				break;
+			case 2:
+				this.entityDropItem(new ItemStack(GaiaItem.MiscWeaponEnchanted, 1, 0), 0.0F);
+				break;
+			case 3:
+				this.dropItem(GaiaItem.MiscPage,1);
 		}
 	}
-	
+
 	@Override
-    protected void dropEquipment(boolean p_82160_1_, int p_82160_2_) {
-    }
+	protected void dropEquipment(boolean p_82160_1_, int p_82160_2_) {
+	}
+
 	/*
-	
 	public IEntityLivingData onSpawnWithEgg(IEntityLivingData par1IEntityLivingData) {
 		par1IEntityLivingData = super.onSpawnWithEgg(par1IEntityLivingData);
 		this.setCurrentItemOrArmor(0, new ItemStack(GaiaItem.PropWeaponInvisible));
 		return par1IEntityLivingData;
 	}
 	*/
-	
+
 	/** Updated onSpawnEgg, armor and held Item functions to 1.8 equivalence **/
 	public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, IEntityLivingData livingdata)
-    {
+	{
 		livingdata = super.onInitialSpawn(difficulty, livingdata);
-		
+
 		this.setCurrentItemOrArmor(0, new ItemStack(GaiaItem.PropWeaponInvisible));
 		this.setEnchantmentBasedOnDifficulty(difficulty);
-		return livingdata;		
-		
-    }
+		return livingdata;
+
+	}
 
 	protected void fall(float f) {}
 
@@ -190,7 +190,7 @@ public class EntityGaiaYukiOnna extends EntityMobDay {
 	public EnumCreatureAttribute getCreatureAttribute() {
 		return EnumCreatureAttribute.UNDEAD;
 	}
-	
+
 	public void knockBack(Entity par1Entity, float par2, double par3, double par5) {
 		if(this.rand.nextDouble() >= this.getEntityAttribute(SharedMonsterAttributes.knockbackResistance).getAttributeValue()) {
 			this.isAirBorne = true;

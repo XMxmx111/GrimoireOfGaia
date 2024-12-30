@@ -75,13 +75,13 @@ public class EntityGaiaSelkie extends EntityMobDay implements IRangedAttackMob {
 	public boolean attackEntityAsMob(Entity par1Entity) {
 		if(super.attackEntityAsMob(par1Entity)) {
 			if(this.getMobType() == 1 && par1Entity instanceof EntityLivingBase) {
-                byte byte0 = 0;
+				byte byte0 = 0;
 
-                if (this.worldObj.getDifficulty() == EnumDifficulty.NORMAL){
-                	byte0 = 7;
-                } else if (this.worldObj.getDifficulty() == EnumDifficulty.HARD) {
-                	byte0 = 15;
-                }
+				if (this.worldObj.getDifficulty() == EnumDifficulty.NORMAL){
+					byte0 = 7;
+				} else if (this.worldObj.getDifficulty() == EnumDifficulty.HARD) {
+					byte0 = 15;
+				}
 
 				if(byte0 > 0) {
 					((EntityLivingBase)par1Entity).addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 60));
@@ -94,26 +94,26 @@ public class EntityGaiaSelkie extends EntityMobDay implements IRangedAttackMob {
 			return false;
 		}
 	}
-	
+
 	public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, IEntityLivingData livingdata)
-    {
+	{
 		livingdata = super.onInitialSpawn(difficulty, livingdata);
-	if(this.worldObj.rand.nextInt(4) == 0) {
-		this.tasks.addTask(2, this.aiArrowAttack);
-		this.setCurrentItemOrArmor(0, new ItemStack(Items.bow));
-		this.enchantEquipmentRanged(difficulty);
-		this.setTextureType(1);
-	} else {
-		this.tasks.addTask(2, this.aiAttackOnCollide);
-		this.setCurrentItemOrArmor(0, new ItemStack(Items.fishing_rod));
-		this.setEnchantmentBasedOnDifficulty(difficulty);
-		this.setMobType(1);
-		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(8.0D);
-		this.setTextureType(0);
+		if(this.worldObj.rand.nextInt(4) == 0) {
+			this.tasks.addTask(2, this.aiArrowAttack);
+			this.setCurrentItemOrArmor(0, new ItemStack(Items.bow));
+			this.enchantEquipmentRanged(difficulty);
+			this.setTextureType(1);
+		} else {
+			this.tasks.addTask(2, this.aiAttackOnCollide);
+			this.setCurrentItemOrArmor(0, new ItemStack(Items.fishing_rod));
+			this.setEnchantmentBasedOnDifficulty(difficulty);
+			this.setMobType(1);
+			this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(8.0D);
+			this.setTextureType(0);
+		}
+		return livingdata;
+
 	}
-	return livingdata;	
-		
-    }
 	/*
 	public IEntityLivingData onSpawnWithEgg(IEntityLivingData par1IEntityLivingData) {
 		par1IEntityLivingData = super.onSpawnWithEgg(par1IEntityLivingData);
@@ -172,7 +172,7 @@ public class EntityGaiaSelkie extends EntityMobDay implements IRangedAttackMob {
 		this.playSound("random.bow", 1.0F, 1.0F / (this.getRNG().nextFloat() * 0.4F + 0.8F));
 		this.worldObj.spawnEntityInWorld(entityarrow);
 	}
-	
+
 	public int getTextureType() {
 		return this.dataWatcher.getWatchableObjectByte(13);
 	}
@@ -202,26 +202,26 @@ public class EntityGaiaSelkie extends EntityMobDay implements IRangedAttackMob {
 		super.writeEntityToNBT(par1NBTTagCompound);
 		par1NBTTagCompound.setByte("MobType", (byte)this.getMobType());
 	}
-	
-    protected void enchantEquipmentRanged(DifficultyInstance difficulty)
-    {
-        float f = difficulty.getClampedAdditionalDifficulty();
 
-        if (this.getHeldItem() != null && this.rand.nextFloat() < 2.5F * f)
-        {
-            EnchantmentHelper.addRandomEnchantment(this.rand, this.getHeldItem(), (int)(5.0F + f * (float)this.rand.nextInt(18)));
-        }
+	protected void enchantEquipmentRanged(DifficultyInstance difficulty)
+	{
+		float f = difficulty.getClampedAdditionalDifficulty();
 
-        for (int i = 0; i < 4; ++i)
-        {
-            ItemStack itemstack = this.getCurrentArmor(i);
+		if (this.getHeldItem() != null && this.rand.nextFloat() < 2.5F * f)
+		{
+			EnchantmentHelper.addRandomEnchantment(this.rand, this.getHeldItem(), (int)(5.0F + f * (float)this.rand.nextInt(18)));
+		}
 
-            if (itemstack != null && this.rand.nextFloat() < 5.0F * f)
-            {
-                EnchantmentHelper.addRandomEnchantment(this.rand, itemstack, (int)(5.0F + f * (float)this.rand.nextInt(18)));
-            }
-        }
-    }
+		for (int i = 0; i < 4; ++i)
+		{
+			ItemStack itemstack = this.getCurrentArmor(i);
+
+			if (itemstack != null && this.rand.nextFloat() < 5.0F * f)
+			{
+				EnchantmentHelper.addRandomEnchantment(this.rand, itemstack, (int)(5.0F + f * (float)this.rand.nextInt(18)));
+			}
+		}
+	}
 
 	public void onLivingUpdate() {
 		int i = MathHelper.floor_double(this.posX);
@@ -256,7 +256,7 @@ public class EntityGaiaSelkie extends EntityMobDay implements IRangedAttackMob {
 		}
 
 		if(par1 && (this.rand.nextInt(2) == 0 || this.rand.nextInt(1 + par2) > 0)) {
-            this.entityDropItem(new ItemStack(GaiaItem.Shard, 1, 1), 0.0F);
+			this.entityDropItem(new ItemStack(GaiaItem.Shard, 1, 1), 0.0F);
 		}
 
 		if(par1 && (this.rand.nextInt(4) == 0 || this.rand.nextInt(1 + par2) > 0)) {
@@ -266,17 +266,17 @@ public class EntityGaiaSelkie extends EntityMobDay implements IRangedAttackMob {
 
 	protected void dropRareDrop(int par1) {
 		switch(this.rand.nextInt(4)) {
-		case 0:
-			this.dropItem(GaiaItem.BoxGold,1);
-			break;
-		case 1:
-			this.dropItem(GaiaItem.BagBook,1);
-			break;
-		case 2:
-			this.dropItem(GaiaItem.BookFreezing,1);
-			break;
-		case 3:
-			this.dropItem(GaiaItem.MiscPage,1);
+			case 0:
+				this.dropItem(GaiaItem.BoxGold,1);
+				break;
+			case 1:
+				this.dropItem(GaiaItem.BagBook,1);
+				break;
+			case 2:
+				this.dropItem(GaiaItem.BookFreezing,1);
+				break;
+			case 3:
+				this.dropItem(GaiaItem.MiscPage,1);
 		}
 	}
 

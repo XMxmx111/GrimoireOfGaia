@@ -21,8 +21,8 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @InterfaceList({
-	@Interface(iface="baubles.api.IBauble", modid="Baubles", striprefs=true),
-	@Interface(iface="baubles.api.BaubleType", modid="Baubles", striprefs=true)})
+		@Interface(iface="baubles.api.IBauble", modid="Baubles", striprefs=true),
+		@Interface(iface="baubles.api.BaubleType", modid="Baubles", striprefs=true)})
 
 public class ItemAccessoryRingNight extends Item implements IBauble{
 	String texture;
@@ -61,12 +61,12 @@ public class ItemAccessoryRingNight extends Item implements IBauble{
 		}
 	}
 
-	public void doEffect(EntityPlayer player, ItemStack item) {		
+	public void doEffect(EntityPlayer player, ItemStack item) {
 		//player.addPotionEffect(new PotionEffect(Potion.nightVision.id, 0, 0));
 		//Upped duration to prevent fade out spam
 		player.addPotionEffect(new PotionEffect(Potion.nightVision.id, 220, 0, true, false));
 	}
-	
+
 	@Override
 	public BaubleType getBaubleType(ItemStack itemstack) {
 		return BaubleType.RING;
@@ -74,12 +74,12 @@ public class ItemAccessoryRingNight extends Item implements IBauble{
 
 	@Override
 	public void onWornTick(ItemStack itemstack, EntityLivingBase player) {
-		this.doEffect((EntityPlayer)player, itemstack);	
+		this.doEffect((EntityPlayer)player, itemstack);
 	}
 
 	@Override
 	public void onEquipped(ItemStack itemstack, EntityLivingBase player) {
-		
+
 	}
 
 	@Override

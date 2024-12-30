@@ -14,7 +14,7 @@ public class RenderGaiaMimic extends RenderLiving {
 
 	static RenderManager rend = Minecraft.getMinecraft().getRenderManager();
 	public RenderGaiaMimic(float shadowSize) {
-        super(rend, new ModelGaiaMimic(), shadowSize);
+		super(rend, new ModelGaiaMimic(), shadowSize);
 	}
 
 	protected ResourceLocation getEntityTexture(Entity entity) {

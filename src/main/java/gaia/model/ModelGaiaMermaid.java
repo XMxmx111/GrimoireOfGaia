@@ -245,27 +245,27 @@ public class ModelGaiaMermaid extends ModelBase {
 		this.fin3.rotateAngleY = MathHelper.cos(par1 * 0.6362F) * 0.1F * par2;
 		this.fin4.rotateAngleY = MathHelper.cos(par1 * 0.6362F) * 0.1F * par2;
 		this.fintail.rotateAngleY = this.fin4.rotateAngleY;
-		
-        float f6;
-        float f7;
 
-        if (this.swingProgress > -9990.0F)
-        {
-            f6 = this.swingProgress;
-            f6 = 1.0F - this.swingProgress;
-            f6 *= f6;
-            f6 *= f6;
-            f6 = 1.0F - f6;
-            f7 = MathHelper.sin(f6 * (float)Math.PI);
-            float f8 = MathHelper.sin(this.swingProgress * (float)Math.PI) * -(this.head.rotateAngleX - 0.7F) * 0.75F;
-            
-            this.rightarm.rotateAngleX = (float)((double)this.rightarm.rotateAngleX - ((double)f7 * 1.2D + (double)f8)) - 0.0872665F;
-            this.rightpauldron.rotateAngleX = this.rightarm.rotateAngleX;
-            this.rightarm.rotateAngleY += (this.bodytop.rotateAngleY * 2.0F);
-            this.rightpauldron.rotateAngleY = this.rightarm.rotateAngleY;
-            this.rightarm.rotateAngleZ = (MathHelper.sin(this.swingProgress * (float)Math.PI) * -0.4F);
-            this.rightpauldron.rotateAngleZ = this.rightarm.rotateAngleZ - 0.3490659F;
-            this.rightarm.rotateAngleZ = this.rightarm.rotateAngleZ + 0.1745329F;
-        }
+		float f6;
+		float f7;
+
+		if (this.swingProgress > -9990.0F)
+		{
+			f6 = this.swingProgress;
+			f6 = 1.0F - this.swingProgress;
+			f6 *= f6;
+			f6 *= f6;
+			f6 = 1.0F - f6;
+			f7 = MathHelper.sin(f6 * (float)Math.PI);
+			float f8 = MathHelper.sin(this.swingProgress * (float)Math.PI) * -(this.head.rotateAngleX - 0.7F) * 0.75F;
+
+			this.rightarm.rotateAngleX = (float)((double)this.rightarm.rotateAngleX - ((double)f7 * 1.2D + (double)f8)) - 0.0872665F;
+			this.rightpauldron.rotateAngleX = this.rightarm.rotateAngleX;
+			this.rightarm.rotateAngleY += (this.bodytop.rotateAngleY * 2.0F);
+			this.rightpauldron.rotateAngleY = this.rightarm.rotateAngleY;
+			this.rightarm.rotateAngleZ = (MathHelper.sin(this.swingProgress * (float)Math.PI) * -0.4F);
+			this.rightpauldron.rotateAngleZ = this.rightarm.rotateAngleZ - 0.3490659F;
+			this.rightarm.rotateAngleZ = this.rightarm.rotateAngleZ + 0.1745329F;
+		}
 	}
 }

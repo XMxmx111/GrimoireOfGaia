@@ -21,13 +21,13 @@ public class ModelGaiaKobold extends ModelBase {
 	ModelRenderer leftchest;
 	ModelRenderer rightarm;
 	ModelRenderer leftarm;
-    ModelRenderer rightarmguard;
+	ModelRenderer rightarmguard;
 	ModelRenderer rightarmlower;
 	ModelRenderer leftarmlower;
 	public static ModelRenderer righthand;
 	ModelRenderer lefthand;
 	ModelRenderer backpack;
-    ModelRenderer quiver;
+	ModelRenderer quiver;
 	ModelRenderer tail1;
 	ModelRenderer tail2;
 	ModelRenderer waist;
@@ -312,28 +312,28 @@ public class ModelGaiaKobold extends ModelBase {
 		this.rightleg.rotateAngleX = this.rightleg.rotateAngleX - 0.3490659F;
 		this.leftleg.rotateAngleX = this.leftleg.rotateAngleX - 0.3490659F;
 
-        float f6;
-        float f7;
+		float f6;
+		float f7;
 
-        if (this.swingProgress > -9990.0F) {
-            f6 = this.swingProgress;
-            f6 = 1.0F - this.swingProgress;
-            f6 *= f6;
-            f6 *= f6;
-            f6 = 1.0F - f6;
-            f7 = MathHelper.sin(f6 * (float)Math.PI);
-            float f8 = MathHelper.sin(this.swingProgress * (float)Math.PI) * -(this.head.rotateAngleX - 0.7F) * 0.75F;
-            
-            this.righthand.rotateAngleX = (float)((double)this.righthand.rotateAngleX - ((double)f7 * 1.2D + (double)f8));
-            this.rightarm.rotateAngleX = this.righthand.rotateAngleX; 
-            this.rightarmlower.rotateAngleX = this.righthand.rotateAngleX;
-            this.righthand.rotateAngleY += (this.bodytop.rotateAngleY * 2.0F);
-            this.rightarm.rotateAngleY = this.righthand.rotateAngleY; 
-            this.rightarmlower.rotateAngleY = this.righthand.rotateAngleY;
-            this.righthand.rotateAngleZ = (MathHelper.sin(this.swingProgress * (float)Math.PI) * -0.4F);
-            this.rightarm.rotateAngleZ = this.righthand.rotateAngleZ + 0.1745329F; 
-            this.rightarmlower.rotateAngleZ = this.righthand.rotateAngleZ + 0.1745329F;
-            this.righthand.rotateAngleZ = this.righthand.rotateAngleZ + 0.0872665F;
-        }
+		if (this.swingProgress > -9990.0F) {
+			f6 = this.swingProgress;
+			f6 = 1.0F - this.swingProgress;
+			f6 *= f6;
+			f6 *= f6;
+			f6 = 1.0F - f6;
+			f7 = MathHelper.sin(f6 * (float)Math.PI);
+			float f8 = MathHelper.sin(this.swingProgress * (float)Math.PI) * -(this.head.rotateAngleX - 0.7F) * 0.75F;
+
+			this.righthand.rotateAngleX = (float)((double)this.righthand.rotateAngleX - ((double)f7 * 1.2D + (double)f8));
+			this.rightarm.rotateAngleX = this.righthand.rotateAngleX;
+			this.rightarmlower.rotateAngleX = this.righthand.rotateAngleX;
+			this.righthand.rotateAngleY += (this.bodytop.rotateAngleY * 2.0F);
+			this.rightarm.rotateAngleY = this.righthand.rotateAngleY;
+			this.rightarmlower.rotateAngleY = this.righthand.rotateAngleY;
+			this.righthand.rotateAngleZ = (MathHelper.sin(this.swingProgress * (float)Math.PI) * -0.4F);
+			this.rightarm.rotateAngleZ = this.righthand.rotateAngleZ + 0.1745329F;
+			this.rightarmlower.rotateAngleZ = this.righthand.rotateAngleZ + 0.1745329F;
+			this.righthand.rotateAngleZ = this.righthand.rotateAngleZ + 0.0872665F;
+		}
 	}
 }

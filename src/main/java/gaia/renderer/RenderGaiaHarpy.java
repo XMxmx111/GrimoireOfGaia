@@ -15,11 +15,11 @@ public class RenderGaiaHarpy extends RenderLiving {
 	private static final ResourceLocation texture01 = new ResourceLocation(GaiaReference.MOD_ID, "textures/models/Harpy01.png");
 	private static final ResourceLocation texture02 = new ResourceLocation(GaiaReference.MOD_ID, "textures/models/alternate/Harpy02.png");
 	static RenderManager rend = Minecraft.getMinecraft().getRenderManager();
-	
+
 	public RenderGaiaHarpy( float shadowSize) {
-        super(rend, new ModelGaiaHarpy(), shadowSize);
-    }
-	
+		super(rend, new ModelGaiaHarpy(), shadowSize);
+	}
+
 	@Override
 	protected ResourceLocation getEntityTexture(Entity entity) {
 		return this.getTexture((EntityGaiaHarpy) entity);
@@ -27,9 +27,9 @@ public class RenderGaiaHarpy extends RenderLiving {
 
 	protected ResourceLocation getTexture(EntityGaiaHarpy par1EntityGaiaHarpy) {
 		switch(par1EntityGaiaHarpy.getTextureType()) {
-		case 0: return texture01;
-		case 1: return texture02;
-		default: return texture01;
+			case 0: return texture01;
+			case 1: return texture02;
+			default: return texture01;
 		}
 	}
 }

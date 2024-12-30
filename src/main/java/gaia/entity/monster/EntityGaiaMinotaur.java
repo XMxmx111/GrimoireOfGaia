@@ -66,13 +66,13 @@ public class EntityGaiaMinotaur extends EntityMobBase {
 	public boolean attackEntityAsMob(Entity par1Entity) {
 		if(super.attackEntityAsMob(par1Entity)) {
 			if(par1Entity instanceof EntityLivingBase) {
-                byte byte0 = 0;
+				byte byte0 = 0;
 
-                if (this.worldObj.getDifficulty() == EnumDifficulty.NORMAL){
-                	byte0 = 7;
-                } else if (this.worldObj.getDifficulty() == EnumDifficulty.HARD) {
-                	byte0 = 15;
-                }
+				if (this.worldObj.getDifficulty() == EnumDifficulty.NORMAL){
+					byte0 = 7;
+				} else if (this.worldObj.getDifficulty() == EnumDifficulty.HARD) {
+					byte0 = 15;
+				}
 
 				if(byte0 > 0) {
 					((EntityLivingBase)par1Entity).addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, byte0 * 60, 0));
@@ -103,7 +103,7 @@ public class EntityGaiaMinotaur extends EntityMobBase {
 			BlockPos pos = new BlockPos(var1, var2, var3);
 			int crackid = BlockStateHelper.getblock_ID(world, pos);
 			int crackmeta = BlockStateHelper.getMetafromState(world, pos);
-			
+
 			//Block b = this.worldObj.getBlock(var1, var2, var3);
 			Block b = BlockStateHelper.getBlockfromState(this.worldObj, pos);
 			if(b != Blocks.air) {
@@ -113,9 +113,9 @@ public class EntityGaiaMinotaur extends EntityMobBase {
 						this.posZ + ((double)this.rand.nextFloat() - 0.5D) * (double)this.width, 4.0D * ((double)this.rand.nextFloat() - 0.5D), 0.5D,
 						((double)this.rand.nextFloat() - 0.5D) * 4.0D,
 						crackid,crackmeta);
-						
-				
-				
+
+
+
 			}
 		}
 
@@ -156,44 +156,44 @@ public class EntityGaiaMinotaur extends EntityMobBase {
 
 	protected void dropFewItems(boolean par1, int par2) {
 		if(par1 && (this.rand.nextInt(2) == 0 || this.rand.nextInt(1 + par2) > 0)) {
-            this.entityDropItem(new ItemStack(GaiaItem.Shard, 1, 2), 0.0F);
+			this.entityDropItem(new ItemStack(GaiaItem.Shard, 1, 2), 0.0F);
 		}
 
 		if(par1 && (this.rand.nextInt(4) == 0 || this.rand.nextInt(1 + par2) > 0)) {
 			this.dropItem(GaiaItem.FoodSmallAppleGold,1);
 		}
-		
+
 		if(par1 && (this.rand.nextInt(2) == 0 || this.rand.nextInt(1 + par2) > 0)) {
-            this.entityDropItem(new ItemStack(GaiaItem.Shard, 1, 3), 0.0F);
+			this.entityDropItem(new ItemStack(GaiaItem.Shard, 1, 3), 0.0F);
 		}
 	}
 
 	protected void dropRareDrop(int par1) {
 		switch(this.rand.nextInt(3)) {
-		case 0:
-			this.dropItem(GaiaItem.BoxDiamond,1);
-			break;
-		case 1:
-			this.dropItem(GaiaItem.AccessoryDollCursed,1);
-			break;
-		case 2:
-            this.entityDropItem(new ItemStack(GaiaItem.MiscRing, 1, 1), 0.0F);
+			case 0:
+				this.dropItem(GaiaItem.BoxDiamond,1);
+				break;
+			case 1:
+				this.dropItem(GaiaItem.AccessoryDollCursed,1);
+				break;
+			case 2:
+				this.entityDropItem(new ItemStack(GaiaItem.MiscRing, 1, 1), 0.0F);
 		}
 	}
-	
+
 	@Override
-    protected void dropEquipment(boolean p_82160_1_, int p_82160_2_) {
-    }
-	
+	protected void dropEquipment(boolean p_82160_1_, int p_82160_2_) {
+	}
+
 
 	public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, IEntityLivingData livingdata)
-    {
+	{
 		livingdata = super.onInitialSpawn(difficulty, livingdata);
 		this.setCurrentItemOrArmor(0, new ItemStack(GaiaItem.PropWeaponInvisible));
 		this.setEnchantmentBasedOnDifficulty(difficulty);
-		return livingdata;		
-		
-    }
+		return livingdata;
+
+	}
 
 	public float MinotaurScaleAmount() {
 		return 1.25F;

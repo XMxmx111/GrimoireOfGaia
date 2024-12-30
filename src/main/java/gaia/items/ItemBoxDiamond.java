@@ -37,34 +37,34 @@ public class ItemBoxDiamond extends Item {
 
 	public ItemStack onItemRightClick(ItemStack itemstack, World world, EntityPlayer entityplayer) {
 		world.playSoundAtEntity(entityplayer, "grimoireofgaia:bag_open", 0.5F, world.rand.nextFloat() * 0.1F + 0.9F);
-		
+
 		Random random = new Random();
 		int i = random.nextInt(11);
 		switch(i) {
-		case 0:
-			return new ItemStack(Items.diamond);
-		case 1:
-			return new ItemStack(Items.diamond_axe);
-		case 2:
-			return new ItemStack(Items.diamond_pickaxe);
-		case 3:
-			return new ItemStack(Items.diamond_shovel);
-		case 4:
-			return new ItemStack(Items.diamond_sword);
-		case 5:
-			return new ItemStack(Items.diamond_helmet);
-		case 6:
-			return new ItemStack(Items.diamond_chestplate);
-		case 7:
-			return new ItemStack(Items.diamond_leggings);
-		case 8:
-			return new ItemStack(Items.diamond_boots);
-		case 9:
-			return new ItemStack(Blocks.diamond_block);
-		case 10:
-			return new ItemStack(Items.diamond_horse_armor);
-		default:
-			return itemstack;
+			case 0:
+				return new ItemStack(Items.diamond);
+			case 1:
+				return new ItemStack(Items.diamond_axe);
+			case 2:
+				return new ItemStack(Items.diamond_pickaxe);
+			case 3:
+				return new ItemStack(Items.diamond_shovel);
+			case 4:
+				return new ItemStack(Items.diamond_sword);
+			case 5:
+				return new ItemStack(Items.diamond_helmet);
+			case 6:
+				return new ItemStack(Items.diamond_chestplate);
+			case 7:
+				return new ItemStack(Items.diamond_leggings);
+			case 8:
+				return new ItemStack(Items.diamond_boots);
+			case 9:
+				return new ItemStack(Blocks.diamond_block);
+			case 10:
+				return new ItemStack(Items.diamond_horse_armor);
+			default:
+				return itemstack;
 		}
 	}
 }

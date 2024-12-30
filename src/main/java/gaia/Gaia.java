@@ -28,28 +28,28 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 @Mod(
-		modid = GaiaReference.MOD_ID, 
-		name = GaiaReference.MOD_NAME, 
+		modid = GaiaReference.MOD_ID,
+		name = GaiaReference.MOD_NAME,
 		version = GaiaReference.VERSION,
 		guiFactory = GaiaReference.guiFactory,
 		dependencies = GaiaReference.DEPENDENCIES
-		)
+)
 
 
-public class Gaia 
+public class Gaia
 {
 	@Instance(GaiaReference.MOD_ID)
 	public static Gaia instance = new Gaia();
 	@SidedProxy
-	(clientSide = GaiaReference.CLIENT_PROXY_CLASS, 
-	serverSide = GaiaReference.SERVER_PROXY_CLASS)
+			(clientSide = GaiaReference.CLIENT_PROXY_CLASS,
+					serverSide = GaiaReference.SERVER_PROXY_CLASS)
 	public static CommonProxy proxy;
-	
+
 	public static final Logger logger = LogManager.getLogger(GaiaReference.MOD_ID);
 	public static boolean isBaublesEnabled = false;
 	public static boolean isThaumcraftEnabled = false;
-	
-	public static CreativeTabs tabGaia = new CreativeTabs("tabGaia") 
+
+	public static CreativeTabs tabGaia = new CreativeTabs("tabGaia")
 	{
 		@Override
 		public Item getTabIconItem() {
@@ -57,66 +57,66 @@ public class Gaia
 		}
 
 	};
-	
-	
+
+
 	@EventHandler
-	public void preInit(FMLPreInitializationEvent event) 
+	public void preInit(FMLPreInitializationEvent event)
 	{
 		isBaublesEnabled = Loader.isModLoaded("Baubles");
 		if(isBaublesEnabled)logger.info("Loading With Baubles");
 		else{logger.info("Loading Without Baubles");}
-		
+
 		isThaumcraftEnabled = Loader.isModLoaded("Thaumcraft");
 		if(isThaumcraftEnabled)logger.info("Loading With Thaumcraft");
 		else{logger.info("Loading Without Thaumcraft");}
-		
+
 		//Configuration cfg = new Configuration(event.getSuggestedConfigurationFile());
-    	//GaiaConfigGeneration.configOptions(cfg);
+		//GaiaConfigGeneration.configOptions(cfg);
 		GaiaConfigGeneration.configOptions(event);
-		
+
 		GaiaBlock.init();
 		GaiaBlock.register();
-    	GaiaItem.init();
-    	GaiaItem.register();
-    	GaiaItem.oreRegistration();
+		GaiaItem.init();
+		GaiaItem.register();
+		GaiaItem.oreRegistration();
 		//proxy.registerRenderingFactories();
-    	/** Separated and moved item render from entity portion **/
-    	proxy.registerItemsRender();
-    	proxy.registerBlocksRender();
-    	
+		/** Separated and moved item render from entity portion **/
+		proxy.registerItemsRender();
+		proxy.registerBlocksRender();
+
 	}
 
 	@EventHandler
-	public void load(FMLInitializationEvent event) 
+	public void load(FMLInitializationEvent event)
 	{
 
 		GameRegistry.registerFuelHandler(new GaiaItemHandlerFuel());
 		GaiaItem.addRecipes();
-		
+
 		//TEMP_Entity.register();
 		GaiaEntity.register();
 		GaiaSpawning.register();
-		
+
 		if(isThaumcraftEnabled){
-			logger.info("Registering Aspects");	
+			logger.info("Registering Aspects");
 			Aspects_Entity.Entity_Aspects();
 			Aspects_Items.Item_Aspects();
-			logger.info("Aspects Successfully Loaded");	
+			logger.info("Aspects Successfully Loaded");
 		}
-		
+
 		//TEMP_Spawning.register_spawn();
 		/** Moved register renders to load init; required for entity renders **/
-		proxy.registerRenders();    	
-    	
-		
-		MinecraftForge.EVENT_BUS.register(this);		
+		proxy.registerRenders();
+
+
+		MinecraftForge.EVENT_BUS.register(this);
 	}
-	
+
 	@SubscribeEvent
-	  public void onConfigChanged(ConfigChangedEvent.OnConfigChangedEvent eventArgs) {
-	    if(eventArgs.modID.equals(GaiaReference.MOD_ID))
-	      GaiaConfigGeneration.syncConfig();
-	  }
+	public void onConfigChanged(ConfigChangedEvent.OnConfigChangedEvent eventArgs) {
+		if(eventArgs.modID.equals(GaiaReference.MOD_ID))
+			GaiaConfigGeneration.syncConfig();
+	}
 	
 	/*
 	//debug, remove before compile/release
@@ -185,7 +185,7 @@ public class Gaia
 		}
 	}
 	*/
-	
+
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event) {}
 }

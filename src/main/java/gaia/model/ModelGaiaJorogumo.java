@@ -326,26 +326,26 @@ public class ModelGaiaJorogumo extends ModelBase {
 		this.leg6.rotateAngleZ += -f15;
 		this.leg7.rotateAngleZ += f16;
 		this.leg8.rotateAngleZ += -f16;
-		
-        float f17;
-        float f18;
 
-        if (this.swingProgress > -9990.0F)
-        {
-        	f17 = this.swingProgress;
-        	f17 = 1.0F - this.swingProgress;
-        	f17 *= f17;
-        	f17 *= f17;
-        	f17 = 1.0F - f17;
-        	f18 = MathHelper.sin(f17 * (float)Math.PI);
-            float f19 = MathHelper.sin(this.swingProgress * (float)Math.PI) * -(this.head.rotateAngleX - 0.7F) * 0.75F;
-            
-            this.rightarm.rotateAngleX = (float)((double)this.rightarm.rotateAngleX - ((double)f18 * 1.2D + (double)f8));
-            this.rightarmupper.rotateAngleX = this.rightarm.rotateAngleX;
-            this.rightarm.rotateAngleY += (this.bodytop.rotateAngleY * 2.0F);
-            this.rightarmupper.rotateAngleY = this.rightarm.rotateAngleY;
-            this.rightarm.rotateAngleZ = (MathHelper.sin(this.swingProgress * (float)Math.PI) * -0.4F) + 0.0872665F;
-            this.rightarmupper.rotateAngleZ = this.rightarm.rotateAngleZ;
-        }
+		float f17;
+		float f18;
+
+		if (this.swingProgress > -9990.0F)
+		{
+			f17 = this.swingProgress;
+			f17 = 1.0F - this.swingProgress;
+			f17 *= f17;
+			f17 *= f17;
+			f17 = 1.0F - f17;
+			f18 = MathHelper.sin(f17 * (float)Math.PI);
+			float f19 = MathHelper.sin(this.swingProgress * (float)Math.PI) * -(this.head.rotateAngleX - 0.7F) * 0.75F;
+
+			this.rightarm.rotateAngleX = (float)((double)this.rightarm.rotateAngleX - ((double)f18 * 1.2D + (double)f8));
+			this.rightarmupper.rotateAngleX = this.rightarm.rotateAngleX;
+			this.rightarm.rotateAngleY += (this.bodytop.rotateAngleY * 2.0F);
+			this.rightarmupper.rotateAngleY = this.rightarm.rotateAngleY;
+			this.rightarm.rotateAngleZ = (MathHelper.sin(this.swingProgress * (float)Math.PI) * -0.4F) + 0.0872665F;
+			this.rightarmupper.rotateAngleZ = this.rightarm.rotateAngleZ;
+		}
 	}
 }

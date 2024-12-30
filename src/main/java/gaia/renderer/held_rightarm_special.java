@@ -24,7 +24,7 @@ public class held_rightarm_special implements LayerRenderer<EntityLivingBase>
 {
     ModelRenderer rightarm;
     private final RendererLivingEntity<?> livingEntityRenderer;
-    
+
     /**Tried to setup another constructor to pass variables to a second set of GL rotations and translations
      * For dynamic assigning - without having to have said dozens of extra classes that do the same thing really
      * But values didn't want to read and right for whatever reason so here we go static assignments -for now- 
@@ -35,8 +35,8 @@ public class held_rightarm_special implements LayerRenderer<EntityLivingBase>
         this.livingEntityRenderer = livingEntityRendererIn;
         this.rightarm = limb;
     }
-        
-  
+
+
     public void doRenderLayer(EntityLivingBase entity, float p_177141_2_, float p_177141_3_, float partialTicks, float p_177141_5_, float p_177141_6_, float p_177141_7_, float scale)
     {
         ItemStack itemstack = entity.getHeldItem();
@@ -44,7 +44,7 @@ public class held_rightarm_special implements LayerRenderer<EntityLivingBase>
         if (itemstack != null)
         {
             GlStateManager.pushMatrix();
-            
+
 
             if (this.livingEntityRenderer.getMainModel().isChild)
             {
@@ -53,12 +53,12 @@ public class held_rightarm_special implements LayerRenderer<EntityLivingBase>
                 GlStateManager.rotate(-20.0F, -1.0F, 0.0F, 0.0F);
                 GlStateManager.scale(f, f, f);
             }
-            
+
             //Original Line
             //((base_held)this.livingEntityRenderer.getMainModel()).postRenderArm(0.0625F);    
-            rightarm.postRender(0.0625F);            
+            rightarm.postRender(0.0625F);
             GlStateManager.translate(-0.0625F, 0.4375F, 0.0625F);
-            
+
 
             if (entity instanceof EntityPlayer && ((EntityPlayer)entity).fishEntity != null)
             {
@@ -76,30 +76,30 @@ public class held_rightarm_special implements LayerRenderer<EntityLivingBase>
                 float f1 = 0.375F;
                 GlStateManager.scale(-f1, -f1, f1);
             }
-           
+
             if(item == Items.bow) {
-            	GlStateManager.translate(0.0F, 0F, -0.05F);
+                GlStateManager.translate(0.0F, 0F, -0.05F);
             }
-            	
+
             if (entity.isSneaking())
             {
                 GlStateManager.translate(0.0F, 0.203125F, 0.0F);
-            }          
+            }
             if(entity instanceof EntityGaiaSharko){
-            	GlStateManager.rotate(12.0F, -1.0F, 0.0F, 0.0F);
-            	GlStateManager.translate(0F, -0.05F, 0.35F);
+                GlStateManager.rotate(12.0F, -1.0F, 0.0F, 0.0F);
+                GlStateManager.translate(0F, -0.05F, 0.35F);
             }
             if(entity instanceof EntityGaiaNaga){
-            	GlStateManager.rotate(12.0F, -1.0F, 0.0F, 0.0F);
-            	GlStateManager.translate(0F, 0.25F, 0.1F);
+                GlStateManager.rotate(12.0F, -1.0F, 0.0F, 0.0F);
+                GlStateManager.translate(0F, 0.25F, 0.1F);
             }
-            
-            
+
+
             minecraft.getItemRenderer().renderItem(entity, itemstack, ItemCameraTransforms.TransformType.THIRD_PERSON);
             GlStateManager.popMatrix();
         }
     }
-        
+
     /** Required field for layers **/
     public boolean shouldCombineTextures()
     {
